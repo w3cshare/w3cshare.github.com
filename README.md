@@ -26,7 +26,7 @@ features:
     details: 基于 WEB3.0，集成以太坊相关功能
   - icon: 🛠️
     title: 现代化工具链
-    details: 使用 Verdaccio、Gitlab、pnpm、Vite、Webpack、Docker Compose 等工具
+    details: 使用 Verdaccio、Gitlab、Jenkins、pnpm、Vite、Webpack、Docker Compose 等工具
   - icon: 📦
     title: 类型安全
     details: 全栈开发均使用 TypeScript，确保类型安全
