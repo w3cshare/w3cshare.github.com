@@ -88,6 +88,8 @@ services:
       - LANG=zh_CN.UTF-8
       - LC_ALL=zh_CN.UTF-8
       - TZ=Asia/Shanghai
+      - GITLAB_ROOT_PASSWORD=wwdqq7@qq.com
+      - GITLAB_ROOT_EMAIL=wwdqq7@qq.com
     # shm_size: '512m'
     # healthcheck:
     #   test: [ "CMD", "curl", "-f", "http://localhost/-/health" ]
