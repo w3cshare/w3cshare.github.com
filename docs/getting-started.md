@@ -16,7 +16,7 @@
 ### 1. 克隆项目仓库
 
 ```bash
-git clone https://github.com/w3cshare/FullStack.git
+git clone https://github.com/w3cshare/w3cshare.github.io.git
 cd FullStack
 ```
 

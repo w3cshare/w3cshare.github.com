@@ -99,7 +99,7 @@ graph TD
 1. Clone the project
 
 ```bash
-git clone https://github.com/w3cshare/FullStack.git
+git clone https://github.com/w3cshare/w3cshare.github.io.git
 cd FullStack
 ```
 
@@ -154,5 +154,5 @@ Thanks to all developers who have contributed to this project!
 
 For any questions or suggestions, please contact us through:
 
-- Issue: [Create Issue](https://github.com/w3cshare/FullStack.git/issues)
+- Issue: [Create Issue](https://github.com/w3cshare/w3cshare.github.io.git/issues)
 - Email: wwdqq7@qq.com

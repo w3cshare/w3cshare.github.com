@@ -52,7 +52,7 @@ features:
 1. 克隆项目
 
 ```bash
-git clone https://github.com/w3cshare/FullStack.git
+git clone https://github.com/w3cshare/w3cshare.github.io.git
 cd FullStack
 ```
 
@@ -97,5 +97,5 @@ pnpm docs:dev
 
 如有任何问题或建议，请通过以下方式联系我们：
 
-- Issue: [创建 Issue](https://github.com/w3cshare/FullStack.git/issues)
+- Issue: [创建 Issue](https://github.com/w3cshare/w3cshare.github.io.git/issues)
 - Email: wwdqq7@qq.com
