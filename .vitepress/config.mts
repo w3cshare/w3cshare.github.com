@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-19 23:25:11
+ * @LastEditTime: 2025-04-20 01:49:54
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -102,9 +102,9 @@ export default withMermaid(
               items: [
                 { text: '首页', link: '/package-vue/README.md' },
                 { link: '/package-vue/ant-design-lib/README.md', text: 'Ant Design 业务组件库' },
-                { link: '/package-vue/element-ui-lib/README.md', text: 'element ui业务组件库' },
-                { link: '/package-vue/pure-ui-lib/README.md', text: 'pure业务组件库' },
-                { link: '/package-vue/uniapp-lib/README.md', text: 'uniapp跨端组件库' },
+                { link: '/package-vue/element-ui-lib/README.md', text: 'Element UI 业务组件库' },
+                { link: '/package-vue/pure-ui-lib/README.md', text: 'Pure 业务组件库' },
+                { link: '/package-vue/uniapp-lib/README.md', text: 'UniApp 跨端组件库' },
               ],
             },
             {
@@ -113,21 +113,21 @@ export default withMermaid(
                 { link: '/package-react/README.md', text: '首页' },
                 { link: '/package-react/ant-design-lib/README.md', text: 'Ant Design 业务组件库' },
                 { link: '/package-react/ant-design-web3-lib/README.md', text: 'Web3 业务组件库' },
-                { link: '/package-react/ant-design-x-lib/README.md', text: 'AI业务组件库' },
-                { link: '/package-react/taro-ui-lib/README.md', text: 'taroJs业务组件库' },
+                { link: '/package-react/ant-design-x-lib/README.md', text: 'AI 业务组件库' },
+                { link: '/package-react/taro-ui-lib/README.md', text: 'taroJs 业务组件库' },
               ],
             },
           ],
         },
         {
-          text: 'API库',
+          text: 'API 库',
           items: [
             {
               text: '首页',
               link: '/package-nest/README.md',
             },
             {
-              text: 'swagger组件',
+              text: 'Swagger 组件',
               link: '/package-nest/nestjs-swagger/README.md',
             },
           ],
@@ -140,11 +140,11 @@ export default withMermaid(
               link: '/packages/README.md',
             },
             {
-              text: 'artTs业务组件库',
+              text: 'ArtTs 业务组件库',
               link: '/packages/artts-ui-lib/README.md',
             },
             {
-              text: 'uniapp-X业务组件库',
+              text: 'UniApp-X 业务组件库',
               link: '/packages/uniapp-x-lib/README.md',
             },
           ],
@@ -176,6 +176,11 @@ export default withMermaid(
                 { link: '/micro-service/grpc-java/README.md', text: 'gRPC Java 模板' },
                 { link: '/micro-service/grpc-go/README.md', text: 'gRPC Go 模板' },
                 { link: '/micro-service/nestjs-template/README.md', text: 'NestJS 模板' },
+                // {
+                //   text: 'Python',
+                //   items: [
+                //   ],
+                // },
                 { link: '/micro-service/grpc-pdfcompressed/README.md', text: 'PDF压缩' },
               ],
             },
@@ -219,7 +224,7 @@ export default withMermaid(
               link: '/cli/cli-env-check/README.md',
             },
             {
-              text: 'git自动化',
+              text: 'Git 自动化',
               link: '/cli/cli-git/README.md',
             },
             {
