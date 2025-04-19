@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-19 20:44:25
+ * @LastEditTime: 2025-04-19 22:38:16
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -56,27 +56,24 @@ export default withMermaid(
         {
           text: '项目汇总',
           items: [
-            { text: '首页', link: '/app/README.md' },
-            { text: 'google tab首页', link: '/app/google-tab-home/README.md' },
-            { text: 'vscode低代码', link: '/app/vscode-lowcode/README.md' },
+            { text: '首页', link: '/apps/README.md' },
+            { text: 'google tab首页', link: '/apps/google-tab-home/README.md' },
+            { text: 'vscode低代码', link: '/apps/vscode-lowcode/README.md' },
+            { text: '商城IOS端', link: '/app/README.md' },
             {
               text: '商城微前端项目',
               items: [
                 {
                   text: '基座',
-                  link: '/apps/ismart-swbn-converged-web/ismart-qiankun-web/README.md',
-                },
-                {
-                  text: '组件',
-                  link: '/apps/ismart-swbn-converged-web/ismart-components-web/README.md',
+                  link: '/app/README.md',
                 },
                 {
                   text: '管理端',
-                  link: '/apps/ismart-swbn-converged-web/ismart-swbn-admin-web/README.md',
+                  link: '/app/README.md',
                 },
                 {
                   text: '商家端',
-                  link: '/apps/ismart-swbn-converged-web/ismart-swbn-business-web/README.md',
+                  link: '/app/README.md',
                 },
               ],
             },

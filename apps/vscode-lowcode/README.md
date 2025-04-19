@@ -1,4 +1,4 @@
-# `@smarts-isoftstone/vscode-pro`
+# VSCode低代码拖拽插件
 
 > VS Code低代码拖拽插件，支持组件可视化拖拽和React代码生成
 
