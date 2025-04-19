@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  pulsar:
+    image: apachepulsar/pulsar:4.0.3
+    container_name: msg-pulsar
+    command: bin/pulsar standalone
+    ports:
+      - 6650:6650
+      - 8080:8080
+    volumes:
+      - ./.数据库/pulsar/data:/pulsar/data
+    restart: always
+    environment:
+      PULSAR_MEM: -Xms512m -Xmx512m
+      functionsWorkerEnabled: "false"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 768M
+    networks:
+      - mq
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/admin/v2/clusters" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  pulsar-manager:
+    image: apachepulsar/pulsar-manager:v0.3.0
+    container_name: msg-pulsar-manager
+    restart: always
+    ports:
+      - 9527:9527
+      - 7750:7750
+    environment:
+      - SPRING_CONFIGURATION_FILE=/pulsar-manager/pulsar-manager/application.properties
+      - REDIRECT_HOST=http://localhost
+      - REDIRECT_PORT=9527
+      - DRIVER_CLASS_NAME=org.postgresql.Driver
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    networks:
+      - mq
+    depends_on:
+      - pulsar
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:7750/pulsar-manager/swagger-ui.html" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: msg-rabbit-mq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - "./.数据库/rabbitmq/data:/var/lib/rabbitmq"
+      - "./.数据库/rabbitmq/logs:/var/log/rabbitmq"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 768M
+    networks:
+      - mq
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  mq:
+    driver: bridge

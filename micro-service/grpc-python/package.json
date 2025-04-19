@@ -1,0 +1,13 @@
+{
+  "name": "grpc-python",
+  "private": true,
+  "version": "0.0.7",
+  "description": "微服务GRPC Python语言示例",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

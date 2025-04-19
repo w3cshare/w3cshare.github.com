@@ -1,0 +1,64 @@
+services:
+  # consul注册中心、服务发现
+  micro-consul:
+    image: consul:1.15.4
+    container_name: micro-consul
+    ports:
+      - "8500:8500" # Web UI和API接口
+      - "8600:8600/udp" # DNS接口
+      - "8600:8600/tcp" # DNS接口
+    restart: always
+    # volumes:
+    #   - "./.微服务/consul/config:/etc/consul"
+    #   - "./.微服务/consul/data:/consul/data"
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
+      - "CONSUL_LOCAL_CONFIG={\"skip_leave_on_interrupt\": true}"
+    command: agent -server -bootstrap-expect=1 -ui -client=0.0.0.0
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8500/v1/status/leader" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Nacos配置中心和服务发现
+  micro-nacos:
+    image: nacos/nacos-server:v2.2.3
+    container_name: micro-nacos
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9849:9849"
+    environment:
+      - MODE=standalone
+      - PREFER_HOST_MODE=ip
+      - NACOS_AUTH_ENABLE=false
+      - JVM_XMS=256m
+      - JVM_XMX=512m
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - MYSQL_SERVICE_HOST=localhost
+      - MYSQL_SERVICE_DB_NAME=nacos
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_USER=nacos
+      - MYSQL_SERVICE_PASSWORD=nacos
+    volumes:
+      - "./.微服务/nacos/logs:/home/nacos/logs"
+      - "./.微服务/nacos/data:/home/nacos/data"
+    restart: always
+
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8848/nacos/actuator/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3

@@ -1,0 +1,104 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: elasticsearch:8.15.0
+    container_name: db-elasticsearch
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=root
+    ports:
+      - 9200:9200
+      - 9300:9300
+    restart: always
+    volumes:
+      - ./.数据库/elasticsearch/master/plugins:/usr/share/elasticsearch/plugins:rw
+      - ./.数据库/elasticsearch/master/data:/usr/share/elasticsearch/data:rw
+      - ./.数据库/elasticsearch/master/logs:/usr/share/elasticsearch/logs:rw
+      - ./.数据库/elasticsearch/master/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    networks:
+      - elk
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -v '\"status\":\"red\"'" ]
+      interval: 20s
+      timeout: 10s
+      retries: 3
+
+  logstash:
+    image: logstash:8.15.0
+    container_name: db-logstash
+    ports:
+      - 5044:5000
+    restart: always
+    volumes:
+      - ./.数据库/logstash/config:/usr/share/logstash/config
+      - ./.数据库/logstash/plugins:/usr/share/logstash/plugins
+      - ./.数据库/logstash/pipeline:/usr/share/logstash/pipeline
+      - ./.数据库/logstash/data:/usr/share/logstash/data
+    environment:
+      - "LS_JAVA_OPTS=-Xms256m -Xmx512m"
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=root
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 768M
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9600" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  kibana:
+    image: kibana:8.15.0
+    container_name: db-kibana
+    ports:
+      - 5601:5601
+    volumes:
+      - ./.数据库/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./.数据库/kibana/plugins:/usr/share/kibana/plugins:rw
+      - ./.数据库/kibana/data:/usr/share/kibana/data
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=root
+    restart: always
+    depends_on:
+      - elasticsearch
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    networks:
+      - elk
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5601/api/status" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  elk:
+    driver: bridge

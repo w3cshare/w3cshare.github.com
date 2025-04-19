@@ -1,0 +1,55 @@
+{
+  "name": "eslint-plugin-smarts",
+  "version": "0.0.7",
+  "description": "SISS eslint 规则集(仅团队内部调用)",
+  "keywords": [],
+  "author": "wangwei <wwdqq7@qq.com>",
+  "license": "ISC",
+  "main": "lib/eslint-plugin-smarts.js",
+  "types": "lib/eslint-plugin-smarts.d.ts",
+  "module": "lib/eslint-plugin-smarts.mjs",
+  "exports": {
+    ".": {
+      "types": "./lib/eslint-plugin-smarts.d.ts",
+      "import": "./lib/eslint-plugin-smarts.mjs",
+      "require": "./lib/eslint-plugin-smarts.js"
+    }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --watch --outDir lib",
+    "test": "node ./__tests__/eslint-plugin-smarts.test.js"
+  },
+  "dependencies": {
+    "@types/node": "^22.14.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint-plugin-annotation": "^1.1.6",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "eslint-plugin-vue": "^9.21.1",
+    "tsup": "^8.4.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.18.0",
+    "eslint-plugin-vue": ">=10.0.0",
+    "prettier": ">=3.4.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+}

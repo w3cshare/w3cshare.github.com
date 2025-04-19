@@ -1,0 +1,13 @@
+{
+  "name": "pdf2compressed",
+  "private": true,
+  "version": "0.0.7",
+  "description": "PDF文件压缩微服务",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

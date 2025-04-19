@@ -1,0 +1,40 @@
+{
+  "name": "google-tab-home",
+  "version": "0.0.7",
+  "description": "google-pro 谷歌首页",
+  "keywords": ["browser", "home", "tab", "dashboard"],
+  "author": "wangwei <wwdqq7@qq.com>",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "type": "module",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://localhost:4873/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:w3cshare/full-stack.git"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vite": "^5.1.4",
+    "esbuild": "^0.19.10",
+    "@types/node": "^20.10.5"
+  },
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "create-icons": "node src/extension/createDefaultIcons.js",
+    "build-extension": "pnpm run create-icons && pnpm run build",
+    "test": "node ./__tests__/@smarts-isoftstone/google-pro.test.js"
+  },
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+}

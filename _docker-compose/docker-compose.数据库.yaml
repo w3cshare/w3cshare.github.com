@@ -1,0 +1,120 @@
+version: '3.8'
+
+services:
+  # MySQL数据库
+  db-mysql:
+    image: mysql:9.0.1
+    container_name: db-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_general_ci
+    ports:
+      - 3306:3306
+    restart: always
+    volumes:
+      - ./.数据库/mysql/conf.d:/etc/mysql/conf.d
+      - ./.数据库/mysql/data:/var/lib/mysql
+      - ./.数据库/mysql/logs:/logs
+      - ./.数据库/mysql/sql:/sql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --max_connections=1000 --max_allowed_packet=128M
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # postgresql数据库
+  db-postgresql:
+    image: postgres:17.4
+    container_name: db-postgresql
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      # POSTGRES_DB: default
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - ./.数据库/postgresql/data:/var/lib/postgresql/data
+      - ./.数据库/postgresql/logs:/var/log/postgresql
+      - ./.数据库/postgresql/sql:/sql
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U root" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # redis数据库
+  db-redis:
+    image: redis:7.4.0
+    container_name: db-redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./.数据库/redis/data:/data
+      - ./.数据库/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server --requirepass "root" --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 768M
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # mongodb数据库
+  db-mongo:
+    image: mongo:6.0
+    container_name: db-mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - ./.数据库/mongo/data:/data/db
+      - ./.数据库/mongo/backup:/data/backup
+      - ./.数据库/mongo/configdb:/data/configdb
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/admin -u root -p root --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# 网络配置
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+# 持久化卷
+volumes:
+  dist:
+    driver: local

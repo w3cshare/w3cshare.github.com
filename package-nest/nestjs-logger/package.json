@@ -1,0 +1,28 @@
+{
+  "name": "@smarts-isoftstone/nestjs-logger",
+  "version": "0.0.7",
+  "description": "NestJS日志模块，提供统一的日志记录、格式化和管理功能",
+  "keywords": [],
+  "author": "wangwei <wwdqq7@qq.com>",
+  "license": "ISC",
+  "main": "lib/nestjs-logger.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "tsc -w",
+    "build": "tsc",
+    "test": "node ./__tests__/@smarts-isoftstone/nestjs-logger.test.js"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/core": "^11.0.1",
+    "typescript": "^5.7.3"
+  },
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+}

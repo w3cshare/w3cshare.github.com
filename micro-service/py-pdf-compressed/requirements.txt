@@ -1,0 +1,12 @@
+
+# pip freeze > requirements.txt
+
+-i https://pypi.tuna.tsinghua.edu.cn/simple
+PyPDF2==3.0.1
+Pillow==10.1.0
+
+# grpc相关
+grpcio==1.54.0
+grpcio-tools==1.54.0
+protobuf==4.22.0
+

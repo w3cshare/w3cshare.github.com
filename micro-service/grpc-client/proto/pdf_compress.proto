@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package pdf_compress;
+
+// PDF压缩服务定义
+service PdfCompressService {
+  // 压缩PDF文件
+  rpc CompressPdf (CompressRequest) returns (CompressResponse) {}
+  // 批量压缩PDF文件
+  rpc CompressPdfBatch (BatchCompressRequest) returns (BatchCompressResponse) {}
+}
+
+// 单个PDF压缩请求
+message CompressRequest {
+  bytes pdf_content = 1;  // PDF文件内容
+  int32 quality = 2;      // 压缩质量参数(0-100)
+}
+
+// 单个PDF压缩响应
+message CompressResponse {
+  bytes compressed_pdf = 1;    // 压缩后的PDF内容
+  int64 original_size = 2;     // 原始文件大小
+  int64 compressed_size = 3;   // 压缩后文件大小
+  float compression_ratio = 4;  // 压缩率
+  int32 status_code = 5;       // 状态码
+  string message = 6;          // 状态信息
+}
+
+// 批量压缩请求
+message BatchCompressRequest {
+  repeated CompressRequest files = 1;  // PDF文件列表
+}
+
+// 批量压缩响应
+message BatchCompressResponse {
+  repeated CompressResponse results = 1;  // 压缩结果列表
+  int32 total_files = 2;                 // 总文件数
+  int32 success_count = 3;               // 成功处理数
+  int32 failed_count = 4;                // 失败数
+}

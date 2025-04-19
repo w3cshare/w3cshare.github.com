@@ -1,0 +1,18 @@
+{
+  "name": "Google标签页首页",
+  "version": "0.0.7",
+  "description": "一个美观实用的自定义新标签页，支持搜索、天气、快捷方式等功能",
+  "manifest_version": 3,
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "author": "wangwei <wwdqq7@qq.com>"
+} 

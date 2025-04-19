@@ -1,0 +1,19 @@
+# Elasticsearch配置文件
+cluster.name: 'docker-cluster'
+network.host: 0.0.0.0
+
+# 安全设置
+xpack.security.enabled: true
+xpack.license.self_generated.type: basic
+
+# 内存设置
+bootstrap.memory_lock: true
+
+# 跨域设置
+http.cors.enabled: true
+http.cors.allow-origin: '*'
+http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-headers: X-Requested-With, X-Auth-Token, Content-Type, Content-Length
+
+# 发现设置
+discovery.type: single-node

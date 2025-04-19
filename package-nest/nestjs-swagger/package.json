@@ -1,0 +1,33 @@
+{
+  "name": "@smarts-isoftstone/nestjs-swagger",
+  "version": "0.0.7",
+  "description": "NestJS Swagger模块，用于自动生成API文档和接口测试界面",
+  "keywords": [],
+  "author": "wangwei <wwdqq7@qq.com>",
+  "license": "ISC",
+  "main": "lib/nestjs-swagger.js",
+  "types": "lib/nestjs-swagger.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "tsc -w",
+    "build": "tsc",
+    "test": "node ./__tests__/@smarts-isoftstone/nestjs-swagger.test.js"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.1",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@fastify/static": "^8.1.1",
+    "@nestjs/swagger": "^11.1.0",
+    "nestjs-knife4j2": "^1.0.6"
+  },
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+}

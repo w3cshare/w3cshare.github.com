@@ -1,0 +1,174 @@
+services:
+  # java项目
+  micro-java:
+    image: eclipse-temurin:17-jre
+    container_name: micro-java
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./.微服务/java/config:/etc/java"
+      - "./.微服务/java/app:/app"
+    working_dir: /app
+    restart: always
+    depends_on:
+      micro-consul:
+        condition: service_healthy
+      micro-zipkin:
+        condition: service_healthy
+      micro-nacos:
+        condition: service_healthy
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx512m
+      - SPRING_PROFILES_ACTIVE=prod
+      - CONSUL_HOST=micro-consul
+      - ZIPKIN_HOST=micro-zipkin
+      - NACOS_HOST=micro-nacos
+      - RABBITMQ_USERNAME=admin
+      - RABBITMQ_PASSWORD=admin
+    command: sh -c "java $JAVA_OPTS -jar java-microservice.jar"
+    networks:
+      - micro-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # node项目
+  # pm2进程守护
+  micro-node:
+    image: node:18-alpine
+    container_name: micro-node
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./.微服务/node/config:/etc/node"
+      - "./.微服务/node/app:/app"
+    working_dir: /app
+    restart: always
+    depends_on:
+      micro-consul:
+        condition: service_healthy
+      micro-zipkin:
+        condition: service_healthy
+    command: sh -c "npm install -g pm2 && pm2-runtime start /app/ecosystem.config.js"
+    environment:
+      - NODE_ENV=production
+      - CONSUL_HOST=micro-consul
+      - ZIPKIN_HOST=micro-zipkin
+      - RABBITMQ_USER=admin
+      - RABBITMQ_PASSWORD=admin
+    networks:
+      - micro-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # nginx负载均衡
+  micro-nginx:
+    image: nginx:stable-alpine
+    container_name: micro-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./.微服务/nginx/config:/etc/nginx/conf.d"
+      - "./.微服务/nginx/logs:/var/log/nginx"
+      - "./.微服务/nginx/html:/usr/share/nginx/html"
+      - "./.微服务/nginx/ssl:/etc/nginx/ssl"
+    restart: always
+    depends_on:
+      micro-java:
+        condition: service_healthy
+      micro-node:
+        condition: service_healthy
+      micro-python:
+        condition: service_healthy
+      micro-go:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # python项目
+  micro-python:
+    image: python:3.11-slim
+    container_name: micro-python
+    ports:
+      - "5001:5000"
+    volumes:
+      - "./.微服务/python/config:/etc/python"
+      - "./.微服务/python/app:/app"
+    working_dir: /app
+    restart: always
+    depends_on:
+      micro-consul:
+        condition: service_healthy
+      micro-zipkin:
+        condition: service_healthy
+    environment:
+      - PYTHONUNBUFFERED=1
+      - CONSUL_HOST=micro-consul
+      - ZIPKIN_HOST=micro-zipkin
+    command: sh -c "pip install -r requirements.txt && python app.py"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # go项目
+  micro-go:
+    image: golang:1.21-alpine
+    container_name: micro-go
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./.微服务/go/config:/etc/go"
+      - "./.微服务/go/app:/app"
+    working_dir: /app
+    restart: always
+    depends_on:
+      micro-consul:
+        condition: service_healthy
+      micro-zipkin:
+        condition: service_healthy
+    environment:
+      - GO_ENV=production
+      - CONSUL_HOST=micro-consul
+      - ZIPKIN_HOST=micro-zipkin
+    command: sh -c "go mod tidy && go build -o main . && ./main"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3

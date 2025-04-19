@@ -1,0 +1,60 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+#### 规则适配条件
+- 如果项目的根文件夹名为 `FullStack`，或者该文件夹下存在以下任一文件：
+  - `lerna.json`
+  - `pnpm-workspace.yaml`
+
+  则适配以下规则。
+
+---
+
+#### 项目概述
+- **标题**：该项目是一个基于 **Lerna + Nx + pnpm + Workspace** 的单体（Mono）项目。
+- **描述**：
+  该项目采用以下技术栈构建：
+  - **前端**：
+    - 微前端架构，支持 Web Components、SPA 和 MPA。
+    - 使用 **Ant Design Vue**、**Ant Design React**、**@ant-design/pro-components**、**@ant-design/x**、**@ant-design/web3** 等组件库。
+    - 纯 TypeScript 开发。
+  - **后端**：
+    - 微服务架构，基于 **NestJS**、**gRPC** 和 **Consul**。
+    - 数据库 ORM 使用 **TypeORM** 和 **Sequelize**。
+    - 权限设计 使用 **RBAC**角色权限 和 **CASL**策略权限。
+  - **AI 技术**：
+    - 基于 **LangChain + NestJS** 构建的 AI Agent。
+  - **区块链**：
+    - 集成以太坊相关功能。
+  - **工具链**：
+    - 包管理：**Verdaccio**、**pnpm**。
+    - CI/CD：**GitLab**、**Jenkins**。
+    - 构建工具：**Vite**、**Webpack**、**UMI.js**、**tsup**。
+    - 容器化：使用 **Docker Compose** 进行编排。
+  - **要求**：
+    - 全栈开发均需使用 **TypeScript**。
+
+---
+
+#### 任务目标
+1. **保存对话内容**：
+   <!-- - 将本次对话中的提问与回答整理为提示词，保存至当前子项目目录下的 `prompt.md` 文件中。 -->
+2. **更新文档**：
+   <!-- - 根据本次任务的成果与经验，优化并更新同一目录下的 `README.md` 文件内容。 -->
+   - 更新相关vitepress文档内容
+
+---
+
+#### 注意事项
+- 确保所有技术栈和工具链的相关依赖已正确安装。
+- 在 `readme.md` 中提供详细的项目运行指南和环境配置说明。
+- 提示词和文档应保持简洁、易于理解，避免冗余信息。
+- VitePress 相关文档应直接整合到项目目录中，避免单独创建文件夹。这样可以更直观地展示项目结构和组件使用情况，减少不必要的 MD 文件重复创建。
+- 根目录和子项目目录下面都会有一个docs文件夹，只会存放`开始使用.md`等简介文档，不存放与组件和模块使用绑定文档。
+- VitePress只存在 的单体（Mono）项目根目录下，子项目目录下没有VitePress，VitePress会引用子项目下的MD。
+- .md文件都是以 VitePress 的格式来写的。
+---
+

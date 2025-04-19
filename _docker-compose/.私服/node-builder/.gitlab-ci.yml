@@ -1,0 +1,66 @@
+# 前端项目CI/CD配置示例
+stages:
+  - install
+  - lint
+  - build
+  - test
+  - deploy
+
+# 缓存node_modules以加速构建
+cache:
+  paths:
+    - node_modules/
+
+# 安装依赖
+install:
+  stage: install
+  image: node:18-alpine
+  script:
+    - npm config set registry http://repo-npm-verdaccio:4873
+    - npm ci
+  artifacts:
+    paths:
+      - node_modules/
+
+# 代码检查
+lint:
+  stage: lint
+  image: node:18-alpine
+  script:
+    - npm run lint
+  dependencies:
+    - install
+
+# 构建项目
+build:
+  stage: build
+  image: node:18-alpine
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+  dependencies:
+    - install
+
+# 测试
+test:
+  stage: test
+  image: node:18-alpine
+  script:
+    - npm run test
+  dependencies:
+    - install
+
+# 部署
+deploy:
+  stage: deploy
+  image: node:18-alpine
+  script:
+    - echo "部署到生产环境"
+    # 这里可以添加实际的部署命令
+  dependencies:
+    - build
+  only:
+    - master
+    - main

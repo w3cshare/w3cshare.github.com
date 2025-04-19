@@ -1,0 +1,88 @@
+{
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
+    "format": {
+      "cache": true,
+      "dependsOn": ["^format"]
+    },
+    "start": {
+      "cache": true,
+      "dependsOn": ["^start"]
+    },
+    "start:dev": {
+      "cache": true,
+      "dependsOn": ["^start:dev"]
+    },
+    "start:debug": {
+      "cache": true,
+      "dependsOn": ["^start:debug"]
+    },
+    "start:prod": {
+      "cache": true,
+      "dependsOn": ["^start:prod"]
+    },
+    "lint": {
+      "cache": true,
+      "dependsOn": ["^lint"]
+    },
+    "test": {
+      "cache": true,
+      "dependsOn": ["^test"]
+    },
+    "test:watch": {
+      "cache": true,
+      "dependsOn": ["^test:watch"]
+    },
+    "test:cov": {
+      "cache": true,
+      "dependsOn": ["^test:cov"]
+    },
+    "test:debug": {
+      "cache": true,
+      "dependsOn": ["^test:debug"]
+    },
+    "test:e2e": {
+      "cache": true,
+      "dependsOn": ["^test:e2e"]
+    },
+    "docs:dev": {
+      "cache": true,
+      "dependsOn": ["^docs:dev"]
+    },
+    "docs:build": {
+      "cache": true,
+      "dependsOn": ["^docs:build"]
+    },
+    "docs:preview": {
+      "cache": true,
+      "dependsOn": ["^docs:preview"]
+    },
+    "dev": {
+      "cache": true,
+      "dependsOn": ["^dev"]
+    },
+    "postinstall": {
+      "cache": true,
+      "dependsOn": ["^postinstall"]
+    },
+    "setup": {
+      "cache": true,
+      "dependsOn": ["^setup"]
+    },
+    "e2e": {
+      "cache": true
+    }
+  },
+  "workspaceLayout": {
+    "appsDir": "",
+    "libsDir": ""
+  },
+  "cli": {
+    "packageManager": "pnpm"
+  },
+  "nxCloudAccessToken": "Mzc5NDc2NDItY2FlNy00NjgzLTkwZDEtZmM3ZjVjZjFhYzY5",
+  "nxCloudId": "67f888f5da8ed058688ed54d"
+}

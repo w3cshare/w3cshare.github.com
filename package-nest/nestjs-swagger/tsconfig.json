@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "target": "ES2021",
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "checkJs": false,
+    "strict": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "lib": ["esnext", "DOM"],
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/global.d.ts", "src/**/*.ts"],
+  "exclude": ["node_modules", "test", "dist", "lib", "**/*spec.ts"]
+}

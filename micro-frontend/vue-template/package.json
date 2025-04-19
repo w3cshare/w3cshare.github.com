@@ -1,0 +1,27 @@
+{
+  "name": "vue-template",
+  "private": true,
+  "version": "0.0.7",
+  "description": "vue3业务通用模板",
+  "keywords": [],
+  "author": "wangwei <wwdqq7@qq.com>",
+  "license": "ISC",
+  "main": "lib/vue-template.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://localhost:4873/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:w3cshare/full-stack.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@smarts-isoftstone/vue-template.test.js"
+  }
+}

@@ -1,0 +1,75 @@
+#
+# This is the default config file. It allows all users to do anything,
+# so don't use it on production systems.
+#
+# Look here for more config file examples:
+# https://github.com/verdaccio/verdaccio/tree/master/conf
+#
+
+# path to a directory with all packages
+storage: /verdaccio/storage
+
+auth:
+  htpasswd:
+    file: /verdaccio/storage/htpasswd
+    # Maximum amount of users allowed to register, defaults to "+inf".
+    # You can set this to -1 to disable registration.
+    max_users: 1000
+    # 添加默认用户，用户名和密码为wangwei/wangwei123456
+    adduser:
+      username: smarts-isoftstone
+      password: wangwei123456
+      email: wwdqq7@qq.com
+
+# a list of other known repositories we can talk to
+uplinks:
+  npmjs:
+    # url: https://registry.npmjs.org/
+    url: https://registry.npmmirror.com/
+    cache: false
+  # 添加公网npm仓库，用于访问公网上已发布的包
+  npmjsorg:
+    url: https://registry.npmjs.org/
+    cache: false
+    auth:
+      type: bearer
+      token_env: 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 # 可以通过环境变量设置npm token
+
+packages:
+  '@*/*':
+    # scoped packages
+    access: $all
+    publish: $authenticated
+    proxy: npmjs
+
+  '**':
+    # allow all users (including non-authenticated users) to read and
+    # publish all packages
+    #
+    # you can specify usernames/groupnames (depending on your auth plugin)
+    # and three keywords: "$all", "$anonymous", "$authenticated"
+    access: $all
+
+    # allow all known users to publish packages
+    # (anyone can register by default, remember?)
+    publish: $authenticated
+
+    # if package is not available locally, proxy requests to 'npmjs' registry
+    proxy: npmjs
+
+# log settings
+logs:
+  - { type: stdout, format: pretty, level: http }
+
+# 设置监听地址和端口
+listen: 0.0.0.0:4873
+
+# 安全配置
+security:
+  api:
+    jwt:
+      sign:
+        expiresIn: 7d # 令牌有效期
+  web:
+    sign:
+      expiresIn: 7d # Web UI登录有效期

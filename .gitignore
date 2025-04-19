@@ -1,0 +1,45 @@
+.git.bak
+# 开发依赖
+node_modules/
+package-lock.json
+
+# 构建产物
+dist/
+lib/
+.eslintcache
+**/cache/
+output/
+input/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 环境配置
+.env
+
+# IDE配置
+.idea/
+.vscode/
+
+# 类型系统缓存
+tsconfig.tsbuildinfo
+
+# Python缓存
+__pycache__/
+
+# NX构建系统
+.nx/cache
+.nx/workspace-data
+
+# 扩展包
+**.vsix
+
+# 调试日志
+lerna-debug.log
+
+# 临时文件
+.temp/
+
+# 文档生成
+PROJECT_STRUCTURE.md

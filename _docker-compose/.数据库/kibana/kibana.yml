@@ -1,0 +1,17 @@
+# Kibana配置文件
+server.name: kibana
+server.host: '0.0.0.0'
+
+# Elasticsearch连接设置
+elasticsearch.hosts: ['http://db-elasticsearch:9200']
+elasticsearch.username: elastic
+elasticsearch.password: root
+
+# 安全设置
+elasticsearch.ssl.verificationMode: none
+
+# 国际化设置
+i18n.locale: 'zh-CN'
+
+# 监控设置
+monitoring.ui.container.elasticsearch.enabled: true

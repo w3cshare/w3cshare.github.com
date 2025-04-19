@@ -1,0 +1,22 @@
+# 基本配置
+http.host: '0.0.0.0'
+xpack.monitoring.elasticsearch.hosts: ['http://db-elasticsearch:9200']
+xpack.monitoring.elasticsearch.username: elastic
+xpack.monitoring.elasticsearch.password: root
+
+# 日志设置
+log.level: info
+
+# 管道配置
+path.config: /usr/share/logstash/pipeline
+config.reload.automatic: true
+config.reload.interval: 3s
+
+# 队列设置
+queue.type: memory
+queue.max_bytes: 1024mb
+
+# 性能设置
+pipeline.workers: 2
+pipeline.batch.size: 125
+pipeline.batch.delay: 50

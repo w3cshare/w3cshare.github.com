@@ -1,0 +1,20 @@
+version: "3.8"
+
+# 引入同级目录下的其他yaml文件
+include:
+  # 私有制品库配置
+  - path: ./docker-compose.私服.yaml
+  # 数据库配置
+  - path: ./docker-compose.数据库.yaml
+  # 微服务配置
+  - path: ./docker-compose.微服务.yaml
+  # CI/CD配置
+  - path: ./docker-compose.CICD.yaml
+  # MySQL单独配置
+  - path: ./docker-compose.mysql.yaml
+  # Redis单独配置
+  - path: ./docker-compose.redis.yaml
+  # Milvus向量数据库配置
+  - path: ./vector-database-milvus-docker-compose.yaml
+
+services: # 此处可以添加不在其他文件中的服务配置

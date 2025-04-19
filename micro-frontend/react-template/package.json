@@ -1,0 +1,28 @@
+{
+  "name": "react-template",
+  "private": true,
+  "version": "0.0.7",
+  "description": "react18+业务项目模板",
+  "keywords": [],
+  "author": "wangwei <wwdqq7@qq.com>",
+  "license": "ISC",
+  "main": "lib/react-template.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://localhost:4873/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:w3cshare/full-stack.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@smarts-isoftstone/react-template.test.js"
+  },
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+}

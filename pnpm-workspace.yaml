@@ -1,0 +1,22 @@
+packages:
+  - 'app/*'
+  - 'cli/*'
+  - 'lint/*'
+  - 'micro-frontend/*'
+  - 'micro-service/*'
+  - 'package-nest/*'
+  - 'package-react/*'
+  - 'package-vue/*'
+  - 'packages/*'
+  - '.temp/*'
+linkWorkspacePackages: true
+# publish: registry
+# strict: true
+# hoistPattern: '@*'
+# hoistDependents: true
+# shamefullyHoist: true
+# shamefullyFlatten: true
+# packageManager: pnpm@7.22.0
+# 一定要开启这个，不然无法自动安装workspace的依赖
+# pnpm config set link-workspace-packages true
+
