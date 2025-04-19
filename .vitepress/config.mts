@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-19 15:59:07
+ * @LastEditTime: 2025-04-19 20:44:25
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -22,7 +22,7 @@ export default withMermaid(
     // 设置根目录
     base: '/',
     srcDir: '.',
-    outDir: './vitepress/dist',
+    outDir: './.vitepress/dist',
 
     // 重写规则
     rewrites: {
