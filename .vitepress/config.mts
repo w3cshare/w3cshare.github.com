@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-19 22:38:16
+ * @LastEditTime: 2025-04-19 23:25:11
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -14,7 +14,20 @@ export default withMermaid(
   defineConfig({
     title: '全栈开发文档',
     description: '基于 Monorepo 的全栈开发项目文档',
+    keywords: ['全栈开发', 'Monorepo', '微前端', '微服务', 'AI', '区块链', 'TypeScript'],
     lang: 'zh-CN',
+    locales: {
+      '/': {
+        lang: 'zh-CN',
+        title: '全栈开发文档',
+        description: '基于 Monorepo 的全栈开发项目文档',
+      },
+      '/en/': {
+        lang: 'en-US',
+        title: 'FullStack Development Docs',
+        description: 'Monorepo based fullstack development project documentation',
+      },
+    },
     lastUpdated: true,
     cleanUrls: true,
     ignoreDeadLinks: true,
@@ -57,9 +70,11 @@ export default withMermaid(
           text: '项目汇总',
           items: [
             { text: '首页', link: '/apps/README.md' },
-            { text: 'google tab首页', link: '/apps/google-tab-home/README.md' },
-            { text: 'vscode低代码', link: '/apps/vscode-lowcode/README.md' },
-            { text: '商城IOS端', link: '/app/README.md' },
+            { text: 'Google Tab 首页', link: '/apps/google-tab-home/README.md' },
+            { text: 'VSCode 低代码', link: '/apps/vscode-lowcode/README.md' },
+            { text: 'AI Agent', link: '/app/README.md' },
+            { text: 'Web3 以太坊', link: '/app/README.md' },
+            { text: 'iOS 端', link: '/app/README.md' },
             {
               text: '商城微前端项目',
               items: [
@@ -83,21 +98,21 @@ export default withMermaid(
           text: '组件库',
           items: [
             {
-              text: 'vue组件',
+              text: 'Vue 组件',
               items: [
                 { text: '首页', link: '/package-vue/README.md' },
-                { link: '/package-vue/ant-design-lib/README.md', text: 'ant-design业务组件库' },
-                { link: '/package-vue/element-ui-lib/README.md', text: 'element-ui业务组件库' },
+                { link: '/package-vue/ant-design-lib/README.md', text: 'Ant Design 业务组件库' },
+                { link: '/package-vue/element-ui-lib/README.md', text: 'element ui业务组件库' },
                 { link: '/package-vue/pure-ui-lib/README.md', text: 'pure业务组件库' },
-                { link: '/package-vue/uniapp-lib/README.md', text: 'uniapp业务组件库' },
+                { link: '/package-vue/uniapp-lib/README.md', text: 'uniapp跨端组件库' },
               ],
             },
             {
-              text: 'react组件',
+              text: 'React 组件',
               items: [
                 { link: '/package-react/README.md', text: '首页' },
-                { link: '/package-react/ant-design-lib/README.md', text: 'ant-design业务组件库' },
-                { link: '/package-react/ant-design-web3-lib/README.md', text: 'web3业务组件库' },
+                { link: '/package-react/ant-design-lib/README.md', text: 'Ant Design 业务组件库' },
+                { link: '/package-react/ant-design-web3-lib/README.md', text: 'Web3 业务组件库' },
                 { link: '/package-react/ant-design-x-lib/README.md', text: 'AI业务组件库' },
                 { link: '/package-react/taro-ui-lib/README.md', text: 'taroJs业务组件库' },
               ],
@@ -142,11 +157,11 @@ export default withMermaid(
               items: [
                 { text: '首页', link: '/micro-frontend/README.md' },
                 { link: '/micro-frontend/micro-app-ai/README.md', text: 'AI模板' },
-                { link: '/micro-frontend/micro-app-angular/README.md', text: 'angular模板' },
-                { link: '/micro-frontend/micro-app-pure/README.md', text: 'pure模板' },
-                { link: '/micro-frontend/micro-app-react/README.md', text: 'react模板' },
-                { link: '/micro-frontend/micro-app-vue/README.md', text: 'vue模板' },
-                { link: '/micro-frontend/micro-app-vap/README.md', text: 'vap研发工作台' },
+                { link: '/micro-frontend/micro-app-angular/README.md', text: 'Angular 模板' },
+                { link: '/micro-frontend/micro-app-pure/README.md', text: 'Pure 模板' },
+                { link: '/micro-frontend/micro-app-react/README.md', text: 'React 模板' },
+                { link: '/micro-frontend/micro-app-vue/README.md', text: 'Vue 模板' },
+                { link: '/micro-frontend/micro-app-vap/README.md', text: 'VAP 研发工作台' },
                 { link: '/micro-frontend/micro-app-web3/README.md', text: '区块链模板' },
                 { link: '/micro-frontend/micro-app-x/README.md', text: 'AI Agent' },
               ],
@@ -155,12 +170,12 @@ export default withMermaid(
               text: '微服务',
               items: [
                 { text: '首页', link: '/micro-service/README.md' },
-                { link: '/micro-service/grpc-main/README.md', text: 'grpc 模板' },
-                { link: '/micro-service/tcp-main/README.md', text: 'tcp 模板' },
-                { link: '/micro-service/grpc-python/README.md', text: 'grpc python模板' },
-                { link: '/micro-service/grpc-java/README.md', text: 'grpc java模板' },
-                { link: '/micro-service/grpc-go/README.md', text: 'grpc go模板' },
-                { link: '/micro-service/nestjs-template/README.md', text: 'nestjs模板' },
+                { link: '/micro-service/grpc-main/README.md', text: 'gRPC 模板' },
+                { link: '/micro-service/tcp-main/README.md', text: 'TCP 模板' },
+                { link: '/micro-service/grpc-python/README.md', text: 'gRPC Python 模板' },
+                { link: '/micro-service/grpc-java/README.md', text: 'gRPC Java 模板' },
+                { link: '/micro-service/grpc-go/README.md', text: 'gRPC Go 模板' },
+                { link: '/micro-service/nestjs-template/README.md', text: 'NestJS 模板' },
                 { link: '/micro-service/grpc-pdfcompressed/README.md', text: 'PDF压缩' },
               ],
             },
@@ -175,19 +190,19 @@ export default withMermaid(
             },
             {
               link: '/lint/eslint-plugin-smarts/README.md',
-              text: 'eslint',
+              text: 'ESLint',
             },
             {
               link: '/lint/stylelint-config-smarts/README.md',
-              text: 'stylelint',
+              text: 'Stylelint',
             },
             {
               link: '/lint/prettier-plugin-smarts/README.md',
-              text: 'prettier',
+              text: 'Prettier',
             },
             {
               link: '/lint/commitlint-smarts/README.md',
-              text: 'commitlint',
+              text: 'Commitlint',
             },
           ],
         },
