@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: 部署到GitHub页面
 
 on:
   push:
@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup Node.js
+      - name: 安装Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20.12.1
-      - name: Install pnpm
+      - name: 安装pnpm
         run: npm install -g pnpm
-      - name: Install dependencies
+      - name: 安装依赖
         run: pnpm install
-      - name: Build
+      - name: 构建
         run: npm run docs:build
-      - name: Deploy
+      - name: 部署
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./.vitepress/dist
+          publish_dir: docs/.vitepress/dist
