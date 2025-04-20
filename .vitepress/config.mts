@@ -273,7 +273,7 @@ export default withMermaid(
       },
 
       // 社交链接
-      socialLinks: [{ icon: 'github', link: 'https://github.com/your-repo' }],
+      socialLinks: [{ icon: 'github', link: 'https://github.com/w3cshare/w3cshare.github.io.git' }],
 
       // 页脚配置
       footer: {

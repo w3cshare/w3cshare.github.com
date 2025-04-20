@@ -4,7 +4,7 @@
 
 ### 开发环境
 
-- Node.js >= 16.0.0
+- Node.js >= 18.0.0
 - PNPM >= 8.0.0
 - Docker >= 24.0.0
 - Docker Compose >= 2.0.0
@@ -45,6 +45,7 @@ graph TD
 ### 1. 环境准备
 
 1. **安装依赖**
+
    ```bash
    # 安装 Node.js
    nvm install 16
@@ -58,6 +59,7 @@ graph TD
    ```
 
 2. **配置环境变量**
+
    ```bash
    # 复制环境变量模板
    cp .env.example .env
@@ -67,6 +69,7 @@ graph TD
    ```
 
 3. **配置 Docker**
+
    ```bash
    # 启动 Docker
    open -a Docker
@@ -78,23 +81,26 @@ graph TD
 ### 2. 构建应用
 
 1. **安装依赖**
+
    ```bash
    # 安装项目依赖
    pnpm install
    ```
 
 2. **构建应用**
+
    ```bash
    # 构建所有应用
    pnpm build
 
    # 构建特定应用
-   pnpm build --filter=@your-repo/vue-app
-   pnpm build --filter=@your-repo/react-app
-   pnpm build --filter=@your-repo/nestjs-service
+   pnpm build --filter=@w3cshare/w3cshare.github.io.git/vue-app
+   pnpm build --filter=@w3cshare/w3cshare.github.io.git/react-app
+   pnpm build --filter=@w3cshare/w3cshare.github.io.git/nestjs-service
    ```
 
 3. **构建 Docker 镜像**
+
    ```bash
    # 构建所有镜像
    docker-compose build
@@ -110,6 +116,7 @@ graph TD
 #### 开发环境
 
 1. **启动服务**
+
    ```bash
    # 启动所有服务
    docker-compose up -d
@@ -121,6 +128,7 @@ graph TD
    ```
 
 2. **验证服务**
+
    ```bash
    # 检查服务状态
    docker-compose ps
@@ -132,6 +140,7 @@ graph TD
 #### 生产环境
 
 1. **准备 Kubernetes 集群**
+
    ```bash
    # 创建命名空间
    kubectl create namespace your-app
@@ -141,6 +150,7 @@ graph TD
    ```
 
 2. **部署应用**
+
    ```bash
    # 部署所有应用
    kubectl apply -f k8s/
@@ -152,6 +162,7 @@ graph TD
    ```
 
 3. **验证部署**
+
    ```bash
    # 检查部署状态
    kubectl get pods -n your-app
@@ -165,6 +176,7 @@ graph TD
 ### 开发环境配置
 
 1. **前端配置**
+
    ```javascript
    // .env.development
    VITE_API_URL=http://localhost:3000
@@ -182,6 +194,7 @@ graph TD
 ### 生产环境配置
 
 1. **前端配置**
+
    ```javascript
    // .env.production
    VITE_API_URL=https://api.your-domain.com
@@ -201,6 +214,7 @@ graph TD
 ### 监控配置
 
 1. **Prometheus 配置**
+
    ```yaml
    # prometheus.yml
    global:
@@ -222,17 +236,18 @@ graph TD
 ### 日志配置
 
 1. **ELK 配置**
+
    ```yaml
    # logstash.conf
    input {
-     beats {
-       port => 5044
-     }
+   beats {
+   port => 5044
+   }
    }
    output {
-     elasticsearch {
-       hosts => ["elasticsearch:9200"]
-     }
+   elasticsearch {
+   hosts => ["elasticsearch:9200"]
+   }
    }
    ```
 
@@ -243,9 +258,9 @@ graph TD
      transports: [
        new winston.transports.Console(),
        new winston.transports.File({ filename: 'error.log', level: 'error' }),
-       new winston.transports.File({ filename: 'combined.log' })
-     ]
-   }
+       new winston.transports.File({ filename: 'combined.log' }),
+     ],
+   };
    ```
 
 ## 备份和恢复
@@ -253,6 +268,7 @@ graph TD
 ### 数据库备份
 
 1. **MongoDB 备份**
+
    ```bash
    # 备份
    mongodump --uri="mongodb://localhost:27017/your-app" --out=/backup
@@ -262,6 +278,7 @@ graph TD
    ```
 
 2. **PostgreSQL 备份**
+
    ```bash
    # 备份
    pg_dump -U postgres your-app > /backup/your-app.sql
@@ -273,6 +290,7 @@ graph TD
 ### 文件备份
 
 1. **配置文件备份**
+
    ```bash
    # 备份
    tar -czf config-backup.tar.gz /etc/your-app/
@@ -282,6 +300,7 @@ graph TD
    ```
 
 2. **上传文件备份**
+
    ```bash
    # 备份
    rsync -av /var/www/uploads/ /backup/uploads/
@@ -295,6 +314,7 @@ graph TD
 ### SSL 配置
 
 1. **Nginx SSL 配置**
+
    ```nginx
    server {
      listen 443 ssl;
@@ -311,14 +331,15 @@ graph TD
      ssl: {
        enabled: true,
        key: '/etc/ssl/private/your-domain.key',
-       cert: '/etc/ssl/certs/your-domain.crt'
-     }
-   }
+       cert: '/etc/ssl/certs/your-domain.crt',
+     },
+   };
    ```
 
 ### 防火墙配置
 
 1. **UFW 配置**
+
    ```bash
    # 允许 HTTP 和 HTTPS
    ufw allow 80/tcp
@@ -340,6 +361,7 @@ graph TD
 ### 前端优化
 
 1. **Nginx 配置**
+
    ```nginx
    # 启用 gzip
    gzip on;
@@ -356,12 +378,13 @@ graph TD
    ```html
    <!-- 使用 CDN -->
    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-plus/dist/index.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-plus/dist/index.css" />
    ```
 
 ### 后端优化
 
 1. **数据库优化**
+
    ```sql
    -- 创建索引
    CREATE INDEX idx_user_email ON users(email);
@@ -377,8 +400,8 @@ graph TD
      host: 'localhost',
      port: 6379,
      maxRetriesPerRequest: 3,
-     enableReadyCheck: true
-   })
+     enableReadyCheck: true,
+   });
    ```
 
 ## 故障恢复
@@ -386,6 +409,7 @@ graph TD
 ### 服务恢复
 
 1. **自动重启**
+
    ```yaml
    # docker-compose.yml
    services:
@@ -407,6 +431,7 @@ graph TD
 ### 数据恢复
 
 1. **数据库恢复**
+
    ```bash
    # 从备份恢复
    mongorestore --uri="mongodb://localhost:27017/your-app" /backup/your-app
@@ -416,10 +441,11 @@ graph TD
    ```
 
 2. **文件恢复**
+
    ```bash
    # 从备份恢复
    rsync -av /backup/uploads/ /var/www/uploads/
 
    # 验证文件
    ls -la /var/www/uploads/
-   ``` 
+   ```

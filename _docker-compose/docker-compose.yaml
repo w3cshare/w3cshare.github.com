@@ -2,12 +2,12 @@ version: "3.8"
 
 # 引入同级目录下的其他yaml文件
 include:
-  # 私有制品库配置
-  - path: ./docker-compose.私服.yaml
   # 数据库配置
   - path: ./docker-compose.数据库.yaml
   # 微服务配置
   - path: ./docker-compose.微服务.yaml
+  # 微前端配置
+  - path: ./docker-compose.微前端.yaml
   # CI/CD配置
   - path: ./docker-compose.CICD.yaml
   # MySQL单独配置

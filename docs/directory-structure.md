@@ -3,7 +3,7 @@
 ## 项目根目录
 
 ```
-your-repo/
+w3cshare/w3cshare.github.io.git/
 ├── app/                    # 应用目录（业务项目）
 ├── packages/               # 共享包
 ├── packages-nestjs/        # nestjs 库
@@ -149,7 +149,7 @@ docs/
 
 ```json
 {
-  "name": "your-repo",
+  "name": "w3cshare/w3cshare.github.io.git",
   "version": "1.0.0",
   "private": true,
   "workspaces": ["app/*", "packages/*", "micro-frontend/*", "micro-service/*"],
