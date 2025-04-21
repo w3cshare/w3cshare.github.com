@@ -1,0 +1,39 @@
+{
+  "name": "eslint-plugin-smart",
+  "version": "1.0.0",
+  "description": "公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "tsc -w",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "typescript",
+    "react",
+    "vue",
+    "nestjs"
+  ],
+  "author": "wangwei <wwdqq7@qq.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "eslint-plugin-vue": "^9.21.1",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  }
+}
