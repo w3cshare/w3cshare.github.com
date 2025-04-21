@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-03-28 17:39:53
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-13 01:40:40
+ * @LastEditTime: 2025-04-21 11:06:34
  * @FilePath: /FullStack/eslint.config.mjs
  * @Description: --
  */
@@ -17,7 +17,17 @@ import smartsPlugin from 'eslint-plugin-smarts';
 export default tseslint.config(
   {
     ignores: [
-      'clean.js',
+      '_docker-compose/**',
+      '_public/**',
+      '_scripts/**',
+      '_templates/**',
+      '.cursor/**',
+      '.github/**',
+      '.gitee/**',
+      '.nx/**',
+      '.vitepress/**',
+      '.vscode/**',
+      'docs/**',
       '**/dify/**',
       '**/.eslintrc.js',
       '**/eslint.config.mjs',
@@ -28,6 +38,9 @@ export default tseslint.config(
       '**/node_modules/**',
       '**/coverage/**',
       '**/.eslintcache/**',
+      // 拓展
+      'app',
+      'apps/ismart-swbn-converged-web/**',
     ],
   },
   eslint.configs.recommended,

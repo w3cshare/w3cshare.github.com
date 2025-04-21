@@ -23,5 +23,11 @@
   },
   "scripts": {
     "test": "node ./__tests__/@smarts-isoftstone/vue-template.test.js"
+  },
+  "devDependencies": {
+    "eslint": "^9.25.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-smarts": "workspace:^"
   }
 }

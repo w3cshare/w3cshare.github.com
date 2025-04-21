@@ -20,7 +20,7 @@ features:
     details: 基于 NestJS、gRPC 和 Consul，使用 TypeORM/Sequelize 作为 ORM，RBAC + CASL
   - icon: 🤖
     title: AI 技术集成
-    details: 基于 LangChain + NestJS 构建的 AI Agent
+    details: 基于 LangChain + NestJS + Milvus + 构建的 AI Agent
   - icon: ⛓️
     title: 区块链支持
     details: 基于 WEB3.0，集成以太坊相关功能

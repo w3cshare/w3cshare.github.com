@@ -32,7 +32,11 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "@umijs/types": "^3.5.43"
+    "@umijs/types": "^3.5.43",
+    "eslint": "^9.25.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-smarts": "workspace:^"
   },
   "gitHead": "3a6c98edc4caf157dd7ac6cb15be75b965ed5df4"
 }

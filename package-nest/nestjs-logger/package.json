@@ -24,5 +24,11 @@
     "@nestjs/core": "^11.0.1",
     "typescript": "^5.7.3"
   },
-  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
+  "devDependencies": {
+    "eslint": "^9.25.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-smarts": "workspace:^"
+  }
 }
