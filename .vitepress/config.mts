@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-21 18:16:40
+ * @LastEditTime: 2025-04-21 18:19:15
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -19,12 +19,12 @@ export default withMermaid(
     locales: {
       '/': {
         lang: 'zh-CN',
-        title: '全栈开发文档',
+        title: '阿伟的全栈开发文档',
         description: '基于 Monorepo 的全栈开发项目文档',
       },
       '/en/': {
         lang: 'en-US',
-        title: 'FullStack Development Docs',
+        title: 'wangwei FullStack Development Docs',
         description: 'Monorepo based fullstack development project documentation',
       },
     },
