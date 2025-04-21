@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-21 18:19:15
+ * @LastEditTime: 2025-04-21 18:20:20
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -12,19 +12,19 @@ import { withMermaid } from 'vitepress-plugin-mermaid';
 // https://vitepress.dev/reference/site-config
 export default withMermaid(
   defineConfig({
-    title: '阿伟的开发文档',
+    title: '全栈开发文档',
     description: '基于 Monorepo 的全栈开发项目文档',
     keywords: ['全栈开发', 'Monorepo', '微前端', '微服务', 'AI', '区块链', 'TypeScript'],
     lang: 'zh-CN',
     locales: {
       '/': {
         lang: 'zh-CN',
-        title: '阿伟的全栈开发文档',
+        title: '全栈开发文档',
         description: '基于 Monorepo 的全栈开发项目文档',
       },
       '/en/': {
         lang: 'en-US',
-        title: 'wangwei FullStack Development Docs',
+        title: 'FullStack Development Docs',
         description: 'Monorepo based fullstack development project documentation',
       },
     },
@@ -61,7 +61,7 @@ export default withMermaid(
 
     // 首页配置
     themeConfig: {
-      siteTitle: '全栈开发文档',
+      siteTitle: '阿伟的开发文档',
 
       // 导航栏配置
       nav: [
