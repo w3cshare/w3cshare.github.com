@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-21 15:16:19
+ * @LastEditTime: 2025-04-21 18:13:37
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -187,31 +187,6 @@ export default withMermaid(
           ],
         },
         {
-          text: '规范',
-          items: [
-            {
-              link: '/lint/README.md',
-              text: '首页',
-            },
-            {
-              link: '/lint/eslint-plugin-smart/README.md',
-              text: 'ESLint',
-            },
-            {
-              link: '/lint/stylelint-config-smarts/README.md',
-              text: 'Stylelint',
-            },
-            {
-              link: '/lint/prettier-plugin-smarts/README.md',
-              text: 'Prettier',
-            },
-            {
-              link: '/lint/commitlint-smarts/README.md',
-              text: 'Commitlint',
-            },
-          ],
-        },
-        {
           text: '脚手架',
           items: [
             { link: '/cli/README.md', text: '首页' },
@@ -238,14 +213,28 @@ export default withMermaid(
           ],
         },
         {
-          text: '指南',
+          text: '规范',
           items: [
-            { text: '快速开始', link: '/docs/getting-started' },
-            { text: '架构设计', link: '/docs/architecture' },
-            { text: '目录结构', link: '/docs/directory-structure' },
-            { text: '开发规范', link: '/docs/development-standards' },
-            { text: '部署方案', link: '/docs/deployment' },
-            { text: 'PNPM 指南', link: '/docs/pnpm-workspace-guide' },
+            {
+              link: '/lint/README.md',
+              text: '首页',
+            },
+            {
+              link: '/lint/eslint-plugin-smart/README.md',
+              text: 'ESLint',
+            },
+            {
+              link: '/lint/stylelint-config-smarts/README.md',
+              text: 'Stylelint',
+            },
+            {
+              link: '/lint/prettier-plugin-smarts/README.md',
+              text: 'Prettier',
+            },
+            {
+              link: '/lint/commitlint-smarts/README.md',
+              text: 'Commitlint',
+            },
           ],
         },
       ],
@@ -265,7 +254,7 @@ export default withMermaid(
             ],
           },
         ],
-        
+
         // 微服务文档
         '/micro-service/': [
           {
@@ -313,7 +302,7 @@ export default withMermaid(
             ],
           },
         ],
-        
+
         // 微前端文档
         '/micro-frontend/': [
           {
@@ -345,15 +334,15 @@ export default withMermaid(
             ],
           },
         ],
-        
+
         // Nest 包文档
         '/package-nest/': [
           {
             text: 'NestJS 包',
             items: [
               { text: '概述', link: '/package-nest/README.md' },
+              { text: '组件概览', link: '/package-nest/docs/overview' },
               { text: '项目结构', link: '/package-nest/docs/project-structure' },
-              { text: '功能概览', link: '/package-nest/docs/overview' },
             ],
           },
           {
@@ -376,7 +365,7 @@ export default withMermaid(
             ],
           },
         ],
-        
+
         // React 组件库文档
         '/package-react/': [
           {
@@ -394,13 +383,16 @@ export default withMermaid(
             text: '组件库',
             items: [
               { text: 'Ant Design 业务组件库', link: '/package-react/ant-design-lib/README.md' },
-              { text: 'Ant Design Web3 组件库', link: '/package-react/ant-design-web3-lib/README.md' },
+              {
+                text: 'Ant Design Web3 组件库',
+                link: '/package-react/ant-design-web3-lib/README.md',
+              },
               { text: 'Ant Design AI 组件库', link: '/package-react/ant-design-x-lib/README.md' },
               { text: 'Taro UI 组件库', link: '/package-react/taro-ui-lib/README.md' },
             ],
           },
         ],
-        
+
         // Vue 组件库文档
         '/package-vue/': [
           {
@@ -424,7 +416,7 @@ export default withMermaid(
             ],
           },
         ],
-        
+
         // 公共库文档
         '/packages/': [
           {
@@ -445,7 +437,7 @@ export default withMermaid(
             ],
           },
         ],
-        
+
         // CLI 工具文档
         '/cli/': [
           {
@@ -473,14 +465,12 @@ export default withMermaid(
             ],
           },
         ],
-        
+
         // 应用项目文档
         '/apps/': [
           {
             text: '应用项目',
-            items: [
-              { text: '概述', link: '/apps/README.md' },
-            ],
+            items: [{ text: '概述', link: '/apps/README.md' }],
           },
           {
             text: '应用列表',
@@ -491,7 +481,7 @@ export default withMermaid(
             ],
           },
         ],
-        
+
         // 规范文档 (lint 部分 - 已存在，保留)
         '/lint/commitlint-smarts/': [
           {

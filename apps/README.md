@@ -22,13 +22,7 @@ hero:
   actions:
     - theme: brand
       text: 应用概览
-      link: /app/overview
-    - theme: alt
-      text: 快速开始
-      link: /app/getting-started
-    - theme: alt
-      text: 最佳实践
-      link: /app/best-practices
+      link: /apps/docs/overview
 features:
   - icon: 🖥️
     title: 中后台项目

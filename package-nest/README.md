@@ -22,7 +22,10 @@ hero:
   actions:
     - theme: brand
       text: 组件概览
-      link: /package-nest/overview
+      link: /package-nest/docs/overview
+    - theme: alt
+      text: 项目结构
+      link: /package-nest/docs/overview
 features:
   - icon: 🏗️
     title: NestJS企业级扩展
