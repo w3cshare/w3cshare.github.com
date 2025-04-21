@@ -1,1 +1,0 @@
-import{_ as t,c as e,o}from"./chunks/framework.D30IVGRC.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"cli/tools.md","filePath":"cli/tools.md","lastUpdated":1745216607000}'),a={name:"cli/tools.md"};function s(c,r,l,n,i,d){return o(),e("div")}const m=t(a,[["render",s]]);export{_ as __pageData,m as default};
