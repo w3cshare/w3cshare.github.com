@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "start": "pnpm run dev",
     "dev": "tsc -w",
