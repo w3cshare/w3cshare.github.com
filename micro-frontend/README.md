@@ -22,13 +22,13 @@ hero:
   actions:
     - theme: brand
       text: 架构概览
-      link: /micro-frontend/architecture
+      link: /micro-frontend/docs/architecture
     - theme: alt
       text: 快速开始
-      link: /micro-frontend/getting-started
+      link: /micro-frontend/docs/getting-started
     - theme: alt
       text: 最佳实践
-      link: /micro-frontend/best-practices
+      link: /micro-frontend/docs/best-practices
 features:
   - icon: 🧩
     title: 多框架无缝集成
@@ -105,5 +105,5 @@ graph TD
 
 ## 文档导航
 
-- [快速开始](/micro-frontend/getting-started)
-- [架构设计](/micro-frontend/architecture)
+- [快速开始](/micro-frontend/docs/getting-started)
+- [架构设计](/micro-frontend/docs/architecture)

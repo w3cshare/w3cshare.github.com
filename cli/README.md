@@ -22,13 +22,13 @@ hero:
   actions:
     - theme: brand
       text: 工具总览
-      link: /cli/overview
+      link: /cli/docs/overview
     - theme: alt
       text: 快速上手
-      link: /cli/getting-started
+      link: /cli/docs/getting-started
     - theme: alt
       text: 插件开发
-      link: /cli/plugin-development
+      link: /cli/docs/plugin-development
 features:
   - icon: 🏗️
     title: 智能代码生成器
@@ -111,7 +111,7 @@ graph TD
 
 ## 文档导航
 
-- [快速开始](/cli/getting-started)
-- [命令文档](/cli/commands)
-- [工具使用](/cli/tools)
-- [模板说明](/cli/templates)
+- [快速开始](/cli/docs/getting-started)
+- [命令文档](/cli/docs/commands)
+- [工具使用](/cli/docs/tools)
+- [模板说明](/cli/docs/templates)

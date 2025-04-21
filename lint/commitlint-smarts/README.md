@@ -41,6 +41,10 @@ features:
 
 commitlint-smarts 是一个为公司内部项目设计的 Git 提交信息规范配置，基于 Conventional Commits 规范，并进行了扩展和定制。此配置旨在统一团队的 Git 提交信息格式，提高代码历史的可读性和可追溯性。
 
+::: tip 为什么需要统一的提交规范？
+统一的提交规范让团队能够自动化生成更新日志、简化语义化版本控制、提高代码审查效率，并使新成员更容易理解项目历史。
+:::
+
 ## 特性
 
 - ✅ 基于 Conventional Commits 规范
@@ -61,16 +65,19 @@ commitlint-smarts 是一个为公司内部项目设计的 Git 提交信息规范
 
 ## 安装
 
-```bash
-# pnpm
+::: code-group
+```bash [pnpm]
 pnpm add -D @commitlint/cli commitlint-smarts husky
+```
 
-# npm
+```bash [npm]
 npm install --save-dev @commitlint/cli commitlint-smarts husky
+```
 
-# yarn
+```bash [yarn]
 yarn add -D @commitlint/cli commitlint-smarts husky
 ```
+:::
 
 ## 使用方法
 
@@ -86,17 +93,21 @@ module.exports = {
 
 ### 配置 Husky
 
-初始化 Husky：
-
-```bash
+::: code-group
+```bash [初始化]
+# 初始化 Husky
 npx husky install
 ```
 
-添加 commit-msg 钩子：
-
-```bash
+```bash [添加钩子]
+# 添加 commit-msg 钩子
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 ```
+:::
+
+::: tip 单体仓库（Monorepo）配置
+在单体仓库中，建议在根目录配置 commitlint，并确保所有子包遵循相同的提交规范。详细配置请参考 [配置指南](/lint/commitlint-smarts/docs/configuration)。
+:::
 
 ## 提交格式
 
@@ -114,11 +125,12 @@ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 - [提交类型](/lint/commitlint-smarts/docs/types)：指明提交的变更类型
 - [作用域](/lint/commitlint-smarts/docs/scopes)：指明变更影响的模块或功能
 - [主题描述](/lint/commitlint-smarts/docs/subject)：简明扼要的变更说明
-- [正文](/lint/commitlint-smarts/docs/body)：提供更详细的变更说明
+- [提交正文](/lint/commitlint-smarts/docs/body)：提供更详细的变更说明
 - [脚注](/lint/commitlint-smarts/docs/configuration)：包含关闭问题、破坏性变更说明等
 
 ### 示例
 
+::: details 功能添加示例
 ```
 feat(user): 添加用户登录功能
 
@@ -127,6 +139,48 @@ feat(user): 添加用户登录功能
 
 close #123
 ```
+:::
+
+::: details 问题修复示例
+```
+fix(database): 修复高并发下连接池耗尽问题
+
+在高并发场景下，数据库连接未能正确释放，导致连接池资源耗尽，系统响应变慢并最终超时。
+
+问题原因：
+- 事务提交后连接未正确关闭
+- 异常处理路径中缺少连接释放代码
+- 连接池配置不合理
+
+解决方法：
+1. 添加try-finally确保连接总是被释放
+2. 调整连接池大小和超时设置
+3. 增加连接泄漏检测和自动回收机制
+
+性能测试显示该修复在高峰期将系统响应时间从2.5s降至0.8s。
+
+修复: #BUG-456
+```
+:::
+
+::: details 重构示例
+```
+refactor(components): 重构表单组件以提高复用性
+
+将原有的紧耦合表单组件拆分为更小的可组合组件，使其更容易被复用和测试。
+
+重构内容:
+- 抽取表单项为独立组件
+- 实现自定义Hook管理表单状态
+- 分离表单验证逻辑
+- 添加组合模式支持嵌套表单
+
+此次重构不改变现有功能，但大幅降低了代码复杂度（从循环复杂度15降至4）
+并减少了代码重复（减少约120行重复代码）。
+
+相关: #TECH-789
+```
+:::
 
 ## 类型说明
 
@@ -153,27 +207,31 @@ close #123
 | lint     | 代码检查调整                         |
 | types    | 类型定义文件更改                     |
 
+完整的类型说明和使用场景，请参考 [提交类型指南](/lint/commitlint-smarts/docs/types)。
+
 ## 交互式提交
 
 推荐使用 `@commitlint/cz-commitlint` 配合 commitizen 进行交互式提交：
 
-```bash
-# 安装
+::: code-group
+```bash [安装]
+# 安装依赖
 pnpm add -D @commitlint/cz-commitlint commitizen
+```
 
-# 配置
+```bash [配置]
+# 添加配置文件
 echo '{ "path": "@commitlint/cz-commitlint" }' > .czrc
 ```
 
-在 `package.json` 中添加命令：
-
-```json
+```json [package.json]
 {
   "scripts": {
     "commit": "git-cz"
   }
 }
 ```
+:::
 
 使用交互式提交：
 
@@ -195,6 +253,8 @@ module.exports = {
 };
 ```
 
+更多配置选项，请参考 [配置指南](/lint/commitlint-smarts/docs/configuration)。
+
 ## 禁用检查
 
 在特殊情况下，可以在提交时临时禁用 commitlint 检查：
@@ -202,6 +262,10 @@ module.exports = {
 ```bash
 git commit -m "紧急修复" --no-verify
 ```
+
+::: warning 谨慎使用
+只有在紧急情况下才应使用此选项，避免养成绕过提交规范的习惯。
+:::
 
 ## 许可证
 

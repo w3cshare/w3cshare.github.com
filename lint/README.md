@@ -22,13 +22,13 @@ hero:
   actions:
     - theme: brand
       text: 规范总览
-      link: /lint/overview
+      link: /lint/docs/overview
     - theme: alt
       text: 快速开始
-      link: /lint/getting-started
+      link: /lint/docs/getting-started
     - theme: alt
       text: 最佳实践
-      link: /lint/best-practices
+      link: /lint/docs/best-practices
 features:
   - icon: ✨
     title: ESLint与TypeScript增强
@@ -106,9 +106,9 @@ graph TD
 
 ## 文档导航
 
-- [规范总览](/lint/overview)
-- [快速开始](/lint/getting-started)
-- [最佳实践](/lint/best-practices)
+- [规范总览](/lint/docs/overview)
+- [快速开始](/lint/docs/getting-started)
+- [最佳实践](/lint/docs/best-practices)
 
 ### 子项目文档
 
