@@ -1,10 +1,10 @@
 # Less 预处理器支持
 
-stylelint-config-smart 针对 Less 预处理器提供了全面支持，特别适用于 Ant Design 等基于 Less 的项目。
+stylelint-config-smarts 针对 Less 预处理器提供了全面支持，特别适用于 Ant Design 等基于 Less 的项目。
 
 ## Less 特有规则
 
-stylelint-config-smart 默认配置中已包含对 Less 语法的支持，例如：
+stylelint-config-smarts 默认配置中已包含对 Less 语法的支持，例如：
 
 - 允许 Less 变量的使用 (`@variable`)
 - 支持 Less 特有的嵌套规则
@@ -12,12 +12,12 @@ stylelint-config-smart 默认配置中已包含对 Less 语法的支持，例如
 
 ## 在 Ant Design 项目中使用
 
-Ant Design 项目通常大量使用 Less 作为样式预处理器。在 Ant Design 项目中使用 stylelint-config-smart 时，可以考虑以下配置：
+Ant Design 项目通常大量使用 Less 作为样式预处理器。在 Ant Design 项目中使用 stylelint-config-smarts 时，可以考虑以下配置：
 
 ```js
 // .stylelintrc.js
 module.exports = {
-  extends: ['stylelint-config-smart'],
+  extends: ['stylelint-config-smarts'],
   rules: {
     // 允许使用 Ant Design 的变量命名方式
     'scss/dollar-variable-pattern': null,
@@ -43,7 +43,7 @@ pnpm add -D stylelint-less
 
 ```js
 module.exports = {
-  extends: ['stylelint-config-smart'],
+  extends: ['stylelint-config-smarts'],
   plugins: ['stylelint-less'],
   rules: {
     // Less 特定规则
@@ -64,7 +64,7 @@ module.exports = {
 ```js
 // .stylelintrc.js
 module.exports = {
-  extends: ['stylelint-config-smart'],
+  extends: ['stylelint-config-smarts'],
   rules: {
     // 推荐的变量命名模式（驼峰式）
     'less/custom-property-pattern': '^[a-z][a-zA-Z0-9]*$'
@@ -81,7 +81,7 @@ module.exports = {
 ```js
 // .stylelintrc.js
 module.exports = {
-  extends: ['stylelint-config-smart'],
+  extends: ['stylelint-config-smarts'],
   rules: {
     'max-nesting-depth': 4,
     'selector-max-compound-selectors': 4
@@ -183,7 +183,7 @@ export default defineConfig({
 
 ## 最佳实践示例
 
-一个符合 stylelint-config-smart 规范的 Less 文件示例：
+一个符合 stylelint-config-smarts 规范的 Less 文件示例：
 
 ```less
 // 变量定义

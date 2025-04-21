@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-20 01:49:54
+ * @LastEditTime: 2025-04-21 15:16:19
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -194,7 +194,7 @@ export default withMermaid(
               text: '首页',
             },
             {
-              link: '/lint/eslint-plugin-smarts/README.md',
+              link: '/lint/eslint-plugin-smart/README.md',
               text: 'ESLint',
             },
             {

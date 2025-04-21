@@ -1,0 +1,35 @@
+{
+  "name": "commitlint-smarts",
+  "version": "1.0.0",
+  "description": "智能提交规范配置，适用于公司内部所有项目",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "tsc -w",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "commitlint",
+    "git",
+    "commit",
+    "conventional-commits",
+    "lint"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/types": "^17.4.4"
+  },
+  "peerDependencies": {
+    "@commitlint/cli": ">=17.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}

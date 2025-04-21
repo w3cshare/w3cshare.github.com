@@ -1,10 +1,10 @@
 # Vue 框架样式规范
 
-stylelint-config-smart 为 Vue 单文件组件(.vue)提供了专门的样式规范支持，确保其样式部分符合公司统一的代码规范。
+stylelint-config-smarts 为 Vue 单文件组件(.vue)提供了专门的样式规范支持，确保其样式部分符合公司统一的代码规范。
 
 ## Vue 特有的规则
 
-针对 Vue 单文件组件，stylelint-config-smart 自动启用以下特性：
+针对 Vue 单文件组件，stylelint-config-smarts 自动启用以下特性：
 
 - 支持 `<style>` 标签内的样式校验
 - 识别并处理 Vue 特有的 CSS 伪类和伪元素
@@ -13,18 +13,18 @@ stylelint-config-smart 为 Vue 单文件组件(.vue)提供了专门的样式规�
 
 ## 基础配置
 
-默认情况下，stylelint-config-smart 已经包含对 Vue 单文件组件的支持，无需额外配置：
+默认情况下，stylelint-config-smarts 已经包含对 Vue 单文件组件的支持，无需额外配置：
 
 ```js
 // .stylelintrc.js
 module.exports = {
-  extends: ['stylelint-config-smart']
+  extends: ['stylelint-config-smarts']
 };
 ```
 
 ## 深度选择器的处理
 
-Vue 中的深度选择器有几种不同的写法，stylelint-config-smart 支持以下所有语法：
+Vue 中的深度选择器有几种不同的写法，stylelint-config-smarts 支持以下所有语法：
 
 ```vue
 <style scoped>
@@ -83,7 +83,7 @@ Vue 中的深度选择器有几种不同的写法，stylelint-config-smart 支�
 
 ## 与 Vite 和 Vue 一起使用
 
-在基于 Vite 的 Vue 项目中，可以这样集成 stylelint-config-smart：
+在基于 Vite 的 Vue 项目中，可以这样集成 stylelint-config-smarts：
 
 ```js
 // vite.config.js
@@ -181,7 +181,7 @@ module.exports = {
 
 // .stylelintrc.js
 module.exports = {
-  extends: ['stylelint-config-smart'],
+  extends: ['stylelint-config-smarts'],
   rules: {
     // stylelint 规则
   }
@@ -244,7 +244,7 @@ module.exports = {
 ```js
 // .stylelintrc.js
 module.exports = {
-  extends: ['stylelint-config-smart'],
+  extends: ['stylelint-config-smarts'],
   rules: {
     'selector-pseudo-element-no-unknown': [
       true,
@@ -277,7 +277,7 @@ module.exports = {
 ```js
 // .stylelintrc.js
 module.exports = {
-  extends: ['stylelint-config-smart'],
+  extends: ['stylelint-config-smarts'],
   rules: {
     'selector-type-no-unknown': [
       true,

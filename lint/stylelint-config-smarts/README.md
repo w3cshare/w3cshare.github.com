@@ -1,6 +1,45 @@
-# stylelint-config-smart
+---
+layout: home
+hero:
+  name: stylelint-config-smarts
+  text: 智能样式规范配置
+  tagline: 为公司内部项目提供统一的CSS/SCSS/Less代码风格
+  actions:
+    - theme: brand
+      text: 快速开始
+      link: ./docs/开始使用.md
+    - theme: brand
+      text: Less支持
+      link: ./docs/Less支持.md
+    - theme: alt
+      text: Vue框架支持
+      link: ./docs/Vue框架支持.md
+features:
+  - icon: 🚀
+    title: 开箱即用
+    details: 预配置了常用规则集，无需复杂设置，安装即可使用
+  - icon: 🔧
+    title: 多框架兼容
+    details: 完美支持React、Vue和其他前端框架的样式规范检查
+  - icon: 🤖
+    title: 智能属性排序
+    details: 自动对CSS属性进行分组和排序，提高代码可读性和一致性
+  - icon: ⛓️
+    title: 多预处理器支持
+    details: 对SCSS、Less等CSS预处理器提供专门的规则支持
+  - icon: 🛠️
+    title: 高度可定制
+    details: 提供灵活的配置选项，可根据项目需求自定义规则
+  - icon: 📦
+    title: IDE友好
+    details: 与VSCode等编辑器完美集成，支持实时错误提示和自动修复
+---
 
-stylelint-config-smart 是一个为公司内部前端项目设计的 Stylelint 共享配置，旨在提供一致且智能的 CSS/SCSS/Less 代码规范。此配置适用于各种前端技术栈，包括 React、Vue 和 TypeScript 项目。
+# &nbsp;
+
+# stylelint-config-smarts
+
+stylelint-config-smarts 是一个为公司内部前端项目设计的 Stylelint 共享配置，旨在提供一致且智能的 CSS/SCSS/Less 代码规范。此配置适用于各种前端技术栈，包括 React、Vue 和 TypeScript 项目。
 
 ## 特性
 
@@ -15,13 +54,13 @@ stylelint-config-smart 是一个为公司内部前端项目设计的 Stylelint �
 
 ```bash
 # pnpm
-pnpm add -D stylelint stylelint-config-smart
+pnpm add -D stylelint stylelint-config-smarts
 
 # npm
-npm install --save-dev stylelint stylelint-config-smart
+npm install --save-dev stylelint stylelint-config-smarts
 
 # yarn
-yarn add -D stylelint stylelint-config-smart
+yarn add -D stylelint stylelint-config-smarts
 ```
 
 ## 使用方法
@@ -30,10 +69,10 @@ yarn add -D stylelint stylelint-config-smart
 
 ```js
 module.exports = {
-  extends: ['stylelint-config-smart'],
+  extends: ['stylelint-config-smarts'],
   rules: {
     // 项目特定的覆盖规则（如果需要）
-  }
+  },
 };
 ```
 
@@ -53,12 +92,7 @@ Vue 项目已经预先配置了特定规则，不需要额外配置。Vue 单文
 
 ```json
 {
-  "stylelint.validate": [
-    "css",
-    "scss",
-    "less",
-    "vue"
-  ],
+  "stylelint.validate": ["css", "scss", "less", "vue"],
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true
   }
@@ -105,14 +139,14 @@ pnpm add -D prettier
 
 ```js
 module.exports = {
-  extends: ['stylelint-config-smart'],
+  extends: ['stylelint-config-smarts'],
   rules: {
     // 覆盖已有规则
-    'indentation': 4, // 修改缩进为4空格
-    
+    indentation: 4, // 修改缩进为4空格
+
     // 添加新规则
-    'color-named': 'always-where-possible'
-  }
+    'color-named': 'always-where-possible',
+  },
 };
 ```
 
@@ -137,4 +171,4 @@ module.exports = {
 
 ## 许可证
 
-ISC 
+ISC

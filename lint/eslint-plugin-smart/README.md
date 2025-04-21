@@ -1,3 +1,42 @@
+---
+layout: home
+hero:
+  name: eslint-plugin-smart
+  text: 智能代码规范插件
+  tagline: 为公司内部项目提供统一的代码质量和风格规范
+  actions:
+    - theme: brand
+      text: 快速开始
+      link: /docs/快速开始.md
+    - theme: brand
+      text: 规则说明
+      link: /docs/规则说明.md
+    - theme: alt
+      text: 配置指南
+      link: /docs/配置指南.md
+features:
+  - icon: 🚀
+    title: 多框架支持
+    details: 完美适配React、Vue、NestJS和TypeScript项目，提供针对性的代码规范
+  - icon: 🔧
+    title: 预设配置
+    details: 提供多种预设配置，无需繁琐设置，一键应用最佳实践
+  - icon: 🤖
+    title: 智能规则
+    details: 智能分析代码上下文，提供更精准的提示和修复建议
+  - icon: ⛓️
+    title: 可扩展性
+    details: 轻松自定义和扩展规则，满足不同项目和团队的特殊需求
+  - icon: 🛠️
+    title: 开发体验
+    details: 与IDE完美集成，提供实时错误提示和自动修复功能
+  - icon: 📦
+    title: 持续更新
+    details: 定期更新规则和最佳实践，保持与最新技术栈和标准的兼容
+---
+
+# &nbsp;
+
 # eslint-plugin-smart
 
 > 公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目
