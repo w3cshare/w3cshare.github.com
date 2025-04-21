@@ -96,6 +96,9 @@ graph TD
 
     E --> E1[基础规则]
     E --> E2[自定义规则]
+    E --> E3[提交消息正文]
+    E --> E4[提交消息主题]
+    E --> E5[作用域规范]
 
     F --> F1[Vite插件]
     F --> F2[Webpack插件]
@@ -105,3 +108,25 @@ graph TD
 
 - [规范总览](/lint/overview)
 - [快速开始](/lint/getting-started)
+- [最佳实践](/lint/best-practices)
+
+### 子项目文档
+
+- [ESLint 插件](/lint/eslint-plugin-smart/README.md)
+  - [快速开始](/lint/eslint-plugin-smart/docs/快速开始)
+  - [规则说明](/lint/eslint-plugin-smart/docs/规则说明)
+  - [配置指南](/lint/eslint-plugin-smart/docs/配置指南)
+- [Prettier 插件](/lint/prettier-plugin-smarts/README.md)
+  - [开始使用](/lint/prettier-plugin-smarts/docs/开始使用)
+  - [TypeScript支持](/lint/prettier-plugin-smarts/docs/TypeScript支持)
+  - [JSON自动排序](/lint/prettier-plugin-smarts/docs/JSON自动排序)
+- [Stylelint 配置](/lint/stylelint-config-smarts/README.md)
+  - [开始使用](/lint/stylelint-config-smarts/docs/开始使用)
+  - [Less支持](/lint/stylelint-config-smarts/docs/Less支持)
+  - [Vue框架支持](/lint/stylelint-config-smarts/docs/Vue框架支持)
+- [Commitlint 规范](/lint/commitlint-smarts/README.md)
+  - [快速开始](/lint/commitlint-smarts/docs/quickstart)
+  - [提交类型指南](/lint/commitlint-smarts/docs/types)
+  - [提交消息正文指南](/lint/commitlint-smarts/docs/body)
+  - [作用域规范](/lint/commitlint-smarts/docs/scopes)
+  - [主题行规范](/lint/commitlint-smarts/docs/subject)

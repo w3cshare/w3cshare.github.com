@@ -1,3 +1,9 @@
+---
+title: Stylelint Vue 框架支持
+description: stylelint-config-smarts 对 Vue 单文件组件的样式支持
+outline: deep
+---
+
 # Vue 框架样式规范
 
 stylelint-config-smarts 为 Vue 单文件组件(.vue)提供了专门的样式规范支持，确保其样式部分符合公司统一的代码规范。

@@ -1,3 +1,9 @@
+---
+title: 提交消息正文指南
+description: 如何编写清晰、信息丰富的Git提交消息正文
+outline: deep
+---
+
 # 提交消息正文指南
 
 提交消息正文是提交主题行之后的详细说明部分，用于提供更多关于变更的详细信息。虽然不是所有提交都需要正文，但对于重要或复杂的变更，正文是必不可少的。
@@ -134,6 +140,14 @@ module.exports = {
   }
 };
 ```
+
+## 相关文档
+
+- [提交类型指南](/lint/commitlint-smarts/docs/types)
+- [作用域使用指南](/lint/commitlint-smarts/docs/scopes)
+- [提交主题指南](/lint/commitlint-smarts/docs/subject)
+- [配置指南](/lint/commitlint-smarts/docs/configuration)
+- [快速开始](/lint/commitlint-smarts/docs/quickstart)
 
 ## 小结
 

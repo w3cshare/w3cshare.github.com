@@ -1,38 +1,35 @@
 ---
 layout: home
+title: Prettier 企业级插件
+description: 为企业级项目提供增强的 Prettier 代码风格统一方案
+outline: deep
 hero:
   name: prettier-plugin-smarts
-  text: 智能代码格式增强插件
-  tagline: 为公司内部项目提供统一的代码风格规范
+  text: 智能代码格式化插件
+  tagline: 一致的代码风格，提升团队协作效率
   actions:
     - theme: brand
-      text: 快速开始
-      link: ./docs/开始使用.md
-    - theme: brand
-      text: JSON自动排序
-      link: ./docs/JSON自动排序.md
+      text: 开始使用
+      link: /lint/prettier-plugin-smarts/docs/开始使用
     - theme: alt
       text: TypeScript支持
-      link: ./docs/TypeScript支持.md
+      link: /lint/prettier-plugin-smarts/docs/TypeScript支持
+    - theme: alt
+      text: JSON自动排序
+      link: /lint/prettier-plugin-smarts/docs/JSON自动排序
 features:
-  - icon: 🚀
-    title: 高效易用
-    details: 无缝集成到现有项目中，开箱即用，无需复杂配置
-  - icon: 🔧
-    title: JSON智能排序
-    details: 自动对package.json、eslintrc等配置文件进行智能排序，提高可读性
-  - icon: 🤖
-    title: Import语句组织
-    details: 自动分组和排序import语句，保持代码结构一致性
-  - icon: ⛓️
-    title: 多框架支持
-    details: 完美适配React、Vue、NestJS等多种前端框架和技术栈
-  - icon: 🛠️
-    title: 定制化配置
-    details: 提供灵活的配置选项，满足不同项目的个性化需求
-  - icon: 📦
-    title: Monorepo友好
-    details: 为大型Monorepo项目提供统一的代码格式化解决方案
+  - icon: 🎨
+    title: 统一风格
+    details: 确保团队代码风格一致性，减少无意义的代码审查讨论
+  - icon: ⚙️
+    title: 增强功能
+    details: 对 TypeScript、JSON 等提供增强格式化功能，超越标准 Prettier
+  - icon: 🔄
+    title: 自动集成
+    details: 与编辑器、Git 钩子无缝集成，确保提交代码前自动格式化
+  - icon: 📐
+    title: 团队标准
+    details: 提供企业级代码风格标准，适配不同项目类型
 ---
 
 # &nbsp;
@@ -265,3 +262,9 @@ module.exports = {
 ## 许可证
 
 ISC
+
+## 详细文档
+
+- [开始使用](/lint/prettier-plugin-smarts/docs/开始使用) - 快速上手指南
+- [TypeScript支持](/lint/prettier-plugin-smarts/docs/TypeScript支持) - 增强的 TypeScript 格式化
+- [JSON自动排序](/lint/prettier-plugin-smarts/docs/JSON自动排序) - JSON 文件智能排序

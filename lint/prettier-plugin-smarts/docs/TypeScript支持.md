@@ -1,3 +1,9 @@
+---
+title: Prettier 插件 TypeScript 支持
+description: prettier-plugin-smarts 对 TypeScript 的增强支持
+outline: deep
+---
+
 # TypeScript 增强支持
 
 prettier-plugin-smarts 为 TypeScript 项目提供了特别优化的格式化功能，确保代码符合最佳实践和团队规范。

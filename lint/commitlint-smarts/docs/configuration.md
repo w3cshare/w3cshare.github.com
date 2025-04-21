@@ -1,3 +1,9 @@
+---
+title: Commitlint配置指南
+description: 如何配置和自定义commitlint-smarts规则
+outline: deep
+---
+
 # 配置指南
 
 本文档详细介绍了 commitlint-smarts 的配置选项及其用法。

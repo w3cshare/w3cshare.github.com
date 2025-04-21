@@ -265,6 +265,54 @@ export default withMermaid(
             ],
           },
         ],
+        '/lint/commitlint-smarts/': [
+          {
+            text: 'Commitlint 指南',
+            items: [
+              { text: '概述', link: '/lint/commitlint-smarts/README.md' },
+              { text: '快速开始', link: '/lint/commitlint-smarts/docs/quickstart' },
+              { text: '提交类型', link: '/lint/commitlint-smarts/docs/types' },
+              { text: '作用域规范', link: '/lint/commitlint-smarts/docs/scopes' },
+              { text: '主题行规范', link: '/lint/commitlint-smarts/docs/subject' },
+              { text: '正文规范', link: '/lint/commitlint-smarts/docs/body' },
+              { text: '配置选项', link: '/lint/commitlint-smarts/docs/configuration' },
+            ],
+          },
+        ],
+        '/lint/eslint-plugin-smart/': [
+          {
+            text: 'ESLint 插件指南',
+            items: [
+              { text: '概述', link: '/lint/eslint-plugin-smart/README.md' },
+              { text: '快速开始', link: '/lint/eslint-plugin-smart/docs/快速开始' },
+              { text: '规则说明', link: '/lint/eslint-plugin-smart/docs/规则说明' },
+              { text: '配置指南', link: '/lint/eslint-plugin-smart/docs/配置指南' },
+              { text: '使用示例', link: '/lint/eslint-plugin-smart/USAGE.md' },
+            ],
+          },
+        ],
+        '/lint/prettier-plugin-smarts/': [
+          {
+            text: 'Prettier 插件指南',
+            items: [
+              { text: '概述', link: '/lint/prettier-plugin-smarts/README.md' },
+              { text: '开始使用', link: '/lint/prettier-plugin-smarts/docs/开始使用' },
+              { text: 'TypeScript支持', link: '/lint/prettier-plugin-smarts/docs/TypeScript支持' },
+              { text: 'JSON自动排序', link: '/lint/prettier-plugin-smarts/docs/JSON自动排序' },
+            ],
+          },
+        ],
+        '/lint/stylelint-config-smarts/': [
+          {
+            text: 'Stylelint 配置指南',
+            items: [
+              { text: '概述', link: '/lint/stylelint-config-smarts/README.md' },
+              { text: '开始使用', link: '/lint/stylelint-config-smarts/docs/开始使用' },
+              { text: 'Less支持', link: '/lint/stylelint-config-smarts/docs/Less支持' },
+              { text: 'Vue框架支持', link: '/lint/stylelint-config-smarts/docs/Vue框架支持' },
+            ],
+          },
+        ],
       },
 
       // 搜索配置

@@ -1,38 +1,35 @@
 ---
 layout: home
+title: Stylelint 企业级配置
+description: 为企业级项目提供全面的 CSS 样式规范配置方案
+outline: deep
 hero:
   name: stylelint-config-smarts
   text: 智能样式规范配置
-  tagline: 为公司内部项目提供统一的CSS/SCSS/Less代码风格
+  tagline: 统一 CSS、SCSS、Less 等样式代码规范
   actions:
     - theme: brand
-      text: 快速开始
-      link: ./docs/开始使用.md
-    - theme: brand
+      text: 开始使用
+      link: /lint/stylelint-config-smarts/docs/开始使用
+    - theme: alt
       text: Less支持
-      link: ./docs/Less支持.md
+      link: /lint/stylelint-config-smarts/docs/Less支持
     - theme: alt
       text: Vue框架支持
-      link: ./docs/Vue框架支持.md
+      link: /lint/stylelint-config-smarts/docs/Vue框架支持
 features:
-  - icon: 🚀
-    title: 开箱即用
-    details: 预配置了常用规则集，无需复杂设置，安装即可使用
+  - icon: 🎭
+    title: 样式规范化
+    details: 统一团队样式代码风格，减少冗余代码，提高样式质量
+  - icon: 🌈
+    title: 预处理器支持
+    details: 支持 SCSS、Less 等预处理器语法检查与规范
+  - icon: 🖼️
+    title: 框架友好
+    details: 适配 Vue、React 等框架的组件样式规范需求
   - icon: 🔧
-    title: 多框架兼容
-    details: 完美支持React、Vue和其他前端框架的样式规范检查
-  - icon: 🤖
-    title: 智能属性排序
-    details: 自动对CSS属性进行分组和排序，提高代码可读性和一致性
-  - icon: ⛓️
-    title: 多预处理器支持
-    details: 对SCSS、Less等CSS预处理器提供专门的规则支持
-  - icon: 🛠️
-    title: 高度可定制
-    details: 提供灵活的配置选项，可根据项目需求自定义规则
-  - icon: 📦
-    title: IDE友好
-    details: 与VSCode等编辑器完美集成，支持实时错误提示和自动修复
+    title: 自动修复
+    details: 大部分规则支持自动修复，提高开发效率
 ---
 
 # &nbsp;
@@ -172,3 +169,9 @@ module.exports = {
 ## 许可证
 
 ISC
+
+## 详细文档
+
+- [开始使用](/lint/stylelint-config-smarts/docs/开始使用) - 快速上手指南
+- [Less支持](/lint/stylelint-config-smarts/docs/Less支持) - Less 预处理器的配置使用
+- [Vue框架支持](/lint/stylelint-config-smarts/docs/Vue框架支持) - Vue 单文件组件样式规范

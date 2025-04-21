@@ -1,3 +1,9 @@
+---
+title: 快速开始
+description: 快速上手使用commitlint-smarts进行Git提交信息规范化
+outline: deep
+---
+
 # 快速入门
 
 本指南将帮助您快速上手使用 commitlint-smarts 进行 Git 提交信息规范化。

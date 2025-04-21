@@ -1,0 +1,3 @@
+.main > .heading:first-child > .name.clip:first-child {
+  white-space: nowrap;
+}

@@ -1,3 +1,9 @@
+---
+title: Prettier JSON 自动排序
+description: prettier-plugin-smarts 提供的 JSON 文件自动排序功能
+outline: deep
+---
+
 # JSON 智能排序
 
 prettier-plugin-smarts 提供了高级的 JSON 文件排序功能，帮助团队保持一致的 JSON 文件结构，提高可读性和维护性。

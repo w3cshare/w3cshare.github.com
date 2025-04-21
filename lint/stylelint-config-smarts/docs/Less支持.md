@@ -1,3 +1,9 @@
+---
+title: Stylelint Less 支持
+description: stylelint-config-smarts 对 Less 预处理器的支持
+outline: deep
+---
+
 # Less 预处理器支持
 
 stylelint-config-smarts 针对 Less 预处理器提供了全面支持，特别适用于 Ant Design 等基于 Less 的项目。

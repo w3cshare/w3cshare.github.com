@@ -1,3 +1,9 @@
+---
+title: 提交类型指南
+description: Git提交消息中各种类型的详细说明与使用场景
+outline: deep
+---
+
 # 提交类型详解
 
 commitlint-smarts 规范化了Git提交消息中使用的类型。本文档详细介绍了各种提交类型及其适用场景。

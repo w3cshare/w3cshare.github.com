@@ -1,38 +1,35 @@
 ---
 layout: home
+title: ESLint 企业级插件
+description: 为企业级项目提供全面的 ESLint 规则与配置
+outline: deep
 hero:
   name: eslint-plugin-smart
-  text: 智能代码规范插件
-  tagline: 为公司内部项目提供统一的代码质量和风格规范
+  text: 智能 ESLint 解决方案
+  tagline: 为现代 Web 开发提供统一的代码质量标准
   actions:
     - theme: brand
       text: 快速开始
-      link: /docs/快速开始.md
-    - theme: brand
+      link: /lint/eslint-plugin-smart/docs/快速开始
+    - theme: alt
       text: 规则说明
-      link: /docs/规则说明.md
+      link: /lint/eslint-plugin-smart/docs/规则说明
     - theme: alt
       text: 配置指南
-      link: /docs/配置指南.md
+      link: /lint/eslint-plugin-smart/docs/配置指南
 features:
-  - icon: 🚀
-    title: 多框架支持
-    details: 完美适配React、Vue、NestJS和TypeScript项目，提供针对性的代码规范
-  - icon: 🔧
-    title: 预设配置
-    details: 提供多种预设配置，无需繁琐设置，一键应用最佳实践
-  - icon: 🤖
-    title: 智能规则
-    details: 智能分析代码上下文，提供更精准的提示和修复建议
-  - icon: ⛓️
-    title: 可扩展性
-    details: 轻松自定义和扩展规则，满足不同项目和团队的特殊需求
+  - icon: ⚡
+    title: 全技术栈支持
+    details: 覆盖 JavaScript、TypeScript、React、Vue 等多种技术栈的规则集
+  - icon: 🔍
+    title: 智能检测
+    details: 提供智能的代码质量检测，避免常见错误和隐患
   - icon: 🛠️
-    title: 开发体验
-    details: 与IDE完美集成，提供实时错误提示和自动修复功能
+    title: 易于配置
+    details: 提供预设配置和灵活的自定义选项，快速适应不同团队的需求
   - icon: 📦
-    title: 持续更新
-    details: 定期更新规则和最佳实践，保持与最新技术栈和标准的兼容
+    title: 开箱即用
+    details: 预设合理的规则集，安装后即可使用，节省配置时间
 ---
 
 # &nbsp;
@@ -61,12 +58,19 @@ pnpm add --save-dev eslint eslint-plugin-smart
 ### 基础配置（适用于所有项目）
 
 ```js
-// eslint.config.js (ESLint v9+)
-export default {
-  extends: ['plugin:smart/recommended'],
-};
+// ESLint v9+ (扁平配置系统)
+// eslint.config.js
+import smartRecommended from 'eslint-plugin-smart/configs/recommended.js';
 
-// .eslintrc.js (ESLint v8 及以下)
+export default [
+  smartRecommended,
+  {
+    // 这里可以添加自定义规则
+  }
+];
+
+// ESLint v8 及以下
+// .eslintrc.js
 module.exports = {
   extends: ['plugin:smart/recommended'],
 };
@@ -75,12 +79,19 @@ module.exports = {
 ### TypeScript项目
 
 ```js
-// eslint.config.js (ESLint v9+)
-export default {
-  extends: ['plugin:smart/typescript'],
-};
+// ESLint v9+ (扁平配置系统)
+// eslint.config.js
+import smartTypeScript from 'eslint-plugin-smart/configs/typescript.js';
 
-// .eslintrc.js (ESLint v8 及以下)
+export default [
+  smartTypeScript,
+  {
+    // 这里可以添加自定义规则
+  }
+];
+
+// ESLint v8 及以下
+// .eslintrc.js
 module.exports = {
   extends: ['plugin:smart/typescript'],
 };
@@ -89,12 +100,19 @@ module.exports = {
 ### React项目
 
 ```js
-// eslint.config.js (ESLint v9+)
-export default {
-  extends: ['plugin:smart/react'],
-};
+// ESLint v9+ (扁平配置系统)
+// eslint.config.js
+import smartReact from 'eslint-plugin-smart/configs/react.js';
 
-// .eslintrc.js (ESLint v8 及以下)
+export default [
+  smartReact,
+  {
+    // 这里可以添加自定义规则
+  }
+];
+
+// ESLint v8 及以下
+// .eslintrc.js
 module.exports = {
   extends: ['plugin:smart/react'],
 };
@@ -103,12 +121,19 @@ module.exports = {
 ### Vue项目
 
 ```js
-// eslint.config.js (ESLint v9+)
-export default {
-  extends: ['plugin:smart/vue'],
-};
+// ESLint v9+ (扁平配置系统)
+// eslint.config.js
+import smartVue from 'eslint-plugin-smart/configs/vue.js';
 
-// .eslintrc.js (ESLint v8 及以下)
+export default [
+  smartVue,
+  {
+    // 这里可以添加自定义规则
+  }
+];
+
+// ESLint v8 及以下
+// .eslintrc.js
 module.exports = {
   extends: ['plugin:smart/vue'],
 };
@@ -117,12 +142,19 @@ module.exports = {
 ### NestJS项目
 
 ```js
-// eslint.config.js (ESLint v9+)
-export default {
-  extends: ['plugin:smart/nestjs'],
-};
+// ESLint v9+ (扁平配置系统)
+// eslint.config.js
+import smartNestjs from 'eslint-plugin-smart/configs/nestjs.js';
 
-// .eslintrc.js (ESLint v8 及以下)
+export default [
+  smartNestjs,
+  {
+    // 这里可以添加自定义规则
+  }
+];
+
+// ESLint v8 及以下
+// .eslintrc.js
 module.exports = {
   extends: ['plugin:smart/nestjs'],
 };
@@ -133,17 +165,23 @@ module.exports = {
 你可以根据项目需求自定义规则：
 
 ```js
-// eslint.config.js (ESLint v9+)
-export default {
-  extends: ['plugin:smart/react'], // 使用预设配置
-  rules: {
-    // 覆盖或添加规则
-    'no-console': 'error', // 禁止使用console
-    'max-len': ['warn', { code: 100 }], // 修改行长度限制
-  },
-};
+// ESLint v9+ (扁平配置系统)
+// eslint.config.js
+import smartReact from 'eslint-plugin-smart/configs/react.js';
 
-// .eslintrc.js (ESLint v8 及以下)
+export default [
+  smartReact,
+  {
+    rules: {
+      // 覆盖或添加规则
+      'no-console': 'error', // 禁止使用console
+      'max-len': ['warn', { code: 100 }], // 修改行长度限制
+    }
+  }
+];
+
+// ESLint v8 及以下
+// .eslintrc.js
 module.exports = {
   extends: ['plugin:smart/react'],
   rules: {
@@ -152,6 +190,16 @@ module.exports = {
   },
 };
 ```
+
+## ESLint v9 兼容性说明
+
+ESLint v9 使用新的扁平配置系统，不再支持 `extends` 字段。如果你遇到类似以下错误：
+
+```
+A config object is using the "extends" key, which is not supported in flat config system.
+```
+
+请确保使用本文档中 ESLint v9+ 的配置示例，或查看[配置指南](./docs/配置指南.md)了解更多详情。
 
 ## 包含的规则集
 
@@ -164,3 +212,10 @@ module.exports = {
 ## 许可证
 
 ISC
+
+## 详细文档
+
+- [快速开始](/lint/eslint-plugin-smart/docs/快速开始) - 在项目中快速配置使用 ESLint
+- [规则说明](/lint/eslint-plugin-smart/docs/规则说明) - 详细的规则说明与示例
+- [配置指南](/lint/eslint-plugin-smart/docs/配置指南) - 如何定制和扩展配置
+- [使用示例](/lint/eslint-plugin-smart/USAGE.md) - 常见场景的使用示例

@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
   "scripts": {
     "start": "pnpm run dev",
-    "dev": "tsc -w",
-    "build": "tsc",
+    "dev": "tsup",
+    "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -35,6 +34,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vue": "^9.21.1",
+    "tsup": "^8.4.0",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {

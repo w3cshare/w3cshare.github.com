@@ -7,13 +7,13 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /docs/开始使用.md
+      link: /lint/commitlint-smarts/docs/quickstart
     - theme: brand
       text: 规范说明
-      link: /docs/规范说明.md
+      link: /lint/commitlint-smarts/docs/types
     - theme: alt
       text: 配置指南
-      link: /docs/配置指南.md
+      link: /lint/commitlint-smarts/docs/configuration
 features:
   - icon: 🚀
     title: 规范统一
@@ -49,6 +49,15 @@ commitlint-smarts 是一个为公司内部项目设计的 Git 提交信息规范
 - ✅ 可自定义的作用域列表
 - ✅ 与 Husky 和 lint-staged 工具集成
 - ✅ 适用于各种前端和后端项目
+
+## 详细文档
+
+- [快速开始](/lint/commitlint-smarts/docs/quickstart) - 快速上手使用指南
+- [提交类型](/lint/commitlint-smarts/docs/types) - 详细的提交类型说明
+- [作用域使用](/lint/commitlint-smarts/docs/scopes) - 如何正确使用作用域
+- [提交主题](/lint/commitlint-smarts/docs/subject) - 编写清晰提交主题的指南
+- [提交正文](/lint/commitlint-smarts/docs/body) - 如何编写详细的提交正文
+- [配置指南](/lint/commitlint-smarts/docs/configuration) - 自定义配置选项
 
 ## 安装
 
@@ -100,6 +109,13 @@ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 
 [可选的脚注]
 ```
+
+详细格式规范：
+- [提交类型](/lint/commitlint-smarts/docs/types)：指明提交的变更类型
+- [作用域](/lint/commitlint-smarts/docs/scopes)：指明变更影响的模块或功能
+- [主题描述](/lint/commitlint-smarts/docs/subject)：简明扼要的变更说明
+- [正文](/lint/commitlint-smarts/docs/body)：提供更详细的变更说明
+- [脚注](/lint/commitlint-smarts/docs/configuration)：包含关闭问题、破坏性变更说明等
 
 ### 示例
 
