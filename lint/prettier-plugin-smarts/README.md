@@ -9,7 +9,7 @@ hero:
   tagline: 一致的代码风格，提升团队协作效率
   actions:
     - theme: brand
-      text: 开始使用
+      text: 快速开始
       link: /lint/prettier-plugin-smarts/docs/开始使用
     - theme: alt
       text: TypeScript支持

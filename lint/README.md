@@ -21,11 +21,11 @@ hero:
     alt: 代码规范
   actions:
     - theme: brand
-      text: 规范总览
-      link: /lint/docs/overview
-    - theme: alt
       text: 快速开始
       link: /lint/docs/getting-started
+    - theme: alt
+      text: 规范总览
+      link: /lint/docs/overview
     - theme: alt
       text: 最佳实践
       link: /lint/docs/best-practices

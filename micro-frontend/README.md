@@ -21,11 +21,11 @@ hero:
     alt: 微前端架构
   actions:
     - theme: brand
-      text: 架构概览
-      link: /micro-frontend/docs/architecture
-    - theme: alt
       text: 快速开始
       link: /micro-frontend/docs/getting-started
+    - theme: alt
+      text: 架构概览
+      link: /micro-frontend/docs/architecture
     - theme: alt
       text: 最佳实践
       link: /micro-frontend/docs/best-practices

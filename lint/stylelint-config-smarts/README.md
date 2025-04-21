@@ -9,7 +9,7 @@ hero:
   tagline: 统一 CSS、SCSS、Less 等样式代码规范
   actions:
     - theme: brand
-      text: 开始使用
+      text: 快速开始
       link: /lint/stylelint-config-smarts/docs/开始使用
     - theme: alt
       text: Less支持

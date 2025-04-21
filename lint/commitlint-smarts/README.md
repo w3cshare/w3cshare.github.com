@@ -8,7 +8,7 @@ hero:
     - theme: brand
       text: 快速开始
       link: /lint/commitlint-smarts/docs/quickstart
-    - theme: brand
+    - theme: alt
       text: 规范说明
       link: /lint/commitlint-smarts/docs/types
     - theme: alt
@@ -66,6 +66,7 @@ commitlint-smarts 是一个为公司内部项目设计的 Git 提交信息规范
 ## 安装
 
 ::: code-group
+
 ```bash [pnpm]
 pnpm add -D @commitlint/cli commitlint-smarts husky
 ```
@@ -77,6 +78,7 @@ npm install --save-dev @commitlint/cli commitlint-smarts husky
 ```bash [yarn]
 yarn add -D @commitlint/cli commitlint-smarts husky
 ```
+
 :::
 
 ## 使用方法
@@ -87,13 +89,14 @@ yarn add -D @commitlint/cli commitlint-smarts husky
 
 ```js
 module.exports = {
-  extends: ['commitlint-smarts']
+  extends: ['commitlint-smarts'],
 };
 ```
 
 ### 配置 Husky
 
 ::: code-group
+
 ```bash [初始化]
 # 初始化 Husky
 npx husky install
@@ -103,6 +106,7 @@ npx husky install
 # 添加 commit-msg 钩子
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 ```
+
 :::
 
 ::: tip 单体仓库（Monorepo）配置
@@ -122,6 +126,7 @@ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 ```
 
 详细格式规范：
+
 - [提交类型](/lint/commitlint-smarts/docs/types)：指明提交的变更类型
 - [作用域](/lint/commitlint-smarts/docs/scopes)：指明变更影响的模块或功能
 - [主题描述](/lint/commitlint-smarts/docs/subject)：简明扼要的变更说明
@@ -131,6 +136,7 @@ npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 ### 示例
 
 ::: details 功能添加示例
+
 ```
 feat(user): 添加用户登录功能
 
@@ -139,9 +145,11 @@ feat(user): 添加用户登录功能
 
 close #123
 ```
+
 :::
 
 ::: details 问题修复示例
+
 ```
 fix(database): 修复高并发下连接池耗尽问题
 
@@ -161,9 +169,11 @@ fix(database): 修复高并发下连接池耗尽问题
 
 修复: #BUG-456
 ```
+
 :::
 
 ::: details 重构示例
+
 ```
 refactor(components): 重构表单组件以提高复用性
 
@@ -180,32 +190,33 @@ refactor(components): 重构表单组件以提高复用性
 
 相关: #TECH-789
 ```
+
 :::
 
 ## 类型说明
 
-| 类型     | 说明                                 |
-|----------|--------------------------------------|
-| feat     | 新功能                               |
-| fix      | 修复Bug                              |
-| docs     | 文档更新                             |
-| style    | 代码风格调整（不影响代码功能）       |
-| refactor | 代码重构（不包括bug修复或功能新增）  |
-| perf     | 性能优化                             |
-| test     | 测试相关                             |
-| build    | 构建系统或外部依赖更改               |
-| ci       | CI配置更改                           |
-| chore    | 其他改动（不修改src或测试文件）      |
-| revert   | 回滚之前的提交                       |
-| ui       | UI相关更改                           |
-| wip      | 开发中的工作（Work In Progress）     |
-| api      | API相关更改                          |
-| release  | 版本发布                             |
-| deploy   | 部署相关                             |
-| config   | 配置调整                             |
-| i18n     | 国际化                               |
-| lint     | 代码检查调整                         |
-| types    | 类型定义文件更改                     |
+| 类型     | 说明                                |
+| -------- | ----------------------------------- |
+| feat     | 新功能                              |
+| fix      | 修复Bug                             |
+| docs     | 文档更新                            |
+| style    | 代码风格调整（不影响代码功能）      |
+| refactor | 代码重构（不包括bug修复或功能新增） |
+| perf     | 性能优化                            |
+| test     | 测试相关                            |
+| build    | 构建系统或外部依赖更改              |
+| ci       | CI配置更改                          |
+| chore    | 其他改动（不修改src或测试文件）     |
+| revert   | 回滚之前的提交                      |
+| ui       | UI相关更改                          |
+| wip      | 开发中的工作（Work In Progress）    |
+| api      | API相关更改                         |
+| release  | 版本发布                            |
+| deploy   | 部署相关                            |
+| config   | 配置调整                            |
+| i18n     | 国际化                              |
+| lint     | 代码检查调整                        |
+| types    | 类型定义文件更改                    |
 
 完整的类型说明和使用场景，请参考 [提交类型指南](/lint/commitlint-smarts/docs/types)。
 
@@ -214,6 +225,7 @@ refactor(components): 重构表单组件以提高复用性
 推荐使用 `@commitlint/cz-commitlint` 配合 commitizen 进行交互式提交：
 
 ::: code-group
+
 ```bash [安装]
 # 安装依赖
 pnpm add -D @commitlint/cz-commitlint commitizen
@@ -231,6 +243,7 @@ echo '{ "path": "@commitlint/cz-commitlint" }' > .czrc
   }
 }
 ```
+
 :::
 
 使用交互式提交：
@@ -248,8 +261,8 @@ module.exports = {
   extends: ['commitlint-smarts'],
   rules: {
     // 自定义规则
-    'scope-enum': [2, 'always', ['auth', 'api', 'ui', 'config']]
-  }
+    'scope-enum': [2, 'always', ['auth', 'api', 'ui', 'config']],
+  },
 };
 ```
 
