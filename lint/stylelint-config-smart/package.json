@@ -1,0 +1,42 @@
+{
+  "name": "stylelint-config-smart",
+  "version": "1.0.0",
+  "description": "智能样式代码规范配置，适用于公司内部所有前端项目",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "tsc -w",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stylelint",
+    "stylelint-config",
+    "css",
+    "scss",
+    "less"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "stylelint": "^15.11.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-recommended": "^13.0.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-scss": "^5.2.1"
+  },
+  "peerDependencies": {
+    "stylelint": ">=15.0.0"
+  },
+  "devDependencies": {
+    "@types/stylelint": "^14.0.0",
+    "typescript": "^5.8.3"
+  }
+}
