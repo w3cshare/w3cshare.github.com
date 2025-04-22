@@ -26,4 +26,4 @@ export interface FlatConfig {
   };
   rules?: Record<string, any>;
   settings?: Record<string, any>;
-} 
+}

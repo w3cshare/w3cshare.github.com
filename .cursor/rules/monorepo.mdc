@@ -1,6 +1,6 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: true
 ---
 
@@ -56,5 +56,6 @@ alwaysApply: true
 - 根目录和子项目目录下面都会有一个docs文件夹，只会存放`开始使用.md`等简介文档，不存放与组件和模块使用绑定文档。
 - VitePress只存在 的单体（Mono）项目根目录下，子项目目录下没有VitePress，VitePress会引用子项目下的MD。
 - .md文件都是以 VitePress 的格式来写的。
+- 如果有合并为新文档后一律移除废弃的文档。
 ---
 

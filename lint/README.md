@@ -29,6 +29,9 @@ hero:
     - theme: alt
       text: 最佳实践
       link: /lint/docs/best-practices
+    - theme: alt
+      text: 常见问题
+      link: /lint/docs/troubleshooting
 features:
   - icon: ✨
     title: ESLint与TypeScript增强
@@ -109,6 +112,7 @@ graph TD
 - [规范总览](/lint/docs/overview)
 - [快速开始](/lint/docs/getting-started)
 - [最佳实践](/lint/docs/best-practices)
+- [常见问题与故障排除](/lint/docs/troubleshooting)
 
 ### 子项目文档
 
@@ -116,6 +120,7 @@ graph TD
   - [快速开始](/lint/eslint-plugin-smart/docs/快速开始)
   - [规则说明](/lint/eslint-plugin-smart/docs/规则说明)
   - [配置指南](/lint/eslint-plugin-smart/docs/配置指南)
+  - [常见问题](/lint/eslint-plugin-smart/docs/常见问题)
 - [Prettier 插件](/lint/prettier-plugin-smarts/README.md)
   - [开始使用](/lint/prettier-plugin-smarts/docs/开始使用)
   - [TypeScript支持](/lint/prettier-plugin-smarts/docs/TypeScript支持)

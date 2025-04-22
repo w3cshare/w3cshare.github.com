@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:50:42
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-21 11:54:53
+ * @LastEditTime: 2025-04-22 09:45:12
  * @FilePath: /FullStack/lint/eslint-plugin-smart/CHANGELOG.md
  * @Description: 更新日志
 -->
@@ -10,6 +10,32 @@
 # 更新日志
 
 所有版本更新都将记录在此文件中。
+
+## [1.1.0] - 2025-04-22
+
+### 新增
+
+- 内置常用 ESLint 插件，无需单独安装
+- 简化项目依赖管理，减少安装步骤
+- 更新文档，添加内置插件使用说明
+- 改进 ESLint v9 支持，优化扁平配置结构
+
+### 内置插件
+
+- `eslint-plugin-import` - 导入/导出语法检查
+- `eslint-plugin-simple-import-sort` - 导入排序
+- `eslint-plugin-unused-imports` - 自动移除未使用的导入
+- `@typescript-eslint/eslint-plugin` 和 `@typescript-eslint/parser` - TypeScript支持
+- `eslint-plugin-react` 和 `eslint-plugin-react-hooks` - React支持
+- `eslint-plugin-jsx-a11y` - React可访问性支持
+- `eslint-plugin-vue` 和 `vue-eslint-parser` - Vue支持
+- `eslint-plugin-node` - Node.js和NestJS支持
+
+### 文档更新
+
+- 更新 README.md，添加内置插件说明
+- 更新《配置指南》，添加内置插件使用示例
+- 更新《常见问题》，解答内置插件相关问题
 
 ## [1.0.0] - 2025-04-21
 

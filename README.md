@@ -74,10 +74,11 @@ pnpm docs:dev
 - [架构设计](/docs/architecture)
 - [目录结构](/docs/directory-structure)
 - [开发规范](/docs/development-standards)
+- [ESLint配置指南](/docs/eslint-configuration)
 - [部署方案](/docs/deployment)
 - [PNPM 指南](/docs/pnpm-workspace-guide)
 
-## �� 贡献指南
+## 🤝 贡献指南
 
 1. Fork 本项目
 2. 创建您的特性分支 (`git checkout -b feature/amazing-feature`)

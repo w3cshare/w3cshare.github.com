@@ -1,15 +1,17 @@
 {
   "name": "eslint-plugin-smart",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
-  "main": "lib/index.js",
+  "main": "lib/eslint-plugin-smart.js",
+  "module": "lib/eslint-plugin-smart.mjs",
+  "types": "lib/eslint-plugin-smart.d.ts",
   "files": [
     "lib"
   ],
   "scripts": {
     "start": "pnpm run dev",
-    "dev": "tsup",
-    "build": "tsup",
+    "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

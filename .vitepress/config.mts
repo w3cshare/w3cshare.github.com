@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-21 18:20:20
+ * @LastEditTime: 2025-04-22 11:25:10
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -503,9 +503,8 @@ export default withMermaid(
             items: [
               { text: '概述', link: '/lint/eslint-plugin-smart/README.md' },
               { text: '快速开始', link: '/lint/eslint-plugin-smart/docs/快速开始' },
-              { text: '规则说明', link: '/lint/eslint-plugin-smart/docs/规则说明' },
-              { text: '配置指南', link: '/lint/eslint-plugin-smart/docs/配置指南' },
-              { text: '使用示例', link: '/lint/eslint-plugin-smart/USAGE.md' },
+              { text: '质量', link: '/lint/eslint-plugin-smart/docs/质量' },
+              { text: '常见问题', link: '/lint/eslint-plugin-smart/docs/常见问题' },
             ],
           },
         ],
