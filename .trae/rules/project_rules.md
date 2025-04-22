@@ -1,3 +1,12 @@
+<!--
+ * @Author: wangwei wwdqq7@qq.com
+ * @Date: 2025-04-22 12:56:06
+ * @LastEditors: wangwei wwdqq7@qq.com
+ * @LastEditTime: 2025-04-22 13:20:59
+ * @FilePath: /FullStack/.trae/rules/project_rules.md
+ * @Description: Trae 项目规则
+-->
+
 ## 文档输出框架 VitePress 规则
 
 ---
@@ -53,36 +62,39 @@
 ### 技术栈
 
 1. **前端**
-    - 架构模式：微前端架构
-        - 支持 Web Components、SPA 和 MPA 多种应用形态
-        - 统一使用 TypeScript 开发
-    - UI框架：
-        - Ant Design Vue
-        - Ant Design React
-        - @ant-design/pro-components
-        - @ant-design/x（AI组件）
-        - @ant-design/web3（区块链组件）
+
+   - 架构模式：微前端架构
+     - 支持 Web Components、SPA 和 MPA 多种应用形态
+     - 统一使用 TypeScript 开发
+   - UI框架：
+     - Ant Design Vue
+     - Ant Design React
+     - @ant-design/pro-components
+     - @ant-design/x（AI组件）
+     - @ant-design/web3（区块链组件）
 
 2. **后端**
-    - 架构模式：微服务架构
-        - 基于 NestJS 框架开发
-        - 使用 gRPC 进行服务间通信
-        - 通过 Consul 实现服务发现与注册
-    - 数据层：
-        - TypeORM 和 Sequelize 作为ORM工具
-    - 权限管理：
-        - RBAC角色权限模型
-        - CASL策略权限控制
+
+   - 架构模式：微服务架构
+     - 基于 NestJS 框架开发
+     - 使用 gRPC 进行服务间通信
+     - 通过 Consul 实现服务发现与注册
+   - 数据层：
+     - TypeORM 和 Sequelize 作为ORM工具
+   - 权限管理：
+     - RBAC角色权限模型
+     - CASL策略权限控制
 
 3. **特色功能**
-    - AI能力：基于 LangChain + NestJS 构建的 AI Agent
-    - 区块链：集成以太坊相关功能组件和服务
+
+   - AI能力：基于 LangChain + NestJS 构建的 AI Agent
+   - 区块链：集成以太坊相关功能组件和服务
 
 4. **基础设施**
-    - 包管理：Verdaccio（私有npm仓库）、pnpm（高效包管理）
-    - CI/CD：GitLab + Jenkins 自动化流水线
-    - 构建工具：Vite、Webpack、UMI.js、tsup
-    - 容器化：Docker Compose 编排与部署
+   - 包管理：Verdaccio（私有npm仓库）、pnpm（高效包管理）
+   - CI/CD：GitLab + Jenkins 自动化流水线
+   - 构建工具：Vite、Webpack、UMI.js、tsup
+   - 容器化：Docker Compose 编排与部署
 
 ### 文档维护
 
