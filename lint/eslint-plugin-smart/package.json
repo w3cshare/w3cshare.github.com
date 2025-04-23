@@ -12,6 +12,8 @@
     "start": "pnpm run dev",
     "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
     "dev": "tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -37,15 +39,16 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vue": "^9.21.1",
-    "prettier": "^3.5.3",
     "tsup": "^8.4.0",
     "typescript": "^5.5.2"
   },
   "peerDependencies": {
-    "eslint": ">=9.0.0"
+    "eslint": ">=9.0.0",
+    "prettier": ">=3.5.3"
   },
   "devDependencies": {
     "prettier": "^3.5.3",
-    "prettier-plugin-smarts": "workspace:^"
+    "prettier-plugin-smarts": "workspace:^",
+    "eslint-plugin-smart": "workspace:^"
   }
 }

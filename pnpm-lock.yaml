@@ -124,9 +124,6 @@ importers:
       eslint-plugin-vue:
         specifier: ^9.21.1
         version: 9.33.0(eslint@9.25.0(jiti@2.4.2))
-      prettier:
-        specifier: ^3.5.3
-        version: 3.5.3
       tsup:
         specifier: ^8.4.0
         version: 8.4.0(@swc/core@1.11.21)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.5.2)(yaml@2.7.1)
@@ -134,6 +131,12 @@ importers:
         specifier: ^5.5.2
         version: 5.5.2
     devDependencies:
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: 'link:'
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
       prettier-plugin-smarts:
         specifier: workspace:^
         version: link:../prettier-plugin-smarts

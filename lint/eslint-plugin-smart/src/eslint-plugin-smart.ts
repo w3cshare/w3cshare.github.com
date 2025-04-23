@@ -8,6 +8,8 @@
  */
 
 // 导入类型和优化后的规则集
+import { createFlatConfigs } from './flat-configs'
+import { createLegacyConfigs } from './legacy-configs'
 import {
   javascriptRules as javascriptRules2,
   nodejsRules as nodejsRules2,
@@ -16,8 +18,6 @@ import {
   vueRules as vueRules2,
 } from './recommend'
 import { type ESLintRuleSet } from './types'
-import { createFlatConfigs } from './flat-configs'
-import { createLegacyConfigs } from './legacy-configs'
 import { isESLintV9, loadPlugins } from './utils'
 
 /**
@@ -75,13 +75,16 @@ interface ESLintPluginExport {
 const baseRules = {
   ...javascriptRules2,
 
-  // 数组/对象排序
-  // 'annotation/sort': 'error',
-  // 'annotation/sort-keys': 'error',
-  // 'annotation/format-date': 'error',
-  // 'annotation/unique': 'error',
+  /*
+   * 数组/对象排序
+   * 'annotation/sort': 'error',
+   * 'annotation/sort-keys': 'error',
+   * 'annotation/format-date': 'error',
+   * 'annotation/unique': 'error',
+   */
 
   'no-unused-vars': 'off',
+
   // 移除无用的代码规则
   'unused-imports/no-unused-imports': 'error', // 禁止未使用的导入
   'unused-imports/no-unused-vars': [
@@ -92,8 +95,10 @@ const baseRules = {
       args: 'after-used', // 仅检查使用后的参数
       argsIgnorePattern: '^_', // 忽略以_开头的参数
       caughtErrorsIgnorePattern: '^_', // 忽略以_开头的捕获错误
-      // ignoreRestSiblings: false, // 忽略剩余的兄弟节点
-      // destructuredArrayIgnorePattern: '^_', // 忽略以_开头的解构数组
+      /*
+       * ignoreRestSiblings: false, // 忽略剩余的兄弟节点
+       * destructuredArrayIgnorePattern: '^_', // 忽略以_开头的解构数组
+       */
     },
   ],
 
@@ -101,30 +106,40 @@ const baseRules = {
   'import/order': 'off', // 使用simple-import-sort代替
   'simple-import-sort/imports': 'error', // 要求import语句排序
   'simple-import-sort/exports': 'error', // 要求export语句排序
-  // 'simple-import-sort/imports': [
-  //   'error',
-  //   {
-  //     groups: [
-  //       // 框架库放在首行
-  //       ['^react', '^vue', '^ant-design-vue', '^@?\\w'],
+  /*
+   * 'simple-import-sort/imports': [
+   *   'error',
+   *   {
+   *     groups: [
+   *       // 框架库放在首行
+   *       ['^react', '^vue', '^ant-design-vue', '^@?\\w'],
+   */
 
-  //       // 内部导入
-  //       ['^(@|components)(/.*|$)'],
+  /*
+   *       // 内部导入
+   *       ['^(@|components)(/.*|$)'],
+   */
 
-  //       // 父级导入
-  //       ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+  /*
+   *       // 父级导入
+   *       ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+   */
 
   //       // 同级导入
   //       ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
 
-  //       // 样式导入
-  //       ['^.+\\.?(css)$'],
+  /*
+   *       // 样式导入
+   *       ['^.+\\.?(css)$'],
+   */
 
-  //       // 带有副作用导入
-  //       ['^\\u0000'],
-  //     ],
-  //   },
-  // ],
+  /*
+   *       // 带有副作用导入
+   *       ['^\\u0000'],
+   *     ],
+   *   },
+   * ],
+   */
 }
 
 /**
@@ -145,8 +160,10 @@ const typescriptRules = {
       args: 'after-used', // 仅检查使用后的参数
       argsIgnorePattern: '^_', // 忽略以_开头的参数
       caughtErrorsIgnorePattern: '^_', // 忽略以_开头的捕获错误
-      // ignoreRestSiblings: false, // 忽略剩余的兄弟节点
-      // destructuredArrayIgnorePattern: '^_', // 忽略以_开头的解构数组
+      /*
+       * ignoreRestSiblings: false, // 忽略剩余的兄弟节点
+       * destructuredArrayIgnorePattern: '^_', // 忽略以_开头的解构数组
+       */
     },
   ],
 }
@@ -178,11 +195,13 @@ const nestjsRules = {
   ...nodejsRules2,
 
   '@typescript-eslint/no-empty-function': 'off',
+
   // nest官网推荐
   '@typescript-eslint/interface-name-prefix': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/explicit-module-boundary-types': 'off',
   '@typescript-eslint/no-explicit-any': 'off',
+
   // 可以根据项目需要添加更多NestJS特定规则
 }
 
@@ -243,8 +262,10 @@ if (typeof module !== 'undefined' && module.exports) {
   // CommonJS环境
   module.exports = exportObj
 } else {
-  // ESM环境
-  // export default已经在文件末尾
+  /*
+   * ESM环境
+   * export default已经在文件末尾
+   */
 }
 
 // ESM导出

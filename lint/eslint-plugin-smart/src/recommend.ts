@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 13:30:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 17:31:07
+ * @LastEditTime: 2025-04-23 17:49:54
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/recommend.ts
  * @Description: ESLint规则集合，按照不同技术栈分类
  */
@@ -130,7 +130,7 @@ export const javascriptRules: ESLintRuleSet = {
       terms: ['todo', 'fixme'],
       location: 'anywhere',
     },
-  ], // 警告TODO和FIXME注释
+  ],
   'no-continue': 'warn', // 不要使用continue语句
   'no-return-await': 'error', // 禁用不必要的return await
   'no-implied-eval': 'error', // 禁止使用隐式的eval()函数
@@ -159,8 +159,10 @@ export const javascriptRules: ESLintRuleSet = {
   'multiline-comment-style': ['warn', 'starred-block'], // 多行注释使用特定风格
   'prefer-template': 'warn', // 使用模板字符串实现字符串拼接
 
-  // // 代码风格规则
-  // 引号和分号规则
+  /*
+   * 代码风格规则
+   * 引号和分号规则
+   */
   quotes: ['error', 'single', { avoidEscape: true }], // 要求使用单引号
   semi: ['error', 'never'],
   'max-len': ['warn', { code: 100, ignoreComments: true, ignoreStrings: true }], // 限制行长度为120字符
@@ -174,30 +176,42 @@ export const javascriptRules: ESLintRuleSet = {
     {
       // 每行打印的最大宽度为100个字符，超出的部分会自动换行
       printWidth: 100,
+
       // 每个缩进层级的空格数为2
       tabWidth: 2,
+
       // 禁用制表符（使用空格代替）
       useTabs: false,
+
       // 在语句末尾添加分号
       semi: false,
+
       // 使用单引号而不是双引号
       singleQuote: true,
+
       // 只有在必要时才对对象属性加引号
       quoteProps: 'as-needed',
+
       // JSX中使用双引号而不是单引号
       jsxSingleQuote: false,
+
       // 在对象、数组和函数参数中添加尾随逗号，确保代码格式化后更易于 diff
       trailingComma: 'all',
+
       // 在对象和数组的括号之间添加空格
       bracketSpacing: true,
+
       // 不允许将多行对象的结束括号放在最后一行的末尾
       bracketSameLine: false,
+
       // 强制箭头函数的参数使用圆括号，即使只有一个参数
       arrowParens: 'always',
+
       // 换行符使用LF（Unix风格）
       endOfLine: 'lf',
     },
   ],
+
   // 关闭可能与Prettier冲突的规则
   'arrow-body-style': 'off',
   'prefer-arrow-callback': 'off',
@@ -319,6 +333,7 @@ export const vueRules: ESLintRuleSet = {
   ], // 强制多单词组件命名
   'vue/component-name-in-template-casing': [
     'error',
+
     // 强制模板中使用kebab-case命名
     'kebab-case',
     {

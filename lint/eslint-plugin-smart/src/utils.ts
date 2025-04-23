@@ -14,11 +14,11 @@
  */
 export function isESLintV9(): boolean {
   try {
-    const eslintVersion = require('eslint/package.json').version;
-    return parseInt(eslintVersion.split('.')[0], 10) >= 9;
+    const eslintVersion = require('eslint/package.json').version
+    return parseInt(eslintVersion.split('.')[0], 10) >= 9
   } catch (error) {
-    console.warn('无法检测ESLint版本，将使用ESLint v8兼容模式。');
-    return false;
+    console.warn('无法检测ESLint版本，将使用ESLint v8兼容模式。')
+    return false
   }
 }
 
@@ -30,13 +30,13 @@ export function isESLintV9(): boolean {
  */
 export function safeRequire(packageName: string): unknown | null {
   try {
-    return require(packageName);
+    return require(packageName)
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : '未知错误';
+    const errorMessage = error instanceof Error ? error.message : '未知错误'
     console.warn(
       `Warning: ${packageName} 未安装或导入失败: ${errorMessage}。相关规则可能无法正常工作。`,
-    );
-    return null;
+    )
+    return null
   }
 }
 
@@ -67,10 +67,10 @@ export function loadPlugins(): Record<string, unknown> {
 
     // Node.js相关
     node: safeRequire('eslint-plugin-node'),
-    
+
     // Prettier相关
     prettier: safeRequire('eslint-plugin-prettier'),
     eslintConfigPrettier: safeRequire('eslint-config-prettier'),
     prettierCore: safeRequire('prettier'),
-  };
-} 
+  }
+}
