@@ -2,21 +2,25 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 13:30:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-22 16:35:48
+ * @LastEditTime: 2025-04-23 17:56:50
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/recommend.ts
  * @Description: ESLint规则集合，按照不同技术栈分类
  */
 
-import { type ESLintRuleSet } from './types';
+import { type ESLintRuleSet } from './types'
 
 /**
  * 环境变量判断
  */
-const isProduction = process.env.NODE_ENV === 'production';
+/**
+ * 判断当前环境是否为生产环境
+ * @description 用于根据环境变量动态调整部分规则的严格程度
+ */
+const isProduction = process.env.NODE_ENV === 'production'
 
 /**
- * JavaScript通用规则
- * 适用于所有JavaScript项目的基础规则
+ * JavaScript 通用规则集合
+ * @description 适用于所有 JavaScript 项目的基础 ESLint 规则，涵盖代码质量、风格、导入排序等，部分规则根据生产环境动态调整。
  */
 export const javascriptRules: ESLintRuleSet = {
   // 代码质量规则
@@ -110,14 +114,30 @@ export const javascriptRules: ESLintRuleSet = {
   'lines-around-comment': [
     'warn',
     {
-      afterBlockComment: false,
-      afterLineComment: false,
-      beforeBlockComment: true,
-      beforeLineComment: true,
-      allowBlockStart: true,
-      allowObjectStart: true,
-      allowArrayStart: true,
-      allowClassStart: true,
+      /*
+       * afterBlockComment: false,
+       * afterLineComment: false,
+       * beforeBlockComment: true,
+       * beforeLineComment: true,
+       * allowBlockStart: true,
+       * allowObjectStart: true,
+       * allowArrayStart: true,
+       * allowClassStart: true,
+       */
+
+      beforeBlockComment: true, // 块注释前需要空行
+      afterBlockComment: false, // 块注释后不需要空行
+      beforeLineComment: true, // 行注释前需要空行
+      afterLineComment: false, // 行注释后不需要空行
+      allowBlockStart: true, // 允许在块开始处的注释不需要前置空行
+      allowBlockEnd: false, // 不允许在块结束处的注释不需要前置空行
+      allowObjectStart: true, // 允许在对象开始处的注释不需要前置空行
+      allowObjectEnd: false, // 不允许在对象结束处的注释不需要前置空行
+      allowArrayStart: true, // 允许在数组开始处的注释不需要前置空行
+      allowArrayEnd: false, // 不允许在数组结束处的注释不需要前置空行
+      allowClassStart: true, // 允许在类开始处的注释不需要前置空行
+      allowClassEnd: false, // 不允许在类结束处的注释不需要前置空行
+      ignorePattern: '\\s*@\\w+', // 忽略带有 @xxx 注解的注释
     },
   ], // 注释和上面代码块要有空行
   'no-warning-comments': [
@@ -126,7 +146,7 @@ export const javascriptRules: ESLintRuleSet = {
       terms: ['todo', 'fixme'],
       location: 'anywhere',
     },
-  ], // 警告TODO和FIXME注释
+  ],
   'no-continue': 'warn', // 不要使用continue语句
   'no-return-await': 'error', // 禁用不必要的return await
   'no-implied-eval': 'error', // 禁止使用隐式的eval()函数
@@ -155,43 +175,63 @@ export const javascriptRules: ESLintRuleSet = {
   'multiline-comment-style': ['warn', 'starred-block'], // 多行注释使用特定风格
   'prefer-template': 'warn', // 使用模板字符串实现字符串拼接
 
-  // 导入排序规则
-  'simple-import-sort/imports': [
+  /*
+   * 代码风格规则
+   * 引号和分号规则
+   */
+  quotes: ['error', 'single', { avoidEscape: true }], // 要求使用单引号
+  semi: ['error', 'never'],
+  'max-len': ['warn', { code: 100, ignoreComments: true, ignoreStrings: true }], // 限制行长度为120字符
+  'arrow-parens': ['error', 'always'], // 箭头函数参数始终使用括号
+  'object-curly-spacing': ['error', 'always'], // 对象字面量括号内要求有空格
+  'array-bracket-spacing': ['error', 'never'], // 数组括号内不要求有空格
+
+  // Prettier相关规则
+  'prettier/prettier': [
     'error',
     {
-      groups: [
-        // react放在首行
-        ['^react', '^vue', '^ant-design-vue', '^@?\\w'],
+      // 每行打印的最大宽度为100个字符，超出的部分会自动换行
+      printWidth: 100,
 
-        // 内部导入
-        ['^(@|components)(/.*|$)'],
+      // 每个缩进层级的空格数为2
+      tabWidth: 2,
 
-        // 父级导入
-        ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+      // 禁用制表符（使用空格代替）
+      useTabs: false,
 
-        // 同级导入
-        ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+      // 在语句末尾添加分号
+      semi: false,
 
-        // 样式导入
-        ['^.+\\.?(css)$'],
+      // 使用单引号而不是双引号
+      singleQuote: true,
 
-        // 带有副作用导入
-        ['^\\u0000'],
-      ],
+      // 只有在必要时才对对象属性加引号
+      quoteProps: 'as-needed',
+
+      // JSX中使用双引号而不是单引号
+      jsxSingleQuote: false,
+
+      // 在对象、数组和函数参数中添加尾随逗号，确保代码格式化后更易于 diff
+      trailingComma: 'all',
+
+      // 在对象和数组的括号之间添加空格
+      bracketSpacing: true,
+
+      // 不允许将多行对象的结束括号放在最后一行的末尾
+      bracketSameLine: false,
+
+      // 强制箭头函数的参数使用圆括号，即使只有一个参数
+      arrowParens: 'always',
+
+      // 换行符使用LF（Unix风格）
+      endOfLine: 'lf',
     },
   ],
-  'simple-import-sort/exports': 'error',
 
-  // 未使用变量和导入
-  'no-unused-vars': 'off',
-
-  // 'unused-vars-and-imports/no-unused-imports': 'error',
-  // 'unused-vars-and-imports/no-unused-vars': 'error',
-
-  // 引号和分号规则
-  quotes: ['error', 'single'],
-  semi: ['error', 'never'],
-};
+  // 关闭可能与Prettier冲突的规则
+  'arrow-body-style': 'off',
+  'prefer-arrow-callback': 'off',
+}
 
 /**
  * TypeScript专用规则
@@ -205,7 +245,7 @@ export const typescriptRules: ESLintRuleSet = {
   '@typescript-eslint/no-empty-function': 'warn', // 警告空函数
   '@typescript-eslint/no-empty-interface': 'warn', // 警告空接口
   '@typescript-eslint/ban-ts-comment': 'warn', // 警告使用@ts-注释
-};
+}
 
 /**
  * React专用规则
@@ -239,7 +279,7 @@ export const reactRules: ESLintRuleSet = {
   'react-hooks/exhaustive-deps': 'warn', // 检查effect依赖项完整性
 
   // JSX可访问性规则
-  'jsx-a11y/alt-text': 'error',
+  'jsx-a11y/alt-text': 'error', // 要求img标签有alt属性
   'jsx-a11y/anchor-has-content': 'error',
   'jsx-a11y/aria-props': 'error',
   'jsx-a11y/aria-role': 'error',
@@ -249,6 +289,7 @@ export const reactRules: ESLintRuleSet = {
   'jsx-a11y/html-has-lang': 'error',
   'jsx-a11y/img-redundant-alt': 'warn',
   'jsx-a11y/no-access-key': 'warn',
+  'jsx-a11y/anchor-is-valid': 'warn', // 要求a标签有有效的href
 
   // React性能优化规则
   'react/jsx-no-bind': [
@@ -261,6 +302,8 @@ export const reactRules: ESLintRuleSet = {
   ],
   'react/jsx-fragments': ['error', 'syntax'],
   'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
+  'react/jsx-closing-bracket-location': ['error', 'line-aligned'], // JSX标签的闭合括号位置
+  'react/jsx-no-useless-fragment': 'error', // 禁止不必要的Fragment
 
   // 现代React项目规则（React 17+）
   'react/react-in-jsx-scope': 'off',
@@ -268,7 +311,7 @@ export const reactRules: ESLintRuleSet = {
   'react/display-name': 'warn',
   'react/jsx-boolean-value': ['error', 'never'],
   'react/jsx-pascal-case': 'error',
-};
+}
 
 /**
  * Vue专用规则
@@ -286,11 +329,15 @@ export const vueRules: ESLintRuleSet = {
   'vue/require-component-is': 'error', // 强制组件使用is属性时格式正确
   'vue/no-duplicate-attr-inheritance': 'error', // 禁止重复的属性继承
   'vue/no-deprecated-scope-attribute': 'error',
-  'vue/require-default-prop': 'error',
+  'vue/require-default-prop': 'error', // 要求props有默认值
   'vue/require-prop-types': 'error',
   'vue/no-reserved-component-names': 'error',
-  'vue/no-unused-components': 'error',
-  'vue/no-unused-vars': 'error',
+  'vue/no-unused-components': 'error', // 禁止注册但未使用的组件
+  // 模板语法规则 START
+  'vue/no-unused-vars': 'error', // 禁止模板中未使用的变量
+  'vue/no-v-html': 'warn', // 警告使用v-html（可能导致XSS攻击）
+  'vue/this-in-template': ['error', 'never'], // 禁止在模板中使用this
+  // 模板语法规则 END
   'vue/no-template-shadow': 'error',
 
   // Vue组件命名规则
@@ -302,12 +349,14 @@ export const vueRules: ESLintRuleSet = {
   ], // 强制多单词组件命名
   'vue/component-name-in-template-casing': [
     'error',
+
+    // 强制模板中使用kebab-case命名
     'kebab-case',
     {
       registeredComponentsOnly: false, // 对所有组件生效
       ignores: [], // 无例外情况
     },
-  ], // 强制模板中使用kebab-case命名
+  ],
 
   // Vue模板规则
   'vue/html-self-closing': [
@@ -323,6 +372,7 @@ export const vueRules: ESLintRuleSet = {
     },
   ],
   'vue/max-attributes-per-line': [
+    // 单行最多3个属性，多行每行1个属性
     'error',
     {
       singleline: {
@@ -333,6 +383,8 @@ export const vueRules: ESLintRuleSet = {
       },
     },
   ],
+  'vue/html-closing-bracket-newline': ['error', { singleline: 'never', multiline: 'always' }], // 多行元素的闭合括号需要换行
+  'vue/html-indent': ['error', 2], // HTML缩进使用2个空格
 
   // Vue组件选项顺序
   'vue/order-in-components': [
@@ -396,7 +448,7 @@ export const vueRules: ESLintRuleSet = {
       alphabetical: false,
     },
   ],
-};
+}
 
 /**
  * Node.js专用规则
@@ -409,43 +461,36 @@ export const nodejsRules: ESLintRuleSet = {
   'handle-callback-err': 'error', // 要求回调函数中有错误处理
   'no-new-require': 'error', // 禁止使用new require
   'no-path-concat': 'error', // 禁止使用__dirname或__filename做路径拼接
-  'node/no-unsupported-features/es-syntax': 'off', // 允许使用现代ES语法
-  'node/no-missing-import': 'off', // TypeScript会处理导入
-  'node/no-unpublished-import': 'off', // 允许导入devDependencies中的包
-};
+  'node/no-unsupported-features/es-syntax': 'off', // 允许使用现代ES语法（NestJS使用TypeScript编译）
+  'node/no-missing-import': 'off', // TypeScript会处理导入，不需要Node.js的导入检查
+  'node/no-unpublished-import': 'off', // 允许导入devDependencies中的包（用于测试等）
+}
 
 /**
  * 导出所有规则集合
+ * @description 按照不同技术栈组合规则，便于在不同类型项目中快速集成对应的 ESLint 规则集。
+ * - base: 仅包含 JavaScript 通用规则
+ * - typescript/react/vue/nodejs: 在 base 基础上叠加各自专用规则
+ * - recommended: 全栈项目推荐，包含所有规则
  */
 export default {
-  // 基础JavaScript规则，适用于所有项目
   base: javascriptRules,
-
-  // TypeScript项目规则（JavaScript规则 + TypeScript规则）
   typescript: {
     ...javascriptRules,
     ...typescriptRules,
   },
-
-  // React项目规则（JavaScript规则 + React规则）
   react: {
     ...javascriptRules,
     ...reactRules,
   },
-
-  // Vue项目规则（JavaScript规则 + Vue规则）
   vue: {
     ...javascriptRules,
     ...vueRules,
   },
-
-  // Node.js项目规则（JavaScript规则 + Node.js规则）
   nodejs: {
     ...javascriptRules,
     ...nodejsRules,
   },
-
-  // 推荐规则集（包含所有规则，适用于全栈项目）
   recommended: {
     ...javascriptRules,
     ...typescriptRules,
@@ -453,4 +498,4 @@ export default {
     ...vueRules,
     ...nodejsRules,
   },
-};
+}

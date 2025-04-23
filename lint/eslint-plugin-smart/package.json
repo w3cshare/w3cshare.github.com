@@ -30,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-annotation": "^1.1.6",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-node": "^11.1.0",
@@ -47,8 +48,8 @@
     "prettier": ">=3.5.3"
   },
   "devDependencies": {
+    "eslint-plugin-smart": "workspace:^",
     "prettier": "^3.5.3",
-    "prettier-plugin-smarts": "workspace:^",
-    "eslint-plugin-smart": "workspace:^"
+    "prettier-plugin-smarts": "workspace:^"
   }
 }

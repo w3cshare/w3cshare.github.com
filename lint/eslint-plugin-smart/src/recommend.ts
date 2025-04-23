@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 13:30:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 17:49:54
+ * @LastEditTime: 2025-04-23 17:56:50
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/recommend.ts
  * @Description: ESLint规则集合，按照不同技术栈分类
  */
@@ -114,14 +114,30 @@ export const javascriptRules: ESLintRuleSet = {
   'lines-around-comment': [
     'warn',
     {
-      afterBlockComment: false,
-      afterLineComment: false,
-      beforeBlockComment: true,
-      beforeLineComment: true,
-      allowBlockStart: true,
-      allowObjectStart: true,
-      allowArrayStart: true,
-      allowClassStart: true,
+      /*
+       * afterBlockComment: false,
+       * afterLineComment: false,
+       * beforeBlockComment: true,
+       * beforeLineComment: true,
+       * allowBlockStart: true,
+       * allowObjectStart: true,
+       * allowArrayStart: true,
+       * allowClassStart: true,
+       */
+
+      beforeBlockComment: true, // 块注释前需要空行
+      afterBlockComment: false, // 块注释后不需要空行
+      beforeLineComment: true, // 行注释前需要空行
+      afterLineComment: false, // 行注释后不需要空行
+      allowBlockStart: true, // 允许在块开始处的注释不需要前置空行
+      allowBlockEnd: false, // 不允许在块结束处的注释不需要前置空行
+      allowObjectStart: true, // 允许在对象开始处的注释不需要前置空行
+      allowObjectEnd: false, // 不允许在对象结束处的注释不需要前置空行
+      allowArrayStart: true, // 允许在数组开始处的注释不需要前置空行
+      allowArrayEnd: false, // 不允许在数组结束处的注释不需要前置空行
+      allowClassStart: true, // 允许在类开始处的注释不需要前置空行
+      allowClassEnd: false, // 不允许在类结束处的注释不需要前置空行
+      ignorePattern: '\\s*@\\w+', // 忽略带有 @xxx 注解的注释
     },
   ], // 注释和上面代码块要有空行
   'no-warning-comments': [

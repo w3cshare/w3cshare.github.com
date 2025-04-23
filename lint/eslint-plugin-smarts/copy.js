@@ -1,11 +1,19 @@
+/*
+ * @Author: wangwei wwdqq7@qq.com
+ * @Date: 2025-04-22 17:35:50
+ * @LastEditors: wangwei wwdqq7@qq.com
+ * @LastEditTime: 2025-04-23 18:01:08
+ * @FilePath: /FullStack/lint/eslint-plugin-smarts/copy.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 /**
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22
  * @Description: 文件复制脚本，用于将上级目录中的文件和文件夹复制到当前项目中
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 /**
  * 确保目标目录存在，如果不存在则创建
@@ -53,15 +61,18 @@ function copyFolderRecursive(source, target) {
 // 主函数
 function main() {
   // 定义源路径和目标路径
-  const sourceDocsPath = path.resolve(__dirname, '../eslint-plugin-smart/docs');
-  const targetDocsPath = path.resolve(__dirname, './docs');
+  const sourceDocsPath = path.resolve(__dirname, "../eslint-plugin-smart/docs");
+  const targetDocsPath = path.resolve(__dirname, "./docs");
 
-  const sourceSrcPath = path.resolve(__dirname, '../eslint-plugin-smart/src');
-  const targetSrcPath = path.resolve(__dirname, './src1');
+  const sourceSrcPath = path.resolve(__dirname, "../eslint-plugin-smart/src");
+  const targetSrcPath = path.resolve(__dirname, "./src");
 
   // 定义README.md的源路径和目标路径
-  const sourceReadmePath = path.resolve(__dirname, '../eslint-plugin-smart/README.md');
-  const targetReadmePath = path.resolve(__dirname, './README.md');
+  const sourceReadmePath = path.resolve(
+    __dirname,
+    "../eslint-plugin-smart/README.md",
+  );
+  const targetReadmePath = path.resolve(__dirname, "./README.md");
 
   // 检查源路径是否存在
   if (!fs.existsSync(sourceDocsPath)) {
@@ -79,7 +90,7 @@ function main() {
     return;
   }
 
-  console.log('开始复制文件...');
+  console.log("开始复制文件...");
 
   // 复制docs目录到docs/main
   copyFolderRecursive(sourceDocsPath, targetDocsPath);
@@ -91,7 +102,7 @@ function main() {
   fs.copyFileSync(sourceReadmePath, targetReadmePath);
   console.log(`复制文件: ${sourceReadmePath} -> ${targetReadmePath}`);
 
-  console.log('文件复制完成!');
+  console.log("文件复制完成!");
 }
 
 // 执行主函数
