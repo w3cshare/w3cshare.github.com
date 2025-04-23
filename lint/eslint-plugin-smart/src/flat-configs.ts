@@ -57,14 +57,13 @@ export function createFlatConfigs(
       "**/*.tsx",
       "src/**/*.{js,ts,jsx,tsx}",
     ],
-    ignores: ["**/node_modules/**", "**/dist/**"],
+    ignores: ["**/node_modules/**", "**/dist/**", ".eslintrc.js"],
     plugins: {
       import: importPlugin,
       "simple-import-sort": simpleImportSortPlugin,
       "unused-imports": unusedImportsPlugin,
       prettier: prettierPlugin,
     },
-    ignorePatterns: [".eslintrc.js"],
     rules: baseRules,
   };
 
@@ -73,7 +72,7 @@ export function createFlatConfigs(
    */
   const typescriptFlatConfig: FlatConfig = {
     files: ["**/*.ts", "**/*.tsx", "src/**/*.{ts,tsx}"],
-    ignores: ["**/node_modules/**", "**/dist/**"],
+    ignores: ["**/node_modules/**", "**/dist/**", ".eslintrc.js"],
     languageOptions: {
       parser: typescriptEslintParser,
       parserOptions: {
@@ -87,7 +86,6 @@ export function createFlatConfigs(
     plugins: {
       "@typescript-eslint": typescriptEslintPlugin,
     },
-    ignorePatterns: [".eslintrc.js"],
     rules: {
       ...baseRules,
       ...typescriptRules,
@@ -99,6 +97,7 @@ export function createFlatConfigs(
    */
   const reactFlatConfig: FlatConfig = {
     files: ["**/*.jsx", "**/*.tsx"],
+    ignores: [".eslintrc.js"],
     plugins: {
       react: reactPlugin,
       "react-hooks": reactHooksPlugin,
@@ -119,7 +118,6 @@ export function createFlatConfigs(
         version: "detect",
       },
     },
-    ignorePatterns: [".eslintrc.js"],
     rules: {
       ...baseRules,
       ...typescriptRules,
@@ -132,6 +130,7 @@ export function createFlatConfigs(
    */
   const vueFlatConfig: FlatConfig = {
     files: ["**/*.vue"],
+    ignores: [".eslintrc.js"],
     plugins: {
       vue: vuePlugin,
       import: importPlugin,
@@ -147,7 +146,6 @@ export function createFlatConfigs(
         sourceType: "module",
       },
     },
-    ignorePatterns: [".eslintrc.js"],
     rules: {
       ...baseRules,
       ...typescriptRules,
@@ -160,7 +158,7 @@ export function createFlatConfigs(
    */
   const nestjsFlatConfig: FlatConfig = {
     files: ["**/*.ts", "src/**/*.ts"],
-    ignores: ["**/node_modules/**", "**/dist/**"],
+    ignores: ["**/node_modules/**", "**/dist/**", ".eslintrc.js"],
     plugins: {
       node: nodePlugin,
       import: importPlugin,
@@ -182,7 +180,6 @@ export function createFlatConfigs(
       node: true,
       jest: true,
     },
-    ignorePatterns: [".eslintrc.js"],
     rules: {
       ...baseRules,
       ...typescriptRules,
@@ -195,13 +192,13 @@ export function createFlatConfigs(
    */
   const prettierFlatConfig: FlatConfig = {
     files: ["**/*.{js,ts,jsx,tsx,vue}"],
+    ignores: [".eslintrc.js"],
     plugins: {
       prettier: prettierPlugin,
     },
     rules: {
       "prettier/prettier": "error",
     },
-    ignorePatterns: [".eslintrc.js"],
   };
 
   // 返回所有配置
