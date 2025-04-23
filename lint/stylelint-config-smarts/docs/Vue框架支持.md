@@ -24,8 +24,8 @@ stylelint-config-smarts 为 Vue 单文件组件(.vue)提供了专门的样式规
 ```js
 // .stylelintrc.js
 module.exports = {
-  extends: ['stylelint-config-smarts']
-};
+  extends: ['stylelint-config-smarts'],
+}
 ```
 
 ## 深度选择器的处理
@@ -35,13 +35,23 @@ Vue 中的深度选择器有几种不同的写法，stylelint-config-smarts 支�
 ```vue
 <style scoped>
 /* Vue 2 深度选择器 */
-.a >>> .b { /* 样式将应用到 .b */ }
-.a /deep/ .b { /* 样式将应用到 .b */ }
-.a ::v-deep .b { /* 样式将应用到 .b */ }
+.a >>> .b {
+  /* 样式将应用到 .b */
+}
+.a /deep/ .b {
+  /* 样式将应用到 .b */
+}
+.a ::v-deep .b {
+  /* 样式将应用到 .b */
+}
 
 /* Vue 3 深度选择器 */
-.a ::v-deep(.b) { /* 样式将应用到 .b */ }
-.a :deep(.b) { /* 样式将应用到 .b */ }
+.a ::v-deep(.b) {
+  /* 样式将应用到 .b */
+}
+.a :deep(.b) {
+  /* 样式将应用到 .b */
+}
 </style>
 ```
 
@@ -60,26 +70,26 @@ Vue 中的深度选择器有几种不同的写法，stylelint-config-smarts 支�
 <style lang="scss" scoped>
 .component {
   position: relative;
-  
+
   display: flex;
   flex-direction: column;
-  
+
   width: 100%;
-  
+
   margin: 16px 0;
-  
+
   // 使用深度选择器
   :deep(.content) {
     padding: 16px;
-    
+
     background-color: #f5f5f5;
-    
+
     font-size: 14px;
   }
-  
+
   .title {
     margin-bottom: 16px;
-    
+
     color: #333;
     font-weight: bold;
   }
@@ -93,19 +103,19 @@ Vue 中的深度选择器有几种不同的写法，stylelint-config-smarts 支�
 
 ```js
 // vite.config.js
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import stylelint from 'vite-plugin-stylelint';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import stylelint from 'vite-plugin-stylelint'
 
 export default defineConfig({
   plugins: [
     vue(),
     stylelint({
       include: ['src/**/*.vue', 'src/**/*.css', 'src/**/*.scss'],
-      fix: true
-    })
-  ]
-});
+      fix: true,
+    }),
+  ],
+})
 ```
 
 ## 组件库样式规范
@@ -129,38 +139,38 @@ export default defineConfig({
 <style lang="scss" scoped>
 .smart-button {
   position: relative;
-  
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  
+
   height: var(--button-height, 32px);
   padding: 0 var(--button-padding, 16px);
-  
+
   border: 1px solid transparent;
   border-radius: var(--button-radius, 4px);
-  
+
   background-color: transparent;
-  
+
   font-size: var(--button-font-size, 14px);
   line-height: 1;
-  
+
   cursor: pointer;
   transition: all 0.2s;
-  
+
   &--primary {
     border-color: var(--primary-color, #1890ff);
-    
+
     background-color: var(--primary-color, #1890ff);
-    
+
     color: #fff;
   }
-  
+
   &--default {
     border-color: #d9d9d9;
-    
+
     background-color: #fff;
-    
+
     color: rgba(0, 0, 0, 0.85);
   }
 }
@@ -216,22 +226,22 @@ module.exports = {
 <style module>
 .container {
   position: relative;
-  
+
   display: flex;
   flex-direction: column;
-  
+
   width: 100%;
-  
+
   padding: 16px;
-  
+
   border-radius: 4px;
-  
+
   background-color: #fff;
 }
 
 .title {
   margin-bottom: 16px;
-  
+
   color: #333;
   font-size: 18px;
   font-weight: bold;
@@ -255,11 +265,11 @@ module.exports = {
     'selector-pseudo-element-no-unknown': [
       true,
       {
-        ignorePseudoElements: ['v-deep', 'v-global', 'v-slotted']
-      }
-    ]
-  }
-};
+        ignorePseudoElements: ['v-deep', 'v-global', 'v-slotted'],
+      },
+    ],
+  },
+}
 ```
 
 ### 2. Vue 3 项目中的 CSS 变量命名规则
@@ -288,9 +298,9 @@ module.exports = {
     'selector-type-no-unknown': [
       true,
       {
-        ignore: ['custom-elements']
-      }
-    ]
-  }
-};
-``` 
+        ignore: ['custom-elements'],
+      },
+    ],
+  },
+}
+```

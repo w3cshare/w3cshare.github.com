@@ -70,7 +70,7 @@ module.exports = {
   rules: {
     // 项目特定的覆盖规则（如果需要）
   },
-};
+}
 ```
 
 ### React 项目
@@ -144,7 +144,7 @@ module.exports = {
     // 添加新规则
     'color-named': 'always-where-possible',
   },
-};
+}
 ```
 
 ## 禁用规则

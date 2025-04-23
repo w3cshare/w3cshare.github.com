@@ -1,4 +1,4 @@
-import * as vscode from 'vscode';
+import * as vscode from 'vscode'
 
 export function activate(context: vscode.ExtensionContext) {
   // 注册命令
@@ -12,26 +12,26 @@ export function activate(context: vscode.ExtensionContext) {
         enableScripts: true, // 启用JS
         retainContextWhenHidden: true, // 隐藏时保持状态
       },
-    );
+    )
 
     // 设置webview的HTML内容
-    panel.webview.html = getWebviewContent();
+    panel.webview.html = getWebviewContent()
 
     // 处理webview发来的消息
     panel.webview.onDidReceiveMessage(
       message => {
         switch (message.command) {
           case 'generateCode':
-            generateCode(message.data);
-            return;
+            generateCode(message.data)
+            return
         }
       },
       undefined,
       context.subscriptions,
-    );
-  });
+    )
+  })
 
-  context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable)
 }
 
 // 生成webview的HTML内容
@@ -123,13 +123,13 @@ function getWebviewContent() {
       </script>
     </body>
     </html>
-  `;
+  `
 }
 
 // 生成代码的函数
 function generateCode(components: any[]) {
   // TODO: 根据组件配置生成实际的代码
-  vscode.window.showInformationMessage('Code generation started!');
+  vscode.window.showInformationMessage('Code generation started!')
 }
 
 export function deactivate() {}

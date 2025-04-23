@@ -6,22 +6,22 @@
  * @FilePath: /FullStack/micro-service/nestjs-logger/src/logger.service.ts
  * @Description: --
  */
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common'
 
-import { LOGGER_OPTIONS } from './logger.constants';
-import { LoggerOptions } from './logger.interfaces';
+import { LOGGER_OPTIONS } from './logger.constants'
+import { LoggerOptions } from './logger.interfaces'
 
 @Injectable()
 export class LoggerService {
   constructor(@Inject(LOGGER_OPTIONS) private options: LoggerOptions) {
-    console.debug(options); // 输出 optio
+    console.debug(options) // 输出 optio
   }
 
   log(message: string) {
     if (this.options.format === 'json') {
-      console.log(JSON.stringify({ message, level: this.options.level }));
+      console.log(JSON.stringify({ message, level: this.options.level }))
     } else {
-      console.log(`[${this.options.level}] ${message}`);
+      console.log(`[${this.options.level}] ${message}`)
     }
   }
 }

@@ -1001,4 +1001,4 @@ export default {
 
   // yield* 后面必须加空格
   'yield-star-spacing': 'error',
-};
+}

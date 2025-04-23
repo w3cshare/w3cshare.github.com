@@ -7,9 +7,9 @@
  * @Description: eslint 代码规范 for eslint-plugin-smarts
  */
 
-import recommendedRulesAnt from './recommended-rules-ant';
-import recommendedRulesExpand from './recommended-rules-expand';
-import recommendedRulesHaWei from './recommended-rules-haWei';
+import recommendedRulesAnt from './recommended-rules-ant'
+import recommendedRulesExpand from './recommended-rules-expand'
+import recommendedRulesHaWei from './recommended-rules-haWei'
 
 export default {
   // 数组/对象排序 annotation
@@ -188,4 +188,4 @@ export default {
   ...recommendedRulesExpand,
   ...recommendedRulesHaWei,
   ...recommendedRulesAnt,
-};
+}

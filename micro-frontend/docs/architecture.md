@@ -85,10 +85,10 @@ registerMicroApps([
     container: '#container',
     activeRule: '/vue',
   },
-]);
+])
 
 // 启动应用
-start();
+start()
 ```
 
 主要特点：
@@ -134,12 +134,12 @@ window.dispatchEvent(
   new CustomEvent('global-event', {
     detail: { message: 'Hello from App1' },
   }),
-);
+)
 
 // 微应用2监听事件
 window.addEventListener('global-event', event => {
-  console.log(event.detail.message);
-});
+  console.log(event.detail.message)
+})
 ```
 
 ### 2. 基于状态共享的通信
@@ -148,15 +148,15 @@ window.addEventListener('global-event', event => {
 
 ```js
 // 共享的全局状态管理
-import { createStore } from '@fullstack/micro-store';
+import { createStore } from '@fullstack/micro-store'
 
 const store = createStore({
   user: { name: 'John', role: 'admin' },
   theme: 'light',
-});
+})
 
 // 在微应用中使用
-const { state, dispatch } = useGlobalStore();
+const { state, dispatch } = useGlobalStore()
 ```
 
 ## 资源加载优化

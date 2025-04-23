@@ -22,6 +22,6 @@ export default {
   ecmaFeatures: {
     jsx: true, // 支持JSX
     impliedStrict: true, // 启用全局严格模式
-    experimentalObjectRestSpread: true // 支持对象的扩展运算符
-  }
-};
+    experimentalObjectRestSpread: true, // 支持对象的扩展运算符
+  },
+}

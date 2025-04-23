@@ -1,51 +1,51 @@
-import type { UserConfig } from '@commitlint/types';
+import type { UserConfig } from '@commitlint/types'
 
 /**
  * 自定义提交类型列表
  */
 const types = [
   // 常规类型
-  'feat',     // 新功能
-  'fix',      // 修复Bug
-  'docs',     // 文档更新
-  'style',    // 代码风格调整（不影响代码功能）
+  'feat', // 新功能
+  'fix', // 修复Bug
+  'docs', // 文档更新
+  'style', // 代码风格调整（不影响代码功能）
   'refactor', // 代码重构（不包括 bug 修复或功能新增）
-  'perf',     // 性能优化
-  'test',     // 测试相关
-  'build',    // 构建系统或外部依赖更改
-  'ci',       // CI配置更改
-  'chore',    // 其他改动（不修改src或测试文件）
-  'revert',   // 回滚之前的提交
-  
+  'perf', // 性能优化
+  'test', // 测试相关
+  'build', // 构建系统或外部依赖更改
+  'ci', // CI配置更改
+  'chore', // 其他改动（不修改src或测试文件）
+  'revert', // 回滚之前的提交
+
   // 自定义扩展类型
-  'ui',       // UI相关更改
-  'wip',      // 开发中的工作（Work In Progress）
-  'api',      // API相关更改
-  'release',  // 版本发布
-  'deploy',   // 部署相关
-  'config',   // 配置调整
-  'i18n',     // 国际化
-  'lint',     // 代码检查调整
-  'types',    // 类型定义文件更改
-];
+  'ui', // UI相关更改
+  'wip', // 开发中的工作（Work In Progress）
+  'api', // API相关更改
+  'release', // 版本发布
+  'deploy', // 部署相关
+  'config', // 配置调整
+  'i18n', // 国际化
+  'lint', // 代码检查调整
+  'types', // 类型定义文件更改
+]
 
 /**
  * 自定义作用域列表（可根据实际项目组件/模块进行调整）
  */
 const scopes = [
   'components', // 组件
-  'utils',      // 工具
-  'styles',     // 样式
-  'deps',       // 依赖
-  'config',     // 配置
-  'core',       // 核心功能
-  'ci',         // 持续集成
-  'scripts',    // 脚本
-  'docs',       // 文档
-  'release',    // 发布
-  'other',      // 其他
-  '',           // 允许空作用域
-];
+  'utils', // 工具
+  'styles', // 样式
+  'deps', // 依赖
+  'config', // 配置
+  'core', // 核心功能
+  'ci', // 持续集成
+  'scripts', // 脚本
+  'docs', // 文档
+  'release', // 发布
+  'other', // 其他
+  '', // 允许空作用域
+]
 
 /**
  * Commitlint 配置
@@ -55,41 +55,37 @@ const configuration: UserConfig = {
   rules: {
     // type类型定义
     'type-enum': [2, 'always', types],
-    
+
     // type必须小写
     'type-case': [2, 'always', 'lower-case'],
-    
+
     // type不能为空
     'type-empty': [2, 'never'],
-    
+
     // scope定义
     'scope-enum': [2, 'always', scopes],
-    
+
     // scope必须小写
     'scope-case': [2, 'always', 'lower-case'],
-    
+
     // 允许scope为空
     'scope-empty': [0, 'never'],
-    
+
     // subject必须小写开头
-    'subject-case': [
-      2,
-      'never',
-      ['sentence-case', 'start-case', 'pascal-case', 'upper-case'],
-    ],
-    
+    'subject-case': [2, 'never', ['sentence-case', 'start-case', 'pascal-case', 'upper-case']],
+
     // subject不能为空
     'subject-empty': [2, 'never'],
-    
+
     // subject不能以.结尾
     'subject-full-stop': [2, 'never', '.'],
-    
+
     // body以空行开头
     'body-leading-blank': [1, 'always'],
-    
+
     // footer以空行开头
     'footer-leading-blank': [1, 'always'],
-    
+
     // header最大长度
     'header-max-length': [2, 'always', 100],
   },
@@ -216,6 +212,6 @@ const configuration: UserConfig = {
       },
     },
   },
-};
+}
 
-export = configuration;
+export = configuration

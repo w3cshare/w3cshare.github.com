@@ -68,4 +68,4 @@ export default {
   'react/display-name': 'warn',
   'react/jsx-boolean-value': ['error', 'never'],
   'react/jsx-pascal-case': 'error',
-};
+}

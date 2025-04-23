@@ -88,29 +88,32 @@ pnpm start:angular-app  # 启动Angular微应用
 export const microApps = [
   {
     name: 'vue-app',
-    entry: process.env.NODE_ENV === 'production'
-      ? 'https://example.com/vue-app/'
-      : 'http://localhost:3001',
+    entry:
+      process.env.NODE_ENV === 'production'
+        ? 'https://example.com/vue-app/'
+        : 'http://localhost:3001',
     container: '#micro-container',
-    activeRule: '/vue'
+    activeRule: '/vue',
   },
   {
     name: 'react-app',
-    entry: process.env.NODE_ENV === 'production'
-      ? 'https://example.com/react-app/'
-      : 'http://localhost:3002',
+    entry:
+      process.env.NODE_ENV === 'production'
+        ? 'https://example.com/react-app/'
+        : 'http://localhost:3002',
     container: '#micro-container',
-    activeRule: '/react'
+    activeRule: '/react',
   },
   {
     name: 'angular-app',
-    entry: process.env.NODE_ENV === 'production'
-      ? 'https://example.com/angular-app/'
-      : 'http://localhost:3003',
+    entry:
+      process.env.NODE_ENV === 'production'
+        ? 'https://example.com/angular-app/'
+        : 'http://localhost:3003',
     container: '#micro-container',
-    activeRule: '/angular'
-  }
-];
+    activeRule: '/angular',
+  },
+]
 ```
 
 ### 2. 初始化微前端框架
@@ -118,30 +121,30 @@ export const microApps = [
 在`container/src/main.js`中初始化微前端框架：
 
 ```javascript
-import { registerMicroApps, start } from '@fullstack/micro-frontend';
-import { microApps } from './config/apps';
+import { registerMicroApps, start } from '@fullstack/micro-frontend'
+import { microApps } from './config/apps'
 
 // 注册微应用
 registerMicroApps(microApps, {
   beforeLoad: [
     app => {
-      console.log(`[Container] 开始加载 ${app.name} 应用`);
-    }
+      console.log(`[Container] 开始加载 ${app.name} 应用`)
+    },
   ],
   beforeMount: [
     app => {
-      console.log(`[Container] 开始挂载 ${app.name} 应用`);
-    }
+      console.log(`[Container] 开始挂载 ${app.name} 应用`)
+    },
   ],
   afterUnmount: [
     app => {
-      console.log(`[Container] ${app.name} 应用已卸载`);
-    }
-  ]
-});
+      console.log(`[Container] ${app.name} 应用已卸载`)
+    },
+  ],
+})
 
 // 启动微前端框架
-start();
+start()
 ```
 
 ### 3. 创建微应用容器
@@ -158,12 +161,12 @@ start();
         <router-link to="/angular">Angular应用</router-link>
       </nav>
     </header>
-    
+
     <main>
       <!-- 微应用将在此处挂载 -->
       <div id="micro-container"></div>
     </main>
-    
+
     <footer>
       <p>微前端基座应用 &copy; 2023</p>
     </footer>
@@ -180,42 +183,42 @@ start();
 在`micro-apps/vue-app/src/main.js`中：
 
 ```javascript
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
 
-let instance = null;
+let instance = null
 
 // 微应用独立运行时
 if (!window.__POWERED_BY_MICRO_FRONTEND__) {
-  createApp(App).use(router).mount('#app');
+  createApp(App).use(router).mount('#app')
 }
 
 // 微应用入口，导出生命周期钩子
 export async function bootstrap() {
-  console.log('[Vue] vue app bootstraped');
+  console.log('[Vue] vue app bootstraped')
 }
 
 export async function mount(props) {
-  console.log('[Vue] vue app mounted', props);
-  
+  console.log('[Vue] vue app mounted', props)
+
   // 创建应用实例
-  instance = createApp(App);
-  instance.use(router);
-  
+  instance = createApp(App)
+  instance.use(router)
+
   // 可接收基座下发的props
-  const { container, shared } = props;
-  instance.provide('shared', shared);
-  
+  const { container, shared } = props
+  instance.provide('shared', shared)
+
   // 挂载应用
-  instance.mount(container ? container.querySelector('#app') : '#app');
+  instance.mount(container ? container.querySelector('#app') : '#app')
 }
 
 export async function unmount() {
-  console.log('[Vue] vue app unmounted');
+  console.log('[Vue] vue app unmounted')
   if (instance) {
-    instance.unmount();
-    instance = null;
+    instance.unmount()
+    instance = null
   }
 }
 ```
@@ -225,37 +228,37 @@ export async function unmount() {
 在`micro-apps/react-app/src/index.js`中：
 
 ```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
 
-let root = null;
+let root = null
 
 // 微应用独立运行时
 if (!window.__POWERED_BY_MICRO_FRONTEND__) {
-  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 }
 
 // 微应用入口，导出生命周期钩子
 export async function bootstrap() {
-  console.log('[React] react app bootstraped');
+  console.log('[React] react app bootstraped')
 }
 
 export async function mount(props) {
-  console.log('[React] react app mounted', props);
-  
-  const { container, shared } = props;
-  const rootElement = container ? container.querySelector('#root') : document.getElementById('root');
-  
-  root = ReactDOM.createRoot(rootElement);
-  root.render(<App shared={shared} />);
+  console.log('[React] react app mounted', props)
+
+  const { container, shared } = props
+  const rootElement = container ? container.querySelector('#root') : document.getElementById('root')
+
+  root = ReactDOM.createRoot(rootElement)
+  root.render(<App shared={shared} />)
 }
 
 export async function unmount() {
-  console.log('[React] react app unmounted');
+  console.log('[React] react app unmounted')
   if (root) {
-    root.unmount();
-    root = null;
+    root.unmount()
+    root = null
   }
 }
 ```
@@ -269,8 +272,8 @@ export async function unmount() {
 在`micro-apps/vue-app/vue.config.js`中：
 
 ```javascript
-const { defineConfig } = require('@vue/cli-service');
-const packageName = require('./package.json').name;
+const { defineConfig } = require('@vue/cli-service')
+const packageName = require('./package.json').name
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -287,7 +290,7 @@ module.exports = defineConfig({
       chunkLoadingGlobal: `webpackJsonp_${packageName}`,
     },
   },
-});
+})
 ```
 
 ### React微应用Webpack配置
@@ -295,30 +298,31 @@ module.exports = defineConfig({
 在`micro-apps/react-app/config-overrides.js`中：
 
 ```javascript
-const packageName = require('./package.json').name;
+const packageName = require('./package.json').name
 
 module.exports = {
   webpack: function override(config, env) {
-    config.output.library = `${packageName}`;
-    config.output.libraryTarget = 'umd';
-    config.output.chunkLoadingGlobal = `webpackJsonp_${packageName}`;
-    
-    config.output.publicPath = process.env.NODE_ENV === 'production'
-      ? 'https://example.com/react-app/'
-      : 'http://localhost:3002/';
-      
-    return config;
+    config.output.library = `${packageName}`
+    config.output.libraryTarget = 'umd'
+    config.output.chunkLoadingGlobal = `webpackJsonp_${packageName}`
+
+    config.output.publicPath =
+      process.env.NODE_ENV === 'production'
+        ? 'https://example.com/react-app/'
+        : 'http://localhost:3002/'
+
+    return config
   },
-  devServer: (configFunction) => {
-    return function(proxy, allowedHost) {
-      const config = configFunction(proxy, allowedHost);
+  devServer: configFunction => {
+    return function (proxy, allowedHost) {
+      const config = configFunction(proxy, allowedHost)
       config.headers = {
         'Access-Control-Allow-Origin': '*',
-      };
-      return config;
-    };
+      }
+      return config
+    }
   },
-};
+}
 ```
 
 ## 微应用间通信
@@ -328,7 +332,7 @@ module.exports = {
 在`shared/utils/store.js`中创建共享状态：
 
 ```javascript
-import { createStore } from '@fullstack/micro-store';
+import { createStore } from '@fullstack/micro-store'
 
 export const store = createStore({
   user: {
@@ -336,7 +340,7 @@ export const store = createStore({
     isLoggedIn: false,
   },
   theme: 'light',
-});
+})
 
 // 在基座应用或微应用中使用
 // import { store } from '@shared/utils/store';
@@ -348,24 +352,24 @@ export const store = createStore({
 
 ```javascript
 export class EventBus {
-  static events = {};
+  static events = {}
 
   static on(event, callback) {
     if (!this.events[event]) {
-      this.events[event] = [];
+      this.events[event] = []
     }
-    this.events[event].push(callback);
+    this.events[event].push(callback)
   }
 
   static emit(event, data) {
     if (this.events[event]) {
-      this.events[event].forEach(callback => callback(data));
+      this.events[event].forEach(callback => callback(data))
     }
   }
 
   static off(event, callback) {
     if (this.events[event]) {
-      this.events[event] = this.events[event].filter(cb => cb !== callback);
+      this.events[event] = this.events[event].filter(cb => cb !== callback)
     }
   }
 }
@@ -381,18 +385,15 @@ export class EventBus {
 ### 预加载微应用
 
 ```javascript
-import { registerMicroApps, start, prefetchApps } from '@fullstack/micro-frontend';
-import { microApps } from './config/apps';
+import { registerMicroApps, start, prefetchApps } from '@fullstack/micro-frontend'
+import { microApps } from './config/apps'
 
-registerMicroApps(microApps);
+registerMicroApps(microApps)
 
 // 预加载指定微应用
-prefetchApps([
-  { name: 'vue-app' },
-  { name: 'react-app' }
-]);
+prefetchApps([{ name: 'vue-app' }, { name: 'react-app' }])
 
-start();
+start()
 ```
 
 ### 全局错误处理
@@ -469,4 +470,4 @@ server {
 - [阅读架构详情](/micro-frontend/architecture)
 - [查看最佳实践](/micro-frontend/best-practices)
 - [API参考文档](/micro-frontend/api)
-- [示例项目](/micro-frontend/examples) 
+- [示例项目](/micro-frontend/examples)

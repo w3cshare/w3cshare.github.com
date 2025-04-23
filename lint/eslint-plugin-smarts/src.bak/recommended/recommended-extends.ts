@@ -32,4 +32,4 @@ export default [
 
   // 可访问性
   'plugin:jsx-a11y/recommended',
-];
+]

@@ -6,6 +6,6 @@
  * @FilePath: /FullStack/micro-service/nestjs-static/src/nestjs-static.ts
  * @Description: --
  */
-import { StaticModule } from './static.module';
+import { StaticModule } from './static.module'
 
-export { StaticModule };
+export { StaticModule }

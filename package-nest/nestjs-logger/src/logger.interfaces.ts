@@ -8,6 +8,6 @@
  */
 // logger.interfaces.ts
 export interface LoggerOptions {
-  level: 'debug' | 'info' | 'warn' | 'error';
-  format?: 'json' | 'text';
+  level: 'debug' | 'info' | 'warn' | 'error'
+  format?: 'json' | 'text'
 }

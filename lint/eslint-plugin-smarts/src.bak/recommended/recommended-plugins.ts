@@ -16,16 +16,16 @@ export default {
   '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
 
   // React相关插件
-  'react': require('eslint-plugin-react'),
+  react: require('eslint-plugin-react'),
   'react-hooks': require('eslint-plugin-react-hooks'),
   'jsx-a11y': require('eslint-plugin-jsx-a11y'),
 
   // Vue相关插件
-  'vue': require('eslint-plugin-vue'),
+  vue: require('eslint-plugin-vue'),
 
   // 导入/导出相关插件
-  'import': require('eslint-plugin-import'),
+  import: require('eslint-plugin-import'),
 
   // 格式化相关插件
-  'prettier': require('eslint-plugin-prettier'),
-};
+  prettier: require('eslint-plugin-prettier'),
+}

@@ -11,21 +11,11 @@
     "baseUrl": ".",
     "checkJs": false,
     "strict": true,
-    "lib": [
-      "esnext",
-      "DOM"
-    ],
+    "lib": ["esnext", "DOM"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     }
   },
-  "include": [
-    "src/global.d.ts",
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/global.d.ts", "src/**/*.ts"],
+  "exclude": ["node_modules"]
 }

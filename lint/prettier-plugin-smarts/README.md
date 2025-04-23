@@ -80,7 +80,7 @@ module.exports = {
   sortJsonKeys: true, // 启用 JSON 键排序
   importOrder: '^react,^@/,^[./]', // 设置 import 排序规则
   vueIndentScriptAndStyle: true, // Vue 文件缩进控制
-};
+}
 ```
 
 ### 与 VS Code 集成
@@ -105,7 +105,7 @@ module.exports = {
 // .prettierrc.js
 module.exports = {
   sortJsonKeys: true, // 默认值为 true
-};
+}
 ```
 
 ### importOrder
@@ -116,21 +116,21 @@ module.exports = {
 // .prettierrc.js
 module.exports = {
   importOrder: '^react,^@/,^[./]',
-};
+}
 ```
 
 示例效果：
 
 ```js
 // 排序前
-import './styles.css';
-import React from 'react';
-import { Component } from '@/components';
+import './styles.css'
+import React from 'react'
+import { Component } from '@/components'
 
 // 排序后
-import React from 'react';
-import { Component } from '@/components';
-import './styles.css';
+import React from 'react'
+import { Component } from '@/components'
+import './styles.css'
 ```
 
 ### vueIndentScriptAndStyle
@@ -141,7 +141,7 @@ import './styles.css';
 // .prettierrc.js
 module.exports = {
   vueIndentScriptAndStyle: true, // 默认值为 true
-};
+}
 ```
 
 ## 与框架配合使用
@@ -155,7 +155,7 @@ React 项目可以使用以下配置：
 module.exports = {
   importOrder: '^react,^@/components/,^@/hooks/,^@/utils/,^@/services/,^[./]',
   // 其他配置
-};
+}
 ```
 
 ### Vue 项目
@@ -168,7 +168,7 @@ module.exports = {
   vueIndentScriptAndStyle: true,
   importOrder: '^vue,^@/components/,^@/composables/,^@/utils/,^@/api/,^[./]',
   // 其他配置
-};
+}
 ```
 
 ### NestJS 项目
@@ -180,7 +180,7 @@ NestJS 项目可以使用以下配置：
 module.exports = {
   importOrder: '^@nestjs/,^@/modules/,^@/services/,^@/entities/,^@/dto/,^[./]',
   // 其他配置
-};
+}
 ```
 
 ## 命令行使用
@@ -244,7 +244,7 @@ module.exports = {
     // 其他插件
     'prettier-plugin-smarts', // 放在最后
   ],
-};
+}
 ```
 
 ### 2. 警告信息"Ignored unknown option"
@@ -268,14 +268,14 @@ const config = {
   printWidth: 100,
   tabWidth: 2,
   singleQuote: true,
-  
+
   // 插件配置
   plugins: ['prettier-plugin-smarts'],
   sortJsonKeys: true,
   importOrder: '^react,^@/,^[./]',
-};
+}
 
-module.exports = config;
+module.exports = config
 ```
 
 ### 3. 自定义排序规则
@@ -287,7 +287,7 @@ module.exports = config;
 module.exports = {
   sortJsonKeys: true,
   // 其他配置
-};
+}
 ```
 
 ## 更新日志

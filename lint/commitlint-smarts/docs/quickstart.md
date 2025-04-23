@@ -32,7 +32,7 @@ yarn add --dev @company/commitlint-smarts
 ```js
 module.exports = {
   extends: ['@company/commitlint-smarts'],
-};
+}
 ```
 
 ### 步骤2：安装 husky
@@ -90,4 +90,4 @@ Closes #123
 
 - 查看[完整配置](./configuration.md)了解更多自定义选项
 - 了解[提交类型](./types.md)的详细说明
-- 配置[交互式提交](./interactive.md)提升开发体验 
+- 配置[交互式提交](./interactive.md)提升开发体验

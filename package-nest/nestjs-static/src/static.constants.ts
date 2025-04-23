@@ -6,4 +6,4 @@
  * @FilePath: /FullStack/micro-service/nestjs-static/src/static.constants.ts
  * @Description: --
  */
-export const STATIC_OPTIONS = 'STATIC_OPTIONS';
+export const STATIC_OPTIONS = 'STATIC_OPTIONS'

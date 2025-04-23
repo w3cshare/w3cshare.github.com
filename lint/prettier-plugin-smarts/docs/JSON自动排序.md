@@ -37,10 +37,10 @@ prettier-plugin-smarts 提供了高级的 JSON 文件排序功能，帮助团队
 module.exports = {
   // 启用 JSON 排序（默认）
   sortJsonKeys: true,
-  
+
   // 禁用 JSON 排序
   // sortJsonKeys: false
-};
+}
 ```
 
 ### 自定义排序规则
@@ -52,9 +52,9 @@ module.exports = {
 module.exports = {
   sortJsonKeys: {
     order: ['name', 'version', 'description', '*', 'dependencies', 'devDependencies'],
-    indentSize: 2
-  }
-};
+    indentSize: 2,
+  },
+}
 ```
 
 ## 排序规则详解
@@ -292,10 +292,10 @@ module.exports = {
       'customField1',
       'customField2',
       '*', // 其他字段
-      'nestedConfigs'
-    ]
-  }
-};
+      'nestedConfigs',
+    ],
+  },
+}
 ```
 
 ### 2. 某些 JSON 文件需要保持原始顺序
@@ -319,4 +319,4 @@ config/special-order.json
 # CI 配置
 - name: Check JSON formatting
   run: npx prettier --check "**/*.json"
-``` 
+```

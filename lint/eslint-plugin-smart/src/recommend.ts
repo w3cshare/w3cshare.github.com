@@ -220,8 +220,8 @@ export const javascriptRules: ESLintRuleSet = {
       // 不允许将多行对象的结束括号放在最后一行的末尾
       bracketSameLine: false,
 
-      // 强制箭头函数的参数使用圆括号，即使只有一个参数
-      arrowParens: 'always',
+      // 箭头函数的参数使用圆括号的规则，仅在必要时使用
+      arrowParens: 'avoid',
 
       // 换行符使用LF（Unix风格）
       endOfLine: 'lf',

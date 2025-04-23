@@ -80,23 +80,27 @@ app.component('FSForm', FSForm)
 如果您想要参与组件库开发，请按照以下步骤进行：
 
 1. 克隆仓库
+
 ```bash
 git clone https://github.com/your-org/fullstack.git
 cd fullstack
 ```
 
 2. 安装依赖
+
 ```bash
 pnpm install
 ```
 
 3. 启动组件开发环境
+
 ```bash
 cd package-vue
 pnpm dev
 ```
 
 4. 打包组件库
+
 ```bash
 pnpm build
 ```
@@ -128,4 +132,4 @@ package-vue/
 - [查看组件文档](/package-vue/components)
 - [了解主题定制](/package-vue/theming)
 - [阅读设计规范](/package-vue/design)
-- [探索最佳实践](/package-vue/development-guide) 
+- [探索最佳实践](/package-vue/development-guide)

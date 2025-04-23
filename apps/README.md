@@ -133,7 +133,7 @@ export default {
     { name: 'workflow', enabled: true },
     { name: 'report', enabled: true },
   ],
-};
+}
 ```
 
 ## 平台架构图

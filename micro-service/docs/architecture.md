@@ -54,7 +54,7 @@ outline: deep
 export class UserService {
   @MessagePattern({ cmd: 'get_user' })
   getUser(id: number): User {
-    return this.userRepository.findById(id);
+    return this.userRepository.findById(id)
   }
 }
 
@@ -64,7 +64,7 @@ export class UserClient {
   constructor(@Inject('USER_SERVICE') private client: ClientProxy) {}
 
   getUser(id: number): Observable<User> {
-    return this.client.send({ cmd: 'get_user' }, id);
+    return this.client.send({ cmd: 'get_user' }, id)
   }
 }
 ```
@@ -248,27 +248,27 @@ public Tracer zipkinTracer(Reporter<Span> reporter) {
 ```typescript
 // 聚合根示例（TypeScript）
 class Order {
-  private id: OrderId;
-  private customerId: CustomerId;
-  private items: OrderItem[] = [];
-  private status: OrderStatus = OrderStatus.CREATED;
+  private id: OrderId
+  private customerId: CustomerId
+  private items: OrderItem[] = []
+  private status: OrderStatus = OrderStatus.CREATED
 
   addItem(productId: ProductId, quantity: number, price: Money): void {
     if (this.status !== OrderStatus.CREATED) {
-      throw new OrderNotModifiableError();
+      throw new OrderNotModifiableError()
     }
-    this.items.push(new OrderItem(productId, quantity, price));
+    this.items.push(new OrderItem(productId, quantity, price))
   }
 
   confirm(): void {
     if (this.items.length === 0) {
-      throw new EmptyOrderError();
+      throw new EmptyOrderError()
     }
-    this.status = OrderStatus.CONFIRMED;
+    this.status = OrderStatus.CONFIRMED
   }
 
   getTotal(): Money {
-    return this.items.reduce((total, item) => total.add(item.getSubtotal()), Money.zero());
+    return this.items.reduce((total, item) => total.add(item.getSubtotal()), Money.zero())
   }
 }
 ```
@@ -293,19 +293,19 @@ class CreateOrderSaga {
   async execute(command: CreateOrderCommand): Promise<void> {
     try {
       // 第一步：创建订单
-      const orderId = await this.orderService.createOrder(command);
+      const orderId = await this.orderService.createOrder(command)
 
       // 第二步：预留库存
-      await this.inventoryService.reserveItems(orderId, command.items);
+      await this.inventoryService.reserveItems(orderId, command.items)
 
       // 第三步：处理支付
-      await this.paymentService.processPayment(orderId, command.payment);
+      await this.paymentService.processPayment(orderId, command.payment)
 
       // 第四步：确认订单
-      await this.orderService.confirmOrder(orderId);
+      await this.orderService.confirmOrder(orderId)
     } catch (error) {
       // 补偿事务
-      await this.compensate(error);
+      await this.compensate(error)
     }
   }
 
@@ -486,9 +486,9 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
   // 自定义处理
   handleRequest(err, user, info) {
     if (err || !user) {
-      throw err || new UnauthorizedException();
+      throw err || new UnauthorizedException()
     }
-    return user;
+    return user
   }
 }
 

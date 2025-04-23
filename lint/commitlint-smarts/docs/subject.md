@@ -59,13 +59,13 @@ refactor(api): 简化错误处理逻辑
 
 ## 不良主题行示例及修正
 
-| 不良示例 | 问题 | 修正示例 |
-|---------|-----|---------|
-| `进行了一些修改` | 过于模糊，没有明确内容 | `修复用户注册表单验证问题` |
-| `Fix bug.` | 过于简短，不明确 | `fix: correct input validation on payment form` |
-| `重构代码。` | 不具体，以句号结尾 | `refactor: 优化用户认证模块` |
-| `Updated the README file with new instructions.` | 过长，使用过去式 | `docs: update README with new instructions` |
-| `添加了新功能，修复了一些bug` | 包含多个变更 | 拆分为多个提交 |
+| 不良示例                                         | 问题                   | 修正示例                                        |
+| ------------------------------------------------ | ---------------------- | ----------------------------------------------- |
+| `进行了一些修改`                                 | 过于模糊，没有明确内容 | `修复用户注册表单验证问题`                      |
+| `Fix bug.`                                       | 过于简短，不明确       | `fix: correct input validation on payment form` |
+| `重构代码。`                                     | 不具体，以句号结尾     | `refactor: 优化用户认证模块`                    |
+| `Updated the README file with new instructions.` | 过长，使用过去式       | `docs: update README with new instructions`     |
+| `添加了新功能，修复了一些bug`                    | 包含多个变更           | 拆分为多个提交                                  |
 
 ## 如何写好主题行
 
@@ -100,17 +100,18 @@ module.exports = {
     'subject-case': [2, 'never', ['sentence-case', 'start-case', 'pascal-case', 'upper-case']],
     'subject-empty': [2, 'never'],
     'subject-full-stop': [2, 'never', '.'],
-    'subject-max-length': [2, 'always', 50]
-  }
-};
+    'subject-max-length': [2, 'always', 50],
+  },
+}
 ```
 
 ## 小结
 
 良好的主题行能够：
+
 - 帮助团队成员快速理解变更
 - 便于后续查找和跟踪变更
 - 有助于自动生成高质量的变更日志
 - 促进团队协作和代码审查效率
 
-记住：主题行是提交消息中最重要的部分，因为它通常是人们在查看提交历史时首先（有时是唯一）看到的内容。 
+记住：主题行是提交消息中最重要的部分，因为它通常是人们在查看提交历史时首先（有时是唯一）看到的内容。

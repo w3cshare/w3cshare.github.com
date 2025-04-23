@@ -7,16 +7,16 @@
  * @Description: Google标签页首页
  */
 
-import { render } from './render';
-import { setupEventListeners } from './events';
-import { loadUserSettings } from './settings';
+import { render } from './render'
+import { setupEventListeners } from './events'
+import { loadUserSettings } from './settings'
 
 export interface TabHomeOptions {
-  container: string | HTMLElement;
+  container: string | HTMLElement
   config?: {
-    weatherEnabled?: boolean;
-    searchEnabled?: boolean;
-    customBackground?: string;
+    weatherEnabled?: boolean
+    searchEnabled?: boolean
+    customBackground?: string
   }
 }
 
@@ -24,15 +24,15 @@ export interface TabHomeOptions {
  * 初始化Google标签页首页
  */
 export function initTabHome(options: TabHomeOptions) {
-  const settings = loadUserSettings();
-  render(options.container, settings);
-  setupEventListeners();
-  
+  const settings = loadUserSettings()
+  render(options.container, settings)
+  setupEventListeners()
+
   return {
     updateSettings: (newSettings: any) => {
       // 更新设置并重新渲染
-    }
-  };
+    },
+  }
 }
 
-export default { initTabHome };
+export default { initTabHome }

@@ -22,7 +22,13 @@ dto/
 ### 创建用户DTO
 
 ```typescript
-import { IsEmail, IsNotEmpty, MinLength, IsOptional, IsArray } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  MinLength,
+  IsOptional,
+  IsArray,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
@@ -58,7 +64,11 @@ export class UpdateUserDto {
   @IsOptional()
   username?: string;
 
-  @ApiProperty({ description: '电子邮箱', example: 'john@example.com', required: false })
+  @ApiProperty({
+    description: '电子邮箱',
+    example: 'john@example.com',
+    required: false,
+  })
   @IsOptional()
   @IsEmail({}, { message: '邮箱格式不正确' })
   email?: string;

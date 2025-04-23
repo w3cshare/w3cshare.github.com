@@ -6,12 +6,12 @@
  * @FilePath: /FullStack/micro-service/nestjs-swagger/src/nestjs-swagger.ts
  * @Description: NestJS Swagger文档生成插件
  */
-import fastifyStatic from '@fastify/static';
-import { INestApplication } from '@nestjs/common';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { knife4jSetup } from 'nestjs-knife4j2';
+import fastifyStatic from '@fastify/static'
+import { INestApplication } from '@nestjs/common'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import { knife4jSetup } from 'nestjs-knife4j2'
 
-import { NestjsSwaggerOptions } from './swagger.interfaces';
+import { NestjsSwaggerOptions } from './swagger.interfaces'
 
 /**
  * 配置并初始化NestJS Swagger文档
@@ -38,20 +38,20 @@ export function nestjsSwagger(app: INestApplication, options: NestjsSwaggerOptio
       apiKeyIn: 'header',
       apiKeyDescription: 'API Key Authorization',
     },
-  };
+  }
 
   // 合并配置
-  const config = { ...defaultOptions, ...options };
+  const config = { ...defaultOptions, ...options }
 
   // 创建Swagger文档构建器
   const documentBuilder = new DocumentBuilder()
     .setTitle(config.title)
     .setDescription(config.description)
-    .setVersion(config.version);
+    .setVersion(config.version)
 
   // 添加标签
   if (config.tags && config.tags.length > 0) {
-    config.tags.forEach(tag => documentBuilder.addTag(tag));
+    config.tags.forEach(tag => documentBuilder.addTag(tag))
   }
 
   // 添加认证
@@ -65,7 +65,7 @@ export function nestjsSwagger(app: INestApplication, options: NestjsSwaggerOptio
           description: config.auth.bearerDescription,
         },
         'bearer',
-      );
+      )
     }
 
     if (config.auth.enableBasic) {
@@ -76,7 +76,7 @@ export function nestjsSwagger(app: INestApplication, options: NestjsSwaggerOptio
           description: config.auth.basicDescription,
         },
         'basic',
-      );
+      )
     }
 
     if (config.auth.enableApiKey) {
@@ -88,18 +88,18 @@ export function nestjsSwagger(app: INestApplication, options: NestjsSwaggerOptio
           description: config.auth.apiKeyDescription,
         },
         'api_key',
-      );
+      )
     }
   }
 
   // 构建Swagger配置
-  const builtConfig = documentBuilder.build();
+  const builtConfig = documentBuilder.build()
 
   // 创建Swagger文档
-  const document = SwaggerModule.createDocument(app, builtConfig, config.documentOptions);
+  const document = SwaggerModule.createDocument(app, builtConfig, config.documentOptions)
 
   // 设置Swagger UI
-  SwaggerModule.setup(config.path, app, document, config.customOptions);
+  SwaggerModule.setup(config.path, app, document, config.customOptions)
 
   // 设置Knife4j增强UI
   if (config.enableKnife4j) {
@@ -110,13 +110,13 @@ export function nestjsSwagger(app: INestApplication, options: NestjsSwaggerOptio
         swaggerVersion: '2.0',
         location: `/${config.path}-json`,
       },
-    ];
+    ]
 
     knife4jSetup(app, knife4jConfig, config.isFastify ? fastifyStatic : null).catch(err => {
-      console.error('Failed to start Knife4j:', err);
-    });
+      console.error('Failed to start Knife4j:', err)
+    })
   }
 
   // 返回生成的Swagger文档
-  return document;
+  return document
 }

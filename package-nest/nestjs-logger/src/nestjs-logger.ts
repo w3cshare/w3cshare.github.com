@@ -6,7 +6,7 @@
  * @FilePath: /FullStack/micro-service/nestjs-logger/src/nestjs-logger.js
  * @Description: --
  */
-import { LoggerModule } from './logger.module';
-import { LoggerService } from './logger.service';
+import { LoggerModule } from './logger.module'
+import { LoggerService } from './logger.service'
 
-export { LoggerModule, LoggerService };
+export { LoggerModule, LoggerService }

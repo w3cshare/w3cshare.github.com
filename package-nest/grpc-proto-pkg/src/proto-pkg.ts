@@ -6,11 +6,11 @@
  * @FilePath: /FullStack/micro-service/proto-pkg/src/proto-pkg.ts
  * @Description: --
  */
-import { loadSync } from '@grpc/proto-loader';
-import { join } from 'path';
+import { loadSync } from '@grpc/proto-loader'
+import { join } from 'path'
 
 function protoPkg() {
-  return 'Hello from protoPkg';
+  return 'Hello from protoPkg'
 }
 
 function loadProto(protoFileName = 'user', protoDir = '../proto') {
@@ -29,14 +29,14 @@ function loadProto(protoFileName = 'user', protoDir = '../proto') {
         defaults: true,
         oneofs: true,
       },
-    );
+    )
 
     // 获取 proto 包
-    return packageDefinition;
+    return packageDefinition
   } catch (error) {
-    console.log(error);
-    return null;
+    console.log(error)
+    return null
   }
 }
 
-export { loadProto, protoPkg };
+export { loadProto, protoPkg }

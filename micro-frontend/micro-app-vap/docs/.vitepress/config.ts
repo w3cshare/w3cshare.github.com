@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress';
+import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'Micro App VAP',
@@ -66,4 +66,4 @@ export default defineConfig({
       copyright: 'Copyright © 2024-present',
     },
   },
-});
+})

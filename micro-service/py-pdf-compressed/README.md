@@ -118,27 +118,27 @@ finally:
 
 ```typescript
 // pdf.service.ts
-import { Injectable, OnModuleInit } from '@nestjs/common';
-import { Client, ClientGrpc, Transport } from '@nestjs/microservices';
-import { join } from 'path';
-import { Observable } from 'rxjs';
-import { readFile, writeFile } from 'fs/promises';
+import { Injectable, OnModuleInit } from '@nestjs/common'
+import { Client, ClientGrpc, Transport } from '@nestjs/microservices'
+import { join } from 'path'
+import { Observable } from 'rxjs'
+import { readFile, writeFile } from 'fs/promises'
 
 interface PdfService {
   compressPdf(data: { content: Buffer; quality: number }): Observable<{
-    pdf: Buffer;
+    pdf: Buffer
     info: {
-      compression_ratio: number;
-    };
-  }>;
+      compression_ratio: number
+    }
+  }>
   compressPdfBatch(data: { files: Array<{ content: Buffer; quality: number }> }): Observable<{
     results: Array<{
-      pdf: Buffer;
+      pdf: Buffer
       info: {
-        compression_ratio: number;
-      };
-    }>;
-  }>;
+        compression_ratio: number
+      }
+    }>
+  }>
 }
 
 @Injectable()
@@ -151,24 +151,24 @@ export class PdfCompressService implements OnModuleInit {
       protoPath: join(__dirname, 'proto/pdf_compress.proto'),
     },
   })
-  private client: ClientGrpc;
-  private pdfService: PdfService;
+  private client: ClientGrpc
+  private pdfService: PdfService
 
   onModuleInit() {
-    this.pdfService = this.client.getService<PdfService>('PdfService');
+    this.pdfService = this.client.getService<PdfService>('PdfService')
   }
 
   async compressSinglePdf(filePath: string, quality: number = 30) {
-    const content = await readFile(filePath);
-    const result = await this.pdfService.compressPdf({ content, quality }).toPromise();
+    const content = await readFile(filePath)
+    const result = await this.pdfService.compressPdf({ content, quality }).toPromise()
 
-    const outputPath = filePath.replace('.pdf', '_compressed.pdf');
-    await writeFile(outputPath, result.pdf);
+    const outputPath = filePath.replace('.pdf', '_compressed.pdf')
+    await writeFile(outputPath, result.pdf)
 
     return {
       outputPath,
       compressionRatio: result.info.compression_ratio,
-    };
+    }
   }
 
   async compressPdfBatch(files: Array<{ path: string; quality: number }>) {
@@ -177,20 +177,20 @@ export class PdfCompressService implements OnModuleInit {
         content: await readFile(file.path),
         quality: file.quality,
       })),
-    );
+    )
 
-    const result = await this.pdfService.compressPdfBatch({ files: fileContents }).toPromise();
+    const result = await this.pdfService.compressPdfBatch({ files: fileContents }).toPromise()
 
     return Promise.all(
       files.map(async (file, index) => {
-        const outputPath = file.path.replace('.pdf', '_compressed.pdf');
-        await writeFile(outputPath, result.results[index].pdf);
+        const outputPath = file.path.replace('.pdf', '_compressed.pdf')
+        await writeFile(outputPath, result.results[index].pdf)
         return {
           outputPath,
           compressionRatio: result.results[index].info.compression_ratio,
-        };
+        }
       }),
-    );
+    )
   }
 }
 ```

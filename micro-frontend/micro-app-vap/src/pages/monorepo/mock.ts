@@ -1,4 +1,4 @@
-export const PREFIX = '@smarts-isoftstone/';
+export const PREFIX = '@smarts-isoftstone/'
 
 export const commonPackages = [
   'nestjs-config',
@@ -13,7 +13,7 @@ export const commonPackages = [
 ].map(name => ({
   label: PREFIX + name,
   value: PREFIX + name,
-}));
+}))
 
 export const packagesWithDirectories = [
   {
@@ -58,7 +58,7 @@ export const packagesWithDirectories = [
       },
     ],
   },
-];
+]
 
 export const packages = {
   directories: [
@@ -103,13 +103,13 @@ export const packages = {
       children: [],
     },
   ],
-};
+}
 
 export const dependencyTypes = [
   { label: '生产依赖(--dependencies)', value: 'dependencies' },
   { label: '开发依赖(--devDependencies)', value: 'devDependencies' },
   { label: '同版本依赖(--peerDependencies)', value: 'peerDependencies' },
-];
+]
 
 export const scriptOptions = [
   { label: '开发(dev)', value: 'dev' },
@@ -117,7 +117,7 @@ export const scriptOptions = [
   { label: '构建(build)', value: 'build' },
   { label: '代码检查(lint)', value: 'lint' },
   { label: '测试(test)', value: 'test' },
-];
+]
 
 export const commandTypes = [
   {
@@ -144,4 +144,4 @@ export const commandTypes = [
     label: 'Lerna 执行脚本',
     value: 'lerna-run',
   },
-];
+]

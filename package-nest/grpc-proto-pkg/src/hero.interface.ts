@@ -7,19 +7,19 @@
  * @Description: --
  */
 // Service: HeroesService
-export type FindOne = (params: HeroById) => Promise<Hero>;
-export type FindMany = (upstream: HeroById) => Promise<Hero[]>;
+export type FindOne = (params: HeroById) => Promise<Hero>
+export type FindMany = (upstream: HeroById) => Promise<Hero[]>
 
 export interface HeroById {
-  id?: number;
+  id?: number
 }
 
 export interface Hero {
-  id?: number;
-  name?: string;
+  id?: number
+  name?: string
 }
 
 export interface HeroesService {
-  findOne: FindOne;
-  findMany: FindMany;
+  findOne: FindOne
+  findMany: FindMany
 }

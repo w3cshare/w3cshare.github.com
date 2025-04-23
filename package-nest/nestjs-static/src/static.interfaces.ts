@@ -7,7 +7,7 @@
  * @Description: --
  */
 export interface StaticOptions {
-  root: string;
-  prefix?: string;
-  serveRoot?: string;
+  root: string
+  prefix?: string
+  serveRoot?: string
 }

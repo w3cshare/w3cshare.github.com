@@ -6,11 +6,11 @@
  * @FilePath: /FullStack/micro-service/nestjs-logger/src/logger.module.ts
  * @Description: --
  */
-import { DynamicModule, InjectionToken, Module, OptionalFactoryDependency } from '@nestjs/common';
+import { DynamicModule, InjectionToken, Module, OptionalFactoryDependency } from '@nestjs/common'
 
-import { LOGGER_OPTIONS } from './logger.constants';
-import { LoggerOptions } from './logger.interfaces';
-import { LoggerService } from './logger.service';
+import { LOGGER_OPTIONS } from './logger.constants'
+import { LoggerOptions } from './logger.interfaces'
+import { LoggerService } from './logger.service'
 
 @Module({})
 export class LoggerModule {
@@ -25,12 +25,12 @@ export class LoggerModule {
         LoggerService,
       ],
       exports: [LoggerService], // 导出服务供外部使用
-    };
+    }
   }
 
   static registerAsync(options: {
-    useFactory: () => Promise<LoggerOptions> | LoggerOptions;
-    inject?: (InjectionToken | OptionalFactoryDependency)[];
+    useFactory: () => Promise<LoggerOptions> | LoggerOptions
+    inject?: (InjectionToken | OptionalFactoryDependency)[]
   }): DynamicModule {
     return {
       module: LoggerModule,
@@ -43,8 +43,8 @@ export class LoggerModule {
         LoggerService,
       ],
       exports: [LoggerService],
-    };
+    }
   }
 }
 
-export default LoggerService;
+export default LoggerService

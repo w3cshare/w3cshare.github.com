@@ -24,7 +24,7 @@ graph TD
     A --> C[订单上下文]
     A --> D[产品上下文]
     A --> E[支付上下文]
-    
+
     B -.->|用户信息集成| C
     C -.->|订单信息集成| D
     C -.->|支付集成| E
@@ -66,33 +66,33 @@ graph TD
 @Entity()
 export class Order {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
-  
+  id: string
+
   @Column()
-  customerId: string;
-  
+  customerId: string
+
   @Column('decimal')
-  totalAmount: number;
-  
+  totalAmount: number
+
   @Column({ type: 'enum', enum: OrderStatus })
-  status: OrderStatus;
-  
+  status: OrderStatus
+
   @OneToMany(() => OrderItem, item => item.order)
-  items: OrderItem[];
-  
+  items: OrderItem[]
+
   // 领域行为
   placeOrder(): void {
     if (this.items.length === 0) {
-      throw new Error('Order must have at least one item');
+      throw new Error('Order must have at least one item')
     }
-    this.status = OrderStatus.PLACED;
+    this.status = OrderStatus.PLACED
   }
-  
+
   cancel(): void {
     if (this.status === OrderStatus.SHIPPED) {
-      throw new Error('Cannot cancel shipped order');
+      throw new Error('Cannot cancel shipped order')
     }
-    this.status = OrderStatus.CANCELLED;
+    this.status = OrderStatus.CANCELLED
   }
 }
 ```
@@ -109,19 +109,21 @@ export class Address {
     readonly city: string,
     readonly state: string,
     readonly zipCode: string,
-    readonly country: string
+    readonly country: string,
   ) {}
-  
+
   equals(other: Address): boolean {
-    return this.street === other.street &&
-           this.city === other.city &&
-           this.state === other.state &&
-           this.zipCode === other.zipCode &&
-           this.country === other.country;
+    return (
+      this.street === other.street &&
+      this.city === other.city &&
+      this.state === other.state &&
+      this.zipCode === other.zipCode &&
+      this.country === other.country
+    )
   }
-  
+
   toString(): string {
-    return `${this.street}, ${this.city}, ${this.state} ${this.zipCode}, ${this.country}`;
+    return `${this.street}, ${this.city}, ${this.state} ${this.zipCode}, ${this.country}`
   }
 }
 ```
@@ -137,32 +139,32 @@ export class Address {
 @Entity()
 export class ShoppingCart {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
-  
+  id: string
+
   @Column()
-  customerId: string;
-  
+  customerId: string
+
   @OneToMany(() => CartItem, item => item.cart, { cascade: true })
-  items: CartItem[];
-  
+  items: CartItem[]
+
   // 领域行为和业务规则
   addItem(productId: string, quantity: number): void {
-    const existingItem = this.items.find(item => item.productId === productId);
-    
+    const existingItem = this.items.find(item => item.productId === productId)
+
     if (existingItem) {
-      existingItem.increaseQuantity(quantity);
+      existingItem.increaseQuantity(quantity)
     } else {
-      const newItem = new CartItem(this, productId, quantity);
-      this.items.push(newItem);
+      const newItem = new CartItem(this, productId, quantity)
+      this.items.push(newItem)
     }
   }
-  
+
   removeItem(productId: string): void {
-    this.items = this.items.filter(item => item.productId !== productId);
+    this.items = this.items.filter(item => item.productId !== productId)
   }
-  
+
   calculateTotal(): number {
-    return this.items.reduce((sum, item) => sum + item.calculateSubtotal(), 0);
+    return this.items.reduce((sum, item) => sum + item.calculateSubtotal(), 0)
   }
 }
 ```
@@ -177,28 +179,28 @@ export class ShoppingCart {
 export class OrderProcessingService {
   constructor(
     private readonly inventoryRepository: InventoryRepository,
-    private readonly orderRepository: OrderRepository
+    private readonly orderRepository: OrderRepository,
   ) {}
-  
+
   async processOrder(order: Order): Promise<void> {
     // 验证库存
     for (const item of order.items) {
-      const inventory = await this.inventoryRepository.findByProductId(item.productId);
+      const inventory = await this.inventoryRepository.findByProductId(item.productId)
       if (!inventory.hasAvailableStock(item.quantity)) {
-        throw new InsufficientStockException(item.productId);
+        throw new InsufficientStockException(item.productId)
       }
     }
-    
+
     // 扣减库存
     for (const item of order.items) {
-      const inventory = await this.inventoryRepository.findByProductId(item.productId);
-      inventory.reduceStock(item.quantity);
-      await this.inventoryRepository.save(inventory);
+      const inventory = await this.inventoryRepository.findByProductId(item.productId)
+      inventory.reduceStock(item.quantity)
+      await this.inventoryRepository.save(inventory)
     }
-    
+
     // 确认订单
-    order.confirm();
-    await this.orderRepository.save(order);
+    order.confirm()
+    await this.orderRepository.save(order)
   }
 }
 ```
@@ -210,10 +212,10 @@ export class OrderProcessingService {
 ```typescript
 // 资源库接口
 export interface OrderRepository {
-  findById(id: string): Promise<Order | null>;
-  findByCustomerId(customerId: string): Promise<Order[]>;
-  save(order: Order): Promise<void>;
-  delete(order: Order): Promise<void>;
+  findById(id: string): Promise<Order | null>
+  findByCustomerId(customerId: string): Promise<Order[]>
+  save(order: Order): Promise<void>
+  delete(order: Order): Promise<void>
 }
 
 // TypeORM实现
@@ -221,29 +223,29 @@ export interface OrderRepository {
 export class TypeOrmOrderRepository implements OrderRepository {
   constructor(
     @InjectRepository(Order)
-    private readonly orderEntityRepository: Repository<Order>
+    private readonly orderEntityRepository: Repository<Order>,
   ) {}
-  
+
   async findById(id: string): Promise<Order | null> {
     return this.orderEntityRepository.findOne({
       where: { id },
-      relations: ['items']
-    });
+      relations: ['items'],
+    })
   }
-  
+
   async findByCustomerId(customerId: string): Promise<Order[]> {
     return this.orderEntityRepository.find({
       where: { customerId },
-      relations: ['items']
-    });
+      relations: ['items'],
+    })
   }
-  
+
   async save(order: Order): Promise<void> {
-    await this.orderEntityRepository.save(order);
+    await this.orderEntityRepository.save(order)
   }
-  
+
   async delete(order: Order): Promise<void> {
-    await this.orderEntityRepository.remove(order);
+    await this.orderEntityRepository.remove(order)
   }
 }
 ```
@@ -268,7 +270,7 @@ export class OrderPlacedEvent {
     public readonly orderId: string,
     public readonly customerId: string,
     public readonly amount: number,
-    public readonly items: Array<{ productId: string, quantity: number }>
+    public readonly items: Array<{ productId: string; quantity: number }>,
   ) {}
 }
 
@@ -277,24 +279,26 @@ export class OrderPlacedEvent {
 export class OrderService {
   constructor(
     private readonly orderRepository: OrderRepository,
-    private readonly eventBus: EventBus
+    private readonly eventBus: EventBus,
   ) {}
-  
+
   async placeOrder(order: Order): Promise<void> {
     // 处理订单逻辑
-    order.placeOrder();
-    await this.orderRepository.save(order);
-    
+    order.placeOrder()
+    await this.orderRepository.save(order)
+
     // 发布领域事件
-    this.eventBus.publish(new OrderPlacedEvent(
-      order.id,
-      order.customerId,
-      order.totalAmount,
-      order.items.map(item => ({
-        productId: item.productId,
-        quantity: item.quantity
-      }))
-    ));
+    this.eventBus.publish(
+      new OrderPlacedEvent(
+        order.id,
+        order.customerId,
+        order.totalAmount,
+        order.items.map(item => ({
+          productId: item.productId,
+          quantity: item.quantity,
+        })),
+      ),
+    )
   }
 }
 
@@ -302,10 +306,10 @@ export class OrderService {
 @EventsHandler(OrderPlacedEvent)
 export class InventoryHandler implements IEventHandler<OrderPlacedEvent> {
   constructor(private readonly inventoryService: InventoryService) {}
-  
+
   async handle(event: OrderPlacedEvent) {
     // 处理库存逻辑
-    await this.inventoryService.reserveStock(event.items);
+    await this.inventoryService.reserveStock(event.items)
   }
 }
 ```
@@ -319,15 +323,15 @@ CQRS将读操作(查询)和写操作(命令)分离，是DDD在微服务架构中
 @CommandHandler(CreateOrderCommand)
 export class CreateOrderHandler implements ICommandHandler<CreateOrderCommand> {
   constructor(private readonly orderRepository: OrderRepository) {}
-  
+
   async execute(command: CreateOrderCommand): Promise<void> {
     const order = new Order(
       command.customerId,
-      command.items.map(item => new OrderItem(item.productId, item.price, item.quantity))
-    );
-    
-    order.calculateTotal();
-    await this.orderRepository.save(order);
+      command.items.map(item => new OrderItem(item.productId, item.price, item.quantity)),
+    )
+
+    order.calculateTotal()
+    await this.orderRepository.save(order)
   }
 }
 
@@ -336,15 +340,15 @@ export class CreateOrderHandler implements ICommandHandler<CreateOrderCommand> {
 export class GetOrdersHandler implements IQueryHandler<GetOrdersQuery> {
   constructor(
     @InjectRepository(OrderReadModel)
-    private readonly orderReadModelRepository: Repository<OrderReadModel>
+    private readonly orderReadModelRepository: Repository<OrderReadModel>,
   ) {}
-  
+
   async execute(query: GetOrdersQuery): Promise<OrderDto[]> {
     const orders = await this.orderReadModelRepository.find({
       where: { customerId: query.customerId },
-      relations: ['items']
-    });
-    
+      relations: ['items'],
+    })
+
     return orders.map(order => ({
       id: order.id,
       customerId: order.customerId,
@@ -355,9 +359,9 @@ export class GetOrdersHandler implements IQueryHandler<GetOrdersQuery> {
         productId: item.productId,
         productName: item.productName,
         price: item.price,
-        quantity: item.quantity
-      }))
-    }));
+        quantity: item.quantity,
+      })),
+    }))
   }
 }
 ```
@@ -373,39 +377,39 @@ export class PaymentServiceAdapter {
   constructor(
     private readonly paypalClient: PaypalClient,
     private readonly stripeClient: StripeClient,
-    private readonly configService: ConfigService
+    private readonly configService: ConfigService,
   ) {}
-  
+
   async processPayment(payment: Payment): Promise<PaymentResult> {
     // 根据配置决定使用哪个支付提供商
-    const provider = this.configService.get('PAYMENT_PROVIDER');
-    
+    const provider = this.configService.get('PAYMENT_PROVIDER')
+
     if (provider === 'PAYPAL') {
       const paypalResult = await this.paypalClient.charge({
         amount: payment.amount,
         currency: payment.currency,
         source: payment.paymentMethodId,
-        description: `Payment for order ${payment.orderId}`
-      });
-      
+        description: `Payment for order ${payment.orderId}`,
+      })
+
       return {
         successful: paypalResult.status === 'COMPLETED',
         transactionId: paypalResult.id,
-        errorMessage: paypalResult.error_message
-      };
+        errorMessage: paypalResult.error_message,
+      }
     } else {
       const stripeResult = await this.stripeClient.createCharge({
         amount: Math.round(payment.amount * 100), // Stripe使用分为单位
         currency: payment.currency.toLowerCase(),
         source: payment.paymentMethodId,
-        description: `Payment for order ${payment.orderId}`
-      });
-      
+        description: `Payment for order ${payment.orderId}`,
+      })
+
       return {
         successful: stripeResult.status === 'succeeded',
         transactionId: stripeResult.id,
-        errorMessage: stripeResult.failure_message
-      };
+        errorMessage: stripeResult.failure_message,
+      }
     }
   }
 }
@@ -414,21 +418,25 @@ export class PaymentServiceAdapter {
 ## 微服务中的DDD最佳实践
 
 1. **保持微服务的自治**
+
    - 每个微服务拥有自己的领域模型和数据存储
    - 避免跨微服务的事务
    - 使用异步通信减少耦合
 
 2. **关注领域建模**
+
    - 与领域专家紧密合作
    - 开发通用语言(Ubiquitous Language)
    - 优先考虑领域逻辑，而非技术细节
 
 3. **使用限界上下文划分服务**
+
    - 明确定义每个服务的边界和职责
    - 确保服务内模型的统一性和一致性
    - 谨慎设计上下文之间的集成
 
 4. **使用事件驱动架构**
+
    - 通过领域事件实现微服务间的通信
    - 实现最终一致性，而非强一致性
    - 考虑事件溯源(Event Sourcing)
@@ -443,26 +451,31 @@ export class PaymentServiceAdapter {
 一个典型的电子商务系统可能包含以下限界上下文，每个上下文可以对应一个微服务：
 
 1. **目录上下文(Catalog Context)**
+
    - 产品信息管理
    - 分类管理
    - 搜索和发现
 
 2. **客户上下文(Customer Context)**
+
    - 用户注册和管理
    - 客户资料
    - 偏好设置
 
 3. **订单上下文(Order Context)**
+
    - 订单处理
    - 订单状态管理
    - 订单历史
 
 4. **购物车上下文(Cart Context)**
+
    - 购物车管理
    - 促销应用
    - 价格计算
 
 5. **支付上下文(Payment Context)**
+
    - 支付方式管理
    - 支付处理
    - 退款处理
@@ -484,4 +497,4 @@ export class PaymentServiceAdapter {
 
 ## 结论
 
-领域驱动设计为微服务架构提供了强大的战略和战术工具，帮助我们设计出更加符合业务需求、更具弹性和可维护性的系统。通过正确应用DDD原则，我们可以创建真正反映业务领域的微服务架构，实现业务与技术的有效对接。 
+领域驱动设计为微服务架构提供了强大的战略和战术工具，帮助我们设计出更加符合业务需求、更具弹性和可维护性的系统。通过正确应用DDD原则，我们可以创建真正反映业务领域的微服务架构，实现业务与技术的有效对接。

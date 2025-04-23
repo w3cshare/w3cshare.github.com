@@ -50,4 +50,4 @@ export default {
   'no-with': 2,
   'require-yield': 2,
   'use-isnan': 2,
-};
+}

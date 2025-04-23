@@ -27,14 +27,14 @@ module.exports = {
   rules: {
     // 允许使用 Ant Design 的变量命名方式
     'scss/dollar-variable-pattern': null,
-    
+
     // 如果项目中有大量 CSS-in-JS，可以适当放宽这些规则
     'selector-class-pattern': null,
-    
+
     // 允许更深的嵌套（Ant Design 组件有时需要）
-    'max-nesting-depth': 6
-  }
-};
+    'max-nesting-depth': 6,
+  },
+}
 ```
 
 ## 添加 Less 特定的配置
@@ -54,9 +54,9 @@ module.exports = {
   rules: {
     // Less 特定规则
     'less/color-no-invalid-hex': true,
-    'less/no-duplicate-variables': true
-  }
-};
+    'less/no-duplicate-variables': true,
+  },
+}
 ```
 
 ## 常见的 Less 样式问题及解决方案
@@ -73,9 +73,9 @@ module.exports = {
   extends: ['stylelint-config-smarts'],
   rules: {
     // 推荐的变量命名模式（驼峰式）
-    'less/custom-property-pattern': '^[a-z][a-zA-Z0-9]*$'
-  }
-};
+    'less/custom-property-pattern': '^[a-z][a-zA-Z0-9]*$',
+  },
+}
 ```
 
 ### 2. 滥用 Less 嵌套
@@ -90,9 +90,9 @@ module.exports = {
   extends: ['stylelint-config-smarts'],
   rules: {
     'max-nesting-depth': 4,
-    'selector-max-compound-selectors': 4
-  }
-};
+    'selector-max-compound-selectors': 4,
+  },
+}
 ```
 
 ### 3. 混合 (Mixin) 使用不当
@@ -111,7 +111,7 @@ module.exports = {
 
 ```js
 // webpack.config.js
-const StylelintPlugin = require('stylelint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin')
 
 module.exports = {
   // ...其他配置
@@ -126,21 +126,21 @@ module.exports = {
             loader: 'less-loader',
             options: {
               lessOptions: {
-                javascriptEnabled: true // 对于 Ant Design 必须
-              }
-            }
-          }
-        ]
-      }
-    ]
+                javascriptEnabled: true, // 对于 Ant Design 必须
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new StylelintPlugin({
       files: ['**/*.less'],
-      fix: true
-    })
-  ]
-};
+      fix: true,
+    }),
+  ],
+}
 ```
 
 ## 与 Vite 集成
@@ -149,25 +149,25 @@ module.exports = {
 
 ```js
 // vite.config.js
-import { defineConfig } from 'vite';
-import stylelint from 'vite-plugin-stylelint';
+import { defineConfig } from 'vite'
+import stylelint from 'vite-plugin-stylelint'
 
 export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
-        additionalData: `@import "src/styles/variables.less";`
-      }
-    }
+        additionalData: `@import "src/styles/variables.less";`,
+      },
+    },
   },
   plugins: [
     stylelint({
       include: ['src/**/*.less'],
-      fix: true
-    })
-  ]
-});
+      fix: true,
+    }),
+  ],
+})
 ```
 
 ## 编辑器支持
@@ -208,33 +208,33 @@ export default defineConfig({
 .component {
   position: relative;
   z-index: 1;
-  
+
   display: flex;
   flex-direction: column;
-  
+
   width: 100%;
   max-width: 500px;
-  
+
   margin: 16px;
-  
+
   padding: 16px;
-  
+
   border: 1px solid #eee;
   border-radius: @borderRadius;
-  
+
   background-color: #fff;
-  
+
   .textStyle();
-  
+
   &-header {
     margin-bottom: 16px;
-    
+
     font-weight: bold;
     text-align: center;
   }
-  
+
   &-content {
     flex: 1;
   }
 }
-``` 
+```

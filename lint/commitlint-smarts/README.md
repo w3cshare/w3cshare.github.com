@@ -90,7 +90,7 @@ yarn add -D @commitlint/cli commitlint-smarts husky
 ```js
 module.exports = {
   extends: ['commitlint-smarts'],
-};
+}
 ```
 
 ### 配置 Husky
@@ -263,7 +263,7 @@ module.exports = {
     // 自定义规则
     'scope-enum': [2, 'always', ['auth', 'api', 'ui', 'config']],
   },
-};
+}
 ```
 
 更多配置选项，请参考 [配置指南](/lint/commitlint-smarts/docs/configuration)。

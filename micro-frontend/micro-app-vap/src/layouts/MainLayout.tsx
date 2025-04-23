@@ -6,22 +6,22 @@
  * @FilePath: /FullStack/micro-frontend/micro-app-vap/src/layouts/MainLayout.tsx
  * @Description:
  */
-import { useState } from 'react';
-import { Layout, Menu } from 'antd';
+import { useState } from 'react'
+import { Layout, Menu } from 'antd'
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   DashboardOutlined,
   AppstoreOutlined,
   SettingOutlined,
-} from '@ant-design/icons';
-import { Outlet, useNavigate } from 'react-router-dom';
+} from '@ant-design/icons'
+import { Outlet, useNavigate } from 'react-router-dom'
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout
 
 const MainLayout = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useState(false)
+  const navigate = useNavigate()
 
   const menuItems = [
     {
@@ -44,7 +44,7 @@ const MainLayout = () => {
       icon: <SettingOutlined />,
       label: '包管理',
     },
-  ];
+  ]
 
   return (
     <Layout>
@@ -77,7 +77,7 @@ const MainLayout = () => {
         </Content>
       </Layout>
     </Layout>
-  );
-};
+  )
+}
 
-export default MainLayout;
+export default MainLayout

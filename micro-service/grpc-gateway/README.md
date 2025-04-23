@@ -16,12 +16,12 @@
 项目使用ESLint v9的扁平配置格式(`eslint.config.mjs`)：
 
 ```javascript
-import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import eslintPlugin from 'eslint-plugin-smart';
+import js from '@eslint/js'
+import tseslint from 'typescript-eslint'
+import eslintPlugin from 'eslint-plugin-smart'
 
 // 获取typescript-eslint推荐配置
-const typescriptConfigs = tseslint.configs.recommended;
+const typescriptConfigs = tseslint.configs.recommended
 
 // 创建基础配置
 const baseConfig = {
@@ -51,10 +51,10 @@ const baseConfig = {
       },
     ],
   },
-};
+}
 
 // 导出配置
-export default [js.configs.recommended, ...typescriptConfigs, baseConfig];
+export default [js.configs.recommended, ...typescriptConfigs, baseConfig]
 ```
 
 ### 运行Lint检查

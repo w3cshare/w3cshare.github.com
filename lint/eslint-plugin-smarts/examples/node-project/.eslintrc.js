@@ -47,4 +47,4 @@ module.exports = {
     'node/no-unpublished-import': 'off', // 开发依赖也可以导入
     '@typescript-eslint/no-var-requires': 'off', // 允许使用require
   },
-};
+}

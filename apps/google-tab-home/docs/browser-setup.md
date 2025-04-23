@@ -89,10 +89,12 @@
 本项目提供了几种方式生成扩展所需的图标：
 
 1. 使用预设的SVG图标：
+
    - 位于`src/extension/simple-icons/`目录
    - 这些是简单的SVG格式图标
 
 2. 自动生成图标：
+
    - 运行`pnpm run create-icons`命令
    - 这将生成简单的图标文件到`src/extension/icons/`目录
 

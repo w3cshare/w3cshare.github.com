@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   message,
   Alert,
@@ -10,7 +10,7 @@ import {
   Input,
   Select,
   AutoComplete,
-} from 'antd';
+} from 'antd'
 import {
   PageContainer,
   ProForm,
@@ -20,9 +20,9 @@ import {
   ProFormRadio,
   ProFormCheckbox,
   ProCard,
-} from '@ant-design/pro-components';
+} from '@ant-design/pro-components'
 
-import { FormValues, CommandDetails } from './types';
+import { FormValues, CommandDetails } from './types'
 import {
   PREFIX,
   packages,
@@ -30,69 +30,69 @@ import {
   scriptOptions,
   commandTypes,
   packagesWithDirectories,
-} from './mock';
-import { getCommandDescription, getCommandType, buildCommand } from './utils';
+} from './mock'
+import { getCommandDescription, getCommandType, buildCommand } from './utils'
 
 const CommandPage: React.FC = () => {
-  const [executing, setExecuting] = useState(false);
-  const [output, setOutput] = useState('');
-  const [previewCommand, setPreviewCommand] = useState('');
-  const [commandDetails, setCommandDetails] = useState<CommandDetails | null>(null);
-  const [newPackageValue, setNewPackageValue] = useState<string>('');
+  const [executing, setExecuting] = useState(false)
+  const [output, setOutput] = useState('')
+  const [previewCommand, setPreviewCommand] = useState('')
+  const [commandDetails, setCommandDetails] = useState<CommandDetails | null>(null)
+  const [newPackageValue, setNewPackageValue] = useState<string>('')
 
-  const serviceApi = window.serviceApi;
+  const serviceApi = window.serviceApi
 
   const handleSubmit = async (values: FormValues) => {
-    const command = buildCommand(values);
+    const command = buildCommand(values)
     if (!command) {
-      message.error('请填写完整的命令信息');
-      return;
+      message.error('请填写完整的命令信息')
+      return
     }
 
     try {
-      setExecuting(true);
-      setOutput(`正在执行命令: ${command}\n`);
+      setExecuting(true)
+      setOutput(`正在执行命令: ${command}\n`)
 
-      const result = await serviceApi.executeCommand(command);
+      const result = await serviceApi.executeCommand(command)
       if (result.success) {
-        setOutput(prev => prev + `命令执行成功！\n${result.output || ''}`);
-        message.success('命令执行成功');
+        setOutput(prev => prev + `命令执行成功！\n${result.output || ''}`)
+        message.success('命令执行成功')
       } else {
-        setOutput(prev => prev + `执行失败: ${result.error || ''}\n`);
-        message.error(`命令执行失败: ${result.error}`);
+        setOutput(prev => prev + `执行失败: ${result.error || ''}\n`)
+        message.error(`命令执行失败: ${result.error}`)
       }
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : '未知错误';
-      setOutput(prev => prev + `执行出错: ${errorMessage}\n`);
-      message.error('命令执行出错');
+      const errorMessage = error instanceof Error ? error.message : '未知错误'
+      setOutput(prev => prev + `执行出错: ${errorMessage}\n`)
+      message.error('命令执行出错')
     } finally {
-      setExecuting(false);
+      setExecuting(false)
     }
-  };
+  }
 
   const targetDirectories = packages.directories.map(dir => ({
     label: dir.name.replace('/*', ''),
     value: dir.name,
-  }));
+  }))
 
   const handleNewPackageSearch = (searchText: string) => {
     if (!searchText.startsWith(PREFIX)) {
-      searchText = PREFIX + searchText;
+      searchText = PREFIX + searchText
     }
-    setNewPackageValue(searchText);
-  };
+    setNewPackageValue(searchText)
+  }
 
   const handleValuesChange = (changedValues: any, allValues: FormValues) => {
-    const command = buildCommand(allValues);
-    setPreviewCommand(command);
+    const command = buildCommand(allValues)
+    setPreviewCommand(command)
     if (command) {
       setCommandDetails({
         type: getCommandType(allValues.commandType),
         description: getCommandDescription(allValues),
         command,
-      });
+      })
     }
-  };
+  }
 
   return (
     <PageContainer
@@ -134,7 +134,7 @@ const CommandPage: React.FC = () => {
                         使用独立版本模式
                       </ProFormCheckbox>
                     </>
-                  );
+                  )
                 }
                 if (commandType === 'lerna-create') {
                   return (
@@ -148,12 +148,12 @@ const CommandPage: React.FC = () => {
                             message: '请输入新包名称',
                             validator: (_: any, value: string) => {
                               if (!value) {
-                                return Promise.reject('请输入新包名称');
+                                return Promise.reject('请输入新包名称')
                               }
                               if (!value.startsWith(PREFIX)) {
-                                return Promise.reject(`包名必须以 ${PREFIX} 开头`);
+                                return Promise.reject(`包名必须以 ${PREFIX} 开头`)
                               }
-                              return Promise.resolve();
+                              return Promise.resolve()
                             },
                           },
                         ]}
@@ -174,7 +174,7 @@ const CommandPage: React.FC = () => {
                         rules={[{ required: true, message: '请选择目标目录' }]}
                       />
                     </>
-                  );
+                  )
                 }
                 if (commandType === 'pnpm-add' || commandType === 'pnpm-remove') {
                   return (
@@ -203,12 +203,12 @@ const CommandPage: React.FC = () => {
                         {({ targetDirectory }) => {
                           const selectedDirectory = packages.directories.find(
                             dir => dir.name === targetDirectory,
-                          );
+                          )
                           const packageOptions =
                             selectedDirectory?.children.map(pkg => ({
                               label: pkg,
                               value: pkg,
-                            })) || [];
+                            })) || []
 
                           return (
                             <ProFormSelect
@@ -229,11 +229,11 @@ const CommandPage: React.FC = () => {
                                 },
                               ]}
                             />
-                          );
+                          )
                         }}
                       </ProFormDependency>
                     </>
-                  );
+                  )
                 }
                 if (commandType === 'pnpm-run' || commandType === 'lerna-run') {
                   return (
@@ -254,12 +254,12 @@ const CommandPage: React.FC = () => {
                         {({ targetDirectory }) => {
                           const selectedDirectory = packages.directories.find(
                             dir => dir.name === targetDirectory,
-                          );
+                          )
                           const packageOptions =
                             selectedDirectory?.children.map(pkg => ({
                               label: pkg,
                               value: pkg,
-                            })) || [];
+                            })) || []
 
                           return (
                             <ProFormSelect
@@ -280,13 +280,13 @@ const CommandPage: React.FC = () => {
                                 },
                               ]}
                             />
-                          );
+                          )
                         }}
                       </ProFormDependency>
                     </>
-                  );
+                  )
                 }
-                return null;
+                return null
               }}
             </ProFormDependency>
 
@@ -294,8 +294,8 @@ const CommandPage: React.FC = () => {
               <Button
                 type="primary"
                 onClick={() => {
-                  const form = document.querySelector('form');
-                  form?.requestSubmit();
+                  const form = document.querySelector('form')
+                  form?.requestSubmit()
                 }}
                 loading={executing}
               >
@@ -362,7 +362,7 @@ const CommandPage: React.FC = () => {
         </ProCard>
       </ProCard>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default CommandPage;
+export default CommandPage

@@ -27,16 +27,16 @@ export default {
   'vue/multi-word-component-names': [
     'error',
     {
-      ignores: ['index'] // 允许index作为单单词组件名
-    }
+      ignores: ['index'], // 允许index作为单单词组件名
+    },
   ], // 强制多单词组件命名
   'vue/component-name-in-template-casing': [
     'error',
     'kebab-case',
     {
       registeredComponentsOnly: false, // 对所有组件生效
-      ignores: [] // 无例外情况
-    }
+      ignores: [], // 无例外情况
+    },
   ], // 强制模板中使用kebab-case命名
   'vue/no-deprecated-scope-attribute': 'error',
   'vue/require-default-prop': 'error',
@@ -149,4 +149,4 @@ export default {
       alphabetical: false,
     },
   ],
-};
+}

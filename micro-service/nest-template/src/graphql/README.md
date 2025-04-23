@@ -23,7 +23,14 @@ graphql/
 ### 解析器示例
 
 ```typescript
-import { Resolver, Query, Mutation, Args, ResolveField, Parent } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 import { User } from '../../entities/user.entity';
 import { Post } from '../../entities/post.entity';
 import { UserService } from '../../service/common/user.service';
@@ -122,11 +129,13 @@ query {
 
 # 创建用户
 mutation {
-  createUser(input: {
-    username: "john",
-    email: "john@example.com",
-    password: "password123"
-  }) {
+  createUser(
+    input: {
+      username: "john"
+      email: "john@example.com"
+      password: "password123"
+    }
+  ) {
     id
     username
     email

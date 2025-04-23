@@ -74,14 +74,14 @@ pnpm add @fullstack/react-ui @fullstack/react-hooks @fullstack/react-utils
 ### 基本使用
 
 ```tsx
-import { Button, Card, TextField } from '@fullstack/react-ui';
-import { useForm } from '@fullstack/react-hooks';
+import { Button, Card, TextField } from '@fullstack/react-ui'
+import { useForm } from '@fullstack/react-hooks'
 
 function LoginForm() {
   const { values, handleChange, handleSubmit } = useForm({
     initialValues: { email: '', password: '' },
     onSubmit: values => console.log(values),
-  });
+  })
 
   return (
     <Card elevation="md" padding="lg">
@@ -106,7 +106,7 @@ function LoginForm() {
         </Button>
       </form>
     </Card>
-  );
+  )
 }
 ```
 

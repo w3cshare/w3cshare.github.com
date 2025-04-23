@@ -26,8 +26,8 @@ yarn add @fullstack/ant-design-lib
 ## 基本使用
 
 ```tsx
-import React from 'react';
-import { Button, Card } from '@fullstack/ant-design-lib';
+import React from 'react'
+import { Button, Card } from '@fullstack/ant-design-lib'
 
 const App = () => {
   return (
@@ -37,10 +37,10 @@ const App = () => {
         <Button type="primary">点击我</Button>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
 ```
 
 ## 主题配置
@@ -48,21 +48,17 @@ export default App;
 我们的组件库支持自定义主题：
 
 ```tsx
-import { ThemeProvider } from '@fullstack/ant-design-lib';
+import { ThemeProvider } from '@fullstack/ant-design-lib'
 
 const theme = {
   primaryColor: '#1890ff',
   borderRadius: '4px',
   // 更多主题配置
-};
+}
 
 const App = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      {/* 您的应用内容 */}
-    </ThemeProvider>
-  );
-};
+  return <ThemeProvider theme={theme}>{/* 您的应用内容 */}</ThemeProvider>
+}
 ```
 
 ## 高级用法

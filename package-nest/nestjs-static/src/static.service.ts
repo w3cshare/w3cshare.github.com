@@ -6,7 +6,7 @@
  * @FilePath: /FullStack/micro-service/nestjs-static/src/static.service.ts
  * @Description: --
  */
-import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class StaticService {}

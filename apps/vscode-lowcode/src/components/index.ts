@@ -1,11 +1,11 @@
-import { Component } from '../types';
+import { Component } from '../types'
 
 // 组件类型定义
 export const ComponentTypes = {
   BUTTON: 'button',
   INPUT: 'input',
   TEXT: 'text',
-} as const;
+} as const
 
 // 组件模板
 export const ComponentTemplates: Record<string, Component> = {
@@ -32,34 +32,34 @@ export const ComponentTemplates: Record<string, Component> = {
       content: 'Text content',
     },
   },
-};
+}
 
 // 生成组件代码
 export function generateComponentCode(component: Component): string {
-  const componentTemplate = ComponentTemplates[component.type];
+  const componentTemplate = ComponentTemplates[component.type]
   if (!componentTemplate || !componentTemplate.template) {
-    throw new Error(`未找到组件类型 ${component.type} 的模板`);
+    throw new Error(`未找到组件类型 ${component.type} 的模板`)
   }
 
-  const template: string = componentTemplate.template;
-  const props = { ...componentTemplate.defaultProps, ...component.props };
+  const template: string = componentTemplate.template
+  const props = { ...componentTemplate.defaultProps, ...component.props }
 
-  let code: string = template;
+  let code: string = template
   Object.entries(props).forEach(([key, value]) => {
     if (value !== undefined) {
-      code = code.replace(`{${key}}`, value.toString());
+      code = code.replace(`{${key}}`, value.toString())
     }
-  });
+  })
 
-  return code; // code现在被声明为string类型，不可能是undefined
+  return code // code现在被声明为string类型，不可能是undefined
 }
 
 // 生成React组件代码
 export function generateReactComponent(components: Component[]): string {
   const imports = `import React from 'react';
-`;
+`
 
-  const componentCode = components.map(generateComponentCode).join('\n  ');
+  const componentCode = components.map(generateComponentCode).join('\n  ')
 
   return `${imports}
 
@@ -70,5 +70,5 @@ export default function GeneratedComponent() {
     </div>
   );
 }
-`;
+`
 }

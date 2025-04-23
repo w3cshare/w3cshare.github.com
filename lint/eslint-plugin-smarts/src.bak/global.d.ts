@@ -7,8 +7,8 @@
  * @Description: --
  */
 declare module 'eslint-plugin-annotation' {
-  import type { ESLint } from 'eslint';
+  import type { ESLint } from 'eslint'
 
-  const plugin: ESLint.Plugin;
-  export default plugin;
+  const plugin: ESLint.Plugin
+  export default plugin
 }

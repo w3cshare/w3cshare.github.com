@@ -45,7 +45,7 @@ module.exports = {
   importOrder: '^react,^@/,^[./]',
   // 新增：TypeScript类型导入特殊排序
   importTypeOrder: 'builtin,external,internal,parent,sibling,index',
-};
+}
 ```
 
 ### tsxBracketSameLine
@@ -57,10 +57,10 @@ module.exports = {
 module.exports = {
   // 默认值为 false，右括号单独成行
   tsxBracketSameLine: false,
-  
+
   // 设置为 true，右括号与最后一行在同一行
   // tsxBracketSameLine: true,
-};
+}
 ```
 
 ### tsxSingleQuote
@@ -73,7 +73,7 @@ module.exports = {
   // 默认与 singleQuote 选项保持一致
   // 显式设置以覆盖全局配置
   tsxSingleQuote: true,
-};
+}
 ```
 
 ## TypeScript 项目配置示例
@@ -88,10 +88,10 @@ module.exports = {
   tabWidth: 2,
   singleQuote: true,
   trailingComma: 'es5',
-  
+
   // TypeScript 特定配置
   importOrder: '^@/types/,^@/interfaces/,^@/,^[./]',
-};
+}
 ```
 
 ### React TypeScript 项目
@@ -104,12 +104,12 @@ module.exports = {
   tabWidth: 2,
   singleQuote: true,
   trailingComma: 'es5',
-  
+
   // React + TypeScript 特定配置
   importOrder: '^react,^@/types/,^@/components/,^@/hooks/,^@/,^[./]',
   jsxBracketSameLine: false,
   jsxSingleQuote: false,
-};
+}
 ```
 
 ### NestJS 项目
@@ -122,10 +122,10 @@ module.exports = {
   tabWidth: 2,
   singleQuote: true,
   trailingComma: 'all',
-  
+
   // NestJS 特定配置
   importOrder: '^@nestjs/,^@/interfaces/,^@/dto/,^@/services/,^@/,^[./]',
-};
+}
 ```
 
 ## TypeScript 类型声明格式化示例
@@ -135,19 +135,26 @@ module.exports = {
 格式化前：
 
 ```typescript
-interface User { id: number; name: string; email: string; isActive: boolean; createdAt: Date; role: 'admin' | 'user' | 'guest'; }
+interface User {
+  id: number
+  name: string
+  email: string
+  isActive: boolean
+  createdAt: Date
+  role: 'admin' | 'user' | 'guest'
+}
 ```
 
 格式化后：
 
 ```typescript
 interface User {
-  id: number;
-  name: string;
-  email: string;
-  isActive: boolean;
-  createdAt: Date;
-  role: 'admin' | 'user' | 'guest';
+  id: number
+  name: string
+  email: string
+  isActive: boolean
+  createdAt: Date
+  role: 'admin' | 'user' | 'guest'
 }
 ```
 
@@ -156,23 +163,29 @@ interface User {
 格式化前：
 
 ```typescript
-type ResponseData<T> = { data: T; status: 'success' | 'error'; message?: string; timestamp: number; pagination?: { page: number; pageSize: number; total: number; }; };
+type ResponseData<T> = {
+  data: T
+  status: 'success' | 'error'
+  message?: string
+  timestamp: number
+  pagination?: { page: number; pageSize: number; total: number }
+}
 ```
 
 格式化后：
 
 ```typescript
 type ResponseData<T> = {
-  data: T;
-  status: 'success' | 'error';
-  message?: string;
-  timestamp: number;
+  data: T
+  status: 'success' | 'error'
+  message?: string
+  timestamp: number
   pagination?: {
-    page: number;
-    pageSize: number;
-    total: number;
-  };
-};
+    page: number
+    pageSize: number
+    total: number
+  }
+}
 ```
 
 ### 装饰器格式化
@@ -187,7 +200,7 @@ export class UsersController {
   @UseGuards(RolesGuard)
   @Roles('admin')
   findAll(): Promise<User[]> {
-    return this.usersService.findAll();
+    return this.usersService.findAll()
   }
 }
 ```
@@ -202,7 +215,7 @@ export class UsersController {
   @UseGuards(RolesGuard)
   @Roles('admin')
   findAll(): Promise<User[]> {
-    return this.usersService.findAll();
+    return this.usersService.findAll()
   }
 }
 ```
@@ -221,11 +234,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'prettier'],
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
     // 禁用可能与 Prettier 冲突的规则
@@ -234,7 +243,7 @@ module.exports = {
     // 强制类型导入使用 import type
     '@typescript-eslint/consistent-type-imports': 'error',
   },
-};
+}
 ```
 
 ## 常见问题
@@ -264,7 +273,7 @@ module.exports = {
 // .prettierrc.js
 module.exports = {
   importOrder: '^react,^~core/,^~shared/,^@/,^[./]',
-};
+}
 ```
 
 ### 3. 泛型嵌套格式化问题
@@ -277,5 +286,5 @@ module.exports = {
 // .prettierrc.js
 module.exports = {
   printWidth: 80, // 降低此值以便复杂类型能够自动换行
-};
-``` 
+}
+```

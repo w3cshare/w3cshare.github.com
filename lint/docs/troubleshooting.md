@@ -19,7 +19,7 @@ outline: deep
 Error: Cannot find package '.../eslint-config-smart/package.json' imported from ...
 ```
 
-**解决方案**: 
+**解决方案**:
 
 这通常是由于依赖包引用路径错误导致的。在我们的单体仓库中，我们提供的是 `eslint-plugin-smart` 而不是 `eslint-config-smart`。请参考 [ESLint 插件的常见问题](/lint/eslint-plugin-smart/docs/常见问题) 获取详细解决方法。
 
@@ -104,16 +104,16 @@ export default [
 
 ```js
 // vite.config.js
-import { defineConfig } from 'vite';
-import { vitePluginSmarts } from 'vite-plugin-smarts';
+import { defineConfig } from 'vite'
+import { vitePluginSmarts } from 'vite-plugin-smarts'
 
 export default defineConfig({
   plugins: [
     vitePluginSmarts({
       // 配置选项
-    })
-  ]
-});
+    }),
+  ],
+})
 ```
 
 ### Webpack 构建问题
@@ -126,7 +126,7 @@ export default defineConfig({
 
 ```js
 // webpack.config.js
-const ESLintPlugin = require('eslint-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
   // ... 其他配置
@@ -134,10 +134,10 @@ module.exports = {
     new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       fix: true,
-      overrideConfigFile: require.resolve('eslint-plugin-smart/configs/webpack.js')
-    })
-  ]
-};
+      overrideConfigFile: require.resolve('eslint-plugin-smart/configs/webpack.js'),
+    }),
+  ],
+}
 ```
 
 ## pnpm 工作空间相关问题
@@ -200,8 +200,8 @@ pnpm lint-staged
 module.exports = {
   '*.{js,jsx,ts,tsx}': ['eslint --fix', 'prettier --write'],
   '*.{css,scss,less}': ['stylelint --fix', 'prettier --write'],
-  '*.{json,md}': ['prettier --write']
-};
+  '*.{json,md}': ['prettier --write'],
+}
 ```
 
 ## 其他问题
@@ -215,4 +215,4 @@ module.exports = {
 
 ---
 
-本文档将持续更新，如果你解决了某个常见问题，欢迎提交 PR 以帮助其他开发者。 
+本文档将持续更新，如果你解决了某个常见问题，欢迎提交 PR 以帮助其他开发者。

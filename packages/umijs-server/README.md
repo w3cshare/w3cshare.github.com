@@ -30,8 +30,8 @@ export default {
     port: 3000,
     middleware: ['logger', 'cors'],
     // 更多配置...
-  }
-};
+  },
+}
 ```
 
 2. 创建 API 路由
@@ -40,16 +40,16 @@ export default {
 // src/api/users.ts
 export default {
   'GET /api/users': async (req, res) => {
-    const users = await db.users.findMany();
-    res.json(users);
+    const users = await db.users.findMany()
+    res.json(users)
   },
   'POST /api/users': async (req, res) => {
     const user = await db.users.create({
-      data: req.body
-    });
-    res.json(user);
-  }
-};
+      data: req.body,
+    })
+    res.json(user)
+  },
+}
 ```
 
 3. 使用中间件
@@ -57,30 +57,30 @@ export default {
 ```ts
 // src/middleware/logger.ts
 export default async (req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  await next();
-};
+  console.log(`${req.method} ${req.url}`)
+  await next()
+}
 ```
 
 ## API 参考
 
 ### 配置选项
 
-| 选项 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| port | number | 3000 | 服务器端口 |
-| host | string | '0.0.0.0' | 服务器主机 |
-| https | boolean | false | 是否启用 HTTPS |
-| middleware | string[] | [] | 中间件列表 |
+| 选项       | 类型     | 默认值    | 说明           |
+| ---------- | -------- | --------- | -------------- |
+| port       | number   | 3000      | 服务器端口     |
+| host       | string   | '0.0.0.0' | 服务器主机     |
+| https      | boolean  | false     | 是否启用 HTTPS |
+| middleware | string[] | []        | 中间件列表     |
 
 ### 路由定义
 
 ```ts
 export interface RouteDefinition {
-  'GET /path': (req, res) => void | Promise<void>;
-  'POST /path': (req, res) => void | Promise<void>;
-  'PUT /path': (req, res) => void | Promise<void>;
-  'DELETE /path': (req, res) => void | Promise<void>;
+  'GET /path': (req, res) => void | Promise<void>
+  'POST /path': (req, res) => void | Promise<void>
+  'PUT /path': (req, res) => void | Promise<void>
+  'DELETE /path': (req, res) => void | Promise<void>
 }
 ```
 
@@ -88,7 +88,7 @@ export interface RouteDefinition {
 
 ```ts
 export interface Middleware {
-  (req: Request, res: Response, next: () => Promise<void>): void | Promise<void>;
+  (req: Request, res: Response, next: () => Promise<void>): void | Promise<void>
 }
 ```
 
@@ -102,16 +102,16 @@ export default {
   plugins: ['@fullstack/umijs-server'],
   server: {
     port: 3000,
-    middleware: ['logger', 'cors']
-  }
-};
+    middleware: ['logger', 'cors'],
+  },
+}
 
 // src/api/hello.ts
 export default {
   'GET /api/hello': (req, res) => {
-    res.json({ message: 'Hello World!' });
-  }
-};
+    res.json({ message: 'Hello World!' })
+  },
+}
 ```
 
 ### 使用中间件
@@ -119,36 +119,39 @@ export default {
 ```ts
 // src/middleware/auth.ts
 export default async (req, res, next) => {
-  const token = req.headers.authorization;
+  const token = req.headers.authorization
   if (!token) {
-    res.status(401).json({ error: 'Unauthorized' });
-    return;
+    res.status(401).json({ error: 'Unauthorized' })
+    return
   }
-  await next();
-};
+  await next()
+}
 
 // config/config.ts
 export default {
   plugins: ['@fullstack/umijs-server'],
   server: {
-    middleware: ['auth']
-  }
-};
+    middleware: ['auth'],
+  },
+}
 ```
 
 ## 开发
 
 1. 安装依赖
+
 ```bash
 pnpm install
 ```
 
 2. 启动开发服务器
+
 ```bash
 pnpm dev
 ```
 
 3. 构建
+
 ```bash
 pnpm build
 ```

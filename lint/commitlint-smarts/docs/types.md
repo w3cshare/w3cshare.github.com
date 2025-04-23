@@ -10,19 +10,19 @@ commitlint-smarts 规范化了Git提交消息中使用的类型。本文档详�
 
 ## 标准提交类型
 
-| 类型 | 说明 | 示例 |
-|------|------|------|
-| `feat` | 新功能 | `feat(user): 添加用户注册功能` |
-| `fix` | 修复bug | `fix(auth): 修复登录验证失败问题` |
-| `docs` | 文档更新 | `docs(api): 更新API文档` |
-| `style` | 代码风格变更(不影响代码运行的变动) | `style(button): 调整按钮组件缩进` |
-| `refactor` | 代码重构(既不是新增功能，也不是修改bug的代码变动) | `refactor(core): 重构数据处理逻辑` |
-| `perf` | 性能优化 | `perf(query): 优化数据库查询性能` |
-| `test` | 测试相关 | `test(auth): 添加登录功能单元测试` |
-| `build` | 构建系统或外部依赖变更 | `build(deps): 升级webpack至5.0版本` |
-| `ci` | 持续集成相关变更 | `ci(github): 更新GitHub Actions工作流` |
-| `chore` | 其他修改(不修改src或测试文件) | `chore(release): 1.0.0版本发布准备` |
-| `revert` | 撤销之前的提交 | `revert: feat(user): 添加用户注册功能` |
+| 类型       | 说明                                              | 示例                                   |
+| ---------- | ------------------------------------------------- | -------------------------------------- |
+| `feat`     | 新功能                                            | `feat(user): 添加用户注册功能`         |
+| `fix`      | 修复bug                                           | `fix(auth): 修复登录验证失败问题`      |
+| `docs`     | 文档更新                                          | `docs(api): 更新API文档`               |
+| `style`    | 代码风格变更(不影响代码运行的变动)                | `style(button): 调整按钮组件缩进`      |
+| `refactor` | 代码重构(既不是新增功能，也不是修改bug的代码变动) | `refactor(core): 重构数据处理逻辑`     |
+| `perf`     | 性能优化                                          | `perf(query): 优化数据库查询性能`      |
+| `test`     | 测试相关                                          | `test(auth): 添加登录功能单元测试`     |
+| `build`    | 构建系统或外部依赖变更                            | `build(deps): 升级webpack至5.0版本`    |
+| `ci`       | 持续集成相关变更                                  | `ci(github): 更新GitHub Actions工作流` |
+| `chore`    | 其他修改(不修改src或测试文件)                     | `chore(release): 1.0.0版本发布准备`    |
+| `revert`   | 撤销之前的提交                                    | `revert: feat(user): 添加用户注册功能` |
 
 ## 类型使用指南
 
@@ -123,8 +123,8 @@ module.exports = {
   extends: ['@company/commitlint-smarts'],
   rules: {
     'type-enum': [
-      2, 
-      'always', 
+      2,
+      'always',
       [
         'feat',
         'fix',
@@ -138,12 +138,12 @@ module.exports = {
         'chore',
         'revert',
         // 自定义类型
-        'i18n',    // 国际化相关
-        'security' // 安全相关
-      ]
-    ]
-  }
-};
+        'i18n', // 国际化相关
+        'security', // 安全相关
+      ],
+    ],
+  },
+}
 ```
 
 ## 最佳实践
@@ -152,4 +152,4 @@ module.exports = {
 2. 提交消息应简明扼要地描述变更内容
 3. 在功能开发过程中，可以按照逻辑进行小批量、频繁提交
 4. 每个提交应专注于一个主题，避免混合不相关的变更
-5. 使用作用域(scope)进一步明确变更范围 
+5. 使用作用域(scope)进一步明确变更范围

@@ -23,4 +23,4 @@ export default {
    * npm install eslint-plugin-max-len --save-dev
    * 'max-len': [2000, 'absolute'],
    */
-};
+}

@@ -147,13 +147,7 @@ NX 是一个智能、快速和可扩展的构建系统，具有以下特点：
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint",
-          "package",
-          "prepare"
-        ],
+        "cacheableOperations": ["build", "test", "lint", "package", "prepare"],
         "parallel": 3,
         "useDaemonProcess": true
       }
@@ -206,11 +200,13 @@ nx graph
 ### 性能优化建议
 
 1. **启用分布式缓存**：
+
 ```bash
 nx connect-to-nx-cloud
 ```
 
 2. **优化缓存配置**：
+
 ```json
 {
   "tasksRunnerOptions": {
@@ -270,11 +266,13 @@ lerna list
 ### 工作流最佳实践
 
 1. **版本管理流程**：
+
    - 使用 `independent` 模式管理版本
    - 遵循语义化版本规范
    - 使用 conventional commits 规范
 
 2. **发布流程**：
+
    - 确保所有更改已提交
    - 运行测试和构建
    - 使用 `lerna version` 更新版本
@@ -296,11 +294,13 @@ lerna list
 ## 项目优化建议
 
 1. **构建优化**：
+
    - 使用 NX 的增量构建
    - 启用并行构建
    - 配置合适的缓存策略
 
 2. **依赖管理**：
+
    - 使用 pnpm 管理依赖
    - 使用 Lerna 管理版本和发布
    - 定期更新和清理依赖

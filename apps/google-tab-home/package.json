@@ -2,7 +2,12 @@
   "name": "google-tab-home",
   "version": "0.0.7",
   "description": "google-pro 谷歌首页",
-  "keywords": ["browser", "home", "tab", "dashboard"],
+  "keywords": [
+    "browser",
+    "home",
+    "tab",
+    "dashboard"
+  ],
   "author": "wangwei <wwdqq7@qq.com>",
   "license": "ISC",
   "main": "lib/index.js",

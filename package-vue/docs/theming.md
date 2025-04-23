@@ -8,9 +8,11 @@
 -->
 
 ---
+
 title: Vue 组件主题定制
 description: 如何定制和扩展 Vue 组件库的主题
 outline: deep
+
 ---
 
 # Vue 组件主题定制
@@ -40,12 +42,12 @@ outline: deep
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-import { ThemeProvider } from '@fullstack/vue-components';
+import { defineComponent } from 'vue'
+import { ThemeProvider } from '@fullstack/vue-components'
 
 export default defineComponent({
   components: {
-    FsThemeProvider: ThemeProvider
+    FsThemeProvider: ThemeProvider,
   },
   setup() {
     const theme = {
@@ -57,12 +59,12 @@ export default defineComponent({
         error: '#f5222d',
       },
       borderRadius: '4px',
-      fontSize: '14px'
-    };
-    
-    return { theme };
-  }
-});
+      fontSize: '14px',
+    }
+
+    return { theme }
+  },
+})
 </script>
 ```
 
@@ -93,13 +95,13 @@ export default defineComponent({
     primaryLight: '#40a9ff',
     primaryLighter: '#91caff',
     primaryDark: '#096dd9',
-    
+
     // 功能色
     success: '#52c41a',
     warning: '#faad14',
     error: '#f5222d',
     info: '#1890ff',
-    
+
     // 中性色
     text: 'rgba(0, 0, 0, 0.85)',
     textSecondary: 'rgba(0, 0, 0, 0.65)',
@@ -119,13 +121,13 @@ export default defineComponent({
   // 字体
   fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`,
   fontFamilyCode: `'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace`,
-  
+
   // 字号
   fontSize: '14px',
   fontSizeSmall: '12px',
   fontSizeLarge: '16px',
   fontSizeXLarge: '20px',
-  
+
   // 行高
   lineHeight: 1.5,
   lineHeightTight: 1.25,
@@ -144,12 +146,12 @@ export default defineComponent({
   borderRadius: '4px',
   borderRadiusSmall: '2px',
   borderRadiusLarge: '8px',
-  
+
   // 阴影
   shadowLight: '0 2px 8px rgba(0, 0, 0, 0.15)',
   shadowMedium: '0 4px 12px rgba(0, 0, 0, 0.15)',
   shadowDark: '0 8px 16px rgba(0, 0, 0, 0.15)',
-  
+
   // 间距
   spacingXXSmall: '4px',
   spacingXSmall: '8px',
@@ -173,7 +175,7 @@ const darkTheme = {
     primaryLight: '#40a9ff',
     primaryLighter: '#91caff',
     primaryDark: '#096dd9',
-    
+
     // 背景与文本色反转
     text: 'rgba(255, 255, 255, 0.85)',
     textSecondary: 'rgba(255, 255, 255, 0.65)',
@@ -183,9 +185,9 @@ const darkTheme = {
     backgroundLight: '#1f1f1f',
     backgroundDark: '#000000',
   },
-  
+
   // 其他变量保持不变
-};
+}
 ```
 
 ## 动态切换主题
@@ -196,39 +198,35 @@ const darkTheme = {
 <template>
   <fs-theme-provider :theme="currentTheme">
     <div class="app-container">
-      <fs-button @click="toggleTheme">
-        切换至{{ isDarkMode ? '亮色' : '暗色' }}主题
-      </fs-button>
-      
+      <fs-button @click="toggleTheme"> 切换至{{ isDarkMode ? '亮色' : '暗色' }}主题 </fs-button>
+
       <!-- 应用内容 -->
     </div>
   </fs-theme-provider>
 </template>
 
 <script>
-import { defineComponent, ref, computed } from 'vue';
-import { ThemeProvider, Button } from '@fullstack/vue-components';
-import { lightTheme, darkTheme } from '@/themes';
+import { defineComponent, ref, computed } from 'vue'
+import { ThemeProvider, Button } from '@fullstack/vue-components'
+import { lightTheme, darkTheme } from '@/themes'
 
 export default defineComponent({
   components: {
     FsThemeProvider: ThemeProvider,
-    FsButton: Button
+    FsButton: Button,
   },
   setup() {
-    const isDarkMode = ref(false);
-    
-    const currentTheme = computed(() => 
-      isDarkMode.value ? darkTheme : lightTheme
-    );
-    
+    const isDarkMode = ref(false)
+
+    const currentTheme = computed(() => (isDarkMode.value ? darkTheme : lightTheme))
+
     const toggleTheme = () => {
-      isDarkMode.value = !isDarkMode.value;
-    };
-    
-    return { currentTheme, isDarkMode, toggleTheme };
-  }
-});
+      isDarkMode.value = !isDarkMode.value
+    }
+
+    return { currentTheme, isDarkMode, toggleTheme }
+  },
+})
 </script>
 ```
 
@@ -244,9 +242,9 @@ const theme = {
       borderRadius: '20px', // 圆角按钮
       paddingHorizontal: '20px',
       paddingVertical: '10px',
-    }
-  }
-};
+    },
+  },
+}
 ```
 
 ## 最佳实践

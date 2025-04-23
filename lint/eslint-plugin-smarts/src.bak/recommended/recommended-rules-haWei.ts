@@ -264,4 +264,4 @@ export default {
    * 应该使用<object>和<embed>标签嵌入Flash动画
    * 'vue/require-prop-types': 'error',
    */
-};
+}

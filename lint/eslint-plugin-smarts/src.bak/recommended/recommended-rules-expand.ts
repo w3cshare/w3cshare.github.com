@@ -7,7 +7,7 @@
  * @Description: eslint 拓展推荐配置
  */
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production'
 
 export default {
   /*
@@ -142,4 +142,4 @@ export default {
 
   // 禁止修改const声明的变量
   'no-const-assign': 'error',
-};
+}

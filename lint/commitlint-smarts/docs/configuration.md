@@ -15,7 +15,7 @@ outline: deep
 ```js
 module.exports = {
   extends: ['@company/commitlint-smarts'],
-};
+}
 ```
 
 这将使用 commitlint-smarts 的默认配置。
@@ -31,7 +31,7 @@ module.exports = {
     'header-max-length': [2, 'always', 100], // 将标题最大长度设为100个字符
     'scope-enum': [2, 'always', ['api', 'ui', 'core']], // 自定义scope范围
   },
-};
+}
 ```
 
 ## 配置项详解
@@ -40,7 +40,7 @@ module.exports = {
 
 规则配置采用 `[级别, 适用条件, 值]` 的格式：
 
-- **级别**: 
+- **级别**:
   - 0 - 禁用规则
   - 1 - 警告
   - 2 - 错误（将阻止提交）
@@ -51,13 +51,13 @@ module.exports = {
 
 ### 常用规则
 
-| 规则名 | 说明 | 默认值 |
-|-------|------|-------|
-| `header-max-length` | 标题行最大长度 | 72 |
-| `type-enum` | 允许的提交类型 | ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'build', 'ci', 'chore', 'revert'] |
-| `scope-enum` | 允许的作用域 | 无默认值 |
-| `subject-case` | 主题行大小写 | 'lower-case' |
-| `body-max-line-length` | 正文最大行长度 | 100 |
+| 规则名                 | 说明           | 默认值                                                                                         |
+| ---------------------- | -------------- | ---------------------------------------------------------------------------------------------- |
+| `header-max-length`    | 标题行最大长度 | 72                                                                                             |
+| `type-enum`            | 允许的提交类型 | ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'build', 'ci', 'chore', 'revert'] |
+| `scope-enum`           | 允许的作用域   | 无默认值                                                                                       |
+| `subject-case`         | 主题行大小写   | 'lower-case'                                                                                   |
+| `body-max-line-length` | 正文最大行长度 | 100                                                                                            |
 
 ## 扩展配置
 
@@ -72,7 +72,7 @@ commitlint-smarts 提供了几种预设配置：
 ```js
 module.exports = {
   extends: ['@company/commitlint-smarts/strict'],
-};
+}
 ```
 
 ## 项目配置示例
@@ -82,20 +82,20 @@ module.exports = {
 对于基于 Lerna 或 Nx 管理的单体仓库，可以自动从包名称生成 scope 列表：
 
 ```js
-const { getPackages } = require('@lerna/project');
-const path = require('path');
+const { getPackages } = require('@lerna/project')
+const path = require('path')
 
 const lernaPackages = async () => {
-  const packages = await getPackages();
-  return packages.map(pkg => path.basename(pkg.location));
-};
+  const packages = await getPackages()
+  return packages.map(pkg => path.basename(pkg.location))
+}
 
 module.exports = {
   extends: ['@company/commitlint-smarts'],
   rules: {
     'scope-enum': async ctx => [2, 'always', await lernaPackages()],
   },
-};
+}
 ```
 
 ### 集成JIRA工单号
@@ -112,7 +112,7 @@ module.exports = {
     'jira-task-id-case': [2, 'always', 'upper-case'],
     'jira-task-id-project-key': [2, 'always', ['ABC', 'XYZ']],
   },
-};
+}
 ```
 
 ## 配置文件类型
@@ -128,4 +128,4 @@ module.exports = {
 
 - [提交类型详解](./types.md)
 - [高级用法](./advanced.md)
-- [常见问题](./faq.md) 
+- [常见问题](./faq.md)

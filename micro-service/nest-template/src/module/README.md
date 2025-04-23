@@ -47,7 +47,7 @@ export class AdminModule {}
 
 ### API模块 (API)
 
- API模块包含面向客户端的API接口，如焦点图、导航等。
+API模块包含面向客户端的API接口，如焦点图、导航等。
 
 ```typescript
 import { Module } from '@nestjs/common';

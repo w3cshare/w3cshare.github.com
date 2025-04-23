@@ -24,7 +24,7 @@ outline: deep
 最简单的方式是使用 `ConfigProvider` 组件:
 
 ```tsx
-import { ConfigProvider } from '@fullstack/ant-design-lib';
+import { ConfigProvider } from '@fullstack/ant-design-lib'
 
 const theme = {
   token: {
@@ -36,13 +36,9 @@ const theme = {
     borderRadius: 4,
     fontSize: 14,
   },
-};
+}
 
-export default () => (
-  <ConfigProvider theme={theme}>
-    {/* 您的应用组件 */}
-  </ConfigProvider>
-);
+export default () => <ConfigProvider theme={theme}>{/* 您的应用组件 */}</ConfigProvider>
 ```
 
 ### 支持的主题变量
@@ -55,13 +51,13 @@ export default () => (
 {
   // 品牌色
   colorPrimary: '#1890ff',
-  
+
   // 功能色
   colorSuccess: '#52c41a',
   colorWarning: '#faad14',
   colorError: '#ff4d4f',
   colorInfo: '#1890ff',
-  
+
   // 中性色
   colorText: 'rgba(0, 0, 0, 0.85)',
   colorTextSecondary: 'rgba(0, 0, 0, 0.65)',
@@ -70,7 +66,7 @@ export default () => (
   colorBgContainer: '#ffffff',
   colorBgLayout: '#f0f2f5',
   colorBgSpotlight: 'rgba(0, 0, 0, 0.85)',
-  
+
   // 交互状态色
   colorPrimaryHover: '#40a9ff',
   colorPrimaryActive: '#096dd9',
@@ -85,14 +81,14 @@ export default () => (
   fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
     'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji'`,
-  
+
   // 字号
   fontSize: 14,
   fontSizeSM: 12,
   fontSizeLG: 16,
   fontSizeXL: 20,
   fontSizeXXL: 24,
-  
+
   // 行高
   lineHeight: 1.5,
   lineHeightLG: 2,
@@ -107,7 +103,7 @@ export default () => (
   // 边框
   borderWidth: 1,
   borderStyle: 'solid',
-  
+
   // 圆角
   borderRadius: 2,
   borderRadiusSM: 2,
@@ -127,7 +123,7 @@ export default () => (
   marginLG: 24,
   marginXL: 32,
   marginXXL: 48,
-  
+
   paddingXS: 4,
   paddingSM: 8,
   padding: 16,
@@ -143,26 +139,26 @@ export default () => (
 您可以实现动态主题切换，如明暗模式切换：
 
 ```tsx
-import React, { useState } from 'react';
-import { ConfigProvider, Button } from '@fullstack/ant-design-lib';
+import React, { useState } from 'react'
+import { ConfigProvider, Button } from '@fullstack/ant-design-lib'
 
 const lightTheme = {
   token: {
     colorBgContainer: '#ffffff',
     colorText: 'rgba(0, 0, 0, 0.85)',
   },
-};
+}
 
 const darkTheme = {
   token: {
     colorBgContainer: '#1f1f1f',
     colorText: 'rgba(255, 255, 255, 0.85)',
   },
-};
+}
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const currentTheme = isDarkMode ? darkTheme : lightTheme;
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const currentTheme = isDarkMode ? darkTheme : lightTheme
 
   return (
     <ConfigProvider theme={currentTheme}>
@@ -170,13 +166,11 @@ const App = () => {
         <Button onClick={() => setIsDarkMode(!isDarkMode)}>
           切换到{isDarkMode ? '亮色' : '暗色'}模式
         </Button>
-        <div style={{ marginTop: 16 }}>
-          {/* 您的应用内容 */}
-        </div>
+        <div style={{ marginTop: 16 }}>{/* 您的应用内容 */}</div>
       </div>
     </ConfigProvider>
-  );
-};
+  )
+}
 ```
 
 ## 组件级别定制
@@ -191,9 +185,9 @@ const buttonTheme = {
       algorithm: true, // 启用算法生成其他按钮相关的衍生颜色
     },
   },
-};
+}
 
-<ConfigProvider theme={buttonTheme}>
+;<ConfigProvider theme={buttonTheme}>
   <Button type="primary">自定义按钮</Button>
 </ConfigProvider>
 ```
@@ -203,15 +197,15 @@ const buttonTheme = {
 启用 CSS 变量模式可以实现运行时动态切换主题，而无需重新加载页面：
 
 ```tsx
-import { ConfigProvider } from '@fullstack/ant-design-lib';
+import { ConfigProvider } from '@fullstack/ant-design-lib'
 
-<ConfigProvider
+;<ConfigProvider
   theme={{
     token: {
       colorPrimary: '#00b96b',
     },
     hashed: false, // 关闭哈希值后缀
-    cssVar: true,  // 启用 CSS 变量模式
+    cssVar: true, // 启用 CSS 变量模式
   }}
 >
   {/* 您的应用组件 */}
@@ -223,10 +217,10 @@ import { ConfigProvider } from '@fullstack/ant-design-lib';
 高级用户可以定制主题算法，创建基于特定基础色的一整套主题：
 
 ```tsx
-import { theme } from '@fullstack/ant-design-lib';
-const { compactAlgorithm, darkAlgorithm } = theme;
+import { theme } from '@fullstack/ant-design-lib'
+const { compactAlgorithm, darkAlgorithm } = theme
 
-<ConfigProvider
+;<ConfigProvider
   theme={{
     token: {
       colorPrimary: '#00b96b',

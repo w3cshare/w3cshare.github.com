@@ -6,7 +6,7 @@
  * @FilePath: /micro-frontend/micro-app-vue/src/router/index.ts
  * @Description:
  */
-import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({

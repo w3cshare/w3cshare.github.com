@@ -88,23 +88,23 @@ export default {
       form: {
         name: '',
         age: 0,
-        address: ''
+        address: '',
       },
       schema: [
         { type: 'input', field: 'name', label: '姓名' },
         { type: 'number', field: 'age', label: '年龄' },
-        { type: 'textarea', field: 'address', label: '地址' }
+        { type: 'textarea', field: 'address', label: '地址' },
       ],
       rules: {
-        name: [{ required: true, message: '请输入姓名', trigger: 'blur' }]
-      }
+        name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+      },
     }
   },
   methods: {
     handleSubmit(formData) {
       // 提交表单
-    }
-  }
+    },
+  },
 }
 </script>
 ```
@@ -130,14 +130,16 @@ export default {
         title: { text: '销售数据分析' },
         xAxis: { data: ['一月', '二月', '三月', '四月', '五月', '六月'] },
         yAxis: {},
-        series: [{
-          name: '销售额',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
-        }]
-      }
+        series: [
+          {
+            name: '销售额',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20],
+          },
+        ],
+      },
     }
-  }
+  },
 }
 </script>
 ```
@@ -152,11 +154,7 @@ export default {
 
 ```vue
 <template>
-  <fs-tab-bar
-    :tabs="tabs"
-    :active-index="activeIndex"
-    @change="handleTabChange"
-  />
+  <fs-tab-bar :tabs="tabs" :active-index="activeIndex" @change="handleTabChange" />
 </template>
 
 <script>
@@ -165,17 +163,17 @@ export default {
     return {
       tabs: [
         { icon: 'home', text: '首页', pagePath: '/pages/index/index' },
-        { icon: 'user', text: '我的', pagePath: '/pages/user/index' }
+        { icon: 'user', text: '我的', pagePath: '/pages/user/index' },
       ],
-      activeIndex: 0
+      activeIndex: 0,
     }
   },
   methods: {
     handleTabChange(index) {
       this.activeIndex = index
       // 处理页面跳转
-    }
-  }
+    },
+  },
 }
 </script>
 ```
@@ -206,10 +204,10 @@ export default {
         author: '张三',
         publishTime: '2023-05-15',
         content: '文章内容...',
-        tags: ['前端', '性能优化', 'Vue']
-      }
+        tags: ['前端', '性能优化', 'Vue'],
+      },
     }
-  }
+  },
 }
 </script>
 ```
@@ -231,4 +229,4 @@ export default {
 - [Element UI组件API](/package-vue/element-ui-lib/api)
 - [Ant Design Vue组件API](/package-vue/ant-design-lib/api)
 - [UniApp组件API](/package-vue/uniapp-lib/api)
-- [SEO组件API](/package-vue/pure-ui-lib/api) 
+- [SEO组件API](/package-vue/pure-ui-lib/api)

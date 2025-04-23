@@ -7,21 +7,19 @@
  * @Description: 渲染标签页首页
  */
 
-import { UserSettings } from './settings';
+import { UserSettings } from './settings'
 
 /**
  * 渲染标签页首页
  */
 export function render(container: string | HTMLElement, settings: UserSettings) {
-  const rootElement = typeof container === 'string' 
-    ? document.querySelector(container) 
-    : container;
-    
+  const rootElement = typeof container === 'string' ? document.querySelector(container) : container
+
   if (!rootElement) {
-    console.error('找不到目标容器元素');
-    return;
+    console.error('找不到目标容器元素')
+    return
   }
-  
+
   rootElement.innerHTML = `
     <div class="tab-home-container">
       <!-- 顶部搜索栏 -->
@@ -66,40 +64,44 @@ export function render(container: string | HTMLElement, settings: UserSettings) 
         <div class="quote">${settings.quote || '"记忆汇聚成一条长河，将我们紧紧联系在一起，它流长河，罗卧底，带着不断向前，不断超越。"'}</div>
       </div>
     </div>
-  `;
-  
+  `
+
   // 注入样式
-  injectStyles();
-  
+  injectStyles()
+
   // 更新时间
-  updateDateTime();
-  setInterval(updateDateTime, 1000);
-  
+  updateDateTime()
+  setInterval(updateDateTime, 1000)
+
   // 如果启用了天气功能，获取天气数据
   if (settings.weatherEnabled) {
-    fetchWeatherData(settings.weatherLocation);
+    fetchWeatherData(settings.weatherLocation)
   }
 }
 
 /**
  * 渲染快捷方式图标
  */
-function renderShortcuts(shortcuts: Array<{name: string, url: string, icon: string}>) {
-  return shortcuts.map(shortcut => `
+function renderShortcuts(shortcuts: Array<{ name: string; url: string; icon: string }>) {
+  return shortcuts
+    .map(
+      shortcut => `
     <div class="shortcut-item" data-url="${shortcut.url}">
       <div class="shortcut-icon">
         <img src="${shortcut.icon}" alt="${shortcut.name}">
       </div>
       <div class="shortcut-name">${shortcut.name}</div>
     </div>
-  `).join('');
+  `,
+    )
+    .join('')
 }
 
 /**
  * 注入CSS样式
  */
 function injectStyles() {
-  const styleElement = document.createElement('style');
+  const styleElement = document.createElement('style')
   styleElement.textContent = `
     .tab-home-container {
       font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -288,33 +290,33 @@ function injectStyles() {
       margin: 0 auto;
       font-style: italic;
     }
-  `;
-  document.head.appendChild(styleElement);
+  `
+  document.head.appendChild(styleElement)
 }
 
 /**
  * 更新日期时间
  */
 function updateDateTime() {
-  const now = new Date();
-  
+  const now = new Date()
+
   // 更新时间 - 24小时制
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const timeStr = `${hours}:${minutes}`;
-  
+  const hours = String(now.getHours()).padStart(2, '0')
+  const minutes = String(now.getMinutes()).padStart(2, '0')
+  const timeStr = `${hours}:${minutes}`
+
   // 更新日期
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
-  const day = '日一二三四五六'.charAt(now.getDay());
-  const dateStr = `${month}月${date}日 星期${day}`;
-  
+  const month = now.getMonth() + 1
+  const date = now.getDate()
+  const day = '日一二三四五六'.charAt(now.getDay())
+  const dateStr = `${month}月${date}日 星期${day}`
+
   // 更新DOM
-  const timeElement = document.getElementById('current-time');
-  const dateElement = document.getElementById('current-date');
-  
-  if (timeElement) timeElement.textContent = timeStr;
-  if (dateElement) dateElement.textContent = dateStr;
+  const timeElement = document.getElementById('current-time')
+  const dateElement = document.getElementById('current-date')
+
+  if (timeElement) timeElement.textContent = timeStr
+  if (dateElement) dateElement.textContent = dateStr
 }
 
 /**
@@ -324,16 +326,16 @@ function fetchWeatherData(location: string = '北京') {
   // 实际项目中，这里应该调用天气API
   // 这里只是模拟数据
   setTimeout(() => {
-    const locationElement = document.getElementById('weather-location');
-    const tempElement = document.getElementById('weather-temp');
-    
-    if (locationElement) locationElement.textContent = location;
-    if (tempElement) tempElement.textContent = '7°';
-    
+    const locationElement = document.getElementById('weather-location')
+    const tempElement = document.getElementById('weather-temp')
+
+    if (locationElement) locationElement.textContent = location
+    if (tempElement) tempElement.textContent = '7°'
+
     // 更新最高最低温度
-    const weatherInfoElement = document.querySelector('.min-max');
+    const weatherInfoElement = document.querySelector('.min-max')
     if (weatherInfoElement) {
-      weatherInfoElement.textContent = '最低 4° 最高 10°';
+      weatherInfoElement.textContent = '最低 4° 最高 10°'
     }
-  }, 1000);
-} 
+  }, 1000)
+}

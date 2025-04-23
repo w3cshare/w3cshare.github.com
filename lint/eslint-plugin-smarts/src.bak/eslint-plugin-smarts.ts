@@ -20,10 +20,10 @@
  * - 包含代码格式化和最佳实践规则
  */
 
-import { ESLint } from 'eslint';
-import annotation from 'eslint-plugin-annotation';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import unusedImports from 'eslint-plugin-unused-imports';
+import { ESLint } from 'eslint'
+import annotation from 'eslint-plugin-annotation'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import unusedImports from 'eslint-plugin-unused-imports'
 
 // 导入规则配置
 // import recommendedExtends from './recommended/recommended-extends';
@@ -79,15 +79,15 @@ export default {
 
         // 移除无用的代码
         '@typescript-eslint/no-unused-vars': 'off', // 关闭TS的未使用变量检查，使用unused-imports代替
-        'no-unused-vars': 'off',                    // 关闭ESLint的未使用变量检查，使用unused-imports代替
+        'no-unused-vars': 'off', // 关闭ESLint的未使用变量检查，使用unused-imports代替
         'unused-imports/no-unused-imports': 'error', // 自动删除未使用的导入
         'unused-imports/no-unused-vars': [
           'warn',
           {
-            vars: 'all',               // 检查所有变量
-            varsIgnorePattern: '^_',   // 忽略以_开头的变量
-            args: 'after-used',        // 仅检查使用后的参数
-            argsIgnorePattern: '^_',   // 忽略以_开头的参数
+            vars: 'all', // 检查所有变量
+            varsIgnorePattern: '^_', // 忽略以_开头的变量
+            args: 'after-used', // 仅检查使用后的参数
+            argsIgnorePattern: '^_', // 忽略以_开头的参数
           },
         ],
 
@@ -121,27 +121,27 @@ export default {
         // ==========================================
         // 代码质量规则 - 避免常见错误和提高代码质量
         // ==========================================
-        'no-var': 'error',           // 使用let/const替代var
-        'no-console': 'off',         // 允许使用console (开发环境)
-        'no-debugger': 'error',      // 禁止使用debugger
-        'no-alert': 'error',         // 禁止使用alert/confirm/prompt
+        'no-var': 'error', // 使用let/const替代var
+        'no-console': 'off', // 允许使用console (开发环境)
+        'no-debugger': 'error', // 禁止使用debugger
+        'no-alert': 'error', // 禁止使用alert/confirm/prompt
 
         // 注释格式规则 (华为规范)
         'lines-around-comment': [
           'warn',
           {
-            beforeBlockComment: true,    // 块注释前需要空行
-            afterBlockComment: false,    // 块注释后不需要空行
-            beforeLineComment: true,     // 行注释前需要空行
-            afterLineComment: false,     // 行注释后不需要空行
-            allowBlockStart: true,       // 允许在块开始处的注释不需要前置空行
-            allowBlockEnd: false,        // 不允许在块结束处的注释不需要前置空行
-            allowObjectStart: true,      // 允许在对象开始处的注释不需要前置空行
-            allowObjectEnd: false,       // 不允许在对象结束处的注释不需要前置空行
-            allowArrayStart: true,       // 允许在数组开始处的注释不需要前置空行
-            allowArrayEnd: false,        // 不允许在数组结束处的注释不需要前置空行
-            allowClassStart: true,       // 允许在类开始处的注释不需要前置空行
-            allowClassEnd: false,        // 不允许在类结束处的注释不需要前置空行
+            beforeBlockComment: true, // 块注释前需要空行
+            afterBlockComment: false, // 块注释后不需要空行
+            beforeLineComment: true, // 行注释前需要空行
+            afterLineComment: false, // 行注释后不需要空行
+            allowBlockStart: true, // 允许在块开始处的注释不需要前置空行
+            allowBlockEnd: false, // 不允许在块结束处的注释不需要前置空行
+            allowObjectStart: true, // 允许在对象开始处的注释不需要前置空行
+            allowObjectEnd: false, // 不允许在对象结束处的注释不需要前置空行
+            allowArrayStart: true, // 允许在数组开始处的注释不需要前置空行
+            allowArrayEnd: false, // 不允许在数组结束处的注释不需要前置空行
+            allowClassStart: true, // 允许在类开始处的注释不需要前置空行
+            allowClassEnd: false, // 不允许在类结束处的注释不需要前置空行
             ignorePattern: '\\s*@\\w+', // 忽略带有 @xxx 注解的注释
           },
         ],
@@ -157,8 +157,8 @@ export default {
       // 插件配置 - 注册所需的ESLint插件
       // ==========================================
       plugins: {
-        annotation: annotation,              // 注解相关插件
-        'unused-imports': unusedImports,     // 未使用导入处理插件
+        annotation: annotation, // 注解相关插件
+        'unused-imports': unusedImports, // 未使用导入处理插件
         'simple-import-sort': simpleImportSort, // 导入排序插件
         // ...recommendedPlugins,               // 其他推荐插件
       },
@@ -183,4 +183,4 @@ export default {
       ],
     },
   },
-} satisfies ESLint.Plugin;
+} satisfies ESLint.Plugin

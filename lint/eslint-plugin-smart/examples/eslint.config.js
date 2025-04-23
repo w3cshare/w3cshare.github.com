@@ -12,32 +12,32 @@
  */
 
 // 导入eslint-plugin-smart
-const smartPlugin = require('eslint-plugin-smart');
+const smartPlugin = require('eslint-plugin-smart')
 
 // 基础配置示例 (适用于所有项目)
 export const baseConfig = {
   extends: ['plugin:smart/base'],
-};
+}
 
 // TypeScript项目配置示例
 export const typescriptConfig = {
   extends: ['plugin:smart/typescript'],
-};
+}
 
 // React项目配置示例
 export const reactConfig = {
   extends: ['plugin:smart/react'],
-};
+}
 
 // Vue项目配置示例
 export const vueConfig = {
   extends: ['plugin:smart/vue'],
-};
+}
 
 // NestJS项目配置示例
 export const nestjsConfig = {
   extends: ['plugin:smart/nestjs'],
-};
+}
 
 // 自定义配置示例 (混合多个规则集)
 export const customConfig = {
@@ -50,9 +50,9 @@ export const customConfig = {
     // 添加自定义规则
     'react/jsx-sort-props': 'error', // 要求JSX属性按字母顺序排序
   },
-};
+}
 
 // 默认导出推荐配置
 export default {
   extends: ['plugin:smart/recommended'],
-};
+}

@@ -6,4 +6,4 @@
  * @FilePath: /FullStack/micro-service/nestjs-logger/src/logger.constants.ts
  * @Description: --
  */
-export const LOGGER_OPTIONS = 'LOGGER_OPTIONS';
+export const LOGGER_OPTIONS = 'LOGGER_OPTIONS'

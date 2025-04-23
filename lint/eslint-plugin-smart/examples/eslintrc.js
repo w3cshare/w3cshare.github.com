@@ -50,4 +50,4 @@ module.exports = {
       jsx: true, // 如果使用JSX
     },
   },
-};
+}

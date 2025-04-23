@@ -15,16 +15,16 @@ outline: deep
 ### 必备工具
 
 1. **Docker 和 Docker Compose**
+
    - Docker用于容器化服务
    - Docker Compose用于本地服务编排
-  
+
 2. **Node.js 环境**（推荐v16+）
    - 用于NestJS微服务开发
-   
 3. **Java开发环境**（推荐JDK 17）
    - 用于Spring Cloud微服务开发
-   
 4. **Go环境**（推荐Go 1.18+）
+
    - 用于Go微服务开发
 
 5. **数据库**
@@ -85,9 +85,9 @@ npm install @nestjs/microservices @nestjs/config class-validator class-transform
 
 ```typescript
 // main.ts
-import { NestFactory } from '@nestjs/core';
-import { Transport } from '@nestjs/microservices';
-import { AppModule } from './app.module';
+import { NestFactory } from '@nestjs/core'
+import { Transport } from '@nestjs/microservices'
+import { AppModule } from './app.module'
 
 async function bootstrap() {
   // 创建一个微服务
@@ -97,17 +97,17 @@ async function bootstrap() {
       host: '0.0.0.0',
       port: 3001,
     },
-  });
-  
+  })
+
   // 同时创建HTTP服务，用于健康检查和Swagger文档
-  const httpApp = await NestFactory.create(AppModule);
-  httpApp.setGlobalPrefix('api');
-  
-  await app.listen();
-  await httpApp.listen(3000);
-  console.log('User microservice is running');
+  const httpApp = await NestFactory.create(AppModule)
+  httpApp.setGlobalPrefix('api')
+
+  await app.listen()
+  await httpApp.listen(3000)
+  console.log('User microservice is running')
 }
-bootstrap();
+bootstrap()
 ```
 
 ### 2. Spring Boot微服务示例
@@ -115,6 +115,7 @@ bootstrap();
 以下是创建Spring Boot微服务的步骤：
 
 首先，使用Spring Initializr创建项目，添加以下依赖：
+
 - Spring Web
 - Spring Data JPA
 - PostgreSQL Driver
@@ -155,10 +156,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-    
+
 server:
   port: 8080
-  
+
 eureka:
   client:
     serviceUrl:
@@ -191,7 +192,7 @@ package main
 import (
 	"context"
 	"log"
-	
+
 	"github.com/asim/go-micro/v3"
 	pb "github.com/fullstack/payment-service/proto"
 )
@@ -200,11 +201,11 @@ type PaymentService struct{}
 
 func (s *PaymentService) ProcessPayment(ctx context.Context, req *pb.PaymentRequest, res *pb.PaymentResponse) error {
 	log.Printf("Processing payment: %v", req)
-	
+
 	// 处理支付逻辑
 	res.Success = true
 	res.TransactionId = "tx_123456"
-	
+
 	return nil
 }
 
@@ -214,13 +215,13 @@ func main() {
 		micro.Name("payment.service"),
 		micro.Version("latest"),
 	)
-	
+
 	// 初始化服务
 	service.Init()
-	
+
 	// 注册处理器
 	pb.RegisterPaymentServiceHandler(service.Server(), new(PaymentService))
-	
+
 	// 运行服务
 	if err := service.Run(); err != nil {
 		log.Fatal(err)
@@ -242,20 +243,20 @@ services:
   registry:
     image: consul:latest
     ports:
-      - "8500:8500"
+      - '8500:8500'
     networks:
       - microservice-network
-      
+
   # API网关
   gateway:
     build: ./gateway
     ports:
-      - "8080:8080"
+      - '8080:8080'
     depends_on:
       - registry
     networks:
       - microservice-network
-      
+
   # 用户服务
   user-service:
     build: ./services/user-service
@@ -264,7 +265,7 @@ services:
       - mongodb
     networks:
       - microservice-network
-      
+
   # 产品服务
   product-service:
     build: ./services/product-service
@@ -273,7 +274,7 @@ services:
       - postgres
     networks:
       - microservice-network
-      
+
   # 订单服务
   order-service:
     build: ./services/order-service
@@ -282,7 +283,7 @@ services:
       - postgres
     networks:
       - microservice-network
-      
+
   # 支付服务
   payment-service:
     build: ./services/payment-service
@@ -291,21 +292,21 @@ services:
       - redis
     networks:
       - microservice-network
-      
+
   # 数据库
   mongodb:
     image: mongo:latest
     ports:
-      - "27017:27017"
+      - '27017:27017'
     volumes:
       - mongodb-data:/data/db
     networks:
       - microservice-network
-      
+
   postgres:
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - '5432:5432'
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -314,18 +315,18 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - microservice-network
-      
+
   redis:
     image: redis:latest
     ports:
-      - "6379:6379"
+      - '6379:6379'
     networks:
       - microservice-network
 
 networks:
   microservice-network:
     driver: bridge
-    
+
 volumes:
   mongodb-data:
   postgres-data:
@@ -348,12 +349,13 @@ docker-compose up -d
 @Injectable()
 export class ProductService {
   constructor(private httpService: HttpService) {}
-  
+
   async getProduct(id: string): Promise<any> {
-    const response = await this.httpService.get(`http://product-service/api/products/${id}`)
+    const response = await this.httpService
+      .get(`http://product-service/api/products/${id}`)
       .pipe(map(res => res.data))
-      .toPromise();
-    return response;
+      .toPromise()
+    return response
   }
 }
 ```
@@ -392,7 +394,7 @@ message User {
 @Injectable()
 export class OrderCreatedProducer {
   constructor(@Inject('KAFKA_PRODUCER') private kafkaClient: ClientKafka) {}
-  
+
   async orderCreated(order: any) {
     this.kafkaClient.emit('order.created', order);
   }
@@ -418,7 +420,7 @@ async handleOrderCreatedEvent(order: any) {
 export class HealthController {
   @Get()
   check() {
-    return { status: 'ok' };
+    return { status: 'ok' }
   }
 }
 ```
@@ -447,7 +449,7 @@ Consul配置：
 
 ```typescript
 // NestJS Prometheus集成
-import { PrometheusModule } from '@willsoto/nestjs-prometheus';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus'
 
 @Module({
   imports: [
@@ -469,12 +471,12 @@ export class AppModule {}
 ```yaml
 # logback-spring.xml (Spring Boot)
 <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-  <destination>logstash:5000</destination>
-  <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+<destination>logstash:5000</destination>
+<encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
 </appender>
 
 <root level="INFO">
-  <appender-ref ref="LOGSTASH" />
+<appender-ref ref="LOGSTASH" />
 </root>
 ```
 
@@ -486,4 +488,4 @@ export class AppModule {}
 2. [领域驱动设计实践](/micro-service/domain-driven-design)
 3. [服务治理与弹性设计](/micro-service/service-governance)
 4. [部署与运维自动化](/micro-service/deployment)
-5. [微服务性能优化](/micro-service/performance-tuning) 
+5. [微服务性能优化](/micro-service/performance-tuning)

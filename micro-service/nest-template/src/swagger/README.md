@@ -36,11 +36,11 @@ import { swaggerConfig } from './config/swagger.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
   // 设置 Swagger
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api/docs', app, document);
-  
+
   await app.listen(3000);
 }
 bootstrap();
@@ -89,7 +89,12 @@ export class ErrorResponse {
 
 ```typescript
 import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiParam,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { UserService } from './user.service';
 import { CreateUserDto } from '../../dto/user/create-user.dto';
 import { UserResponseDto } from '../../dto/user/user-response.dto';

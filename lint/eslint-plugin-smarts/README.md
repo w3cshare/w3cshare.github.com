@@ -81,12 +81,12 @@ yarn add eslint-plugin-smart -D
 
 ```js
 // eslint.config.js
-import smartPlugin from 'eslint-plugin-smart';
+import smartPlugin from 'eslint-plugin-smart'
 
 export default [
   ...smartPlugin.configs.typescript,
   // 自定义规则...
-];
+]
 ```
 
 > **注意**: ESLint v9 中环境变量配置方式发生变化，不再使用 `env` 字段，而是使用 `languageOptions.globals`。本插件 v1.2.1 及以上版本已自动处理这一变化。
@@ -96,11 +96,9 @@ export default [
 ```js
 // .eslintrc.js
 module.exports = {
-  extends: [
-    'plugin:smart/typescript',
-  ],
+  extends: ['plugin:smart/typescript'],
   // 自定义规则...
-};
+}
 ```
 
 ## 可用配置

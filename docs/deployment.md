@@ -260,7 +260,7 @@ graph TD
        new winston.transports.File({ filename: 'error.log', level: 'error' }),
        new winston.transports.File({ filename: 'combined.log' }),
      ],
-   };
+   }
    ```
 
 ## 备份和恢复
@@ -333,7 +333,7 @@ graph TD
        key: '/etc/ssl/private/your-domain.key',
        cert: '/etc/ssl/certs/your-domain.crt',
      },
-   };
+   }
    ```
 
 ### 防火墙配置
@@ -401,7 +401,7 @@ graph TD
      port: 6379,
      maxRetriesPerRequest: 3,
      enableReadyCheck: true,
-   });
+   })
    ```
 
 ## 故障恢复

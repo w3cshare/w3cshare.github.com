@@ -21,8 +21,5 @@ export const swaggerConfig = new DocumentBuilder()
 
 // Swagger文档选项
 export const swaggerOptions: SwaggerDocumentOptions = {
-  operationIdFactory: (
-    controllerKey: string,
-    methodKey: string,
-  ) => methodKey,
+  operationIdFactory: (controllerKey: string, methodKey: string) => methodKey,
 };

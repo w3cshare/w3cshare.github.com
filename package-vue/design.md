@@ -107,7 +107,8 @@ $neutral-11: #ffffff;
 
 ```scss
 // 字体家族
-$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-base:
+  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 $font-family-code: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 
 // 字体大小
@@ -200,7 +201,7 @@ export default createComponent({
   },
   render() {
     // 渲染函数（兼容两个版本）
-  }
+  },
 })
 ```
 
@@ -226,4 +227,4 @@ export default createComponent({
 
 - [Figma设计系统](https://figma.com/file/example)
 - [设计令牌文档](/package-vue/design-tokens)
-- [图标库](/package-vue/icons) 
+- [图标库](/package-vue/icons)

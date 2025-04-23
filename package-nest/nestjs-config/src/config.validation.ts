@@ -5,7 +5,7 @@
  * @LastEditTime: 2025-03-31 17:36:13
  * @Description: Default validation schema
  */
-import * as Joi from 'joi';
+import * as Joi from 'joi'
 
 /**
  * 默认的配置验证schema
@@ -16,7 +16,7 @@ export const defaultValidationSchema = Joi.object({
     .default('development'),
   PORT: Joi.number().default(3000),
   DATABASE_USER: Joi.string().required(),
-});
+})
 
 /**
  * 合并自定义schema和默认schema
@@ -25,8 +25,8 @@ export const defaultValidationSchema = Joi.object({
  */
 export const mergeValidationSchema = (customSchema?: Joi.ObjectSchema): Joi.ObjectSchema => {
   if (!customSchema) {
-    return defaultValidationSchema;
+    return defaultValidationSchema
   }
 
-  return defaultValidationSchema.concat(customSchema);
-};
+  return defaultValidationSchema.concat(customSchema)
+}

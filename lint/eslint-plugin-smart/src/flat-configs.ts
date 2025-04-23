@@ -170,9 +170,9 @@ export function createFlatConfigs(
     plugins: {
       node: nodePlugin,
       import: importPlugin,
-      prettier: prettierPlugin,
       'simple-import-sort': simpleImportSortPlugin,
       'unused-imports': unusedImportsPlugin,
+      prettier: prettierPlugin,
     },
     languageOptions: {
       parser: typescriptEslintParser,
@@ -215,7 +215,7 @@ export function createFlatConfigs(
     typescript: [baseFlatConfig, typescriptFlatConfig, prettierFlatConfig],
     react: [baseFlatConfig, typescriptFlatConfig, reactFlatConfig, prettierFlatConfig],
     vue: [baseFlatConfig, typescriptFlatConfig, vueFlatConfig, prettierFlatConfig],
-    nestjs: [prettierFlatConfig, baseFlatConfig, typescriptFlatConfig, nestjsFlatConfig],
+    nestjs: [baseFlatConfig, typescriptFlatConfig, nestjsFlatConfig, prettierFlatConfig],
     recommended: [baseFlatConfig, typescriptFlatConfig, prettierFlatConfig],
   }
 }

@@ -29,6 +29,7 @@ ESLint v9引入了扁平配置系统，与一些旧版插件可能存在兼容�
 #### 问题: `env` 配置字段不支持
 
 **症状**：
+
 ```
 ESLint: 9.25.0
 A config object is using the "env" key, which is not supported in flat config system.
@@ -43,19 +44,19 @@ Flat config uses "languageOptions.globals" to define global variables for your f
 const config = {
   env: {
     node: true,
-    jest: true
-  }
-};
+    jest: true,
+  },
+}
 
 // 修改后 - ESLint v9扁平配置
 const config = {
   languageOptions: {
     globals: {
       node: true,
-      jest: true
-    }
-  }
-};
+      jest: true,
+    },
+  },
+}
 ```
 
 `eslint-plugin-smart` v1.2.1及以上版本已自动处理这个变化，请确保使用最新版本。
@@ -63,11 +64,13 @@ const config = {
 #### 问题: `@typescript-eslint/ban-types`规则不存在
 
 **症状**：
+
 ```
 TypeError: Key "rules": Key "@typescript-eslint/ban-types": Could not find "ban-types" in plugin "@typescript-eslint".
 ```
 
 **解决方案**：
+
 1. 检查`eslint-plugin-smart`插件中的TypeScript规则配置
 2. 删除或更新不兼容的规则
 3. 重新构建插件
@@ -76,16 +79,16 @@ TypeError: Key "rules": Key "@typescript-eslint/ban-types": Could not find "ban-
 // 修改前
 const typescriptRules = {
   // ...其他规则
-  '@typescript-eslint/ban-types': 'warn',  // 不兼容的规则
+  '@typescript-eslint/ban-types': 'warn', // 不兼容的规则
   // ...更多规则
-};
+}
 
 // 修改后
 const typescriptRules = {
   // ...其他规则
   // '@typescript-eslint/ban-types': 'warn',  // 已删除不兼容的规则
   // ...更多规则
-};
+}
 ```
 
 ### 项目中的ESLint配置示例
@@ -94,9 +97,9 @@ const typescriptRules = {
 
 ```javascript
 // eslint.config.mjs
-import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import eslintPlugin from 'eslint-plugin-smart';
+import js from '@eslint/js'
+import tseslint from 'typescript-eslint'
+import eslintPlugin from 'eslint-plugin-smart'
 
 export default [
   js.configs.recommended,
@@ -110,19 +113,19 @@ export default [
       },
     },
     plugins: {
-      'import': eslintPlugin.plugins.import,
+      import: eslintPlugin.plugins.import,
       'simple-import-sort': eslintPlugin.plugins['simple-import-sort'],
       'unused-imports': eslintPlugin.plugins['unused-imports'],
     },
     rules: {
       ...eslintPlugin.rules.base,
       ...eslintPlugin.rules.typescript,
-      
+
       // 可以在此覆盖特定规则
       'no-console': 'error',
     },
   },
-];
+]
 ```
 
 ## 最佳实践
@@ -147,7 +150,7 @@ export default [
 rules: {
   ...eslintPlugin.rules.base,
   ...eslintPlugin.rules.typescript,
-  
+
   // 子项目特定规则覆盖
   'no-console': 'off',  // 允许使用console
   'max-len': ['warn', { code: 150 }],  // 调整最大行长度
@@ -177,4 +180,4 @@ rules: {
 
 - [ESLint官方文档](https://eslint.org/)
 - [TypeScript ESLint](https://typescript-eslint.io/)
-- [ESLint Flat Config指南](https://eslint.org/docs/latest/use/configure/configuration-files-new) 
+- [ESLint Flat Config指南](https://eslint.org/docs/latest/use/configure/configuration-files-new)

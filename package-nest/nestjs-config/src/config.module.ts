@@ -5,12 +5,12 @@
  * @LastEditTime: 2025-03-31 18:28:51
  * @Description: Config module
  */
-import { Module } from '@nestjs/common';
-import * as Joi from 'joi';
+import { Module } from '@nestjs/common'
+import * as Joi from 'joi'
 
-import { ConfigModuleOptions } from './config.interfaces';
-import { ConfigService } from './config.service';
-import { mergeValidationSchema } from './config.validation';
+import { ConfigModuleOptions } from './config.interfaces'
+import { ConfigService } from './config.service'
+import { mergeValidationSchema } from './config.validation'
 
 @Module({
   providers: [ConfigService],
@@ -27,10 +27,10 @@ export class ConfigModule {
         abortEarly: true,
         ...options?.validationOptions,
       },
-    };
+    }
 
-    const mergedOptions = { ...defaultOptions, ...options };
-    const validationSchema = mergeValidationSchema(mergedOptions.validationSchema);
+    const mergedOptions = { ...defaultOptions, ...options }
+    const validationSchema = mergeValidationSchema(mergedOptions.validationSchema)
 
     return {
       module: ConfigModule,
@@ -45,6 +45,6 @@ export class ConfigModule {
       ],
       exports: [ConfigService],
       global: options?.isGlobal ?? false,
-    };
+    }
   }
 }

@@ -214,10 +214,10 @@ vsce publish patch|minor|major
 ### 基础使用
 
 ```typescript
-import { VSCodePro } from '@smarts-isoftstone/vscode-pro';
+import { VSCodePro } from '@smarts-isoftstone/vscode-pro'
 
 // 初始化设计器
-const designer = new VSCodePro();
+const designer = new VSCodePro()
 
 // 注册自定义组件
 designer.registerComponent({
@@ -234,15 +234,15 @@ designer.registerComponent({
     { name: 'disabled', type: 'boolean', default: false },
   ],
   template: '<Button variant="{{variant}}" disabled={{{disabled}}}>{{text}}</Button>',
-});
+})
 
 // 监听事件
 designer.on('component:added', component => {
-  console.log('Component added:', component);
-});
+  console.log('Component added:', component)
+})
 
 // 生成代码
-const code = designer.generateCode();
+const code = designer.generateCode()
 ```
 
 ### 高级配置
@@ -262,14 +262,14 @@ export const {{componentName}} = (props) => {
   );
 };
   `,
-});
+})
 
 // 注册自定义事件处理器
 designer.registerEventHandler('onClick', {
   template: '() => { {{handler}} }',
   defaultHandler: 'console.log("Clicked")',
   properties: [{ name: 'handler', type: 'function', default: '' }],
-});
+})
 ```
 
 ### 插件扩展
@@ -278,8 +278,8 @@ designer.registerEventHandler('onClick', {
 // 扩展设计器功能
 class CustomDesigner extends VSCodePro {
   constructor() {
-    super();
-    this.initCustomFeatures();
+    super()
+    this.initCustomFeatures()
   }
 
   initCustomFeatures() {

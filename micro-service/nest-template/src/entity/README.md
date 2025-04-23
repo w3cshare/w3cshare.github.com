@@ -17,7 +17,14 @@ entities/
 ### 用户实体 (User)
 
 ```typescript
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+} from 'typeorm';
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { Post } from './post.entity';
 
@@ -52,7 +59,7 @@ export class User {
   updatedAt: Date;
 
   @Field(() => [Post], { nullable: true })
-  @OneToMany(() => Post, post => post.user)
+  @OneToMany(() => Post, (post) => post.user)
   posts: Post[];
 }
 ```
@@ -60,7 +67,14 @@ export class User {
 ### 文章实体 (Post)
 
 ```typescript
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+} from 'typeorm';
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { User } from './user.entity';
 
@@ -88,7 +102,7 @@ export class Post {
   updatedAt: Date;
 
   @Field(() => User)
-  @ManyToOne(() => User, user => user.posts)
+  @ManyToOne(() => User, (user) => user.posts)
   user: User;
 
   @Column()

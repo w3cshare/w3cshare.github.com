@@ -7,10 +7,10 @@
  */
 
 //
-import { Injectable } from '@nestjs/common';
-import { ConfigService as NestConfigService } from '@nestjs/config';
+import { Injectable } from '@nestjs/common'
+import { ConfigService as NestConfigService } from '@nestjs/config'
 
-import { ConfigModuleOptions } from './config.interfaces';
+import { ConfigModuleOptions } from './config.interfaces'
 
 @Injectable()
 export class ConfigService {
@@ -19,10 +19,10 @@ export class ConfigService {
       envFilePath: options?.envFilePath,
       validationSchema: options?.validationSchema,
       validationOptions: options?.validationOptions,
-    });
+    })
   }
 
-  private configService: NestConfigService;
+  private configService: NestConfigService
 
   /**
    * 获取配置值
@@ -30,7 +30,7 @@ export class ConfigService {
    * @param defaultValue 默认值
    */
   get<T = any>(key: string, defaultValue?: T): T {
-    return this.configService.get<T>(key, defaultValue);
+    return this.configService.get<T>(key, defaultValue)
   }
 
   /**
@@ -38,13 +38,13 @@ export class ConfigService {
    * @param key 配置键
    */
   getOrThrow<T = any>(key: string): T {
-    return this.configService.getOrThrow<T>(key);
+    return this.configService.getOrThrow<T>(key)
   }
 
   /**
    * 获取所有配置
    */
   getAll(): Record<string, any> {
-    return this.configService.get('');
+    return this.configService.get('')
   }
 }

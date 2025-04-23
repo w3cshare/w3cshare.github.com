@@ -23,7 +23,7 @@
     "build": "nx run-many --target=build --all  --parallel",
     "build:pnpm": "pnpm -r run build",
     "test": "nx run-many --target=test --all",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,json,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,json,md}\" --ignore-path .gitignore",
     "// ====== Lint 相关命令 ======": "",
     "lint.bak": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --cache",
     "lint": "nx run-many --target=lint --all  --parallel",

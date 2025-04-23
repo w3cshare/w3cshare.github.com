@@ -5,6 +5,6 @@
  * @LastEditTime: 2025-03-31 17:36:13
  * @Description: Entry file
  */
-export * from './config.interfaces';
-export * from './config.module';
-export * from './config.service';
+export * from './config.interfaces'
+export * from './config.module'
+export * from './config.service'

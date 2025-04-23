@@ -208,13 +208,13 @@
       * @returns {number} 两个数字的和
       */
      function add(a: number, b: number): number {
-       return a + b;
+       return a + b
      }
 
      // 避免的注释
      // 计算和
      function add(a: number, b: number): number {
-       return a + b;
+       return a + b
      }
      ```
 
@@ -225,20 +225,20 @@
      function calculateDiscount(price: number, userType: string): number {
        // VIP用户享受85折优惠
        if (userType === 'VIP') {
-         return price * 0.85;
+         return price * 0.85
        }
        // 新用户首次购买享受90折优惠
        if (userType === 'NEW') {
-         return price * 0.9;
+         return price * 0.9
        }
-       return price;
+       return price
      }
 
      // 避免的注释方式
      function calculateDiscount(price: number, userType: string): number {
-       if (userType === 'VIP') return price * 0.85;
-       if (userType === 'NEW') return price * 0.9;
-       return price;
+       if (userType === 'VIP') return price * 0.85
+       if (userType === 'NEW') return price * 0.9
+       return price
      }
      ```
 
@@ -274,14 +274,14 @@
      // 好的缩进
      function example() {
        if (condition) {
-         doSomething();
+         doSomething()
        }
      }
 
      // 避免的缩进
      function example() {
        if (condition) {
-         doSomething();
+         doSomething()
        }
      }
      ```
@@ -290,37 +290,37 @@
 
      ```typescript
      // 好的分号使用
-     const name = 'John';
-     console.log(name);
+     const name = 'John'
+     console.log(name)
 
      // 避免省略分号
-     const name = 'John';
-     console.log(name);
+     const name = 'John'
+     console.log(name)
      ```
 
    - 使用单引号
 
      ```typescript
      // 好的引号使用
-     const name = 'John';
-     const template = `Hello ${name}`;
+     const name = 'John'
+     const template = `Hello ${name}`
 
      // 避免使用双引号
-     const name = 'John';
+     const name = 'John'
      ```
 
    - 最大行长度为 100 字符
 
      ```typescript
      // 好的行长度控制
-     const userList = users.filter(user => user.isActive).map(user => user.name);
+     const userList = users.filter(user => user.isActive).map(user => user.name)
 
      // 避免超长行
      const userList = users
        .filter(user => user.isActive)
        .map(user => user.name)
        .filter(name => name.length > 0)
-       .join(', ');
+       .join(', ')
      ```
 
 ### TypeScript 规范
@@ -336,13 +336,13 @@
    ```typescript
    // 好的做法
    interface User {
-     id: string;
-     name: string;
-     email: string;
+     id: string
+     name: string
+     email: string
    }
 
    // 避免使用
-   type User = any;
+   type User = any
    ```
 
 3. **类型推断**
@@ -397,36 +397,36 @@
    </template>
 
    <script setup lang="ts">
-   import { ref, computed } from 'vue';
-   import type { PropType } from 'vue';
-   import { useUserStore } from '@/stores/user';
+   import { ref, computed } from 'vue'
+   import type { PropType } from 'vue'
+   import { useUserStore } from '@/stores/user'
 
    // 类型定义
    interface Props {
-     title: string;
-     items?: Item[];
+     title: string
+     items?: Item[]
    }
 
    // Props 定义
-   const props = defineProps<Props>();
+   const props = defineProps<Props>()
 
    // Emits 定义
    const emit = defineEmits<{
-     (e: 'update', value: string): void;
-     (e: 'delete'): void;
-   }>();
+     (e: 'update', value: string): void
+     (e: 'delete'): void
+   }>()
 
    // 响应式数据
-   const count = ref(0);
+   const count = ref(0)
 
    // 计算属性
-   const computedValue = computed(() => `${props.title}: ${count.value}`);
+   const computedValue = computed(() => `${props.title}: ${count.value}`)
 
    // 方法
    const increment = () => {
-     count.value++;
-     emit('update', count.value.toString());
-   };
+     count.value++
+     emit('update', count.value.toString())
+   }
    </script>
 
    <style module>
@@ -451,15 +451,15 @@
    ```ts
    // useCounter.ts
    export function useCounter(initialValue = 0) {
-     const count = ref(initialValue);
-     const increment = () => count.value++;
-     const decrement = () => count.value--;
+     const count = ref(initialValue)
+     const increment = () => count.value++
+     const decrement = () => count.value--
 
      return {
        count: readonly(count),
        increment,
        decrement,
-     };
+     }
    }
    ```
 
@@ -504,19 +504,19 @@
    ```ts
    // stores/user.ts
    export const useUserStore = defineStore('user', () => {
-     const user = ref<User | null>(null);
-     const isLoggedIn = computed(() => !!user.value);
+     const user = ref<User | null>(null)
+     const isLoggedIn = computed(() => !!user.value)
 
      async function login(credentials: Credentials) {
-       user.value = await api.login(credentials);
+       user.value = await api.login(credentials)
      }
 
      return {
        user,
        isLoggedIn,
        login,
-     };
-   });
+     }
+   })
    ```
 
 7. **性能优化**
@@ -529,9 +529,9 @@
 
    ```vue
    <script setup>
-   import { defineAsyncComponent } from 'vue';
+   import { defineAsyncComponent } from 'vue'
 
-   const AsyncComp = defineAsyncComponent(() => import('./components/HeavyComponent.vue'));
+   const AsyncComp = defineAsyncComponent(() => import('./components/HeavyComponent.vue'))
    </script>
    ```
 
@@ -574,34 +574,34 @@
 3. **函数组件最佳实践**
 
    ```tsx
-   import { FC, memo, useState, useCallback } from 'react';
-   import type { MouseEvent } from 'react';
-   import styles from './styles.module.css';
+   import { FC, memo, useState, useCallback } from 'react'
+   import type { MouseEvent } from 'react'
+   import styles from './styles.module.css'
 
    interface Props {
-     title: string;
-     onAction?: (value: string) => void;
+     title: string
+     onAction?: (value: string) => void
    }
 
    export const Button: FC<Props> = memo(({ title, onAction }) => {
-     const [count, setCount] = useState(0);
+     const [count, setCount] = useState(0)
 
      const handleClick = useCallback(
        (e: MouseEvent) => {
-         setCount(prev => prev + 1);
-         onAction?.(count.toString());
+         setCount(prev => prev + 1)
+         onAction?.(count.toString())
        },
        [count, onAction],
-     );
+     )
 
      return (
        <button className={styles.button} onClick={handleClick} type="button">
          {title} ({count})
        </button>
-     );
-   });
+     )
+   })
 
-   Button.displayName = 'Button';
+   Button.displayName = 'Button'
    ```
 
 4. **Hooks 规范**
@@ -612,26 +612,26 @@
    - 使用TypeScript定义类型
 
    ```tsx
-   import { useState, useEffect, useCallback } from 'react';
+   import { useState, useEffect, useCallback } from 'react'
 
    interface UseCounterOptions {
-     initialValue?: number;
-     min?: number;
-     max?: number;
+     initialValue?: number
+     min?: number
+     max?: number
    }
 
    export function useCounter({ initialValue = 0, min = 0, max = 100 }: UseCounterOptions = {}) {
-     const [count, setCount] = useState(initialValue);
+     const [count, setCount] = useState(initialValue)
 
      const increment = useCallback(() => {
-       setCount(prev => Math.min(max, prev + 1));
-     }, [max]);
+       setCount(prev => Math.min(max, prev + 1))
+     }, [max])
 
      const decrement = useCallback(() => {
-       setCount(prev => Math.max(min, prev - 1));
-     }, [min]);
+       setCount(prev => Math.max(min, prev - 1))
+     }, [min])
 
-     return { count, increment, decrement };
+     return { count, increment, decrement }
    }
    ```
 
@@ -672,28 +672,28 @@
 
    ```tsx
    // store/features/userSlice.ts
-   import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+   import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
    export const loginUser = createAsyncThunk('user/login', async (credentials: Credentials) => {
-     const response = await api.login(credentials);
-     return response.data;
-   });
+     const response = await api.login(credentials)
+     return response.data
+   })
 
    const userSlice = createSlice({
      name: 'user',
      initialState,
      reducers: {
        logout: state => {
-         state.user = null;
-         state.token = null;
+         state.user = null
+         state.token = null
        },
      },
      extraReducers: builder => {
        builder.addCase(loginUser.fulfilled, (state, action) => {
-         state.user = action.payload;
-       });
+         state.user = action.payload
+       })
      },
-   });
+   })
    ```
 
 7. **性能优化**
@@ -704,14 +704,14 @@
    - 虚拟列表优化长列表渲染
 
    ```tsx
-   const LazyComponent = React.lazy(() => import('./components/HeavyComponent'));
+   const LazyComponent = React.lazy(() => import('./components/HeavyComponent'))
 
    function App() {
      return (
        <Suspense fallback={<Loading />}>
          <LazyComponent />
        </Suspense>
-     );
+     )
    }
    ```
 
@@ -719,24 +719,24 @@
 
    ```tsx
    // 1. React 相关
-   import React, { useState, useEffect } from 'react';
-   import type { FC, MouseEvent } from 'react';
+   import React, { useState, useEffect } from 'react'
+   import type { FC, MouseEvent } from 'react'
 
    // 2. 第三方库
-   import { useDispatch } from 'react-redux';
-   import classnames from 'classnames';
+   import { useDispatch } from 'react-redux'
+   import classnames from 'classnames'
 
    // 3. 组件
-   import { Button } from '@/components';
+   import { Button } from '@/components'
 
    // 4. Hooks、工具函数
-   import { useUser } from '@/hooks';
-   import { formatDate } from '@/utils';
+   import { useUser } from '@/hooks'
+   import { formatDate } from '@/utils'
 
    // 5. 类型、常量、样式
-   import type { User } from '@/types';
-   import { ROUTES } from '@/constants';
-   import styles from './styles.module.css';
+   import type { User } from '@/types'
+   import { ROUTES } from '@/constants'
+   import styles from './styles.module.css'
    ```
 
 ### NestJS 规范
@@ -756,7 +756,7 @@
 
      @Get()
      async findAll(): Promise<User[]> {
-       return this.usersService.findAll();
+       return this.usersService.findAll()
      }
    }
    ```
@@ -833,8 +833,8 @@
    describe('ComponentName', () => {
      it('should do something', () => {
        // 测试代码
-     });
-   });
+     })
+   })
    ```
 
 3. **测试覆盖**
