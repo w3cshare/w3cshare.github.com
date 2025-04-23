@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:31:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-22 16:28:42
+ * @LastEditTime: 2025-04-23 14:06:44
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/eslint-plugin-smart.ts
  * @Description: ESLint插件公共配置，适用于React、Vue、NestJS和TypeScript项目
  */
@@ -14,8 +14,11 @@ import {
   reactRules as reactRules2,
   typescriptRules as typescriptRules2,
   vueRules as vueRules2,
-} from './recommend';
-import { type ESLintRuleSet } from './types';
+} from "./recommend";
+import { type ESLintRuleSet } from "./types";
+import { createFlatConfigs } from "./flat-configs";
+import { createLegacyConfigs } from "./legacy-configs";
+import { isESLintV9, loadPlugins } from "./utils";
 
 /**
  * ESLint插件类型
@@ -60,19 +63,8 @@ interface ESLintPluginExport {
     vue: ESLintRuleSet;
     nestjs: ESLintRuleSet;
   };
-  configs?: {
-    base: ESLintConfig | ESLintFlatConfig[];
-    typescript: ESLintConfig | ESLintFlatConfig[];
-    react: ESLintConfig | ESLintFlatConfig[];
-    vue: ESLintConfig | ESLintFlatConfig[];
-    nestjs: ESLintConfig | ESLintFlatConfig[];
-    recommended: ESLintConfig | ESLintFlatConfig[];
-  };
-  plugins?: {
-    import: ESLintPlugin;
-    'simple-import-sort': ESLintPlugin;
-    'unused-imports': ESLintPlugin;
-  };
+  configs?: Record<string, unknown>;
+  plugins?: Record<string, unknown>;
 }
 
 /**
@@ -84,31 +76,31 @@ const baseRules = {
   ...javascriptRules2,
 
   // 错误防范规则
-  'no-console': ['warn', { allow: ['warn', 'error', 'info'] }], // 允许使用console.warn/error/info，但警告使用console.log
-  'no-debugger': 'warn', // 警告使用debugger语句
-  'no-alert': 'warn', // 警告使用alert/confirm/prompt
-  'no-var': 'error', // 禁止使用var声明变量
-  'prefer-const': 'error', // 如果变量不会被重新赋值，要求使用const
-  'no-unused-vars': 'off', // 使用@typescript-eslint/no-unused-vars代替
+  // 'no-console': ['warn', { allow: ['warn', 'error', 'info'] }], // 允许使用console.warn/error/info，但警告使用console.log
+  // 'no-debugger': 'warn', // 警告使用debugger语句
+  // 'no-alert': 'warn', // 警告使用alert/confirm/prompt
+  // 'no-var': 'error', // 禁止使用var声明变量
+  // 'prefer-const': 'error', // 如果变量不会被重新赋值，要求使用const
+  // 'no-unused-vars': 'off', // 使用@typescript-eslint/no-unused-vars代替
 
-  // 代码风格规则
-  'max-len': ['warn', { code: 120, ignoreComments: true, ignoreStrings: true }], // 限制行长度为120字符
-  quotes: ['error', 'single', { avoidEscape: true }], // 要求使用单引号
-  semi: ['error', 'always'], // 要求使用分号
-  'comma-dangle': ['error', 'always-multiline'], // 多行时要求尾随逗号
-  'arrow-parens': ['error', 'always'], // 箭头函数参数始终使用括号
-  'object-curly-spacing': ['error', 'always'], // 对象字面量括号内要求有空格
-  'array-bracket-spacing': ['error', 'never'], // 数组括号内不要求有空格
+  // // 代码风格规则
+  // 'max-len': ['warn', { code: 120, ignoreComments: true, ignoreStrings: true }], // 限制行长度为120字符
+  // quotes: ['error', 'single', { avoidEscape: true }], // 要求使用单引号
+  // semi: ['error', 'always'], // 要求使用分号
+  // 'comma-dangle': ['error', 'always-multiline'], // 多行时要求尾随逗号
+  // 'arrow-parens': ['error', 'always'], // 箭头函数参数始终使用括号
+  // 'object-curly-spacing': ['error', 'always'], // 对象字面量括号内要求有空格
+  // 'array-bracket-spacing': ['error', 'never'], // 数组括号内不要求有空格
 
-  // 导入规则
-  'import/order': 'off', // 使用simple-import-sort代替
-  'simple-import-sort/imports': 'error', // 要求import语句排序
-  'simple-import-sort/exports': 'error', // 要求export语句排序
-  'unused-imports/no-unused-imports': 'error', // 禁止未使用的导入
-  'unused-imports/no-unused-vars': [
-    'warn',
-    { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }, // 允许下划线开头的未使用变量
-  ],
+  // // 导入规则
+  // 'import/order': 'off', // 使用simple-import-sort代替
+  // 'simple-import-sort/imports': 'error', // 要求import语句排序
+  // 'simple-import-sort/exports': 'error', // 要求export语句排序
+  // 'unused-imports/no-unused-imports': 'error', // 禁止未使用的导入
+  // 'unused-imports/no-unused-vars': [
+  //   'warn',
+  //   { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }, // 允许下划线开头的未使用变量
+  // ],
 };
 
 /**
@@ -120,18 +112,26 @@ const typescriptRules = {
   ...typescriptRules2,
 
   // 类型安全规则
-  '@typescript-eslint/no-explicit-any': 'warn', // 警告使用any类型
-  '@typescript-eslint/explicit-module-boundary-types': 'off', // 不要求导出函数和类的公共类方法的显式返回和参数类型
-  '@typescript-eslint/no-non-null-assertion': 'warn', // 警告使用非空断言操作符(!)
+  // '@typescript-eslint/no-explicit-any': 'warn', // 警告使用any类型
+  // '@typescript-eslint/explicit-module-boundary-types': 'off', // 不要求导出函数和类的公共类方法的显式返回和参数类型
+  // '@typescript-eslint/no-non-null-assertion': 'warn', // 警告使用非空断言操作符(!)
 
-  // 代码质量规则
-  '@typescript-eslint/no-unused-vars': [
-    'warn',
-    { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }, // 允许下划线开头的未使用变量
+  // // 代码质量规则
+  // '@typescript-eslint/no-unused-vars': [
+  //   'warn',
+  //   { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }, // 允许下划线开头的未使用变量
+  // ],
+  // '@typescript-eslint/no-empty-function': 'warn', // 警告空函数
+  // '@typescript-eslint/no-empty-interface': 'warn', // 警告空接口
+  // '@typescript-eslint/ban-ts-comment': 'warn', // 警告使用@ts-注释
+  "@typescript-eslint/no-unused-vars": [
+    "error",
+    {
+      argsIgnorePattern: "^_",
+      varsIgnorePattern: "^_",
+      caughtErrorsIgnorePattern: "^_",
+    },
   ],
-  '@typescript-eslint/no-empty-function': 'warn', // 警告空函数
-  '@typescript-eslint/no-empty-interface': 'warn', // 警告空接口
-  '@typescript-eslint/ban-ts-comment': 'warn', // 警告使用@ts-注释
 };
 
 /**
@@ -143,24 +143,24 @@ const reactRules = {
   ...reactRules2,
 
   // React基础规则
-  'react/prop-types': 'off', // 使用TypeScript类型检查代替，不需要prop-types
-  'react/react-in-jsx-scope': 'off', // React 17+不再需要导入React
-  'react/display-name': 'off', // 不要求组件定义displayName
+  // 'react/prop-types': 'off', // 使用TypeScript类型检查代替，不需要prop-types
+  // 'react/react-in-jsx-scope': 'off', // React 17+不再需要导入React
+  // 'react/display-name': 'off', // 不要求组件定义displayName
 
-  // JSX语法规则
-  'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }], // 禁止在不必要的情况下使用花括号
-  'react/jsx-boolean-value': ['error', 'never'], // JSX中布尔属性不需要显式值
-  'react/jsx-closing-bracket-location': ['error', 'line-aligned'], // JSX标签的闭合括号位置
-  'react/jsx-no-useless-fragment': 'error', // 禁止不必要的Fragment
-  'react/self-closing-comp': 'error', // 没有子元素的组件使用自闭合标签
+  // // JSX语法规则
+  // 'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }], // 禁止在不必要的情况下使用花括号
+  // 'react/jsx-boolean-value': ['error', 'never'], // JSX中布尔属性不需要显式值
+  // 'react/jsx-closing-bracket-location': ['error', 'line-aligned'], // JSX标签的闭合括号位置
+  // 'react/jsx-no-useless-fragment': 'error', // 禁止不必要的Fragment
+  // 'react/self-closing-comp': 'error', // 没有子元素的组件使用自闭合标签
 
-  // Hooks规则
-  'react-hooks/rules-of-hooks': 'error', // 强制执行Hooks的规则
-  'react-hooks/exhaustive-deps': 'warn', // 检查effect的依赖项
+  // // Hooks规则
+  // 'react-hooks/rules-of-hooks': 'error', // 强制执行Hooks的规则
+  // 'react-hooks/exhaustive-deps': 'warn', // 检查effect的依赖项
 
-  // 可访问性规则
-  'jsx-a11y/alt-text': 'warn', // 要求img标签有alt属性
-  'jsx-a11y/anchor-is-valid': 'warn', // 要求a标签有有效的href
+  // // 可访问性规则
+  // 'jsx-a11y/alt-text': 'warn', // 要求img标签有alt属性
+  // 'jsx-a11y/anchor-is-valid': 'warn', // 要求a标签有有效的href
 };
 
 /**
@@ -172,20 +172,20 @@ const vueRules = {
   ...vueRules2,
 
   // 组件定义规则
-  'vue/multi-word-component-names': 'warn', // 组件名应该是多个单词
-  'vue/no-unused-components': 'warn', // 禁止注册但未使用的组件
-  'vue/require-default-prop': 'warn', // 要求props有默认值
+  // 'vue/multi-word-component-names': 'warn', // 组件名应该是多个单词
+  // 'vue/no-unused-components': 'warn', // 禁止注册但未使用的组件
+  // 'vue/require-default-prop': 'warn', // 要求props有默认值
 
-  // 模板语法规则
-  'vue/no-unused-vars': 'warn', // 禁止模板中未使用的变量
-  'vue/no-v-html': 'warn', // 警告使用v-html（可能导致XSS攻击）
-  'vue/this-in-template': ['error', 'never'], // 禁止在模板中使用this
+  // // 模板语法规则
+  // 'vue/no-unused-vars': 'warn', // 禁止模板中未使用的变量
+  // 'vue/no-v-html': 'warn', // 警告使用v-html（可能导致XSS攻击）
+  // 'vue/this-in-template': ['error', 'never'], // 禁止在模板中使用this
 
-  // 代码风格规则
-  'vue/component-name-in-template-casing': ['error', 'PascalCase'], // 模板中组件名使用PascalCase
-  'vue/html-closing-bracket-newline': ['error', { singleline: 'never', multiline: 'always' }], // 多行元素的闭合括号需要换行
-  'vue/html-indent': ['error', 2], // HTML缩进使用2个空格
-  'vue/max-attributes-per-line': ['error', { singleline: 3, multiline: 1 }], // 单行最多3个属性，多行每行1个
+  // // 代码风格规则
+  // 'vue/component-name-in-template-casing': ['error', 'PascalCase'], // 模板中组件名使用PascalCase
+  // 'vue/html-closing-bracket-newline': ['error', { singleline: 'never', multiline: 'always' }], // 多行元素的闭合括号需要换行
+  // 'vue/html-indent': ['error', 2], // HTML缩进使用2个空格
+  // 'vue/max-attributes-per-line': ['error', { singleline: 3, multiline: 1 }], // 单行最多3个属性，多行每行1个
 };
 
 /**
@@ -201,272 +201,13 @@ const nestjsRules = {
   // 'node/no-missing-import': 'off', // TypeScript会处理导入，不需要Node.js的导入检查
   // 'node/no-unpublished-import': 'off', // 允许导入devDependencies中的包（用于测试等）
 
+  "@typescript-eslint/no-empty-function": "off",
+  // nest官网推荐
+  "@typescript-eslint/interface-name-prefix": "off",
+  "@typescript-eslint/explicit-function-return-type": "off",
+  "@typescript-eslint/explicit-module-boundary-types": "off",
+  "@typescript-eslint/no-explicit-any": "off",
   // 可以根据项目需要添加更多NestJS特定规则
-};
-
-/**
- * 检测ESLint版本，判断使用哪种配置风格
- *
- * @returns 如果ESLint版本大于等于9，则返回true；否则返回false
- */
-const isESLintV9 = (): boolean => {
-  try {
-    const eslintVersion = require('eslint/package.json').version;
-    return parseInt(eslintVersion.split('.')[0], 10) >= 9;
-  } catch (error) {
-    console.warn('无法检测ESLint版本，将使用ESLint v8兼容模式。');
-    return false;
-  }
-};
-
-/**
- * 基础配置，适用于所有项目 (ESLint v8 格式)
- */
-const baseConfig = {
-  plugins: ['import', 'simple-import-sort', 'unused-imports'],
-  rules: baseRules,
-};
-
-/**
- * TypeScript配置 (ESLint v8 格式)
- */
-const typescriptConfig = {
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  extends: ['plugin:@typescript-eslint/recommended'],
-  rules: {
-    ...baseRules,
-    ...typescriptRules,
-  },
-};
-
-/**
- * React配置 (ESLint v8 格式)
- */
-const reactConfig = {
-  extends: [
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:jsx-a11y/recommended',
-  ],
-  plugins: ['react', 'react-hooks', 'jsx-a11y'],
-  rules: {
-    ...baseRules,
-    ...typescriptRules,
-    ...reactRules,
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
-};
-
-/**
- * Vue配置 (ESLint v8 格式)
- */
-const vueConfig = {
-  extends: ['plugin:vue/vue3-recommended'],
-  plugins: ['vue'],
-  rules: {
-    ...baseRules,
-    ...typescriptRules,
-    ...vueRules,
-  },
-};
-
-/**
- * NestJS配置 (ESLint v8 格式)
- */
-const nestjsConfig = {
-  extends: ['plugin:node/recommended'],
-  plugins: ['node'],
-  rules: {
-    ...baseRules,
-    ...typescriptRules,
-    ...nestjsRules,
-  },
-};
-
-/**
- * 安全地导入插件，如果出错则返回null
- *
- * @param packageName - 要导入的包名
- * @returns 导入的包或null（如果导入失败）
- */
-const safeRequire = (packageName: string): ESLintPlugin | null => {
-  try {
-    return require(packageName);
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : '未知错误';
-    console.warn(
-      `Warning: ${packageName} 未安装或导入失败: ${errorMessage}。相关规则可能无法正常工作。`,
-    );
-    return null;
-  }
-};
-
-/**
- * 加载所有需要的ESLint插件
- *
- * @returns 加载的插件对象集合
- */
-const loadPlugins = (): Record<string, ESLintPlugin> => {
-  return {
-    // 通用插件
-    import: safeRequire('eslint-plugin-import'),
-    simpleImportSort: safeRequire('eslint-plugin-simple-import-sort'),
-    unusedImports: safeRequire('eslint-plugin-unused-imports'),
-
-    // TypeScript相关
-    typescriptEslint: safeRequire('@typescript-eslint/eslint-plugin'),
-    typescriptEslintParser: safeRequire('@typescript-eslint/parser'),
-
-    // React相关
-    react: safeRequire('eslint-plugin-react'),
-    reactHooks: safeRequire('eslint-plugin-react-hooks'),
-    jsxA11y: safeRequire('eslint-plugin-jsx-a11y'),
-
-    // Vue相关
-    vue: safeRequire('eslint-plugin-vue'),
-    vueEslintParser: safeRequire('vue-eslint-parser'),
-
-    // Node.js相关
-    node: safeRequire('eslint-plugin-node'),
-  };
-};
-
-// 预加载常用插件
-const plugins = loadPlugins();
-const {
-  import: importPlugin,
-  simpleImportSort: simpleImportSortPlugin,
-  unusedImports: unusedImportsPlugin,
-  typescriptEslint: typescriptEslintPlugin,
-  typescriptEslintParser,
-  react: reactPlugin,
-  reactHooks: reactHooksPlugin,
-  jsxA11y: jsxA11yPlugin,
-  vue: vuePlugin,
-  vueEslintParser,
-  node: nodePlugin,
-} = plugins;
-
-/**
- * ESLint v9 扁平配置 - 基础配置
- */
-const baseFlatConfig = {
-  files: ['**/*.js', '**/*.ts', '**/*.jsx', '**/*.tsx'],
-  plugins: {
-    import: importPlugin,
-    'simple-import-sort': simpleImportSortPlugin,
-    'unused-imports': unusedImportsPlugin,
-  },
-  rules: baseRules,
-};
-
-/**
- * ESLint v9 扁平配置 - TypeScript配置
- */
-const typescriptFlatConfig = {
-  files: ['**/*.ts', '**/*.tsx'],
-  languageOptions: {
-    parser: typescriptEslintParser,
-    parserOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-    },
-  },
-  plugins: {
-    '@typescript-eslint': typescriptEslintPlugin,
-  },
-  rules: {
-    ...baseRules,
-    ...typescriptRules,
-  },
-};
-
-/**
- * ESLint v9 扁平配置 - React配置
- */
-const reactFlatConfig = {
-  files: ['**/*.jsx', '**/*.tsx'],
-  plugins: {
-    react: reactPlugin,
-    'react-hooks': reactHooksPlugin,
-    'jsx-a11y': jsxA11yPlugin,
-  },
-  languageOptions: {
-    parser: typescriptEslintParser,
-    parserOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      ecmaFeatures: {
-        jsx: true,
-      },
-    },
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
-  rules: {
-    ...baseRules,
-    ...typescriptRules,
-    ...reactRules,
-  },
-};
-
-/**
- * ESLint v9 扁平配置 - Vue配置
- */
-const vueFlatConfig = {
-  files: ['**/*.vue'],
-  plugins: {
-    vue: vuePlugin,
-    import: importPlugin,
-    'simple-import-sort': simpleImportSortPlugin,
-    'unused-imports': unusedImportsPlugin,
-  },
-  languageOptions: {
-    parser: vueEslintParser,
-    parserOptions: {
-      parser: typescriptEslintParser,
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-    },
-  },
-  rules: {
-    ...baseRules,
-    ...typescriptRules,
-    ...vueRules,
-  },
-};
-
-/**
- * ESLint v9 扁平配置 - NestJS配置
- */
-const nestjsFlatConfig = {
-  files: ['**/*.ts'],
-  plugins: {
-    node: nodePlugin,
-    import: importPlugin,
-    'simple-import-sort': simpleImportSortPlugin,
-    'unused-imports': unusedImportsPlugin,
-  },
-  languageOptions: {
-    parser: typescriptEslintParser,
-    parserOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-    },
-  },
-  rules: {
-    ...baseRules,
-    ...typescriptRules,
-    ...nestjsRules,
-  },
 };
 
 /**
@@ -475,6 +216,18 @@ const nestjsFlatConfig = {
  * @returns ESLint插件导出对象
  */
 const createExportObject = (): ESLintPluginExport => {
+  // 加载插件
+  const plugins = loadPlugins();
+
+  // 规则集合
+  const rules = {
+    baseRules,
+    typescriptRules,
+    reactRules,
+    vueRules,
+    nestjsRules,
+  };
+
   // 创建基本导出对象
   const exportObj: ESLintPluginExport = {
     // 规则集
@@ -488,37 +241,19 @@ const createExportObject = (): ESLintPluginExport => {
 
     // 内置插件导出
     plugins: {
-      import: importPlugin,
-      'simple-import-sort': simpleImportSortPlugin,
-      'unused-imports': unusedImportsPlugin,
+      import: plugins.import,
+      "simple-import-sort": plugins.simpleImportSort,
+      "unused-imports": plugins.unusedImports,
     },
   };
 
   // 根据ESLint版本导出不同格式的配置
   if (isESLintV9()) {
     // ESLint v9+ 使用扁平配置
-    exportObj.configs = {
-      base: [baseFlatConfig],
-      typescript: [baseFlatConfig, typescriptFlatConfig],
-      react: [baseFlatConfig, typescriptFlatConfig, reactFlatConfig],
-      vue: [baseFlatConfig, typescriptFlatConfig, vueFlatConfig],
-      nestjs: [baseFlatConfig, typescriptFlatConfig, nestjsFlatConfig],
-
-      // 推荐配置，默认使用typescript配置
-      recommended: [baseFlatConfig, typescriptFlatConfig],
-    };
+    exportObj.configs = createFlatConfigs(plugins, rules);
   } else {
     // ESLint v8 及以下使用传统配置
-    exportObj.configs = {
-      base: baseConfig,
-      typescript: typescriptConfig,
-      react: reactConfig,
-      vue: vueConfig,
-      nestjs: nestjsConfig,
-
-      // 推荐配置，默认使用typescript配置
-      recommended: typescriptConfig,
-    };
+    exportObj.configs = createLegacyConfigs(rules);
   }
 
   return exportObj;
@@ -528,7 +263,7 @@ const createExportObject = (): ESLintPluginExport => {
 const exportObj = createExportObject();
 
 // 根据环境选择合适的导出方式
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   // CommonJS环境
   module.exports = exportObj;
 } else {

@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:50:42
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-22 09:45:12
+ * @LastEditTime: 2025-04-23 15:20:42
  * @FilePath: /FullStack/lint/eslint-plugin-smart/CHANGELOG.md
  * @Description: 更新日志
 -->
@@ -10,6 +10,28 @@
 # 更新日志
 
 所有版本更新都将记录在此文件中。
+
+## [1.2.0] - 2025-04-23
+
+### 新增
+
+- 优化NestJS项目配置，添加装饰器支持
+- 改进文件匹配模式，解决"all files are ignored"问题
+- 更新TypeScript配置，自动支持项目中的tsconfig.json
+- 增强未使用变量规则，支持下划线前缀变量忽略
+- 更新推荐配置，默认启用装饰器支持和文件匹配优化
+
+### 修复
+
+- 修复NestJS项目中装饰器解析错误
+- 修复由于TypeScript版本兼容性导致的配置问题
+- 解决文件模式匹配不正确导致的ESLint忽略文件问题
+
+### 文档更新
+
+- 更新《快速开始》文档，添加NestJS项目配置示例
+- 添加常见问题处理，包括TypeScript版本兼容性和装饰器支持
+- 更新实际案例配置，提供更多最佳实践
 
 ## [1.1.0] - 2025-04-22
 

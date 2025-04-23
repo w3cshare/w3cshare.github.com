@@ -247,7 +247,38 @@ module.exports = {
 };
 ```
 
-### 2. 自定义排序规则
+### 2. 警告信息"Ignored unknown option"
+
+在使用 `sortJsonKeys` 和 `importOrder` 选项时，你可能会看到类似以下的警告：
+
+```
+[warn] Ignored unknown option { sortJsonKeys: true }.
+[warn] Ignored unknown option { importOrder: "^react,^@/,^[./]" }.
+```
+
+这些警告是由于 Prettier 核心不识别这些自定义选项所导致的，但插件仍然会正常工作。这些警告不会影响格式化结果，可以安全忽略。
+
+如果你想避免这些警告，可以在 `.prettierrc.js` 文件中使用以下配置方式：
+
+```js
+// .prettierrc.js
+/** @type {import("prettier").Config} */
+const config = {
+  // 标准 Prettier 配置
+  printWidth: 100,
+  tabWidth: 2,
+  singleQuote: true,
+  
+  // 插件配置
+  plugins: ['prettier-plugin-smarts'],
+  sortJsonKeys: true,
+  importOrder: '^react,^@/,^[./]',
+};
+
+module.exports = config;
+```
+
+### 3. 自定义排序规则
 
 对于特定项目的自定义 JSON 字段排序，可以创建自定义配置：
 
@@ -258,6 +289,24 @@ module.exports = {
   // 其他配置
 };
 ```
+
+## 更新日志
+
+### v1.0.1 (2024-07-XX)
+
+- 🐛 修复: 解决了 `sortJsonKeys` 和 `importOrder` 选项导致的 "Ignored unknown option" 警告问题
+- 📝 文档: 添加了常见问题解决方案，包括如何避免警告信息
+- 🌟 改进: 增强了插件在 Mono Repo 环境中的配置指导
+- 📚 文档: 新增了详细的调试指南
+
+### v1.0.0 (2024-XX-XX)
+
+- 🚀 发布: 首个正式版本
+- ✨ 功能: JSON 文件键排序
+- ✨ 功能: package.json 文件智能排序
+- ✨ 功能: ESLint 配置文件排序
+- ✨ 功能: import 语句排序和分组
+- ✨ 功能: Vue 单文件组件缩进控制
 
 ## 许可证
 

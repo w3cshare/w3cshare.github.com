@@ -201,6 +201,7 @@ const plugin = {
   options,
   defaultOptions: {
     sortJsonKeys: true,
+    importOrder: '',
     vueIndentScriptAndStyle: true,
   },
 };

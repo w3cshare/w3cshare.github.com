@@ -30,14 +30,16 @@ export interface FlatConfig {
   languageOptions?: {
     parser?: any;
     parserOptions?: any;
-    globals?: Record<string, boolean | 'readable' | 'writeable'>;
-    ecmaVersion?: number | 'latest';
-    sourceType?: 'script' | 'module' | 'commonjs';
+    globals?: Record<string, boolean | "readable" | "writeable">;
+    ecmaVersion?: number | "latest";
+    sourceType?: "script" | "module" | "commonjs";
   };
   linterOptions?: {
     noInlineConfig?: boolean;
-    reportUnusedDisableDirectives?: boolean | 'error' | 'warn';
+    reportUnusedDisableDirectives?: boolean | "error" | "warn";
   };
+  ignorePatterns: string[];
+  env?: Record<string, boolean>;
   rules?: Record<string, any>;
   settings?: Record<string, any>;
 }

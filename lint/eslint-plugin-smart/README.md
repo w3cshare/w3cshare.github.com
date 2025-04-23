@@ -33,141 +33,90 @@ features:
 
 # eslint-plugin-smart
 
-> 公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目
+## 项目介绍
 
-这个ESLint插件提供了一套全面的代码规范配置，适用于公司内部各类项目，旨在提高代码质量、可维护性和开发效率。它集成了多种常用的ESLint插件和规则，让你可以快速应用最佳实践到你的项目中。
+`eslint-plugin-smart` 是一个智能化的 ESLint 插件，提供了适用于 React、Vue、NestJS 和 TypeScript 项目的公共配置。该插件同时支持 ESLint v9 的扁平配置和 ESLint v8 及以下版本的传统配置格式，能够自动检测 ESLint 版本并应用相应的配置风格。
 
-## 功能特性
+## 主要特性
 
-- ✅ **内置常用插件**：无需手动安装 `eslint-plugin-import`、`eslint-plugin-simple-import-sort` 和 `eslint-plugin-unused-imports` 等插件
-- ✅ **全面的规则集**：覆盖基础规则、TypeScript、React、Vue和NestJS等多种场景
-- ✅ **ESLint v9支持**：完全兼容ESLint v9的扁平配置系统
-- ✅ **智能检测**：自动检测环境配置最合适的规则
-- ✅ **开箱即用**：预设合理的规则集，安装后即可使用
-- ✅ **模块化设计**：规则集模块化，便于维护和扩展
-- ✅ **团队协作优化**：统一的代码风格提高团队协作效率
+- 支持 ESLint v9 扁平配置和 ESLint v8 传统配置
+- 自动检测 ESLint 版本并应用相应配置
+- 提供针对 TypeScript、React、Vue 和 NestJS 项目的优化规则
+- 代码风格、错误防范、导入排序等通用规则集成
+- 模块化设计，代码组织清晰
 
-## 安装
+## 项目结构
 
-::: code-group
+该项目采用了模块化的设计，主要文件包括：
 
-```bash [pnpm]
-# 使用 pnpm
-pnpm add --save-dev eslint eslint-plugin-smart
-```
+- `eslint-plugin-smart.ts` - 插件入口文件，负责版本检测和配置选择
+- `flat-configs.ts` - ESLint v9 扁平配置定义
+- `legacy-configs.ts` - ESLint v8 及以下传统配置定义
+- `utils.ts` - 工具函数，包含版本检测和插件加载功能
+- `recommend.ts` - 预设的推荐规则集
+- `types.ts` - 类型定义
 
-```bash [npm]
+## 安装使用
+
+### 安装
+
+```bash
 # 使用 npm
-npm install --save-dev eslint eslint-plugin-smart
-```
+npm install eslint-plugin-smart --save-dev
 
-```bash [yarn]
+# 使用 pnpm
+pnpm add eslint-plugin-smart -D
+
 # 使用 yarn
-yarn add --dev eslint eslint-plugin-smart
+yarn add eslint-plugin-smart -D
 ```
 
-:::
+### 配置示例
 
-## 快速开始
+#### ESLint v9 (扁平配置)
 
-请查看[快速开始](/lint/eslint-plugin-smart/docs/快速开始)文档了解详细的使用方法、配置示例和规则说明。
-
-### 基础配置（适用于所有项目）
-
-::: code-group
-
-```js [ESLint v9+]
-// eslint.config.mjs
-import eslintPlugin from 'eslint-plugin-smart';
+```js
+// eslint.config.js
+import smartPlugin from 'eslint-plugin-smart';
 
 export default [
-  ...eslintPlugin.configs.recommended,
-  {
-    // 这里可以添加自定义规则
-  },
+  ...smartPlugin.configs.typescript,
+  // 自定义规则...
 ];
 ```
 
-```js [ESLint v8 及以下]
-// .eslintrc.js
-module.exports = {
-  extends: ['plugin:smart/recommended'],
-};
-```
-
-:::
-
-## 支持的项目类型
-
-我们为不同类型的项目提供了专门的预设配置：
-
-| 项目类型   | 配置名称      | 特点                               |
-| ---------- | ------------- | ---------------------------------- |
-| JavaScript | `base`        | 基础 JavaScript 规则集             |
-| TypeScript | `typescript`  | TypeScript 支持与类型检查          |
-| React      | `react`       | React 与 JSX 相关规则              |
-| Vue        | `vue`         | Vue 单文件组件与模板规则           |
-| Node.js    | `nodejs`      | Node.js 后端项目相关规则           |
-| 全栈项目   | `recommended` | 包含所有规则集，适用于全栈开发项目 |
-
-## 规则集模块化设计
-
-eslint-plugin-smart 采用模块化设计，将各技术栈的规则集分离出来，便于维护和扩展：
+#### ESLint v8 及以下 (传统配置)
 
 ```js
-// 分别导出各个技术栈的规则集
-export const javascriptRules = { /* JavaScript 规则 */ };
-export const typescriptRules = { /* TypeScript 规则 */ };
-export const reactRules = { /* React 规则 */ };
-export const vueRules = { /* Vue 规则 */ };
-export const nodejsRules = { /* Node.js 规则 */ };
-
-// 组合规则集
-export default {
-  base: javascriptRules,
-  typescript: { ...javascriptRules, ...typescriptRules },
-  react: { ...javascriptRules, ...reactRules },
-  vue: { ...javascriptRules, ...vueRules },
-  nodejs: { ...javascriptRules, ...nodejsRules },
-  recommended: {
-    ...javascriptRules,
-    ...typescriptRules,
-    ...reactRules,
-    ...vueRules,
-    ...nodejsRules,
-  },
+// .eslintrc.js
+module.exports = {
+  extends: [
+    'plugin:smart/typescript',
+  ],
+  // 自定义规则...
 };
 ```
 
-## 与编辑器集成
+## 可用配置
 
-### VSCode
+插件提供了以下几种预设配置：
 
-1. 安装 [ESLint VSCode 插件](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-2. 在 VSCode 中创建或编辑 `.vscode/settings.json` 文件：
+- `base` - 基础配置，适用于所有项目
+- `typescript` - TypeScript 项目配置
+- `react` - React 项目配置
+- `vue` - Vue 项目配置
+- `nestjs` - NestJS 项目配置
+- `recommended` - 推荐配置（默认使用 TypeScript 配置）
 
-```json
-{
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"]
-}
-```
+## 最佳实践
 
-## 文档
+1. 对于新项目，建议使用 ESLint v9 扁平配置，性能更好
+2. 针对不同框架选择对应的配置预设
+3. 可以根据项目需求扩展自定义规则
 
-- [快速开始](/lint/eslint-plugin-smart/docs/快速开始) - 快速开始、规则说明和配置指南
-- [常见问题](/lint/eslint-plugin-smart/docs/常见问题) - 常见问题解答和疑难解决
+## 贡献指南
 
-## 版本更新
-
-### v2.0.0 (2025-04-23)
-
-- ✨ **规则集优化**：对各技术栈规则集进行优化并采用模块化设计
-- 🔄 **重构内部实现**：重构插件内部实现，提高性能和可维护性
-- 🚀 **TypeScript 类型支持增强**：改进 TypeScript 类型定义，提供更好的类型检查
-- 📚 **文档更新**：更新文档，提供更详细的使用说明和示例
+欢迎提交 Pull Request 或 Issue。贡献前请先阅读本项目的贡献指南。
 
 ## 许可证
 

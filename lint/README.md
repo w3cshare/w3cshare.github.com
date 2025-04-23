@@ -47,6 +47,8 @@ features:
     details: 与Husky、lint-staged、CI/CD管道无缝集成，确保规范在整个开发流程中的执行
 ---
 
+# &nbsp;
+
 # 代码规范、质量检测、代码风格、提交规范等统一管理
 
 代码规范是一个基于ESLint、Prettier、Stylelint等工具的现代化代码规范解决方案，提供了完整的代码质量检测、代码风格统一和提交规范管理。
@@ -77,35 +79,21 @@ pnpm lint:init
 
 ## 项目结构
 
-```mermaid
-graph TD
-    A[代码规范] --> B[ESLint]
-    A --> C[Prettier]
-    A --> D[Stylelint]
-    A --> E[Commitlint]
-    A --> F[工具插件]
-
-    B --> B1[基础规则]
-    B --> B2[React规则]
-    B --> B3[Vue规则]
-    B --> B4[TypeScript规则]
-
-    C --> C1[基础配置]
-    C --> C2[自定义配置]
-
-    D --> D1[CSS规则]
-    D --> D2[SCSS规则]
-    D --> D3[Less规则]
-
-    E --> E1[基础规则]
-    E --> E2[自定义规则]
-    E --> E3[提交消息正文]
-    E --> E4[提交消息主题]
-    E --> E5[作用域规范]
-
-    F --> F1[Vite插件]
-    F --> F2[Webpack插件]
-```
+- `eslint-plugin-smart/`: ESLint插件，提供统一的代码规范和最佳实践
+  - 支持React、Vue、NestJS和TypeScript项目
+  - 适用于ESLint v9的扁平配置格式
+  - 提供默认推荐的规则集
+- `prettier-plugin-smarts/`: Prettier插件，提供统一的代码格式化配置
+- `commitlint-smarts/`: Commitlint配置，规范Git提交信息
+- `stylelint-config-smarts/`: Stylelint配置，规范CSS和SCSS代码风格
+- `vite-plugin-smarts/`: Vite插件，提供通用构建优化
+- `rollup-plugin-smarts/`: Rollup插件，提供通用打包优化
+- `vite-plugin-swagger/`: Vite插件，用于Swagger API文档生成
+- `docs/`: 文档目录
+  - `getting-started.md`: 使用指南，包含eslint-plugin-smart的配置说明
+  - `troubleshooting.md`: 常见问题解决方案
+  - `best-practices.md`: 最佳实践指南
+  - `overview.md`: 项目概述
 
 ## 文档导航
 
@@ -117,10 +105,10 @@ graph TD
 ### 子项目文档
 
 - [ESLint 插件](/lint/eslint-plugin-smart/README.md)
-  - [快速开始](/lint/eslint-plugin-smart/docs/快速开始)
+  - [快速开始](/lint/eslint-plugin-smart/docs/快速开始.md)
   - [规则说明](/lint/eslint-plugin-smart/docs/规则说明)
   - [配置指南](/lint/eslint-plugin-smart/docs/配置指南)
-  - [常见问题](/lint/eslint-plugin-smart/docs/常见问题)
+  - [常见问题](/lint/eslint-plugin-smart/docs/常见问题.md)
 - [Prettier 插件](/lint/prettier-plugin-smarts/README.md)
   - [开始使用](/lint/prettier-plugin-smarts/docs/开始使用)
   - [TypeScript支持](/lint/prettier-plugin-smarts/docs/TypeScript支持)

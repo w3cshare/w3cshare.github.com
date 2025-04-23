@@ -7,18 +7,19 @@
  * @Description: --
  */
 // 测试eslint是否能正确检查
-import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common'
 
-// const badVariable = 'test'; // 应该使用const而不是var
+// 将未使用的变量添加下划线前缀，表示有意不使用
+const _badVariable = 'test' // 应该使用const而不是var
 
 @Injectable()
 export class TestLintService {
   constructor() {
-    // console.log('测试lint'); // 应该警告不要使用console
+    console.log('测试lint') // 应该警告不要使用console
   }
 
   public testMethod() {
-    // const unused = 'unused';
-    return 'test';
+    // 移除未使用的变量
+    return 'test'
   }
 }
