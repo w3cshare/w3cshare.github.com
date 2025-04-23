@@ -67,5 +67,10 @@ export function loadPlugins(): Record<string, unknown> {
 
     // Node.js相关
     node: safeRequire('eslint-plugin-node'),
+    
+    // Prettier相关
+    prettier: safeRequire('eslint-plugin-prettier'),
+    eslintConfigPrettier: safeRequire('eslint-config-prettier'),
+    prettierCore: safeRequire('prettier'),
   };
 } 

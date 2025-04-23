@@ -27,6 +27,9 @@ features:
   - icon: 📦
     title: 开箱即用
     details: 预设合理的规则集，安装后即可使用，无需额外安装依赖
+  - icon: 💅
+    title: Prettier 集成
+    details: 内置 Prettier 支持，确保代码风格一致性和格式化规范
 ---
 
 # &nbsp;
@@ -43,6 +46,7 @@ features:
 - 自动检测 ESLint 版本并应用相应配置
 - 提供针对 TypeScript、React、Vue 和 NestJS 项目的优化规则
 - 代码风格、错误防范、导入排序等通用规则集成
+- 内置 Prettier 集成，确保代码格式一致性
 - 模块化设计，代码组织清晰
 
 ## 项目结构
@@ -108,11 +112,40 @@ module.exports = {
 - `nestjs` - NestJS 项目配置
 - `recommended` - 推荐配置（默认使用 TypeScript 配置）
 
+## Prettier 集成
+
+该插件内置了 Prettier 支持，可以确保代码格式的一致性：
+
+- 自动加载 `eslint-plugin-prettier` 和 `eslint-config-prettier` 插件
+- 配置 Prettier 规则，与 ESLint 规则无冲突
+- 提供合理的默认格式化选项
+- 在所有配置预设中都启用 Prettier 支持
+
+### 默认 Prettier 配置
+
+```js
+{
+  printWidth: 100,
+  tabWidth: 2,
+  useTabs: false,
+  semi: false,
+  singleQuote: true,
+  quoteProps: 'as-needed',
+  jsxSingleQuote: false,
+  trailingComma: 'all',
+  bracketSpacing: true,
+  bracketSameLine: false,
+  arrowParens: 'always',
+  endOfLine: 'lf',
+}
+```
+
 ## 最佳实践
 
 1. 对于新项目，建议使用 ESLint v9 扁平配置，性能更好
 2. 针对不同框架选择对应的配置预设
-3. 可以根据项目需求扩展自定义规则
+3. 利用内置的 Prettier 集成确保代码格式一致性
+4. 可以根据项目需求扩展自定义规则
 
 ## 贡献指南
 

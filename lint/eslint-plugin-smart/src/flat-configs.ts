@@ -41,6 +41,9 @@ export function createFlatConfigs(
     vue: vuePlugin,
     vueEslintParser,
     node: nodePlugin,
+    prettier: prettierPlugin,
+    eslintConfigPrettier,
+    prettierCore,
   } = plugins;
 
   /**
@@ -59,6 +62,7 @@ export function createFlatConfigs(
       import: importPlugin,
       "simple-import-sort": simpleImportSortPlugin,
       "unused-imports": unusedImportsPlugin,
+      prettier: prettierPlugin,
     },
     ignorePatterns: [".eslintrc.js"],
     rules: baseRules,
@@ -133,6 +137,7 @@ export function createFlatConfigs(
       import: importPlugin,
       "simple-import-sort": simpleImportSortPlugin,
       "unused-imports": unusedImportsPlugin,
+      prettier: prettierPlugin,
     },
     languageOptions: {
       parser: vueEslintParser,
@@ -161,6 +166,7 @@ export function createFlatConfigs(
       import: importPlugin,
       "simple-import-sort": simpleImportSortPlugin,
       "unused-imports": unusedImportsPlugin,
+      prettier: prettierPlugin,
     },
     languageOptions: {
       parser: typescriptEslintParser,
@@ -184,13 +190,27 @@ export function createFlatConfigs(
     },
   };
 
+  /**
+   * Prettier专用配置（放在最后应用，确保覆盖其他规则）
+   */
+  const prettierFlatConfig: FlatConfig = {
+    files: ["**/*.{js,ts,jsx,tsx,vue}"],
+    plugins: {
+      prettier: prettierPlugin,
+    },
+    rules: {
+      "prettier/prettier": "error",
+    },
+    ignorePatterns: [".eslintrc.js"],
+  };
+
   // 返回所有配置
   return {
-    base: [baseFlatConfig],
-    typescript: [baseFlatConfig, typescriptFlatConfig],
-    react: [baseFlatConfig, typescriptFlatConfig, reactFlatConfig],
-    vue: [baseFlatConfig, typescriptFlatConfig, vueFlatConfig],
-    nestjs: [baseFlatConfig, typescriptFlatConfig, nestjsFlatConfig],
-    recommended: [baseFlatConfig, typescriptFlatConfig],
+    base: [baseFlatConfig, prettierFlatConfig],
+    typescript: [baseFlatConfig, typescriptFlatConfig, prettierFlatConfig],
+    react: [baseFlatConfig, typescriptFlatConfig, reactFlatConfig, prettierFlatConfig],
+    vue: [baseFlatConfig, typescriptFlatConfig, vueFlatConfig, prettierFlatConfig],
+    nestjs: [baseFlatConfig, typescriptFlatConfig, nestjsFlatConfig, prettierFlatConfig],
+    recommended: [baseFlatConfig, typescriptFlatConfig, prettierFlatConfig],
   };
 }

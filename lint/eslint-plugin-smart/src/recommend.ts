@@ -191,6 +191,28 @@ export const javascriptRules: ESLintRuleSet = {
   // 引号和分号规则
   quotes: ['error', 'single'],
   semi: ['error', 'never'],
+  
+  // Prettier相关规则
+  'prettier/prettier': [
+    'error',
+    {
+      printWidth: 100,
+      tabWidth: 2,
+      useTabs: false,
+      semi: false,
+      singleQuote: true,
+      quoteProps: 'as-needed',
+      jsxSingleQuote: false,
+      trailingComma: 'all',
+      bracketSpacing: true,
+      bracketSameLine: false,
+      arrowParens: 'always',
+      endOfLine: 'lf',
+    },
+  ],
+  // 关闭可能与Prettier冲突的规则
+  'arrow-body-style': 'off',
+  'prefer-arrow-callback': 'off',
 };
 
 /**
