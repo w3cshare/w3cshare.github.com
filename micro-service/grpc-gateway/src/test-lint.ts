@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 22:50:31
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-22 00:29:50
+ * @LastEditTime: 2025-04-23 17:38:07
  * @FilePath: /FullStack/micro-service/grpc-gateway/src/test-lint.ts
  * @Description: --
  */
@@ -11,6 +11,9 @@ import { Injectable } from '@nestjs/common'
 
 // 将未使用的变量添加下划线前缀，表示有意不使用
 const _badVariable = 'test' // 应该使用const而不是var
+const aaa = 'test'
+
+// console.log('🚀 ~ file: test-lint.ts:15 ~ aaa:', aaa)
 
 @Injectable()
 export class TestLintService {
