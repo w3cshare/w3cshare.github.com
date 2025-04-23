@@ -1,15 +1,15 @@
 .git.bak
 # 开发依赖
-node_modules/
+node_modules
 package-lock.json
 
 # 构建产物
-dist/
-lib/
+dist
+lib
+cache
+output
+input
 .eslintcache
-**/cache/
-output/
-input/
 
 # 系统文件
 .DS_Store
@@ -39,7 +39,7 @@ __pycache__/
 lerna-debug.log
 
 # 临时文件
-.temp/
+.temp
 
 # 文档生成
 PROJECT_STRUCTURE.md
