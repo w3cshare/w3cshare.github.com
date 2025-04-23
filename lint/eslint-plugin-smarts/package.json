@@ -2,17 +2,14 @@
   "name": "eslint-plugin-smarts",
   "version": "0.0.7",
   "description": "SISS eslint 规则集(仅团队内部调用)",
-  "keywords": [],
-  "author": "wangwei <wwdqq7@qq.com>",
-  "license": "ISC",
-  "main": "lib/eslint-plugin-smarts.js",
-  "types": "lib/eslint-plugin-smarts.d.ts",
-  "module": "lib/eslint-plugin-smarts.mjs",
+  "main": "lib/eslint-plugin-smart.js",
+  "types": "lib/eslint-plugin-smart.d.ts",
+  "module": "lib/eslint-plugin-smart.mjs",
   "exports": {
     ".": {
-      "types": "./lib/eslint-plugin-smarts.d.ts",
-      "import": "./lib/eslint-plugin-smarts.mjs",
-      "require": "./lib/eslint-plugin-smarts.js"
+      "types": "./lib/eslint-plugin-smart.d.ts",
+      "import": "./lib/eslint-plugin-smart.mjs",
+      "require": "./lib/eslint-plugin-smart.js"
     }
   },
   "directories": {
@@ -23,14 +20,25 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --outDir lib",
-    "dev": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --watch --outDir lib",
+    "copy": "node copy.js",
+    "build": "npm run copy && tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "npm run copy && tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
     "test": "node ./__tests__/eslint-plugin-smarts.test.js"
   },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "typescript",
+    "react",
+    "vue",
+    "nestjs"
+  ],
+  "author": "wangwei <wwdqq7@qq.com>",
+  "license": "ISC",
   "dependencies": {
-    "@types/node": "^22.14.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-annotation": "^1.1.6",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -41,15 +49,17 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vue": "^9.21.1",
-    "tsup": "^8.4.0"
+    "tsup": "^8.4.0",
+    "typescript": "^5.5.2"
   },
   "peerDependencies": {
-    "eslint": ">=9.18.0",
-    "eslint-plugin-vue": ">=10.0.0",
-    "prettier": ">=3.4.2"
+    "eslint": ">=9.0.0",
+    "prettier": ">=3.5.3"
   },
-  "publishConfig": {
-    "access": "public"
+  "devDependencies": {
+    "eslint-plugin-smart": "workspace:^",
+    "prettier": "^3.5.3",
+    "prettier-plugin-smarts": "workspace:^"
   },
   "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
 }

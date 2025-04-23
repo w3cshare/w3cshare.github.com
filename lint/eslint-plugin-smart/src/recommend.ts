@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 13:30:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 17:56:50
+ * @LastEditTime: 2025-04-23 20:35:36
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/recommend.ts
  * @Description: ESLint规则集合，按照不同技术栈分类
  */
@@ -180,7 +180,7 @@ export const javascriptRules: ESLintRuleSet = {
    * 引号和分号规则
    */
   quotes: ['error', 'single', { avoidEscape: true }], // 要求使用单引号
-  semi: ['error', 'never'],
+  semi: ['error', 'never'], // 禁止使用分号，保持代码风格一致性
   'max-len': ['warn', { code: 100, ignoreComments: true, ignoreStrings: true }], // 限制行长度为120字符
   'arrow-parens': ['error', 'always'], // 箭头函数参数始终使用括号
   'object-curly-spacing': ['error', 'always'], // 对象字面量括号内要求有空格
@@ -230,7 +230,7 @@ export const javascriptRules: ESLintRuleSet = {
 
   // 关闭可能与Prettier冲突的规则
   'arrow-body-style': 'off',
-  'prefer-arrow-callback': 'off',
+  'prefer-arrow-callback': 'off', // 禁用对回调函数使用箭头函数的强制要求
 }
 
 /**
@@ -261,17 +261,46 @@ export const reactRules: ESLintRuleSet = {
   'react/jsx-no-target-blank': 'error', // 安全警告：禁止不安全的target="_blank"
   'react/no-direct-mutation-state': 'error', // 禁止直接修改state
   'react/no-deprecated': 'warn', // 使用废弃API警告
+  /*
+   * 禁止使用未知的DOM属性
+   * 防止拼写错误或使用非标准属性导致潜在问题
+   */
   'react/no-unknown-property': 'error',
+
+  /*
+   * 禁止在JSX文本中使用未转义的HTML实体
+   * 防止XSS攻击和渲染问题
+   */
   'react/no-unescaped-entities': 'error',
+
+  /*
+   * 禁止使用children作为prop传递
+   * 应直接使用JSX子元素而非prop传递
+   */
   'react/no-children-prop': 'error',
+
+  /*
+   * 警告使用数组索引作为key
+   * 可能导致列表渲染性能问题和状态错误
+   */
   'react/no-array-index-key': 'warn',
+
+  /*
+   * 强制自闭合组件和HTML元素
+   * 保持代码一致性并减少不必要的嵌套
+   */
   'react/self-closing-comp': [
     'error',
     {
-      component: true,
-      html: true,
+      component: true, // 要求React组件自闭合
+      html: true, // 要求HTML元素自闭合
     },
   ],
+
+  /*
+   * 禁止void DOM元素包含子元素
+   * 如<br>、<img>等元素不应有子元素
+   */
   'react/void-dom-elements-no-children': 'error',
 
   // React Hooks规则
@@ -280,15 +309,15 @@ export const reactRules: ESLintRuleSet = {
 
   // JSX可访问性规则
   'jsx-a11y/alt-text': 'error', // 要求img标签有alt属性
-  'jsx-a11y/anchor-has-content': 'error',
-  'jsx-a11y/aria-props': 'error',
-  'jsx-a11y/aria-role': 'error',
-  'jsx-a11y/aria-unsupported-elements': 'error',
-  'jsx-a11y/click-events-have-key-events': 'warn',
-  'jsx-a11y/heading-has-content': 'error',
-  'jsx-a11y/html-has-lang': 'error',
-  'jsx-a11y/img-redundant-alt': 'warn',
-  'jsx-a11y/no-access-key': 'warn',
+  'jsx-a11y/anchor-has-content': 'error', // 确保锚点标签<a>包含可访问的内容，避免空链接影响屏幕阅读器用户
+  'jsx-a11y/aria-props': 'error', // 验证所有aria-*属性都是有效的ARIA属性
+  'jsx-a11y/aria-role': 'error', // 验证role属性的值是有效的ARIA角色
+  'jsx-a11y/aria-unsupported-elements': 'error', // 禁止在不支持ARIA的元素上使用ARIA属性
+  'jsx-a11y/click-events-have-key-events': 'warn', // 为点击事件添加键盘事件处理，确保键盘用户可操作
+  'jsx-a11y/heading-has-content': 'error', // 确保标题标签(h1-h6)包含内容，避免空标题影响屏幕阅读器用户
+  'jsx-a11y/html-has-lang': 'error', // 要求<html>标签有lang属性，声明页面语言
+  'jsx-a11y/img-redundant-alt': 'warn', // 避免图片alt属性包含冗余文本(如图片/图像等)
+  'jsx-a11y/no-access-key': 'warn', // 避免使用accesskey属性，防止与屏幕阅读器快捷键冲突
   'jsx-a11y/anchor-is-valid': 'warn', // 要求a标签有有效的href
 
   // React性能优化规则
@@ -300,17 +329,27 @@ export const reactRules: ESLintRuleSet = {
       allowBind: false,
     },
   ],
+
+  /*
+   * 强制使用React Fragment语法（<>...</>）而不是React.Fragment
+   * 原因：1. 更简洁的语法 2. 减少不必要的React导入 3. 提高代码可读性
+   */
   'react/jsx-fragments': ['error', 'syntax'],
+
+  /*
+   * 禁止在JSX属性或子元素中不必要地使用大括号
+   * 原因：1. 保持代码一致性 2. 减少不必要的语法噪音 3. 提高可读性
+   */
   'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
   'react/jsx-closing-bracket-location': ['error', 'line-aligned'], // JSX标签的闭合括号位置
   'react/jsx-no-useless-fragment': 'error', // 禁止不必要的Fragment
 
   // 现代React项目规则（React 17+）
   'react/react-in-jsx-scope': 'off',
-  'react/prop-types': 'warn',
-  'react/display-name': 'warn',
-  'react/jsx-boolean-value': ['error', 'never'],
-  'react/jsx-pascal-case': 'error',
+  'react/prop-types': 'warn', // 强制组件props类型检查，帮助捕获类型错误，建议设为warn级别以便开发时提醒
+  'react/display-name': 'warn', // 要求组件有displayName属性，便于调试和错误追踪
+  'react/jsx-boolean-value': ['error', 'never'], // 禁止布尔属性显式赋值true，保持简洁性
+  'react/jsx-pascal-case': 'error', // 强制组件名使用PascalCase命名规范
 }
 
 /**
@@ -319,8 +358,8 @@ export const reactRules: ESLintRuleSet = {
  */
 export const vueRules: ESLintRuleSet = {
   // Vue核心规则
-  'vue/comment-directive': 'off',
-  'vue/jsx-uses-vars': 'error',
+  'vue/comment-directive': 'off', // 禁用Vue模板中的注释指令，避免与ESLint冲突
+  'vue/jsx-uses-vars': 'error', // 防止Vue JSX中未使用的变量引起错误
   'vue/script-setup-uses-vars': 'error', // 防止<script setup>使用的变量<template>被标记为未使用
   'vue/no-mutating-props': 'error', // 禁止直接修改props属性
   'vue/no-use-v-if-with-v-for': 'error', // 禁止同时使用v-if和v-for
@@ -330,8 +369,8 @@ export const vueRules: ESLintRuleSet = {
   'vue/no-duplicate-attr-inheritance': 'error', // 禁止重复的属性继承
   'vue/no-deprecated-scope-attribute': 'error',
   'vue/require-default-prop': 'error', // 要求props有默认值
-  'vue/require-prop-types': 'error',
-  'vue/no-reserved-component-names': 'error',
+  'vue/require-prop-types': 'error', // 强制Vue组件props类型定义，提高代码可维护性
+  'vue/no-reserved-component-names': 'error', // 禁止使用Vue保留名称作为组件名，避免冲突
   'vue/no-unused-components': 'error', // 禁止注册但未使用的组件
   // 模板语法规则 START
   'vue/no-unused-vars': 'error', // 禁止模板中未使用的变量

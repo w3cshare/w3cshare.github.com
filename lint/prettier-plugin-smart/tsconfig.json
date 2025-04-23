@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "target": "ES6",
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "sourceMap": false,
+    "baseUrl": ".",
+    "checkJs": false,
+    "strict": true,
+    "lib": [
+      "esnext",
+      "DOM"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src/global.d.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
