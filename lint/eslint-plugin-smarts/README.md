@@ -1,129 +1,174 @@
-# eslint-plugin-smarts
+---
+layout: home
+title: ESLint 企业级插件
+description: 为企业级项目提供全面的 ESLint 规则与配置
+outline: deep
+hero:
+  name: eslint-plugin-smart
+  text: 智能 ESLint 解决方案
+  tagline: 为现代 Web 开发提供统一的代码质量标准
+  actions:
+    - theme: brand
+      text: 快速开始
+      link: /lint/eslint-plugin-smart/docs/快速开始
+    - theme: alt
+      text: 常见问题
+      link: /lint/eslint-plugin-smart/docs/常见问题
+features:
+  - icon: ⚡
+    title: 全技术栈支持
+    details: 覆盖 JavaScript、TypeScript、React、Vue 等多种技术栈的规则集
+  - icon: 🔍
+    title: 智能检测
+    details: 提供智能的代码质量检测，避免常见错误和隐患
+  - icon: 🛠️
+    title: 易于配置
+    details: 提供预设配置和灵活的自定义选项，快速适应不同团队的需求
+  - icon: 📦
+    title: 开箱即用
+    details: 预设合理的规则集，安装后即可使用，无需额外安装依赖
+---
 
-> 一个集成了Nestjs、React和Vue项目最佳实践的ESLint插件配置集合
+# &nbsp;
 
-这个ESLint插件提供了一套全面的代码规范配置，适用于Nestjs、React和Vue项目，旨在提高代码质量、可维护性和开发效率。它集成了多种常用的ESLint插件和规则，让你可以快速应用最佳实践到你的项目中。
+# eslint-plugin-smart
 
-## 特性
+> 公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目
 
-- ✅ 支持Nestjs项目
-- ✅ 支持React和Vue项目
-- ✅ 内置TypeScript支持
-- ✅ 自动排序imports和exports
-- ✅ 自动移除未使用的imports和变量
-- ✅ 集成了华为JavaScript编码规范
-- ✅ 包含代码格式化和最佳实践规则
-- ✅ 易于集成和配置
+这个ESLint插件提供了一套全面的代码规范配置，适用于公司内部各类项目，旨在提高代码质量、可维护性和开发效率。它集成了多种常用的ESLint插件和规则，让你可以快速应用最佳实践到你的项目中。
+
+## 功能特性
+
+- ✅ **内置常用插件**：无需手动安装 `eslint-plugin-import`、`eslint-plugin-simple-import-sort` 和 `eslint-plugin-unused-imports` 等插件
+- ✅ **全面的规则集**：覆盖基础规则、TypeScript、React、Vue和NestJS等多种场景
+- ✅ **ESLint v9支持**：完全兼容ESLint v9的扁平配置系统
+- ✅ **智能检测**：自动检测环境配置最合适的规则
+- ✅ **开箱即用**：预设合理的规则集，安装后即可使用
+- ✅ **模块化设计**：规则集模块化，便于维护和扩展
+- ✅ **团队协作优化**：统一的代码风格提高团队协作效率
 
 ## 安装
 
-```bash
-npm install eslint-plugin-smarts --save-dev
+::: code-group
 
-# 或者使用yarn
-yarn add eslint-plugin-smarts --dev
-
-# 或者使用pnpm
-pnpm add eslint-plugin-smarts -D
+```bash [pnpm]
+# 使用 pnpm
+pnpm add --save-dev eslint eslint-plugin-smart
 ```
 
-## 基本使用
+```bash [npm]
+# 使用 npm
+npm install --save-dev eslint eslint-plugin-smart
+```
 
-在你的`.eslintrc.js`文件中添加以下配置：
+```bash [yarn]
+# 使用 yarn
+yarn add --dev eslint eslint-plugin-smart
+```
 
-```js
+:::
+
+## 快速开始
+
+请查看[快速开始](/lint/eslint-plugin-smart/docs/快速开始)文档了解详细的使用方法、配置示例和规则说明。
+
+### 基础配置（适用于所有项目）
+
+::: code-group
+
+```js [ESLint v9+]
+// eslint.config.mjs
+import eslintPlugin from 'eslint-plugin-smart';
+
+export default [
+  ...eslintPlugin.configs.recommended,
+  {
+    // 这里可以添加自定义规则
+  },
+];
+```
+
+```js [ESLint v8 及以下]
+// .eslintrc.js
 module.exports = {
-  extends: ['plugin:smarts/recommended'],
-  plugins: ['smarts']
+  extends: ['plugin:smart/recommended'],
 };
 ```
 
-## React项目配置
+:::
 
-对于React项目，推荐使用以下配置：
+## 支持的项目类型
+
+我们为不同类型的项目提供了专门的预设配置：
+
+| 项目类型   | 配置名称      | 特点                               |
+| ---------- | ------------- | ---------------------------------- |
+| JavaScript | `base`        | 基础 JavaScript 规则集             |
+| TypeScript | `typescript`  | TypeScript 支持与类型检查          |
+| React      | `react`       | React 与 JSX 相关规则              |
+| Vue        | `vue`         | Vue 单文件组件与模板规则           |
+| Node.js    | `nodejs`      | Node.js 后端项目相关规则           |
+| 全栈项目   | `recommended` | 包含所有规则集，适用于全栈开发项目 |
+
+## 规则集模块化设计
+
+eslint-plugin-smart 采用模块化设计，将各技术栈的规则集分离出来，便于维护和扩展：
 
 ```js
-module.exports = {
-  extends: [
-    'plugin:smarts/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended'
-  ],
-  plugins: ['smarts', 'react', 'react-hooks'],
-  settings: {
-    react: {
-      version: 'detect'
-    }
-  }
+// 分别导出各个技术栈的规则集
+export const javascriptRules = { /* JavaScript 规则 */ };
+export const typescriptRules = { /* TypeScript 规则 */ };
+export const reactRules = { /* React 规则 */ };
+export const vueRules = { /* Vue 规则 */ };
+export const nodejsRules = { /* Node.js 规则 */ };
+
+// 组合规则集
+export default {
+  base: javascriptRules,
+  typescript: { ...javascriptRules, ...typescriptRules },
+  react: { ...javascriptRules, ...reactRules },
+  vue: { ...javascriptRules, ...vueRules },
+  nodejs: { ...javascriptRules, ...nodejsRules },
+  recommended: {
+    ...javascriptRules,
+    ...typescriptRules,
+    ...reactRules,
+    ...vueRules,
+    ...nodejsRules,
+  },
 };
 ```
 
-## Vue项目配置
+## 与编辑器集成
 
-对于Vue项目，推荐使用以下配置：
+### VSCode
 
-```js
-module.exports = {
-  extends: [
-    'plugin:smarts/recommended',
-    'plugin:vue/vue3-recommended' // Vue 3.x项目
-    // 'plugin:vue/recommended' // Vue 2.x项目
-  ],
-  plugins: ['smarts', 'vue'],
-  parser: 'vue-eslint-parser',
-  parserOptions: {
-    parser: '@typescript-eslint/parser'
-  }
-};
+1. 安装 [ESLint VSCode 插件](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+2. 在 VSCode 中创建或编辑 `.vscode/settings.json` 文件：
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"]
+}
 ```
 
-## 规则集说明
+## 文档
 
-本插件集成了以下几类规则：
+- [快速开始](/lint/eslint-plugin-smart/docs/快速开始) - 快速开始、规则说明和配置指南
+- [常见问题](/lint/eslint-plugin-smart/docs/常见问题) - 常见问题解答和疑难解决
 
-1. **基础规则**：JavaScript/TypeScript的基本编码规范
-2. **React规则**：React组件和Hooks的最佳实践
-3. **Vue规则**：Vue组件和模板的最佳实践
-4. **导入/导出规则**：自动排序和优化imports/exports
-5. **格式化规则**：代码格式化和风格统一
+## 版本更新
 
-### 主要规则集
+### v2.0.0 (2025-04-23)
 
-- `annotation/sort` - 数组/对象排序
-- `annotation/sort-keys` - 对象键排序
-- `unused-imports/no-unused-imports` - 移除未使用的导入
-- `simple-import-sort/imports` - 导入语句排序
-- `simple-import-sort/exports` - 导出语句排序
-- `vue/order-in-components` - Vue组件选项顺序
-- 以及更多华为JavaScript编码规范...
-
-## 自定义配置
-
-你可以在项目的`.eslintrc.js`文件中覆盖任何规则：
-
-```js
-module.exports = {
-  extends: ['plugin:smarts/recommended'],
-  plugins: ['smarts'],
-  rules: {
-    // 在这里覆盖任何规则
-    'no-console': 'off',
-    'vue/max-attributes-per-line': ['error', {
-      singleline: 3,
-      multiline: 1
-    }]
-  }
-};
-```
-
-## 示例
-
-查看[examples](./examples)目录获取更多配置示例。
-
-## 贡献
-
-欢迎贡献！请查看[贡献指南](./CONTRIBUTING.md)了解如何参与项目开发。
+- ✨ **规则集优化**：对各技术栈规则集进行优化并采用模块化设计
+- 🔄 **重构内部实现**：重构插件内部实现，提高性能和可维护性
+- 🚀 **TypeScript 类型支持增强**：改进 TypeScript 类型定义，提供更好的类型检查
+- 📚 **文档更新**：更新文档，提供更详细的使用说明和示例
 
 ## 许可证
 
-[ISC](./LICENSE)
+MIT

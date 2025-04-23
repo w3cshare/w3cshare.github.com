@@ -2,14 +2,16 @@
   "name": "prettier-plugin-smarts",
   "version": "1.0.0",
   "description": "智能格式化插件，适用于公司内部所有前端项目",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "module": "lib/index.mjs",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
-    "dev": "tsc -w",
-    "build": "tsc",
+    "start": "pnpm run dev",
+    "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -26,7 +28,8 @@
   "license": "ISC",
   "dependencies": {
     "prettier": "^3.1.0",
-    "sort-package-json": "^2.6.0"
+    "sort-package-json": "^2.6.0",
+    "tsup": "^8.4.0"
   },
   "peerDependencies": {
     "prettier": ">=2.0.0"

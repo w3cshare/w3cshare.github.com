@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 12:56:06
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-22 13:20:59
+ * @LastEditTime: 2025-04-23 10:40:38
  * @FilePath: /FullStack/.trae/rules/project_rules.md
  * @Description: Trae 项目规则
 -->
@@ -50,7 +50,7 @@
 
 ---
 
-## MonoRepo项目概述与规范
+## 该项目是 MonoRepo项目，项目概述与规范
 
 ---
 

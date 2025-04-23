@@ -1,0 +1,24 @@
+/*
+ * @Author: wangwei wwdqq7@qq.com
+ * @Date: 2025-04-22 17:17:23
+ * @LastEditors: wangwei wwdqq7@qq.com
+ * @LastEditTime: 2025-04-22 18:08:55
+ * @FilePath: /FullStack/micro-service/grpc-gateway/.prettierrc.js
+ * @Description: 这是描述
+ */
+module.exports = {
+  // 标准的 Prettier 配置
+  printWidth: 100,
+  tabWidth: 2,
+  useTabs: false,
+  semi: true,
+  singleQuote: true,
+  trailingComma: 'es5',
+  bracketSpacing: true,
+  arrowParens: 'avoid',
+
+  // prettier-plugin-smarts 特有配置
+  sortJsonKeys: true, // 启用 JSON 键排序
+  importOrder: '^react,^@/,^[./]', // 设置 import 排序规则
+  vueIndentScriptAndStyle: true, // Vue 文件缩进控制
+};

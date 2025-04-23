@@ -1,9 +1,10 @@
-import type { Parser, SupportOptions, ParserOptions } from 'prettier';
+import type { Parser, ParserOptions, SupportOptions } from 'prettier';
 import { parsers as babelParsers } from 'prettier/plugins/babel';
-import { parsers as typescriptParsers } from 'prettier/plugins/typescript';
 import { parsers as htmlParsers } from 'prettier/plugins/html';
-import { parsers as postcssParsers } from 'prettier/plugins/postcss';
+import { parsers as typescriptParsers } from 'prettier/plugins/typescript';
 import sortPackageJson from 'sort-package-json';
+
+import { parsers as postcssParsers } from 'prettier/plugins/postcss';
 
 // 定义插件选项
 const options: SupportOptions = {
@@ -17,7 +18,8 @@ const options: SupportOptions = {
     type: 'string',
     category: 'JavaScript',
     default: '',
-    description: 'import语句排序规则，使用逗号分隔不同组，使用^表示正则匹配，例如：^react,^@/,^[./]',
+    description:
+      'import语句排序规则，使用逗号分隔不同组，使用^表示正则匹配，例如：^react,^@/,^[./]',
   },
   vueIndentScriptAndStyle: {
     type: 'boolean',
@@ -28,34 +30,35 @@ const options: SupportOptions = {
 };
 
 // 用于排序JSON对象键的函数
-function sortObjectKeys(obj: Record<string, any>, defaultOrder: string[] = []): Record<string, any> {
+function sortObjectKeys(
+  obj: Record<string, any>,
+  defaultOrder: string[] = [],
+): Record<string, any> {
   if (!obj || typeof obj !== 'object' || Array.isArray(obj)) {
     return obj;
   }
 
   // 递归处理嵌套对象
   const sortedObj: Record<string, any> = {};
-  
+
   // 首先按照默认顺序添加键
   for (const key of defaultOrder) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      sortedObj[key] = typeof obj[key] === 'object' && obj[key] !== null 
-        ? sortObjectKeys(obj[key]) 
-        : obj[key];
+      sortedObj[key] =
+        typeof obj[key] === 'object' && obj[key] !== null ? sortObjectKeys(obj[key]) : obj[key];
     }
   }
-  
+
   // 然后添加剩余的键（按字母顺序）
   Object.keys(obj)
     .sort((a, b) => a.localeCompare(b))
     .forEach(key => {
       if (!defaultOrder.includes(key)) {
-        sortedObj[key] = typeof obj[key] === 'object' && obj[key] !== null 
-          ? sortObjectKeys(obj[key]) 
-          : obj[key];
+        sortedObj[key] =
+          typeof obj[key] === 'object' && obj[key] !== null ? sortObjectKeys(obj[key]) : obj[key];
       }
     });
-  
+
   return sortedObj;
 }
 
@@ -64,47 +67,53 @@ const jsonParser: Parser = {
   ...babelParsers.json,
   parse: (text: string, options: ParserOptions) => {
     const ast = babelParsers.json.parse(text, options);
-    
+
     // 如果是package.json，使用sort-package-json库进行排序
-    if (options.filepath && options.filepath.endsWith('package.json') && options.sortJsonKeys !== false) {
+    if (
+      options.filepath &&
+      options.filepath.endsWith('package.json') &&
+      options.sortJsonKeys !== false
+    ) {
       try {
         const packageJson = JSON.parse(text);
         const sortedPackageJson = sortPackageJson(packageJson);
+
         // 我们需要重新解析排序后的package.json
-        return babelParsers.json.parse(
-          JSON.stringify(sortedPackageJson, null, 2),
-          options
-        );
+        return babelParsers.json.parse(JSON.stringify(sortedPackageJson, null, 2), options);
       } catch (error) {
         // 解析失败时回退到原始AST
         console.error('解析package.json失败:', error);
         return ast;
       }
     }
-    
+
     // 处理其他JSON文件
     if (options.sortJsonKeys !== false) {
       try {
         const jsonObj = JSON.parse(text);
         const sortedJsonObj = sortObjectKeys(jsonObj);
-        return babelParsers.json.parse(
-          JSON.stringify(sortedJsonObj, null, 2),
-          options
-        );
+        return babelParsers.json.parse(JSON.stringify(sortedJsonObj, null, 2), options);
       } catch (error) {
         // 解析失败时回退到原始AST
         console.error('解析JSON失败:', error);
         return ast;
       }
     }
-    
+
     return ast;
   },
 };
 
 // 定义ESLint配置文件排序规则
 const eslintConfigOrder = [
-  'root', 'env', 'extends', 'parser', 'parserOptions', 'plugins', 'settings', 'rules'
+  'root',
+  'env',
+  'extends',
+  'parser',
+  'parserOptions',
+  'plugins',
+  'settings',
+  'rules',
 ];
 
 // 处理.eslintrc.json文件的特殊排序
@@ -112,25 +121,23 @@ const eslintJsonParser: Parser = {
   ...jsonParser,
   parse: (text: string, options: ParserOptions) => {
     const ast = jsonParser.parse(text, options);
-    
+
     // 检查是否是.eslintrc.json文件
-    if (options.filepath && 
-        (options.filepath.endsWith('.eslintrc.json') || 
-         options.filepath.endsWith('.eslintrc')) && 
-        options.sortJsonKeys !== false) {
+    if (
+      options.filepath &&
+      (options.filepath.endsWith('.eslintrc.json') || options.filepath.endsWith('.eslintrc')) &&
+      options.sortJsonKeys !== false
+    ) {
       try {
         const eslintConfig = JSON.parse(text);
         const sortedEslintConfig = sortObjectKeys(eslintConfig, eslintConfigOrder);
-        return babelParsers.json.parse(
-          JSON.stringify(sortedEslintConfig, null, 2),
-          options
-        );
+        return babelParsers.json.parse(JSON.stringify(sortedEslintConfig, null, 2), options);
       } catch (error) {
         console.error('解析ESLint配置失败:', error);
         return ast;
       }
     }
-    
+
     return ast;
   },
 };
