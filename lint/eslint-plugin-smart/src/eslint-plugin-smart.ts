@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:31:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 18:03:17
+ * @LastEditTime: 2025-04-23 21:53:37
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/eslint-plugin-smart.ts
  * @Description: ESLint插件公共配置，适用于React、Vue、NestJS和TypeScript项目
  */
@@ -76,10 +76,10 @@ const baseRules = {
   ...javascriptRules2,
 
   // 数组/对象排序
-  'annotation/sort': 'error',
-  'annotation/sort-keys': 'error',
-  'annotation/format-date': 'error',
-  'annotation/unique': 'error',
+  // 'annotation/sort': 'error',
+  // 'annotation/sort-keys': 'error',
+  // 'annotation/format-date': 'error',
+  // 'annotation/unique': 'error',
 
   'no-unused-vars': 'off',
 
@@ -147,17 +147,18 @@ const baseRules = {
  */
 const typescriptRules = {
   ...typescriptRules2,
+  'no-unused-vars': 'off',
   '@typescript-eslint/no-unused-vars': 'off', // 关闭TS的未使用变量检查，使用unused-imports代替
   // 移除无用的代码规则
   'unused-imports/no-unused-imports': 'error', // 禁止未使用的导入
   'unused-imports/no-unused-vars': [
-    'error',
+    'warn',
     {
       vars: 'all', // 检查所有变量
       varsIgnorePattern: '^_', // 忽略以_开头的变量
       args: 'after-used', // 仅检查使用后的参数
       argsIgnorePattern: '^_', // 忽略以_开头的参数
-      caughtErrorsIgnorePattern: '^_', // 忽略以_开头的捕获错误
+      // caughtErrorsIgnorePattern: '^_', // 忽略以_开头的捕获错误
       /*
        * ignoreRestSiblings: false, // 忽略剩余的兄弟节点
        * destructuredArrayIgnorePattern: '^_', // 忽略以_开头的解构数组
@@ -191,8 +192,6 @@ const vueRules = {
  */
 const nestjsRules = {
   ...nodejsRules2,
-
-  '@typescript-eslint/no-empty-function': 'off',
 
   // nest官网推荐
   '@typescript-eslint/interface-name-prefix': 'off',

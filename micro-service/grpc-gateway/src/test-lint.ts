@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 22:50:31
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 17:38:07
+ * @LastEditTime: 2025-04-23 21:28:03
  * @FilePath: /FullStack/micro-service/grpc-gateway/src/test-lint.ts
  * @Description: --
  */
@@ -22,6 +22,10 @@ export class TestLintService {
   }
 
   public testMethod() {
+    const unusedVariable = 'test'
+
+    // console.log('🚀 ~ file: test-lint.ts:26 ~ unusedVariable:', unusedVariable)
+
     // 移除未使用的变量
     return 'test'
   }

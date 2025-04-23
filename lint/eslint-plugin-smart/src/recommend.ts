@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 13:30:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 20:35:36
+ * @LastEditTime: 2025-04-23 21:52:11
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/recommend.ts
  * @Description: ESLint规则集合，按照不同技术栈分类
  */
@@ -242,7 +242,7 @@ export const typescriptRules: ESLintRuleSet = {
   '@typescript-eslint/no-unused-vars': 'off', // 禁止定义未使用的变量（由unused-vars-and-imports插件处理）
   '@typescript-eslint/explicit-module-boundary-types': 'off', // 不要求导出函数和类的公共类方法的显式返回和参数类型
   '@typescript-eslint/no-non-null-assertion': 'warn', // 警告使用非空断言操作符(!)
-  '@typescript-eslint/no-empty-function': 'warn', // 警告空函数
+  '@typescript-eslint/no-empty-function': 'off', // 警告空函数
   '@typescript-eslint/no-empty-interface': 'warn', // 警告空接口
   '@typescript-eslint/ban-ts-comment': 'warn', // 警告使用@ts-注释
 }

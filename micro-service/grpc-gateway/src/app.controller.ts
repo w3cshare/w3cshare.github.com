@@ -27,6 +27,7 @@ export class AppController {
 
   @Post()
   getHello(): string {
+    const a = '123'
     return this.appService.getHello()
   }
 }
