@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-smart",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
   "main": "lib/eslint-plugin-smart.js",
   "module": "lib/eslint-plugin-smart.mjs",

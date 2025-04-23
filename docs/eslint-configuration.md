@@ -26,6 +26,40 @@
 
 ESLint v9引入了扁平配置系统，与一些旧版插件可能存在兼容性问题。
 
+#### 问题: `env` 配置字段不支持
+
+**症状**：
+```
+ESLint: 9.25.0
+A config object is using the "env" key, which is not supported in flat config system.
+Flat config uses "languageOptions.globals" to define global variables for your files.
+```
+
+**解决方案**：
+在ESLint v9扁平配置中，不再使用`env`字段，而是通过`languageOptions.globals`来设置环境变量：
+
+```javascript
+// 修改前 - 旧版配置
+const config = {
+  env: {
+    node: true,
+    jest: true
+  }
+};
+
+// 修改后 - ESLint v9扁平配置
+const config = {
+  languageOptions: {
+    globals: {
+      node: true,
+      jest: true
+    }
+  }
+};
+```
+
+`eslint-plugin-smart` v1.2.1及以上版本已自动处理这个变化，请确保使用最新版本。
+
 #### 问题: `@typescript-eslint/ban-types`规则不存在
 
 **症状**：

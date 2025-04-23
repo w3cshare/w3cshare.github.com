@@ -175,10 +175,10 @@ export function createFlatConfigs(
         emitDecoratorMetadata: true,
         project: "./tsconfig.json",
       },
-    },
-    env: {
-      node: true,
-      jest: true,
+      globals: {
+        node: true,
+        jest: true,
+      }
     },
     rules: {
       ...baseRules,

@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:50:42
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 15:20:42
+ * @LastEditTime: 2025-04-24 10:15:42
  * @FilePath: /FullStack/lint/eslint-plugin-smart/CHANGELOG.md
  * @Description: 更新日志
 -->
@@ -10,6 +10,14 @@
 # 更新日志
 
 所有版本更新都将记录在此文件中。
+
+## [1.2.1] - 2025-04-24
+
+### 修复
+
+- 修复 ESLint v9 中的环境变量配置问题
+- 将 `env` 字段替换为 `languageOptions.globals` 字段，符合 ESLint v9 扁平配置规范
+- 更新 FlatConfig 类型定义，移除不再支持的 `env` 字段
 
 ## [1.2.0] - 2025-04-23
 

@@ -89,6 +89,8 @@ export default [
 ];
 ```
 
+> **注意**: ESLint v9 中环境变量配置方式发生变化，不再使用 `env` 字段，而是使用 `languageOptions.globals`。本插件 v1.2.1 及以上版本已自动处理这一变化。
+
 #### ESLint v8 及以下 (传统配置)
 
 ```js

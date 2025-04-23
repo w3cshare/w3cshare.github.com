@@ -39,7 +39,6 @@ export interface FlatConfig {
     reportUnusedDisableDirectives?: boolean | "error" | "warn";
   };
   ignorePatterns?: string[];
-  env?: Record<string, boolean>;
   rules?: Record<string, any>;
   settings?: Record<string, any>;
 }
