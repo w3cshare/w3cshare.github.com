@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 13:30:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 21:52:11
+ * @LastEditTime: 2025-04-24 13:08:05
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/recommend.ts
  * @Description: ESLint规则集合，按照不同技术栈分类
  */
@@ -48,15 +48,20 @@ export const javascriptRules: ESLintRuleSet = {
 
   // 代码风格规则
   'comma-dangle': [
+    // 结尾逗号规则
     'error',
-    {
-      arrays: 'always-multiline',
-      objects: 'always-multiline',
-      imports: 'always-multiline',
-      exports: 'always-multiline',
-      functions: 'never',
-    },
-  ], // 结尾逗号规则
+    'always-multiline',
+
+    /*
+     * {
+     *   arrays: 'always-multiline',
+     *   objects: 'always-multiline',
+     *   imports: 'always-multiline',
+     *   exports: 'always-multiline',
+     *   functions: 'never',
+     * },
+     */
+  ],
   'space-before-function-paren': [
     'error',
     {

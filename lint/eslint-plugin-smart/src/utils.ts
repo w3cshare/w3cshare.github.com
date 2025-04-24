@@ -2,10 +2,20 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:45:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 18:02:04
+ * @LastEditTime: 2025-04-24 10:39:26
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/utils.ts
  * @Description: 工具函数，用于检测ESLint版本和加载插件
  */
+
+/**
+ * 检查值是否为对象类型
+ *
+ * @param value - 要检查的值
+ * @returns 如果值是对象且不是数组或null，则返回true；否则返回false
+ */
+export function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
 
 /**
  * 检测ESLint版本，判断使用哪种配置风格
@@ -49,9 +59,10 @@ export function loadPlugins(): Record<string, unknown> {
   return {
     // 通用插件
     import: safeRequire('eslint-plugin-import'),
-    annotation: safeRequire('eslint-plugin-annotation'), // js排序插件
     simpleImportSort: safeRequire('eslint-plugin-simple-import-sort'),
     unusedImports: safeRequire('eslint-plugin-unused-imports'),
+
+    // annotation: safeRequire('eslint-plugin-annotation'), // js排序插件
 
     // TypeScript相关
     typescriptEslint: safeRequire('@typescript-eslint/eslint-plugin'),

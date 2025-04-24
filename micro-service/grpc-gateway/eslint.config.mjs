@@ -8,9 +8,7 @@
  */
 
 // eslint.config.mjs
-import eslintPlugin from 'eslint-plugin-smart';
+import eslintPlugin from 'eslint-plugin-smart'
 
 // 导出配置，使用eslint-plugin-smart的nestjs配置
-export default [
-  ...eslintPlugin.configs.nestjs,
-];
+export default [...eslintPlugin.configs.nestjs]

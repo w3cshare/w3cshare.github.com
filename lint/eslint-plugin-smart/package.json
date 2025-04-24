@@ -10,8 +10,8 @@
   ],
   "scripts": {
     "start": "pnpm run dev",
-    "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
-    "dev": "tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"

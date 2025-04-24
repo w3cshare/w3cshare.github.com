@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:31:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 21:53:37
+ * @LastEditTime: 2025-04-24 12:46:54
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/eslint-plugin-smart.ts
  * @Description: ESLint插件公共配置，适用于React、Vue、NestJS和TypeScript项目
  */
@@ -19,38 +19,6 @@ import {
 } from './recommend'
 import { type ESLintRuleSet } from './types'
 import { isESLintV9, loadPlugins } from './utils'
-
-/**
- * ESLint插件类型
- */
-type ESLintPlugin = unknown
-
-/**
- * ESLint配置类型
- */
-interface ESLintConfig {
-  parser?: string
-  plugins?: string[]
-  extends?: string[]
-  rules?: ESLintRuleSet
-  settings?: Record<string, unknown>
-  [key: string]: unknown
-}
-
-/**
- * ESLint v9 扁平配置类型
- */
-interface ESLintFlatConfig {
-  files: string[]
-  plugins?: Record<string, ESLintPlugin>
-  languageOptions?: {
-    parser?: unknown
-    parserOptions?: Record<string, unknown>
-  }
-  rules?: ESLintRuleSet
-  settings?: Record<string, unknown>
-  [key: string]: unknown
-}
 
 /**
  * 插件导出的类型接口
@@ -75,11 +43,13 @@ interface ESLintPluginExport {
 const baseRules = {
   ...javascriptRules2,
 
-  // 数组/对象排序
-  // 'annotation/sort': 'error',
-  // 'annotation/sort-keys': 'error',
-  // 'annotation/format-date': 'error',
-  // 'annotation/unique': 'error',
+  /*
+   * 数组/对象排序
+   * 'annotation/sort': 'error',
+   * 'annotation/sort-keys': 'error',
+   * 'annotation/format-date': 'error',
+   * 'annotation/unique': 'error',
+   */
 
   'no-unused-vars': 'off',
 
