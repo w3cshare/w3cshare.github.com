@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 13:54:27
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 15:22:22
+ * @LastEditTime: 2025-04-24 14:14:55
  * @FilePath: /FullStack/micro-service/grpc-gateway/src/app.controller.ts
  * @Description: --
  */
@@ -27,7 +27,7 @@ export class AppController {
 
   @Post()
   getHello(): string {
-    const a = '123'
+    // const a = '123'
     return this.appService.getHello()
   }
 }

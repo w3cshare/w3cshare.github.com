@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:40:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-24 13:17:57
+ * @LastEditTime: 2025-04-24 14:18:59
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/flat-configs.ts
  * @Description: ESLint v9 扁平配置
  *
@@ -50,6 +50,7 @@ export function createFlatConfigs(
     node: nodePlugin,
     prettier: prettierPlugin,
     eslintConfigPrettier,
+
     // prettierCore,
   } = plugins
 
@@ -73,8 +74,6 @@ export function createFlatConfigs(
       ? (eslintConfigPrettier.rules as ESLintRuleSet)
       : {}
 
-  console.log('🚀 ~ file: flat-configs.ts:66 ~ eslintRecommendedRules:', eslintRecommendedRules)
-  console.log('🚀 ~ file: flat-configs.ts:90 ~ prettierRules:', prettierRules)
   const ignores = [
     '.eslintrc.js',
     '**/node_modules/**',
@@ -111,6 +110,7 @@ export function createFlatConfigs(
     rules: {
       // 添加eslint:recommended规则
       ...eslintRecommendedRules,
+      ...prettierRules,
 
       // 自定义规则覆盖推荐规则
       ...baseRules,
@@ -273,6 +273,7 @@ export function createFlatConfigs(
     rules: {
       // 关闭与Prettier冲突的规则
       ...prettierRules,
+      ...baseRules,
 
       ...(baseRules && typeof baseRules['prettier/prettier'] === 'object'
         ? { 'prettier/prettier': baseRules['prettier/prettier'] }
