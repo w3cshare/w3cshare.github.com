@@ -39,121 +39,220 @@ features:
 
 # eslint-plugin-smarts
 
-## 项目介绍
+内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目。
 
-`eslint-plugin-smarts` 是一个智能化的 ESLint 插件，提供了适用于 React、Vue、NestJS 和 TypeScript 项目的公共配置。该插件同时支持 ESLint v9 的扁平配置和 ESLint v8 及以下版本的传统配置格式，能够自动检测 ESLint 版本并应用相应的配置风格。
+## 特性
 
-## 主要特性
+- 🚀 支持 ESLint v9 扁平配置
+- 📦 开箱即用的配置预设
+- 🎯 针对不同项目类型的专门优化
+- 🔄 自动修复和代码格式化
+- 🎨 完整的 Prettier 集成
+- 📝 JSON 文件支持（包括自动排序）
 
-- 支持 ESLint v9 扁平配置和 ESLint v8 传统配置
-- 自动检测 ESLint 版本并应用相应配置
-- 提供针对 TypeScript、React、Vue 和 NestJS 项目的优化规则
-- 代码风格、错误防范、导入排序等通用规则集成
-- 内置 Prettier 集成，确保代码格式一致性
-- 模块化设计，代码组织清晰
-
-## 项目结构
-
-该项目采用了模块化的设计，主要文件包括：
-
-- `eslint-plugin-smarts.ts` - 插件入口文件，负责版本检测和配置选择
-- `flat-configs.ts` - ESLint v9 扁平配置定义
-- `legacy-configs.ts` - ESLint v8 及以下传统配置定义
-- `utils.ts` - 工具函数，包含版本检测和插件加载功能
-- `recommend.ts` - 预设的推荐规则集
-- `types.ts` - 类型定义
-
-## 安装使用
-
-### 安装
+## 安装
 
 ```bash
 # 使用 npm
-npm install eslint-plugin-smarts --save-dev
+npm install --save-dev eslint-plugin-smarts
 
 # 使用 pnpm
-pnpm add eslint-plugin-smarts -D
+pnpm add -D eslint-plugin-smarts
 
 # 使用 yarn
-yarn add eslint-plugin-smarts -D
+yarn add -D eslint-plugin-smarts
 ```
+
+## 使用方法
+
+### ESLint v9 (推荐)
+
+在项目根目录创建 `eslint.config.mjs` 文件：
+
+```javascript
+import eslintPlugin from 'eslint-plugin-smarts'
+
+export default [
+  // 基础配置（适用于普通 JavaScript/TypeScript 项目）
+  ...eslintPlugin.configs.base,
+
+  // 或者使用特定项目类型的配置：
+  ...eslintPlugin.configs.typescript,  // TypeScript 项目
+  ...eslintPlugin.configs.react,       // React 项目
+  ...eslintPlugin.configs.vue,         // Vue 项目
+  ...eslintPlugin.configs.nestjs,      // NestJS 项目
+  ...eslintPlugin.configs.json,        // JSON 文件
+]
+```
+
+### 配置预设
+
+插件提供以下配置预设：
+
+1. `base` - 基础 JavaScript 配置
+   - 包含 ESLint 推荐规则
+   - 集成 Prettier
+   - 导入/导出排序
+   - 未使用变量检查
+
+2. `typescript` - TypeScript 项目配置
+   - 包含基础配置
+   - TypeScript 特定规则
+   - 类型检查支持
+
+3. `react` - React 项目配置
+   - 包含 TypeScript 配置
+   - React 和 JSX 规则
+   - React Hooks 规则
+   - 可访问性检查
+
+4. `vue` - Vue 项目配置
+   - 包含 TypeScript 配置
+   - Vue 单文件组件支持
+   - Vue 特定规则
+
+5. `nestjs` - NestJS 项目配置
+   - 包含 TypeScript 配置
+   - 装饰器支持
+   - Node.js 环境
+   - Jest 测试支持
+
+6. `json` - JSON 文件配置
+   - JSON、JSONC、JSON5 支持
+   - package.json 字段排序
+   - 格式验证
+
+### JSON 文件支持
+
+JSON 配置提供以下功能：
+
+- 支持 JSON、JSONC 和 JSON5 文件格式
+- 自动格式化
+- package.json 字段排序
+- 语法错误检查
+
+使用方法：
+
+```javascript
+import eslintPlugin from 'eslint-plugin-smarts'
+
+export default [
+  ...eslintPlugin.configs.json
+]
+```
+
+package.json 字段排序顺序：
+
+1. name
+2. version
+3. private
+4. packageManager
+5. description
+6. type
+7. keywords
+8. homepage
+9. bugs
+10. license
+11. author
+12. contributors
+13. funding
+14. files
+15. main
+16. module
+17. types
+18. exports
+19. imports
+20. scripts
+21. peerDependencies
+22. peerDependenciesMeta
+23. dependencies
+24. optionalDependencies
+25. devDependencies
+26. engines
+27. config
+28. overrides
+29. pnpm
+30. husky
+31. lint-staged
+32. eslintConfig
 
 ### 配置示例
 
-#### ESLint v9 (扁平配置)
+1. React + TypeScript 项目：
 
-```js
-// eslint.config.js
-import smartPlugin from "eslint-plugin-smarts";
+```javascript
+// eslint.config.mjs
+import eslintPlugin from 'eslint-plugin-smarts'
 
 export default [
-  ...smartPlugin.configs.typescript,
-  // 自定义规则...
-];
+  ...eslintPlugin.configs.react,
+  ...eslintPlugin.configs.json
+]
 ```
 
-> **注意**: ESLint v9 中环境变量配置方式发生变化，不再使用 `env` 字段，而是使用 `languageOptions.globals`。本插件 v1.2.1 及以上版本已自动处理这一变化。
+2. Vue + TypeScript 项目：
 
-#### ESLint v8 及以下 (传统配置)
+```javascript
+// eslint.config.mjs
+import eslintPlugin from 'eslint-plugin-smarts'
 
-```js
-// .eslintrc.js
-module.exports = {
-  extends: ["plugin:smart/typescript"],
-  // 自定义规则...
-};
+export default [
+  ...eslintPlugin.configs.vue,
+  ...eslintPlugin.configs.json
+]
 ```
 
-## 可用配置
+3. NestJS 项目：
 
-插件提供了以下几种预设配置：
+```javascript
+// eslint.config.mjs
+import eslintPlugin from 'eslint-plugin-smarts'
 
-- `base` - 基础配置，适用于所有项目
-- `typescript` - TypeScript 项目配置
-- `react` - React 项目配置
-- `vue` - Vue 项目配置
-- `nestjs` - NestJS 项目配置
-- `recommended` - 推荐配置（默认使用 TypeScript 配置）
-
-## Prettier 集成
-
-该插件内置了 Prettier 支持，可以确保代码格式的一致性：
-
-- 自动加载 `eslint-plugin-prettier` 和 `eslint-config-prettier` 插件
-- 配置 Prettier 规则，与 ESLint 规则无冲突
-- 提供合理的默认格式化选项
-- 在所有配置预设中都启用 Prettier 支持
-
-### 默认 Prettier 配置
-
-```js
-{
-  printWidth: 100,
-  tabWidth: 2,
-  useTabs: false,
-  semi: false,
-  singleQuote: true,
-  quoteProps: 'as-needed',
-  jsxSingleQuote: false,
-  trailingComma: 'all',
-  bracketSpacing: true,
-  bracketSameLine: false,
-  arrowParens: 'always',
-  endOfLine: 'lf',
-}
+export default [
+  ...eslintPlugin.configs.nestjs,
+  ...eslintPlugin.configs.json
+]
 ```
 
-## 最佳实践
+## 常见问题
 
-1. 对于新项目，建议使用 ESLint v9 扁平配置，性能更好
-2. 针对不同框架选择对应的配置预设
-3. 利用内置的 Prettier 集成确保代码格式一致性
-4. 可以根据项目需求扩展自定义规则
+### 1. ESLint 忽略文件配置
 
-## 贡献指南
+从 ESLint v9 开始，`.eslintignore` 文件已不再支持。请在 `eslint.config.mjs` 中使用 `ignores` 配置：
 
-欢迎提交 Pull Request 或 Issue。贡献前请先阅读本项目的贡献指南。
+```javascript
+export default [
+  {
+    ignores: [
+      'dist/**',
+      'lib/**',
+      'build/**',
+      'node_modules/**',
+      '.cache/**',
+      '.temp/**',
+      '*.log'
+    ]
+  },
+  ...eslintPlugin.configs.recommended
+]
+```
+
+### 2. 自定义规则
+
+如果需要覆盖默认规则，可以在配置数组末尾添加自定义规则：
+
+```javascript
+export default [
+  ...eslintPlugin.configs.react,
+  {
+    rules: {
+      // 自定义规则
+      'react/react-in-jsx-scope': 'off'
+    }
+  }
+]
+```
 
 ## 许可证
 
-MIT
+ISC

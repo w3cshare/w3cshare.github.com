@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-smarts",
   "version": "0.0.7",
-  "description": "SISS eslint 规则集(仅团队内部调用)",
+  "description": "内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
   "main": "lib/eslint-plugin-smarts.js",
   "types": "lib/eslint-plugin-smarts.d.ts",
   "module": "lib/eslint-plugin-smarts.mjs",
@@ -19,7 +19,8 @@
   "files": [
     "lib",
     "src",
-    "docs"
+    "docs",
+    "README.md"
   ],
   "scripts": {
     "copy": "node copy.js",
@@ -27,15 +28,16 @@
     "build:ts": "tsc",
     "build": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --outDir lib",
     "dev": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --watch --outDir lib",
-    "test": "node ./__tests__/eslint-plugin-smarts.test.js"
+    "test": "node ./__tests__/eslint-plugin-smarts.test.js",
+    "lint:json": "eslint --fix \"**/*.json\""
   },
   "keywords": [
     "eslint",
     "eslintplugin",
-    "typescript",
+    "nestjs",
     "react",
-    "vue",
-    "nestjs"
+    "typescript",
+    "vue"
   ],
   "author": "wangwei <wwdqq7@qq.com>",
   "license": "ISC",
@@ -45,6 +47,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-annotation": "^1.1.6",
     "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsonc": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.1.3",
@@ -53,6 +56,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vue": "^9.21.1",
+    "jsonc-eslint-parser": "^2.4.0",
     "tsup": "^8.4.0",
     "typescript": "^5.5.2"
   },

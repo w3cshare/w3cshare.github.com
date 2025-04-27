@@ -19,8 +19,8 @@ Thumbs.db
 .env
 
 # IDE配置
-.idea/
-.vscode/
+# .idea/
+# .vscode/
 
 # 类型系统缓存
 tsconfig.tsbuildinfo

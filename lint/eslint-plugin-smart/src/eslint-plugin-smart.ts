@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:31:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-24 12:46:54
+ * @LastEditTime: 2025-04-28 00:33:19
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/eslint-plugin-smart.ts
  * @Description: ESLint插件公共配置，适用于React、Vue、NestJS和TypeScript项目
  */
@@ -16,6 +16,7 @@ import {
   reactRules as reactRules2,
   typescriptRules as typescriptRules2,
   vueRules as vueRules2,
+  jsonRules as jsonRules2,
 } from './recommend'
 import { type ESLintRuleSet } from './types'
 import { isESLintV9, loadPlugins } from './utils'
@@ -175,99 +176,11 @@ const nestjsRules = {
 
 /**
  * JSON特定规则
- * 
+ *
  * 包含JSON文件的格式化和排序规则
  */
 const jsonRules = {
-  // JSON语法规则
-  'jsonc/array-bracket-spacing': ['error', 'never'],
-  'jsonc/comma-dangle': ['error', 'never'],
-  'jsonc/comma-style': ['error', 'last'],
-  'jsonc/indent': ['error', 2],
-  'jsonc/no-comments': 'off', // 允许在JSON中使用注释（适用于JSONC）
-  'jsonc/object-curly-spacing': ['error', 'always'],
-  'jsonc/quote-props': ['error', 'always'], // 总是给属性名加引号
-  'jsonc/quotes': ['error', 'double'], // JSON中使用双引号
-
-  // JSON排序规则
-  'jsonc/sort-array-values': [
-    'error',
-    {
-      pathPattern: '.*', // 应用于数组的所有路径
-      order: { type: 'asc' }, // 按字母升序排序
-    },
-  ],
-  
-  // 特殊文件的排序优先级设置
-  'jsonc/sort-keys': [
-    'error',
-    // 第一个配置对象：处理package.json的根级属性
-    {
-      pathPattern: '^$', // 适用于根级别属性
-      order: [
-        'name',
-        'version',
-        'description',
-        'keywords',
-        'homepage',
-        'bugs',
-        'license',
-        'author',
-        'contributors',
-        'repository',
-        'funding',
-        'main',
-        'module',
-        'types',
-        'typings',
-        'exports',
-        'files',
-        'bin',
-        'sideEffects',
-        'engines',
-        'browserslist',
-        'packageManager',
-        'scripts',
-        'dependencies',
-        'peerDependencies',
-        'peerDependenciesMeta',
-        'optionalDependencies',
-        'devDependencies',
-        'overrides',
-        'resolutions',
-        'private',
-        'publishConfig',
-        'workspaces',
-        'husky',
-        'lint-staged',
-        'config',
-      ],
-    },
-    // 第二个配置对象：处理依赖项对象
-    {
-      pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
-      order: { type: 'asc' }, // 依赖项按字母排序
-    },
-    // 第三个配置对象：处理scripts对象
-    {
-      pathPattern: '^scripts$',
-      order: [
-        'start',
-        'dev',
-        'build',
-        'serve',
-        'test',
-        'lint',
-        'format',
-        'prepare',
-      ],
-    },
-    // 第四个配置对象：处理其他所有对象
-    {
-      pathPattern: '.*', // 适用于其他所有路径
-      order: { type: 'asc' }, // 按字母升序排序
-    },
-  ],
+  ...jsonRules2,
 }
 
 /**

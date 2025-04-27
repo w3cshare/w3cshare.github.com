@@ -6,9 +6,10 @@
   "module": "lib/eslint-plugin-smart.mjs",
   "types": "lib/eslint-plugin-smart.d.ts",
   "files": [
+    "docs",
     "lib",
     "src",
-    "docs"
+    "README.md"
   ],
   "scripts": {
     "start": "pnpm run dev",
@@ -17,16 +18,17 @@
     "build": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
     "dev": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
     "lint": "eslint \"src/**/*.ts\" --fix",
+    "lint:json": "eslint --fix \"**/*.json\"",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "eslint",
     "eslintplugin",
-    "typescript",
+    "nestjs",
     "react",
-    "vue",
-    "nestjs"
+    "typescript",
+    "vue"
   ],
   "author": "wangwei <wwdqq7@qq.com>",
   "license": "ISC",

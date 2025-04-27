@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:40:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-24 14:18:59
+ * @LastEditTime: 2025-04-28 01:39:06
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/flat-configs.ts
  * @Description: ESLint v9 扁平配置
  *
@@ -14,7 +14,7 @@
  */
 import js from '@eslint/js'
 
-import { type ESLintRuleSet, type FlatConfig } from './types'
+import { type ESLintRuleSet, type FlatConfig, type LoadedPlugins } from './types'
 import { isObject } from './utils'
 
 /**
@@ -25,7 +25,7 @@ import { isObject } from './utils'
  * @returns ESLint v9扁平配置对象集合
  */
 export function createFlatConfigs(
-  plugins: Record<string, unknown>,
+  plugins: LoadedPlugins,
   rules: {
     baseRules: ESLintRuleSet
     typescriptRules: ESLintRuleSet
@@ -198,7 +198,7 @@ export function createFlatConfigs(
 
   /**
    * ESLint v9 扁平配置 - JSON配置
-   * 
+   *
    * 包含JSON文件的格式化和排序规则
    */
   const jsonFlatConfig: FlatConfig = {
@@ -208,7 +208,10 @@ export function createFlatConfigs(
       jsonc: jsoncPlugin,
     },
     languageOptions: {
-      parser: jsoncPlugin ? (jsoncPlugin as any).parser : undefined,
+      parser: jsoncPlugin?.parser,
+      parserOptions: {
+        jsonSyntax: 'JSON',
+      },
     },
     rules: {
       ...jsonRules,

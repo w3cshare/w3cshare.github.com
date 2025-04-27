@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:31:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-24 12:46:54
+ * @LastEditTime: 2025-04-28 00:33:19
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/eslint-plugin-smart.ts
  * @Description: ESLint插件公共配置，适用于React、Vue、NestJS和TypeScript项目
  */
@@ -16,6 +16,7 @@ import {
   reactRules as reactRules2,
   typescriptRules as typescriptRules2,
   vueRules as vueRules2,
+  jsonRules as jsonRules2,
 } from './recommend'
 import { type ESLintRuleSet } from './types'
 import { isESLintV9, loadPlugins } from './utils'
@@ -30,6 +31,7 @@ interface ESLintPluginExport {
     react: ESLintRuleSet
     vue: ESLintRuleSet
     nestjs: ESLintRuleSet
+    json: ESLintRuleSet
   }
   configs?: Record<string, unknown>
   plugins?: Record<string, unknown>
@@ -173,6 +175,15 @@ const nestjsRules = {
 }
 
 /**
+ * JSON特定规则
+ *
+ * 包含JSON文件的格式化和排序规则
+ */
+const jsonRules = {
+  ...jsonRules2,
+}
+
+/**
  * 创建ESLint配置导出对象
  *
  * @returns ESLint插件导出对象
@@ -188,6 +199,7 @@ const createExportObject = (): ESLintPluginExport => {
     reactRules,
     vueRules,
     nestjsRules,
+    jsonRules,
   }
 
   // 创建基本导出对象
@@ -199,6 +211,7 @@ const createExportObject = (): ESLintPluginExport => {
       react: reactRules,
       vue: vueRules,
       nestjs: nestjsRules,
+      json: jsonRules,
     },
 
     // 内置插件导出
@@ -206,6 +219,7 @@ const createExportObject = (): ESLintPluginExport => {
       import: plugins.import,
       'simple-import-sort': plugins.simpleImportSort,
       'unused-imports': plugins.unusedImports,
+      jsonc: plugins.jsonc,
     },
   }
 
