@@ -189,7 +189,7 @@ const config: Config = {
       'content',
       'quotes',
       'resize',
-      'touch-action'
+      'touch-action',
     ],
 
     // ===== 空行规则 =====
@@ -244,7 +244,7 @@ const config: Config = {
           'for',
           'each',
           'use',
-          'forward'
+          'forward',
         ],
       },
     ],
@@ -255,26 +255,26 @@ const config: Config = {
     'selector-max-id': 1, // 限制一个选择器中ID选择器的数量为1，避免高特异性
     'font-family-name-quotes': 'always-where-recommended', // 智能使用引号包裹字体名称
 
-    // ===== BEM规则 =====
-    // BEM规则说明:
-    // - absolute-has-two-dimensions: 使用position:absolute时至少设置两个方向的位置
-    // - animation-explicit-timing-function: 动画必须明确指定timing-function
-    // - class-name-equal-to-file-name: 主类名应与文件名匹配
-    // - display-deny-inline: 避免使用inline相关的display值
-    // - duplicated-property-value-in-media: 避免在媒体查询中重复已有的属性值
-    // - duplicated-property-value-in-modifier: BEM修饰符中不应重复块元素中的相同属性值
-    'bem-newbie/absolute-has-two-dimensions': [true, { severity: 'warning' }],
-    'bem-newbie/animation-explicit-timing-function': true,
+    /*
+     * ===== BEM规则 =====
+     * BEM规则说明:
+     */
+    'bem-newbie/absolute-has-two-dimensions': [true, { severity: 'warning' }], // 使用position:absolute时至少设置两个方向的位置
+    'bem-newbie/animation-explicit-timing-function': true, // 动画必须明确指定timing-function
     'bem-newbie/class-name-equal-to-file-name': null, // 关闭此规则，不强制要求类名等于文件名
-    'bem-newbie/display-deny-inline': true,
-    'bem-newbie/duplicated-property-value-in-media': true,
-    'bem-newbie/duplicated-property-value-in-modifier': true,
+    'bem-newbie/display-deny-inline': true, // 避免使用inline相关的display值
+    'bem-newbie/duplicated-property-value-in-media': true, // 避免在媒体查询中重复已有的属性值
+    'bem-newbie/duplicated-property-value-in-modifier': true, // BEM修饰符中不应重复块元素中的相同属性值
+    // 限制@font-face声明只能在fonts文件夹中的文件使用，确保字体声明集中管理
     'bem-newbie/font-face-declaration-in-fonts-file-only': true,
+    // 禁止在@font-face中重复定义src属性，避免资源加载冲突
     'bem-newbie/font-face-duplicate-src': true,
+
+    // 要求字体权重文件名包含对应的权重数值（如-regular, -bold等），便于识别
     'bem-newbie/font-weight-file-name': true,
     'bem-newbie/import-bem-path': null, // 关闭此规则，不强制BEM文件结构
     'bem-newbie/import-fonts': null, // 关闭此规则，允许在任何位置导入字体
-    'bem-newbie/import-normalize': null // 关闭此规则，允许在任何位置导入normalize
+    'bem-newbie/import-normalize': null, // 关闭此规则，允许在任何位置导入normalize
   },
   overrides: [
     // ===== Vue 文件配置 =====
@@ -305,7 +305,7 @@ const config: Config = {
       rules: {
         'scss/at-rule-no-unknown': true, // 启用SCSS特定的at-rule检查
         'at-rule-no-unknown': null, // 禁用通用at-rule检查，避免冲突
-      }
+      },
     },
 
     // ===== Less 文件配置 =====
@@ -314,8 +314,8 @@ const config: Config = {
       customSyntax: 'postcss-less',
       rules: {
         'at-rule-no-unknown': null, // 禁用未知at规则检查，Less有自己的at规则
-      }
-    }
+      },
+    },
   ],
 }
 
