@@ -4,13 +4,13 @@ title: Stylelint 企业级配置
 description: 为企业级项目提供全面的 CSS 样式规范配置方案
 outline: deep
 hero:
-  name: stylelint-config-smarts
+  name: stylelint-config-smart
   text: 智能样式规范配置
   tagline: 统一 CSS、SCSS、Less 等样式代码规范
   actions:
     - theme: brand
       text: 快速开始
-      link: /lint/stylelint-config-smarts/docs/开始使用
+      link: /lint/stylelint-config-smart/docs/开始使用
     - theme: alt
       text: 质量
       link: /lint/stylelint-config-smart/docs/质量
@@ -31,7 +31,7 @@ features:
 
 # &nbsp;
 
-# stylelint-config-smarts
+# stylelint-config-smart
 
 企业级 Stylelint 配置方案，提供现代化、全面的 CSS 样式规范。
 
@@ -47,13 +47,13 @@ features:
 
 ```bash
 # 使用 pnpm (推荐)
-pnpm add -D stylelint stylelint-config-smarts
+pnpm add -D stylelint stylelint-config-smart
 
 # 或使用 npm
-npm install --save-dev stylelint stylelint-config-smarts
+npm install --save-dev stylelint stylelint-config-smart
 
 # 或使用 yarn
-yarn add -D stylelint stylelint-config-smarts
+yarn add -D stylelint stylelint-config-smart
 ```
 
 ## 基本用法
@@ -62,7 +62,7 @@ yarn add -D stylelint stylelint-config-smarts
 
 ```js
 module.exports = {
-  extends: ['stylelint-config-smarts'],
+  extends: ['stylelint-config-smart'],
   rules: {
     // 自定义覆盖规则（如需要）
   },
@@ -73,7 +73,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  extends: ['stylelint-config-smarts'],
+  extends: ['stylelint-config-smart'],
   rules: {
     // 自定义覆盖规则（如需要）
   },
@@ -126,7 +126,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  extends: ['stylelint-config-smarts'],
+  extends: ['stylelint-config-smart'],
   rules: {
     // 禁用颜色名称检查
     'color-named': null,
@@ -142,7 +142,7 @@ module.exports = {
 
 ## 版本说明
 
-stylelint-config-smarts 要求 stylelint v15 或更高版本，并集成了以下插件：
+stylelint-config-smart 要求 stylelint v15 或更高版本，并集成了以下插件：
 
 - stylelint-order - 属性排序
 - stylelint-scss - SCSS 语法支持
@@ -154,6 +154,6 @@ ISC
 
 ## 详细文档
 
-- [开始使用](/lint/stylelint-config-smarts/docs/开始使用) - 快速上手指南
-- [Less支持](/lint/stylelint-config-smarts/docs/Less支持) - Less 预处理器的配置使用
-- [Vue框架支持](/lint/stylelint-config-smarts/docs/Vue框架支持) - Vue 单文件组件样式规范
+- [开始使用](/lint/stylelint-config-smart/docs/开始使用) - 快速上手指南
+- [Less支持](/lint/stylelint-config-smart/docs/Less支持) - Less 预处理器的配置使用
+- [Vue框架支持](/lint/stylelint-config-smart/docs/Vue框架支持) - Vue 单文件组件样式规范

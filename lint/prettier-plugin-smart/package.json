@@ -1,11 +1,13 @@
 {
   "name": "prettier-plugin-smart",
-  "version": "0.0.7",
-  "description": "> TODO: description",
+  "version": "0.0.6",
+  "description": "智能格式化插件，适用于公司内部所有前端项目",
   "author": "wangwei <wwdqq7@qq.com>",
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "license": "ISC",
   "main": "lib/prettier-plugin-smart.js",
+  "module": "lib/prettier-plugin-smart.mjs",
+  "types": "lib/prettier-plugin-smart.d.ts",
   "files": [
     "lib"
   ],
@@ -13,22 +15,37 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmmirror.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
-    "dev": "tsc -w",
-    "build": "tsc",
-    "test": "node ./__tests__/prettier-plugin-smart.test.js"
+    "start": "pnpm run dev",
+    "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bugs": {
-    "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
-  },
+  "keywords": [
+    "prettier",
+    "prettier-plugin",
+    "formatter",
+    "json",
+    "typescript",
+    "javascript",
+    "vue",
+    "react"
+  ],
   "dependencies": {
-    "typescript": "^5.5.2"
+    "prettier": "^3.1.0",
+    "sort-package-json": "^2.6.0",
+    "tsup": "^8.4.0"
+  },
+  "peerDependencies": {
+    "prettier": ">=2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.2",
+    "@types/prettier": "^3.0.0",
+    "typescript": "^5.2.2"
   }
 }

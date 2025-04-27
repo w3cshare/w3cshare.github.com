@@ -12,6 +12,9 @@ hero:
       text: 快速开始
       link: ./docs/快速开始
     - theme: alt
+      text: 质量
+      link: /lint/stylelint-config-smart/docs/质量
+    - theme: alt
       text: 常见问题
       link: ./docs/常见问题
 features:
@@ -79,8 +82,22 @@ yarn add eslint-plugin-smart -D
 
 #### ESLint v9 (扁平配置)
 
+##### CommonJS 项目
+
 ```js
-// eslint.config.js
+// eslint.config.cjs
+const smartPlugin = require('eslint-plugin-smart')
+
+module.exports = [
+  ...smartPlugin.configs.typescript,
+  // 自定义规则...
+]
+```
+
+##### ESModule 项目
+
+```js
+// eslint.config.mjs
 import smartPlugin from 'eslint-plugin-smart'
 
 export default [
@@ -92,12 +109,22 @@ export default [
 #### ESLint v8 及以下 (传统配置)
 
 ```js
-// .eslintrc.js
+// .eslintrc.js 或 .eslintrc.cjs
 module.exports = {
   extends: ['plugin:smart/typescript'],
   // 自定义规则...
 }
 ```
+
+## 配置文件命名规范
+
+根据项目使用的模块系统，ESLint 配置文件应遵循以下命名规则：
+
+- **CommonJS 项目**：使用 `eslint.config.cjs`
+- **ESModule 项目**：使用 `eslint.config.mjs`
+- **传统配置**：使用 `.eslintrc.js` 或 `.eslintrc.cjs`
+
+这种命名约定确保 ESLint 能够正确识别和加载配置文件。
 
 ## 可用配置
 

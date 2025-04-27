@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-smarts",
-  "version": "1.0.1",
+  "version": "0.0.6",
   "description": "智能格式化插件，适用于公司内部所有前端项目",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
