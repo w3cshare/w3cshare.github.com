@@ -96,4 +96,12 @@
 - 遵循项目既定的代码风格和提交规范
 - 新功能开发需同步更新相关文档
 
+### 功能实现一样，包名不一样，
+
+- 根目录"/lint/eslint-plugin-smart"插件和"/lint/eslint-plugin-smarts"插件功能实现是一样的，只是包名不一样。
+- 根目录"/lint/stylelint-config-smart"插件和"/lint/stylelint-config-smarts"插件功能实现是一样的，只是包名不一样。
+- 根目录"/lint/prettier-config-smart"插件和"/lint/prettier-config-smarts"插件功能实现是一样的，只是包名不一样。
+- 根目录"/lint/commit-smarts"插件和"/lint/commit-smart"插件和"/lint/commitlint-smart"插件和"/lint/commitlint-smarts"插件功能实现是一样的，只是包名不一样。
+- 以上四类插件的功能实现是一样的，只是包名不一样，所以每次更新都同步更新一下相关代码和文档
+
 ---

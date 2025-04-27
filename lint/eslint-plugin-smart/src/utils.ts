@@ -61,6 +61,7 @@ export function loadPlugins(): Record<string, unknown> {
     import: safeRequire('eslint-plugin-import'),
     simpleImportSort: safeRequire('eslint-plugin-simple-import-sort'),
     unusedImports: safeRequire('eslint-plugin-unused-imports'),
+    jsonc: safeRequire('eslint-plugin-jsonc'), // JSON处理插件
 
     // annotation: safeRequire('eslint-plugin-annotation'), // js排序插件
 

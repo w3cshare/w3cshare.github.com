@@ -21,8 +21,9 @@ export function createLegacyConfigs(rules: {
   reactRules: ESLintRuleSet
   vueRules: ESLintRuleSet
   nestjsRules: ESLintRuleSet
+  jsonRules: ESLintRuleSet
 }): Record<string, Record<string, unknown>> {
-  const { baseRules, typescriptRules, reactRules, vueRules, nestjsRules } = rules
+  const { baseRules, typescriptRules, reactRules, vueRules, nestjsRules, jsonRules } = rules
 
   /**
    * 基础配置，适用于所有项目
@@ -95,6 +96,15 @@ export function createLegacyConfigs(rules: {
     },
   }
 
+  /**
+   * JSON配置
+   */
+  const jsonConfig = {
+    plugins: ['jsonc'],
+    extends: ['plugin:jsonc/recommended-with-jsonc'],
+    rules: jsonRules,
+  }
+
   // 返回所有配置
   return {
     base: baseConfig,
@@ -102,6 +112,7 @@ export function createLegacyConfigs(rules: {
     react: reactConfig,
     vue: vueConfig,
     nestjs: nestjsConfig,
+    json: jsonConfig,
 
     // 推荐配置，默认使用typescript配置
     recommended: typescriptConfig,

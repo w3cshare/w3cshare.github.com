@@ -1,6 +1,6 @@
 {
   "name": "commitlint-smarts",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "智能提交规范配置，适用于公司内部所有项目",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

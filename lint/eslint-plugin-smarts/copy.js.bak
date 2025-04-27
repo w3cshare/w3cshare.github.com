@@ -61,14 +61,14 @@ function copyFolderRecursive(source, target) {
 // 主函数
 function main() {
   // 定义源路径和目标路径
-  const sourceDocsPath = path.resolve(__dirname, '../eslint-plugin-smart/docs')
+  const sourceDocsPath = path.resolve(__dirname, '../eslint-plugin-smarts/docs')
   const targetDocsPath = path.resolve(__dirname, './docs')
 
-  const sourceSrcPath = path.resolve(__dirname, '../eslint-plugin-smart/src')
+  const sourceSrcPath = path.resolve(__dirname, '../eslint-plugin-smarts/src')
   const targetSrcPath = path.resolve(__dirname, './src')
 
   // 定义README.md的源路径和目标路径
-  const sourceReadmePath = path.resolve(__dirname, '../eslint-plugin-smart/README.md')
+  const sourceReadmePath = path.resolve(__dirname, '../eslint-plugin-smarts/README.md')
   const targetReadmePath = path.resolve(__dirname, './README.md')
 
   // 检查源路径是否存在

@@ -2,14 +2,14 @@
   "name": "eslint-plugin-smarts",
   "version": "0.0.7",
   "description": "SISS eslint 规则集(仅团队内部调用)",
-  "main": "lib/eslint-plugin-smart.js",
-  "types": "lib/eslint-plugin-smart.d.ts",
-  "module": "lib/eslint-plugin-smart.mjs",
+  "main": "lib/eslint-plugin-smarts.js",
+  "types": "lib/eslint-plugin-smarts.d.ts",
+  "module": "lib/eslint-plugin-smarts.mjs",
   "exports": {
     ".": {
-      "types": "./lib/eslint-plugin-smart.d.ts",
-      "import": "./lib/eslint-plugin-smart.mjs",
-      "require": "./lib/eslint-plugin-smart.js"
+      "types": "./lib/eslint-plugin-smarts.d.ts",
+      "import": "./lib/eslint-plugin-smarts.mjs",
+      "require": "./lib/eslint-plugin-smarts.js"
     }
   },
   "directories": {
@@ -25,8 +25,8 @@
     "copy": "node copy.js",
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
-    "build": "npm run copy && tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
-    "dev": "npm run copy && tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --watch --outDir lib",
     "test": "node ./__tests__/eslint-plugin-smarts.test.js"
   },
   "keywords": [
@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "eslint-plugin-smart": "workspace:^",
-    "prettier-plugin-smarts": "workspace:^"
+    "prettier-plugin-smart": "workspace:^"
   },
   "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
 }

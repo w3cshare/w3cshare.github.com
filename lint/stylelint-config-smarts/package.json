@@ -23,10 +23,11 @@
     "stylelint-config",
     "css",
     "scss",
-    "less"
+    "less",
+    "vue",
+    "lint",
+    "style"
   ],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "stylelint": "^15.11.0",
     "stylelint-bem-newbie": "^0.0.10",

@@ -4,7 +4,7 @@ title: ESLint 企业级插件
 description: 为企业级项目提供全面的 ESLint 规则与配置
 outline: deep
 hero:
-  name: eslint-plugin-smart
+  name: eslint-plugin-smarts
   text: 智能 ESLint 解决方案
   tagline: 为现代 Web 开发提供统一的代码质量标准
   actions:
@@ -37,11 +37,11 @@ features:
 
 # &nbsp;
 
-# eslint-plugin-smart
+# eslint-plugin-smarts
 
 ## 项目介绍
 
-`eslint-plugin-smart` 是一个智能化的 ESLint 插件，提供了适用于 React、Vue、NestJS 和 TypeScript 项目的公共配置。该插件同时支持 ESLint v9 的扁平配置和 ESLint v8 及以下版本的传统配置格式，能够自动检测 ESLint 版本并应用相应的配置风格。
+`eslint-plugin-smarts` 是一个智能化的 ESLint 插件，提供了适用于 React、Vue、NestJS 和 TypeScript 项目的公共配置。该插件同时支持 ESLint v9 的扁平配置和 ESLint v8 及以下版本的传统配置格式，能够自动检测 ESLint 版本并应用相应的配置风格。
 
 ## 主要特性
 
@@ -56,7 +56,7 @@ features:
 
 该项目采用了模块化的设计，主要文件包括：
 
-- `eslint-plugin-smart.ts` - 插件入口文件，负责版本检测和配置选择
+- `eslint-plugin-smarts.ts` - 插件入口文件，负责版本检测和配置选择
 - `flat-configs.ts` - ESLint v9 扁平配置定义
 - `legacy-configs.ts` - ESLint v8 及以下传统配置定义
 - `utils.ts` - 工具函数，包含版本检测和插件加载功能
@@ -69,13 +69,13 @@ features:
 
 ```bash
 # 使用 npm
-npm install eslint-plugin-smart --save-dev
+npm install eslint-plugin-smarts --save-dev
 
 # 使用 pnpm
-pnpm add eslint-plugin-smart -D
+pnpm add eslint-plugin-smarts -D
 
 # 使用 yarn
-yarn add eslint-plugin-smart -D
+yarn add eslint-plugin-smarts -D
 ```
 
 ### 配置示例
@@ -84,7 +84,7 @@ yarn add eslint-plugin-smart -D
 
 ```js
 // eslint.config.js
-import smartPlugin from "eslint-plugin-smart";
+import smartPlugin from "eslint-plugin-smarts";
 
 export default [
   ...smartPlugin.configs.typescript,

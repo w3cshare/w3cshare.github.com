@@ -3,7 +3,7 @@
  * @Date: 2025-04-22 16:45:09
  * @LastEditors: wangwei wwdqq7@qq.com
  * @LastEditTime: 2025-04-24 10:39:26
- * @FilePath: /FullStack/lint/eslint-plugin-smart/src/utils.ts
+ * @FilePath: /FullStack/lint/eslint-plugin-smarts/src/utils.ts
  * @Description: 工具函数，用于检测ESLint版本和加载插件
  */
 
@@ -14,7 +14,7 @@
  * @returns 如果值是对象且不是数组或null，则返回true；否则返回false
  */
 export function isObject(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value)
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 /**
@@ -24,11 +24,11 @@ export function isObject(value: unknown): value is Record<string, unknown> {
  */
 export function isESLintV9(): boolean {
   try {
-    const eslintVersion = require('eslint/package.json').version
-    return parseInt(eslintVersion.split('.')[0], 10) >= 9
+    const eslintVersion = require("eslint/package.json").version;
+    return parseInt(eslintVersion.split(".")[0], 10) >= 9;
   } catch (error) {
-    console.warn('无法检测ESLint版本，将使用ESLint v8兼容模式。')
-    return false
+    console.warn("无法检测ESLint版本，将使用ESLint v8兼容模式。");
+    return false;
   }
 }
 
@@ -40,13 +40,13 @@ export function isESLintV9(): boolean {
  */
 export function safeRequire(packageName: string): unknown | null {
   try {
-    return require(packageName)
+    return require(packageName);
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : '未知错误'
+    const errorMessage = error instanceof Error ? error.message : "未知错误";
     console.warn(
       `Warning: ${packageName} 未安装或导入失败: ${errorMessage}。相关规则可能无法正常工作。`,
-    )
-    return null
+    );
+    return null;
   }
 }
 
@@ -58,31 +58,31 @@ export function safeRequire(packageName: string): unknown | null {
 export function loadPlugins(): Record<string, unknown> {
   return {
     // 通用插件
-    import: safeRequire('eslint-plugin-import'),
-    simpleImportSort: safeRequire('eslint-plugin-simple-import-sort'),
-    unusedImports: safeRequire('eslint-plugin-unused-imports'),
+    import: safeRequire("eslint-plugin-import"),
+    simpleImportSort: safeRequire("eslint-plugin-simple-import-sort"),
+    unusedImports: safeRequire("eslint-plugin-unused-imports"),
 
     // annotation: safeRequire('eslint-plugin-annotation'), // js排序插件
 
     // TypeScript相关
-    typescriptEslint: safeRequire('@typescript-eslint/eslint-plugin'),
-    typescriptEslintParser: safeRequire('@typescript-eslint/parser'),
+    typescriptEslint: safeRequire("@typescript-eslint/eslint-plugin"),
+    typescriptEslintParser: safeRequire("@typescript-eslint/parser"),
 
     // React相关
-    react: safeRequire('eslint-plugin-react'),
-    reactHooks: safeRequire('eslint-plugin-react-hooks'),
-    jsxA11y: safeRequire('eslint-plugin-jsx-a11y'),
+    react: safeRequire("eslint-plugin-react"),
+    reactHooks: safeRequire("eslint-plugin-react-hooks"),
+    jsxA11y: safeRequire("eslint-plugin-jsx-a11y"),
 
     // Vue相关
-    vue: safeRequire('eslint-plugin-vue'),
-    vueEslintParser: safeRequire('vue-eslint-parser'),
+    vue: safeRequire("eslint-plugin-vue"),
+    vueEslintParser: safeRequire("vue-eslint-parser"),
 
     // Node.js相关
-    node: safeRequire('eslint-plugin-node'),
+    node: safeRequire("eslint-plugin-node"),
 
     // Prettier相关
-    prettier: safeRequire('eslint-plugin-prettier'),
-    eslintConfigPrettier: safeRequire('eslint-config-prettier'),
-    prettierCore: safeRequire('prettier'),
-  }
+    prettier: safeRequire("eslint-plugin-prettier"),
+    eslintConfigPrettier: safeRequire("eslint-config-prettier"),
+    prettierCore: safeRequire("prettier"),
+  };
 }

@@ -32,9 +32,10 @@ export function createFlatConfigs(
     reactRules: ESLintRuleSet
     vueRules: ESLintRuleSet
     nestjsRules: ESLintRuleSet
+    jsonRules: ESLintRuleSet
   },
 ): Record<string, FlatConfig[]> {
-  const { baseRules, typescriptRules, reactRules, vueRules, nestjsRules } = rules
+  const { baseRules, typescriptRules, reactRules, vueRules, nestjsRules, jsonRules } = rules
 
   const {
     import: importPlugin,
@@ -50,6 +51,7 @@ export function createFlatConfigs(
     node: nodePlugin,
     prettier: prettierPlugin,
     eslintConfigPrettier,
+    jsonc: jsoncPlugin,
 
     // prettierCore,
   } = plugins
@@ -195,6 +197,25 @@ export function createFlatConfigs(
   }
 
   /**
+   * ESLint v9 扁平配置 - JSON配置
+   * 
+   * 包含JSON文件的格式化和排序规则
+   */
+  const jsonFlatConfig: FlatConfig = {
+    files: ['**/*.json', '**/*.jsonc', '**/*.json5', '**/package.json'],
+    ignores: ignores,
+    plugins: {
+      jsonc: jsoncPlugin,
+    },
+    languageOptions: {
+      parser: jsoncPlugin ? (jsoncPlugin as any).parser : undefined,
+    },
+    rules: {
+      ...jsonRules,
+    },
+  }
+
+  /**
    * ESLint v9 扁平配置 - Vue配置
    *
    * 包含Vue单文件组件和模板特定的规则
@@ -326,6 +347,9 @@ export function createFlatConfigs(
       jestFlatConfig,
       prettierFlatConfig,
     ],
+
+    // JSON配置
+    json: [jsonFlatConfig],
 
     // 推荐配置，适用于大多数TypeScript项目
     recommended: [baseFlatConfig, typescriptFlatConfig, prettierFlatConfig],
