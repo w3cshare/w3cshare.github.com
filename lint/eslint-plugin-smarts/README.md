@@ -10,10 +10,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /lint/eslint-plugin-smart/docs/快速开始
+      link: ./docs/快速开始
     - theme: alt
       text: 常见问题
-      link: /lint/eslint-plugin-smart/docs/常见问题
+      link: ./docs/常见问题
 features:
   - icon: ⚡
     title: 全技术栈支持

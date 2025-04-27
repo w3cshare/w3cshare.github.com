@@ -10,10 +10,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /lint/eslint-plugin-smart/docs/快速开始
+      link: ./docs/快速开始
     - theme: alt
       text: 常见问题
-      link: /lint/eslint-plugin-smart/docs/常见问题
+      link: ./docs/常见问题
 features:
   - icon: ⚡
     title: 全技术栈支持
@@ -88,8 +88,6 @@ export default [
   // 自定义规则...
 ]
 ```
-
-> **注意**: ESLint v9 中环境变量配置方式发生变化，不再使用 `env` 字段，而是使用 `languageOptions.globals`。本插件 v1.2.1 及以上版本已自动处理这一变化。
 
 #### ESLint v8 及以下 (传统配置)
 

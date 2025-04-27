@@ -17,7 +17,9 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "src",
+    "docs"
   ],
   "scripts": {
     "copy": "node copy.js",
@@ -58,7 +60,6 @@
   },
   "devDependencies": {
     "eslint-plugin-smart": "workspace:^",
-    "prettier": "^3.5.3",
     "prettier-plugin-smarts": "workspace:^"
   },
   "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
