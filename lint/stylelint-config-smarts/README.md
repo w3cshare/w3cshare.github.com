@@ -36,135 +36,117 @@ features:
 
 # stylelint-config-smarts
 
-stylelint-config-smarts 是一个为公司内部前端项目设计的 Stylelint 共享配置，旨在提供一致且智能的 CSS/SCSS/Less 代码规范。此配置适用于各种前端技术栈，包括 React、Vue 和 TypeScript 项目。
+企业级 Stylelint 配置方案，提供现代化、全面的 CSS 样式规范。
 
 ## 特性
 
-- ✅ 支持多种前端框架 (React, Vue)
-- ✅ 预配置的 SCSS 支持
-- ✅ 智能的属性排序规则
-- ✅ 可维护性规则 (嵌套深度限制等)
-- ✅ 与 Prettier 兼容
-- ✅ 针对 Vue 单文件组件的特殊规则
+- ✨ **现代化规范** - 采用最新的 CSS 语法和最佳实践
+- 🧩 **完整的插件集成** - 包含 BEM、排序、SCSS 等多种插件
+- 🔄 **灵活的配置** - 针对不同文件类型（Vue、SCSS、Less）提供专门的规则集
+- 📊 **严格的属性排序** - 采用符合直觉的逻辑和分组排序属性
+- 🔍 **智能的规则选择** - 平衡严格性和实用性
 
 ## 安装
 
 ```bash
-# pnpm
+# 使用 pnpm (推荐)
 pnpm add -D stylelint stylelint-config-smarts
 
-# npm
+# 或使用 npm
 npm install --save-dev stylelint stylelint-config-smarts
 
-# yarn
+# 或使用 yarn
 yarn add -D stylelint stylelint-config-smarts
 ```
 
-## 使用方法
+## 基本用法
 
-在项目根目录创建 `.stylelintrc.js` 文件，并添加以下内容：
+在项目根目录创建 `.stylelintrc.js` 文件（非 ESM 项目）：
 
 ```js
 module.exports = {
   extends: ['stylelint-config-smarts'],
   rules: {
-    // 项目特定的覆盖规则（如果需要）
-  },
-}
-```
-
-### React 项目
-
-React 项目不需要额外配置，默认配置已经满足需求。
-
-### Vue 项目
-
-Vue 项目已经预先配置了特定规则，不需要额外配置。Vue 单文件组件的样式部分会自动应用相应的规则。
-
-### 与其他工具集成
-
-#### VSCode 集成
-
-安装 [Stylelint VSCode 插件](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)，并在 `settings.json` 中添加以下配置：
-
-```json
-{
-  "stylelint.validate": ["css", "scss", "less", "vue"],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.stylelint": true
+    // 自定义覆盖规则（如需要）
   }
 }
 ```
 
-#### 与 Prettier 一起使用
-
-此配置与 Prettier 兼容。推荐安装 `prettier` 和 `stylelint-config-prettier`：
-
-```bash
-pnpm add -D prettier
-```
-
-## 规则说明
-
-### 主要规则集
-
-- **基础规则**：提供基础代码质量规则
-- **缩进规则**：统一使用 2 空格缩进
-- **颜色规则**：规范颜色表示方法
-- **单位规则**：确保一致的单位使用
-- **属性顺序规则**：标准化 CSS 属性排序
-- **空行规则**：提高代码可读性
-- **SCSS 规则**：针对 SCSS 预处理器的特定规则
-
-### 属性排序
-
-属性按以下逻辑分组排序：
-
-1. 定位 (position, z-index 等)
-2. 布局 (display, flex, grid 等)
-3. 尺寸 (width, height 等)
-4. 外边距 (margin)
-5. 内边距 (padding)
-6. 边框 (border)
-7. 背景 (background)
-8. 字体与文本 (font, color 等)
-9. 其他属性 (opacity, transition 等)
-
-## 自定义配置
-
-可以通过在项目的 `.stylelintrc.js` 文件中扩展本配置并添加自定义规则：
+对于 ESM 项目（package.json 中有 `"type": "module"`），创建 `.stylelintrc.cjs`：
 
 ```js
 module.exports = {
   extends: ['stylelint-config-smarts'],
   rules: {
-    // 覆盖已有规则
-    indentation: 4, // 修改缩进为4空格
-
-    // 添加新规则
-    'color-named': 'always-where-possible',
-  },
+    // 自定义覆盖规则（如需要）
+  }
 }
 ```
 
-## 禁用规则
+## 规则亮点
 
-在特定文件或代码块中禁用规则：
+### 现代语法支持
 
-```css
-/* stylelint-disable */
-.legacy-class {
-  /* 此处不会应用stylelint规则 */
+- 启用现代 CSS 函数表示法（`rgb(0 0 0 / 50%)` 而非 `rgba(0, 0, 0, 0.5)`）
+- 使用传统媒体查询语法以获得更好的兼容性（`min-width` 而非 `width >=`）
+- HSL 色值使用明确的角度单位（`180deg` 而非 `180`）
+
+### 智能排序
+
+属性按照以下逻辑分组排序：
+1. 定位 (position, z-index...)
+2. 盒模型 - 布局 (display, flex, grid...)
+3. 盒模型 - 尺寸 (width, height...)
+4. 盒模型 - 外边距 (margin...)
+5. 盒模型 - 内边距 (padding...)
+6. 盒模型 - 边框 (border...)
+7. 视觉效果 (background, opacity...)
+8. 文本与字体 (font, color...)
+9. 动画与过渡 (transition, animation...)
+10. 其他 (cursor, user-select...)
+
+### BEM 规范支持
+
+集成 stylelint-bem-newbie 插件，提供 BEM 编码规范检查：
+- 绝对定位元素需要至少指定两个方向
+- 动画必须指定时间函数
+- 避免内联显示模式
+- 防止媒体查询中的冗余属性值
+
+### 框架支持
+
+针对不同框架和预处理器提供专门配置：
+- Vue 单文件组件
+- SCSS 预处理器
+- Less 预处理器
+
+## 配置覆盖
+
+如需调整规则，可在项目配置中覆盖：
+
+```js
+module.exports = {
+  extends: ['stylelint-config-smarts'],
+  rules: {
+    // 禁用颜色名称检查
+    'color-named': null,
+    
+    // 自定义选择器模式
+    'selector-class-pattern': '^[a-z][a-zA-Z0-9]+$',
+    
+    // 调整最大嵌套深度
+    'max-nesting-depth': 3
+  }
 }
-/* stylelint-enable */
-
-/* 禁用特定规则 */
-/* stylelint-disable color-named */
-.brand-color {
-  color: red;
-}
-/* stylelint-enable color-named */
 ```
+
+## 版本说明
+
+stylelint-config-smarts 要求 stylelint v15 或更高版本，并集成了以下插件：
+
+- stylelint-order - 属性排序
+- stylelint-scss - SCSS 语法支持
+- stylelint-bem-newbie - BEM 规范检查
 
 ## 许可证
 

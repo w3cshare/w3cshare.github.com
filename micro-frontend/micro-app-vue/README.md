@@ -1,3 +1,12 @@
+<!--
+ * @Author: wangwei wwdqq7@qq.com
+ * @Date: 2025-04-14 22:39:20
+ * @LastEditors: wangwei wwdqq7@qq.com
+ * @LastEditTime: 2025-04-27 17:40:33
+ * @FilePath: /FullStack/micro-frontend/micro-app-vue/README.md
+ * @Description:
+-->
+
 # micro-app-vue
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -61,4 +70,32 @@ pnpm test:e2e --debug
 
 ```sh
 pnpm lint
+```
+
+### 样式检查与修复 (Stylelint)
+
+本项目使用 Stylelint 进行样式代码检查，确保团队样式代码一致性和质量。
+
+```sh
+# 执行样式检查并自动修复
+pnpm lint:style
+```
+
+## Stylelint 配置最佳实践
+
+### 配置文件格式与位置
+
+在使用 ESM 格式的项目中 (`"type": "module"` 在 package.json)，Stylelint 配置文件应遵循以下原则：
+
+1. 使用 `.stylelintrc.cjs` 而非 `.stylelintrc.js`，以确保使用 CommonJS 格式
+2. 使用 `module.exports` 而非 `export default` 导出配置
+
+```js
+// 正确的配置格式 (.stylelintrc.cjs)
+module.exports = {
+  extends: ['stylelint-config-smarts'],
+  rules: {
+    // 自定义规则...
+  },
+}
 ```

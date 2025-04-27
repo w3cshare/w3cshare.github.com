@@ -1,16 +1,19 @@
 {
   "name": "stylelint-config-smarts",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "智能样式代码规范配置，适用于公司内部所有前端项目",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/stylelint-config-smarts.js",
+  "types": "lib/stylelint-config-smarts.d.ts",
+  "module": "lib/stylelint-config-smarts.mjs",
   "files": [
     "lib"
   ],
   "scripts": {
     "start": "pnpm run dev",
-    "dev": "tsc -w",
-    "build": "tsc",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc",
+    "build": " tsup src/stylelint-config-smarts.ts --format=cjs,esm --dts --outDir lib",
+    "dev": " tsup src/stylelint-config-smarts.ts --format=cjs,esm --dts --watch --outDir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -24,13 +27,15 @@
   "license": "ISC",
   "dependencies": {
     "stylelint": "^15.11.0",
+    "stylelint-bem-newbie": "^0.0.10",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^11.1.0",
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-order": "^6.0.3",
-    "stylelint-scss": "^5.2.1"
+    "stylelint-scss": "^5.2.1",
+    "tsup": "^8.4.0"
   },
   "peerDependencies": {
     "stylelint": ">=15.0.0"

@@ -23,6 +23,8 @@
   ],
   "scripts": {
     "copy": "node copy.js",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc",
     "build": "npm run copy && tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
     "dev": "npm run copy && tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
     "test": "node ./__tests__/eslint-plugin-smarts.test.js"

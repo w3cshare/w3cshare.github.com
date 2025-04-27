@@ -12,6 +12,8 @@
   ],
   "scripts": {
     "start": "pnpm run dev",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc",
     "build": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
     "dev": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
     "lint": "eslint \"src/**/*.ts\" --fix",
