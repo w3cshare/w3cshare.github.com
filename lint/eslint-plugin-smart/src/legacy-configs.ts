@@ -7,8 +7,7 @@
  * @Description: ESLint v8及以下版本的传统配置
  */
 
-import type { ESLintRuleSet } from './types'
-import type { LoadedPlugins } from './utils'
+import type { ESLintRuleSet, LoadedPlugins } from './types'
 
 /**
  * 创建ESLint v8及以下版本的传统配置
@@ -21,11 +20,11 @@ export function createLegacyConfigs(
   plugins: LoadedPlugins,
   rules: {
     baseRules: ESLintRuleSet
-    typescriptRules: ESLintRuleSet
-    reactRules: ESLintRuleSet
-    vueRules: ESLintRuleSet
-    nestjsRules: ESLintRuleSet
     jsonRules: ESLintRuleSet
+    nestjsRules: ESLintRuleSet
+    reactRules: ESLintRuleSet
+    typescriptRules: ESLintRuleSet
+    vueRules: ESLintRuleSet
   },
 ): Record<string, unknown> {
   const {
@@ -34,6 +33,7 @@ export function createLegacyConfigs(
     unusedImports: unusedImportsPlugin,
     typescriptEslint: typescriptEslintPlugin,
     typescriptEslintParser,
+    typescriptSortKeys: typescriptSortKeysPlugin,
     react: reactPlugin,
     reactHooks: reactHooksPlugin,
     jsxA11y: jsxA11yPlugin,
@@ -51,8 +51,8 @@ export function createLegacyConfigs(
    * 基础配置，适用于所有项目
    */
   const baseConfig = {
-    plugins: ['import', 'simple-import-sort', 'unused-imports', 'prettier'],
     extends: ['plugin:prettier/recommended'],
+    plugins: ['import', 'simple-import-sort', 'unused-imports', 'prettier'],
     rules: baseRules,
   }
 
@@ -60,9 +60,13 @@ export function createLegacyConfigs(
    * TypeScript配置
    */
   const typescriptConfig = {
+    extends: [
+      'plugin:@typescript-eslint/recommended',
+      'plugin:typescript-sort-keys/recommended',
+      'plugin:prettier/recommended',
+    ],
     parser: '@typescript-eslint/parser',
-    plugins: ['@typescript-eslint', 'prettier'],
-    extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+    plugins: ['@typescript-eslint', 'typescript-sort-keys', 'prettier'],
     rules: {
       ...baseRules,
       ...typescriptRules,
@@ -77,9 +81,10 @@ export function createLegacyConfigs(
       'plugin:react/recommended',
       'plugin:react-hooks/recommended',
       'plugin:jsx-a11y/recommended',
+      'plugin:typescript-sort-keys/recommended',
       'plugin:prettier/recommended',
     ],
-    plugins: ['react', 'react-hooks', 'jsx-a11y', 'prettier'],
+    plugins: ['react', 'react-hooks', 'jsx-a11y', 'typescript-sort-keys', 'prettier'],
     rules: {
       ...baseRules,
       ...typescriptRules,
@@ -97,7 +102,7 @@ export function createLegacyConfigs(
    */
   const vueConfig = {
     extends: ['plugin:vue/vue3-recommended', 'plugin:prettier/recommended'],
-    plugins: ['vue', 'prettier'],
+    plugins: ['vue', 'typescript-sort-keys', 'prettier'],
     rules: {
       ...baseRules,
       ...typescriptRules,
@@ -109,8 +114,12 @@ export function createLegacyConfigs(
    * NestJS配置
    */
   const nestjsConfig = {
-    extends: ['plugin:node/recommended', 'plugin:prettier/recommended'],
-    plugins: ['node', 'prettier'],
+    extends: [
+      'plugin:node/recommended',
+      'plugin:typescript-sort-keys/recommended',
+      'plugin:prettier/recommended',
+    ],
+    plugins: ['node', 'typescript-sort-keys', 'prettier'],
     rules: {
       ...baseRules,
       ...typescriptRules,
@@ -122,21 +131,23 @@ export function createLegacyConfigs(
    * JSON配置
    */
   const jsonConfig = {
-    plugins: ['jsonc'],
     extends: ['plugin:jsonc/recommended-with-jsonc'],
+    plugins: ['jsonc'],
     rules: jsonRules,
   }
 
   // 返回所有配置
   return {
     base: baseConfig,
-    typescript: typescriptConfig,
-    react: reactConfig,
-    vue: vueConfig,
-    nestjs: nestjsConfig,
     json: jsonConfig,
+    nestjs: nestjsConfig,
+    react: reactConfig,
 
     // 推荐配置，默认使用typescript配置
     recommended: typescriptConfig,
+
+    typescript: typescriptConfig,
+
+    vue: vueConfig,
   }
 }

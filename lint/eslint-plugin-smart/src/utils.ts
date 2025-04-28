@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:45:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-28 01:42:28
+ * @LastEditTime: 2025-04-28 13:10:12
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/utils.ts
  * @Description: 工具函数，用于检测ESLint版本和加载插件
  */
@@ -60,6 +60,8 @@ export function loadPlugins(): LoadedPlugins {
       prettier: require('eslint-plugin-prettier') as ESLintPlugin,
       eslintConfigPrettier: require('eslint-config-prettier') as ESLintPlugin,
       jsonc: jsoncPlugin,
+      typescriptSortKeys: require('eslint-plugin-typescript-sort-keys') as ESLintPlugin,
+      sortKeysFix: require('eslint-plugin-sort-keys-fix') as ESLintPlugin,
     }
   } catch (error: unknown) {
     console.error('Error loading plugins:', error)

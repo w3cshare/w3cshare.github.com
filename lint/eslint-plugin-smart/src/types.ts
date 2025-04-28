@@ -70,4 +70,6 @@ export interface LoadedPlugins {
   prettier: ESLintPlugin
   eslintConfigPrettier: ESLintPlugin
   jsonc: ESLintPlugin
+  typescriptSortKeys: ESLintPlugin
+  sortKeysFix: ESLintPlugin
 }

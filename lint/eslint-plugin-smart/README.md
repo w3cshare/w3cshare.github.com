@@ -37,11 +37,11 @@ features:
     title: JSON 文件自动排序
     details: JSON 文件自动排序功能
   - icon: 🔍
-    title: 对象键自动排序
-    details: 对象键自动排序功能
-  - icon: 📊
-    title: 数组元素自动排序
-    details: 数组元素自动排序功能
+    title: TypeScript 接口自动排序
+    details: TypeScript 接口和枚举类型的键自动排序，保持代码一致性
+  - icon: 🔄
+    title: 导入语句自动排序
+    details: 自动对导入语句进行分组和排序，提高代码可读性
 ---
 
 # &nbsp;
@@ -50,6 +50,27 @@ features:
 
 内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目。
 
+## 集成的插件
+
+该插件集成了以下常用的 ESLint 插件：
+
+- `eslint-plugin-import`: 提供 import/export 语法的检查
+- `eslint-plugin-simple-import-sort`: 提供 import 语句的排序功能
+- `eslint-plugin-unused-imports`: 检测并删除未使用的导入
+- `@typescript-eslint/eslint-plugin`: TypeScript 的 ESLint 插件
+- `@typescript-eslint/parser`: TypeScript 的 ESLint 解析器
+- `eslint-plugin-typescript-sort-keys`: TypeScript 接口和类型的键排序
+- `eslint-plugin-react`: React 相关的 lint 规则
+- `eslint-plugin-react-hooks`: React Hooks 的 lint 规则
+- `eslint-plugin-jsx-a11y`: JSX 可访问性检查
+- `eslint-plugin-vue`: Vue.js 的 ESLint 插件
+- `vue-eslint-parser`: Vue.js 的 ESLint 解析器
+- `eslint-plugin-n`: Node.js 相关的 lint 规则
+- `eslint-plugin-prettier`: 将 Prettier 作为 ESLint 规则运行
+- `eslint-config-prettier`: 关闭所有与 Prettier 冲突的 ESLint 规则
+- `eslint-plugin-jsonc`: JSON 文件的 lint 规则
+- `eslint-plugin-sort-keys-fix`: 对象键的自动排序和修复
+
 ## 特性
 
 - 🚀 支持 ESLint v9 扁平配置
@@ -57,9 +78,9 @@ features:
 - 🎯 针对不同项目类型的专门优化
 - 🔄 自动修复和代码格式化
 - 🎨 完整的 Prettier 集成
-- �� JSON 文件支持（包括自动排序）
-- 🔍 对象键自动排序
-- 📊 数组元素自动排序
+- 📄 JSON 文件支持（包括自动排序）
+- 🔤 TypeScript 接口和枚举类型自动排序
+- 📥 导入语句自动排序
 
 ## 安装
 
@@ -106,14 +127,13 @@ export default [
    - 集成 Prettier
    - 导入/导出排序
    - 未使用变量检查
-   - 对象键自动排序
-   - 数组元素自动排序
 
 2. `typescript` - TypeScript 项目配置
 
    - 包含基础配置
    - TypeScript 特定规则
    - 类型检查支持
+   - **TypeScript 接口和枚举类型键自动排序**
 
 3. `react` - React 项目配置
 
@@ -133,12 +153,47 @@ export default [
    - 包含 TypeScript 配置
    - 装饰器支持
    - Node.js 环境
-   - Jest 测试支持
+   - **TypeScript 接口键自动排序（对 DTO 等尤为有用）**
 
 6. `json` - JSON 文件配置
    - JSON、JSONC、JSON5 支持
    - package.json 字段排序
    - 格式验证
+
+### TypeScript 接口和枚举类型排序
+
+TypeScript 配置包含了接口和枚举类型的自动排序功能，可以保持代码的一致性和可读性：
+
+```typescript
+// 自动排序前
+interface User {
+  name: string;
+  id: number;
+  age: number;
+  createdAt: Date;
+}
+
+// 自动排序后
+interface User {
+  age: number;
+  createdAt: Date;
+  id: number;
+  name: string;
+}
+
+// 枚举类型也会自动排序
+enum Color {
+  Red = '#FF0000',
+  Green = '#00FF00',
+  Blue = '#0000FF',
+}
+```
+
+此功能在以下配置中默认启用：
+- `typescript`
+- `react`
+- `vue`
+- `nestjs`
 
 ### JSON 文件支持
 
@@ -247,11 +302,69 @@ export default [
     rules: {
       // 自定义规则
       'react/react-in-jsx-scope': 'off',
+      // 关闭 TypeScript 接口自动排序
+      'typescript-sort-keys/interface': 'off',
     },
-  },
+  }
 ]
 ```
 
 ## 许可证
 
 ISC
+
+# ESLint Plugin Smart
+
+一个智能的 ESLint 插件，集成了多个常用的 ESLint 插件和配置。
+
+## 支持的插件
+
+- `eslint-plugin-import`: 提供 import/export 语法的检查
+- `eslint-plugin-simple-import-sort`: 提供 import 语句的排序功能
+- `eslint-plugin-unused-imports`: 检测并删除未使用的导入
+- `@typescript-eslint/eslint-plugin`: TypeScript 的 ESLint 插件
+- `@typescript-eslint/parser`: TypeScript 的 ESLint 解析器
+- `eslint-plugin-typescript-sort-keys`: TypeScript 接口和类型的键排序
+- `eslint-plugin-react`: React 相关的 lint 规则
+- `eslint-plugin-react-hooks`: React Hooks 的 lint 规则
+- `eslint-plugin-jsx-a11y`: JSX 可访问性检查
+- `eslint-plugin-vue`: Vue.js 的 ESLint 插件
+- `vue-eslint-parser`: Vue.js 的 ESLint 解析器
+- `eslint-plugin-n`: Node.js 相关的 lint 规则
+- `eslint-plugin-prettier`: 将 Prettier 作为 ESLint 规则运行
+- `eslint-config-prettier`: 关闭所有与 Prettier 冲突的 ESLint 规则
+- `eslint-plugin-jsonc`: JSON 文件的 lint 规则
+- `eslint-plugin-sort-keys-fix`: 对象键的自动排序和修复
+
+## 安装
+
+```bash
+pnpm add -D @fullstack/eslint-plugin-smart
+```
+
+## 使用
+
+在你的 ESLint 配置文件中：
+
+```js
+module.exports = {
+  plugins: ['@fullstack/smart'],
+  extends: [
+    'plugin:@fullstack/smart/recommended'
+  ]
+}
+```
+
+## 配置
+
+该插件提供了以下预设配置：
+
+- `plugin:@fullstack/smart/recommended`: 推荐配置，包含所有最佳实践规则
+- `plugin:@fullstack/smart/typescript`: TypeScript 项目的配置
+- `plugin:@fullstack/smart/react`: React 项目的配置
+- `plugin:@fullstack/smart/vue`: Vue.js 项目的配置
+- `plugin:@fullstack/smart/node`: Node.js 项目的配置
+
+## 许可证
+
+MIT

@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 13:30:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-28 03:03:56
+ * @LastEditTime: 2025-04-28 13:00:52
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/recommend.ts
  * @Description: ESLint规则集合，按照不同技术栈分类
  */
@@ -236,6 +236,81 @@ export const javascriptRules: ESLintRuleSet = {
   // 关闭可能与Prettier冲突的规则
   'arrow-body-style': 'off',
   'prefer-arrow-callback': 'off', // 禁用对回调函数使用箭头函数的强制要求
+
+  // ==================三方插件规则 START==================
+
+  /*
+   * 数组/对象排序
+   * 'annotation/sort': 'error',
+   * 'annotation/sort-keys': 'error',
+   * 'annotation/format-date': 'error',
+   * 'annotation/unique': 'error',
+   */
+
+  'no-unused-vars': 'off',
+
+  // 移除无用的代码规则
+  'unused-imports/no-unused-imports': 'error', // 禁止未使用的导入
+  'unused-imports/no-unused-vars': [
+    'error',
+    {
+      vars: 'all', // 检查所有变量
+      varsIgnorePattern: '^_', // 忽略以_开头的变量
+      args: 'after-used', // 仅检查使用后的参数
+      argsIgnorePattern: '^_', // 忽略以_开头的参数
+      caughtErrorsIgnorePattern: '^_', // 忽略以_开头的捕获错误
+      /*
+       * ignoreRestSiblings: false, // 忽略剩余的兄弟节点
+       * destructuredArrayIgnorePattern: '^_', // 忽略以_开头的解构数组
+       */
+    },
+  ],
+
+  // 导入/导出排序
+  'import/order': 'off', // 使用simple-import-sort代替
+  'simple-import-sort/imports': 'error', // 要求import语句排序
+  'simple-import-sort/exports': 'error', // 要求export语句排序
+  /*
+   * 'simple-import-sort/imports': [
+   *   'error',
+   *   {
+   *     groups: [
+   *       // 框架库放在首行
+   *       ['^react', '^vue', '^ant-design-vue', '^@?\\w'],
+   */
+
+  /*
+   *       // 内部导入
+   *       ['^(@|components)(/.*|$)'],
+   */
+
+  /*
+   *       // 父级导入
+   *       ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+   */
+
+  //       // 同级导入
+  //       ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+
+  /*
+   *       // 样式导入
+   *       ['^.+\\.?(css)$'],
+   */
+
+  /*
+   *       // 带有副作用导入
+   *       ['^\\u0000'],
+   *     ],
+   *   },
+   * ],
+   */
+  /*
+   * 对象排序
+   * 'sort-keys-fix/sort-keys-fix': 'warn',
+   */
+  // 'sort-keys-fix/sort-keys-fix': ['error', 'asc', { caseSensitive: false }], // 按升序排序，忽略大小写
+
+  // ==================三方插件规则 END==================
 }
 
 /**
@@ -250,6 +325,19 @@ export const typescriptRules: ESLintRuleSet = {
   '@typescript-eslint/no-empty-function': 'off', // 警告空函数
   '@typescript-eslint/no-empty-interface': 'warn', // 警告空接口
   '@typescript-eslint/ban-ts-comment': 'warn', // 警告使用@ts-注释
+
+  // ==================三方插件规则 START==================
+  /*
+   * TypeScript Sort Keys 规则
+   * TypeScript 键排序规则
+   */
+  // 启用接口属性排序
+  'typescript-sort-keys/interface': 'error',
+
+  // 启用类型字面量排序
+  'typescript-sort-keys/string-enum': 'error',
+
+  // ==================三方插件规则 END==================
 }
 
 /**
@@ -510,6 +598,16 @@ export const nodejsRules: ESLintRuleSet = {
   'node/no-unpublished-import': 'off', // 允许导入devDependencies中的包（用于测试等）
 }
 
+export const nestjsRules: ESLintRuleSet = {
+  ...nodejsRules,
+
+  // nest官网推荐
+  '@typescript-eslint/interface-name-prefix': 'off',
+  '@typescript-eslint/explicit-function-return-type': 'off',
+  '@typescript-eslint/explicit-module-boundary-types': 'off',
+  '@typescript-eslint/no-explicit-any': 'off',
+}
+
 export const jsonRules: ESLintRuleSet = {
   // JSON语法规则
   'jsonc/array-bracket-spacing': ['error', 'never'],
@@ -601,7 +699,9 @@ export const jsonRules: ESLintRuleSet = {
  * - recommended: 全栈项目推荐，包含所有规则
  */
 export default {
-  base: javascriptRules,
+  base: {
+    ...javascriptRules,
+  },
   typescript: {
     ...javascriptRules,
     ...typescriptRules,
@@ -617,6 +717,10 @@ export default {
   nodejs: {
     ...javascriptRules,
     ...nodejsRules,
+  },
+  nestjs: {
+    ...javascriptRules,
+    ...nestjsRules,
   },
   recommended: {
     ...javascriptRules,

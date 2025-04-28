@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:40:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-28 10:59:44
+ * @LastEditTime: 2025-04-28 12:18:14
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/flat-configs.ts
  * @Description: ESLint v9 扁平配置
  *
@@ -38,6 +38,7 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
     unusedImports: unusedImportsPlugin,
     typescriptEslint: typescriptEslintPlugin,
     typescriptEslintParser,
+    typescriptSortKeys: typescriptSortKeysPlugin,
     react: reactPlugin,
     reactHooks: reactHooksPlugin,
     jsxA11y: jsxA11yPlugin,
@@ -47,6 +48,7 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
     prettier: prettierPlugin,
     eslintConfigPrettier,
     jsonc: jsoncPlugin,
+    sortKeysFix: sortKeysFixPlugin,
   } = plugins
 
   /*
@@ -98,9 +100,10 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
     ignores,
     plugins: {
       import: importPlugin,
-      'simple-import-sort': simpleImportSortPlugin,
-      'unused-imports': unusedImportsPlugin,
       prettier: prettierPlugin,
+      'simple-import-sort': simpleImportSortPlugin,
+      'sort-keys-fix': sortKeysFixPlugin,
+      'unused-imports': unusedImportsPlugin,
     },
     rules: {
       ...eslintRecommendedRules,
@@ -121,14 +124,15 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
       parser: typescriptEslintParser,
       parserOptions: {
         ecmaVersion: 'latest',
-        sourceType: 'module',
-        experimentalDecorators: true,
         emitDecoratorMetadata: true,
+        experimentalDecorators: true,
         project: './tsconfig.json',
+        sourceType: 'module',
       },
     },
     plugins: {
       '@typescript-eslint': typescriptEslintPlugin,
+      'typescript-sort-keys': typescriptSortKeysPlugin,
     },
     rules: {
       ...typescriptRules,
@@ -143,28 +147,28 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
   const reactFlatConfig: FlatConfig = {
     files: ['**/*.jsx', '**/*.tsx'],
     ignores,
-    plugins: {
-      react: reactPlugin,
-      'react-hooks': reactHooksPlugin,
-      'jsx-a11y': jsxA11yPlugin,
-    },
     languageOptions: {
       parser: typescriptEslintParser,
       parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
         ecmaFeatures: {
           jsx: true,
         },
+        ecmaVersion: 'latest',
+        sourceType: 'module',
       },
+    },
+    plugins: {
+      'jsx-a11y': jsxA11yPlugin,
+      react: reactPlugin,
+      'react-hooks': reactHooksPlugin,
+    },
+    rules: {
+      ...reactRules,
     },
     settings: {
       react: {
         version: 'detect', // 自动检测React版本
       },
-    },
-    rules: {
-      ...reactRules,
     },
   }
 
@@ -176,14 +180,14 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
   const jsonFlatConfig: FlatConfig = {
     files: ['**/*.json', '**/*.jsonc', '**/*.json5', '**/package.json'],
     ignores,
-    plugins: {
-      jsonc: jsoncPlugin,
-    },
     languageOptions: {
       parser: jsoncPlugin?.parser,
       parserOptions: {
         jsonSyntax: 'JSON',
       },
+    },
+    plugins: {
+      jsonc: jsoncPlugin,
     },
     rules: {
       ...jsonRules,
@@ -198,20 +202,21 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
   const vueFlatConfig: FlatConfig = {
     files: ['**/*.vue'],
     ignores,
-    plugins: {
-      vue: vuePlugin,
-      import: importPlugin,
-      'simple-import-sort': simpleImportSortPlugin,
-      'unused-imports': unusedImportsPlugin,
-      prettier: prettierPlugin,
-    },
     languageOptions: {
       parser: vueEslintParser,
       parserOptions: {
-        parser: typescriptEslintParser, // 在Vue文件中使用TypeScript解析器
+        // 在Vue文件中使用TypeScript解析器
         ecmaVersion: 'latest',
+        parser: typescriptEslintParser,
         sourceType: 'module',
       },
+    },
+    plugins: {
+      import: importPlugin,
+      prettier: prettierPlugin,
+      'simple-import-sort': simpleImportSortPlugin,
+      'unused-imports': unusedImportsPlugin,
+      vue: vuePlugin,
     },
     rules: {
       ...vueRules,
@@ -226,26 +231,30 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
   const nestjsFlatConfig: FlatConfig = {
     files: ['**/*.ts', 'src/**/*.ts'],
     ignores,
-    plugins: {
-      node: nodePlugin,
-      import: importPlugin,
-      'simple-import-sort': simpleImportSortPlugin,
-      'unused-imports': unusedImportsPlugin,
-      prettier: prettierPlugin,
-    },
     languageOptions: {
+      globals: {
+        node: true, // 添加Node.js全局变量
+      },
       parser: typescriptEslintParser,
       parserOptions: {
         ecmaVersion: 'latest',
-        sourceType: 'module',
-        experimentalDecorators: true, // 支持装饰器语法，NestJS大量使用
-        emitDecoratorMetadata: true, // 支持装饰器元数据，用于依赖注入
+
+        // 支持装饰器语法，NestJS大量使用
+        emitDecoratorMetadata: true,
+
+        experimentalDecorators: true,
+
+        // 支持装饰器元数据，用于依赖注入
         project: './tsconfig.json',
+        sourceType: 'module',
       },
-      globals: {
-        node: true, // 添加Node.js全局变量
-        jest: true, // 添加Jest测试全局变量
-      },
+    },
+    plugins: {
+      import: importPlugin,
+      node: nodePlugin,
+      prettier: prettierPlugin,
+      'simple-import-sort': simpleImportSortPlugin,
+      'unused-imports': unusedImportsPlugin,
     },
     rules: {
       ...nodejsRules,
@@ -280,13 +289,13 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
     files: ['**/*.spec.ts', '**/*.e2e-spec.ts', '**/*.test.ts'],
     languageOptions: {
       globals: {
-        describe: true,
-        it: true,
-        expect: true,
-        beforeEach: true,
+        afterAll: true,
         afterEach: true,
         beforeAll: true,
-        afterAll: true,
+        beforeEach: true,
+        describe: true,
+        expect: true,
+        it: true,
         jest: true,
       },
     },
@@ -300,11 +309,11 @@ export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatCo
    */
   return {
     base: [baseFlatConfig],
-    typescript: [baseFlatConfig, typescriptFlatConfig],
-    react: [baseFlatConfig, typescriptFlatConfig, reactFlatConfig],
-    vue: [baseFlatConfig, typescriptFlatConfig, vueFlatConfig],
-    nestjs: [baseFlatConfig, jestFlatConfig, typescriptFlatConfig, nestjsFlatConfig],
     json: [jsonFlatConfig],
+    nestjs: [baseFlatConfig, jestFlatConfig, typescriptFlatConfig, nestjsFlatConfig],
+    react: [baseFlatConfig, typescriptFlatConfig, reactFlatConfig],
     recommended: [baseFlatConfig, typescriptFlatConfig, prettierFlatConfig],
+    typescript: [baseFlatConfig, typescriptFlatConfig],
+    vue: [baseFlatConfig, typescriptFlatConfig, vueFlatConfig],
   }
 }
