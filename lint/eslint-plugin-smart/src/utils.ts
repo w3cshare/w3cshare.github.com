@@ -61,8 +61,12 @@ export function loadPlugins(): LoadedPlugins {
       eslintConfigPrettier: require('eslint-config-prettier') as ESLintPlugin,
       jsonc: jsoncPlugin,
     }
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error loading plugins:', error)
-    return {} as LoadedPlugins
+    if (error instanceof Error) {
+      throw new Error(`加载插件失败: ${error.message}`)
+    } else {
+      throw new Error('加载插件失败：未知错误')
+    }
   }
 }

@@ -2,27 +2,49 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:42:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 14:39:30
+ * @LastEditTime: 2025-04-28 03:04:31
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/legacy-configs.ts
  * @Description: ESLint v8及以下版本的传统配置
  */
 
-import { type ESLintRuleSet } from './types'
+import type { ESLintRuleSet } from './types'
+import type { LoadedPlugins } from './utils'
 
 /**
- * 创建ESLint传统配置
+ * 创建ESLint v8及以下版本的传统配置
  *
+ * @param plugins 加载的ESLint插件
  * @param rules 规则集合
  * @returns ESLint传统配置对象集合
  */
-export function createLegacyConfigs(rules: {
-  baseRules: ESLintRuleSet
-  typescriptRules: ESLintRuleSet
-  reactRules: ESLintRuleSet
-  vueRules: ESLintRuleSet
-  nestjsRules: ESLintRuleSet
-  jsonRules: ESLintRuleSet
-}): Record<string, Record<string, unknown>> {
+export function createLegacyConfigs(
+  plugins: LoadedPlugins,
+  rules: {
+    baseRules: ESLintRuleSet
+    typescriptRules: ESLintRuleSet
+    reactRules: ESLintRuleSet
+    vueRules: ESLintRuleSet
+    nestjsRules: ESLintRuleSet
+    jsonRules: ESLintRuleSet
+  },
+): Record<string, unknown> {
+  const {
+    import: importPlugin,
+    simpleImportSort: simpleImportSortPlugin,
+    unusedImports: unusedImportsPlugin,
+    typescriptEslint: typescriptEslintPlugin,
+    typescriptEslintParser,
+    react: reactPlugin,
+    reactHooks: reactHooksPlugin,
+    jsxA11y: jsxA11yPlugin,
+    vue: vuePlugin,
+    vueEslintParser,
+    node: nodePlugin,
+    prettier: prettierPlugin,
+    eslintConfigPrettier,
+    jsonc: jsoncPlugin,
+  } = plugins
+
   const { baseRules, typescriptRules, reactRules, vueRules, nestjsRules, jsonRules } = rules
 
   /**

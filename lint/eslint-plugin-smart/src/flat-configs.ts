@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:40:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-28 01:39:06
+ * @LastEditTime: 2025-04-28 10:59:44
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/flat-configs.ts
  * @Description: ESLint v9 扁平配置
  *
@@ -14,6 +14,14 @@
  */
 import js from '@eslint/js'
 
+import {
+  javascriptRules,
+  jsonRules,
+  nodejsRules,
+  reactRules,
+  typescriptRules,
+  vueRules,
+} from './recommend'
 import { type ESLintRuleSet, type FlatConfig, type LoadedPlugins } from './types'
 import { isObject } from './utils'
 
@@ -21,22 +29,9 @@ import { isObject } from './utils'
  * 创建ESLint v9扁平配置
  *
  * @param plugins 加载的ESLint插件
- * @param rules 规则集合
  * @returns ESLint v9扁平配置对象集合
  */
-export function createFlatConfigs(
-  plugins: LoadedPlugins,
-  rules: {
-    baseRules: ESLintRuleSet
-    typescriptRules: ESLintRuleSet
-    reactRules: ESLintRuleSet
-    vueRules: ESLintRuleSet
-    nestjsRules: ESLintRuleSet
-    jsonRules: ESLintRuleSet
-  },
-): Record<string, FlatConfig[]> {
-  const { baseRules, typescriptRules, reactRules, vueRules, nestjsRules, jsonRules } = rules
-
+export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatConfig[]> {
   const {
     import: importPlugin,
     simpleImportSort: simpleImportSortPlugin,
@@ -52,8 +47,6 @@ export function createFlatConfigs(
     prettier: prettierPlugin,
     eslintConfigPrettier,
     jsonc: jsoncPlugin,
-
-    // prettierCore,
   } = plugins
 
   /*
@@ -102,7 +95,7 @@ export function createFlatConfigs(
    */
   const baseFlatConfig: FlatConfig = {
     files: ['**/*.js', '**/*.ts', '**/*.jsx', '**/*.tsx', 'src/**/*.{js,ts,jsx,tsx}'],
-    ignores: ignores,
+    ignores,
     plugins: {
       import: importPlugin,
       'simple-import-sort': simpleImportSortPlugin,
@@ -110,25 +103,9 @@ export function createFlatConfigs(
       prettier: prettierPlugin,
     },
     rules: {
-      // 添加eslint:recommended规则
       ...eslintRecommendedRules,
       ...prettierRules,
-
-      // 自定义规则覆盖推荐规则
-      ...baseRules,
-
-      // 确保unused-imports规则正确应用，覆盖eslint:recommended中的no-unused-vars
-      'no-unused-vars': 'off', // 关闭ESLint核心规则
-      'unused-imports/no-unused-imports': 'error', // 使用unused-imports插件替代
-      'unused-imports/no-unused-vars': [
-        'warn',
-        {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
-        },
-      ],
+      ...javascriptRules,
     },
   }
 
@@ -139,7 +116,7 @@ export function createFlatConfigs(
    */
   const typescriptFlatConfig: FlatConfig = {
     files: ['**/*.ts', '**/*.tsx', 'src/**/*.{ts,tsx}'],
-    ignores: ignores,
+    ignores,
     languageOptions: {
       parser: typescriptEslintParser,
       parserOptions: {
@@ -154,10 +131,6 @@ export function createFlatConfigs(
       '@typescript-eslint': typescriptEslintPlugin,
     },
     rules: {
-      /*
-       * 不再重复基础规则，因为它们已经在baseFlatConfig中定义
-       * 只添加TypeScript特定的规则
-       */
       ...typescriptRules,
     },
   }
@@ -169,7 +142,7 @@ export function createFlatConfigs(
    */
   const reactFlatConfig: FlatConfig = {
     files: ['**/*.jsx', '**/*.tsx'],
-    ignores: ignores,
+    ignores,
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
@@ -191,7 +164,6 @@ export function createFlatConfigs(
       },
     },
     rules: {
-      // 只添加React特定的规则，基础规则和TypeScript规则已在其他配置中定义
       ...reactRules,
     },
   }
@@ -203,7 +175,7 @@ export function createFlatConfigs(
    */
   const jsonFlatConfig: FlatConfig = {
     files: ['**/*.json', '**/*.jsonc', '**/*.json5', '**/package.json'],
-    ignores: ignores,
+    ignores,
     plugins: {
       jsonc: jsoncPlugin,
     },
@@ -225,7 +197,7 @@ export function createFlatConfigs(
    */
   const vueFlatConfig: FlatConfig = {
     files: ['**/*.vue'],
-    ignores: ignores,
+    ignores,
     plugins: {
       vue: vuePlugin,
       import: importPlugin,
@@ -242,7 +214,6 @@ export function createFlatConfigs(
       },
     },
     rules: {
-      // 只添加Vue特定的规则
       ...vueRules,
     },
   }
@@ -254,7 +225,7 @@ export function createFlatConfigs(
    */
   const nestjsFlatConfig: FlatConfig = {
     files: ['**/*.ts', 'src/**/*.ts'],
-    ignores: ignores,
+    ignores,
     plugins: {
       node: nodePlugin,
       import: importPlugin,
@@ -277,8 +248,7 @@ export function createFlatConfigs(
       },
     },
     rules: {
-      // 只添加NestJS特定的规则
-      ...nestjsRules,
+      ...nodejsRules,
     },
   }
 
@@ -290,17 +260,16 @@ export function createFlatConfigs(
    */
   const prettierFlatConfig: FlatConfig = {
     files: ['**/*.{js,ts,jsx,tsx,vue}'],
-    ignores: ignores,
+    ignores,
     plugins: {
       prettier: prettierPlugin,
     },
     rules: {
-      // 关闭与Prettier冲突的规则
       ...prettierRules,
-      ...baseRules,
+      ...javascriptRules,
 
-      ...(baseRules && typeof baseRules['prettier/prettier'] === 'object'
-        ? { 'prettier/prettier': baseRules['prettier/prettier'] }
+      ...(javascriptRules && typeof javascriptRules['prettier/prettier'] === 'object'
+        ? { 'prettier/prettier': javascriptRules['prettier/prettier'] }
         : {}),
     },
   }
@@ -330,31 +299,12 @@ export function createFlatConfigs(
    * 后面的配置会覆盖前面的配置中的相同规则
    */
   return {
-    // 基础JavaScript配置
-    base: [baseFlatConfig, prettierFlatConfig],
-
-    // TypeScript项目配置
-    typescript: [baseFlatConfig, typescriptFlatConfig, prettierFlatConfig],
-
-    // React项目配置（包含TypeScript支持）
-    react: [baseFlatConfig, typescriptFlatConfig, reactFlatConfig, prettierFlatConfig],
-
-    // Vue项目配置（包含TypeScript支持）
-    vue: [baseFlatConfig, typescriptFlatConfig, vueFlatConfig, prettierFlatConfig],
-
-    // NestJS后端项目配置
-    nestjs: [
-      baseFlatConfig,
-      typescriptFlatConfig,
-      nestjsFlatConfig,
-      jestFlatConfig,
-      prettierFlatConfig,
-    ],
-
-    // JSON配置
+    base: [baseFlatConfig],
+    typescript: [baseFlatConfig, typescriptFlatConfig],
+    react: [baseFlatConfig, typescriptFlatConfig, reactFlatConfig],
+    vue: [baseFlatConfig, typescriptFlatConfig, vueFlatConfig],
+    nestjs: [baseFlatConfig, jestFlatConfig, typescriptFlatConfig, nestjsFlatConfig],
     json: [jsonFlatConfig],
-
-    // 推荐配置，适用于大多数TypeScript项目
     recommended: [baseFlatConfig, typescriptFlatConfig, prettierFlatConfig],
   }
 }

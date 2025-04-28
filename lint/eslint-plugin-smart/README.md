@@ -33,6 +33,15 @@ features:
   - icon: 💅
     title: Prettier 集成
     details: 内置 Prettier 支持，确保代码风格一致性和格式化规范
+  - icon: 📊
+    title: JSON 文件自动排序
+    details: JSON 文件自动排序功能
+  - icon: 🔍
+    title: 对象键自动排序
+    details: 对象键自动排序功能
+  - icon: 📊
+    title: 数组元素自动排序
+    details: 数组元素自动排序功能
 ---
 
 # &nbsp;
@@ -48,7 +57,9 @@ features:
 - 🎯 针对不同项目类型的专门优化
 - 🔄 自动修复和代码格式化
 - 🎨 完整的 Prettier 集成
-- 📝 JSON 文件支持（包括自动排序）
+- �� JSON 文件支持（包括自动排序）
+- 🔍 对象键自动排序
+- 📊 数组元素自动排序
 
 ## 安装
 
@@ -77,11 +88,11 @@ export default [
   ...eslintPlugin.configs.base,
 
   // 或者使用特定项目类型的配置：
-  ...eslintPlugin.configs.typescript,  // TypeScript 项目
-  ...eslintPlugin.configs.react,       // React 项目
-  ...eslintPlugin.configs.vue,         // Vue 项目
-  ...eslintPlugin.configs.nestjs,      // NestJS 项目
-  ...eslintPlugin.configs.json,        // JSON 文件
+  ...eslintPlugin.configs.typescript, // TypeScript 项目
+  ...eslintPlugin.configs.react, // React 项目
+  ...eslintPlugin.configs.vue, // Vue 项目
+  ...eslintPlugin.configs.nestjs, // NestJS 项目
+  ...eslintPlugin.configs.json, // JSON 文件
 ]
 ```
 
@@ -90,28 +101,35 @@ export default [
 插件提供以下配置预设：
 
 1. `base` - 基础 JavaScript 配置
+
    - 包含 ESLint 推荐规则
    - 集成 Prettier
    - 导入/导出排序
    - 未使用变量检查
+   - 对象键自动排序
+   - 数组元素自动排序
 
 2. `typescript` - TypeScript 项目配置
+
    - 包含基础配置
    - TypeScript 特定规则
    - 类型检查支持
 
 3. `react` - React 项目配置
+
    - 包含 TypeScript 配置
    - React 和 JSX 规则
    - React Hooks 规则
    - 可访问性检查
 
 4. `vue` - Vue 项目配置
+
    - 包含 TypeScript 配置
    - Vue 单文件组件支持
    - Vue 特定规则
 
 5. `nestjs` - NestJS 项目配置
+
    - 包含 TypeScript 配置
    - 装饰器支持
    - Node.js 环境
@@ -136,9 +154,7 @@ JSON 配置提供以下功能：
 ```javascript
 import eslintPlugin from 'eslint-plugin-smart'
 
-export default [
-  ...eslintPlugin.configs.json
-]
+export default [...eslintPlugin.configs.json]
 ```
 
 package.json 字段排序顺序：
@@ -184,10 +200,7 @@ package.json 字段排序顺序：
 // eslint.config.mjs
 import eslintPlugin from 'eslint-plugin-smart'
 
-export default [
-  ...eslintPlugin.configs.react,
-  ...eslintPlugin.configs.json
-]
+export default [...eslintPlugin.configs.react, ...eslintPlugin.configs.json]
 ```
 
 2. Vue + TypeScript 项目：
@@ -196,10 +209,7 @@ export default [
 // eslint.config.mjs
 import eslintPlugin from 'eslint-plugin-smart'
 
-export default [
-  ...eslintPlugin.configs.vue,
-  ...eslintPlugin.configs.json
-]
+export default [...eslintPlugin.configs.vue, ...eslintPlugin.configs.json]
 ```
 
 3. NestJS 项目：
@@ -208,10 +218,7 @@ export default [
 // eslint.config.mjs
 import eslintPlugin from 'eslint-plugin-smart'
 
-export default [
-  ...eslintPlugin.configs.nestjs,
-  ...eslintPlugin.configs.json
-]
+export default [...eslintPlugin.configs.nestjs, ...eslintPlugin.configs.json]
 ```
 
 ## 常见问题
@@ -223,17 +230,9 @@ export default [
 ```javascript
 export default [
   {
-    ignores: [
-      'dist/**',
-      'lib/**',
-      'build/**',
-      'node_modules/**',
-      '.cache/**',
-      '.temp/**',
-      '*.log'
-    ]
+    ignores: ['dist/**', 'lib/**', 'build/**', 'node_modules/**', '.cache/**', '.temp/**', '*.log'],
   },
-  ...eslintPlugin.configs.recommended
+  ...eslintPlugin.configs.recommended,
 ]
 ```
 
@@ -247,9 +246,9 @@ export default [
   {
     rules: {
       // 自定义规则
-      'react/react-in-jsx-scope': 'off'
-    }
-  }
+      'react/react-in-jsx-scope': 'off',
+    },
+  },
 ]
 ```
 

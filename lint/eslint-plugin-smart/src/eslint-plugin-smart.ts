@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:31:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-28 00:33:19
+ * @LastEditTime: 2025-04-28 02:24:47
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/eslint-plugin-smart.ts
  * @Description: ESLint插件公共配置，适用于React、Vue、NestJS和TypeScript项目
  */
@@ -10,15 +10,8 @@
 // 导入类型和优化后的规则集
 import { createFlatConfigs } from './flat-configs'
 import { createLegacyConfigs } from './legacy-configs'
-import {
-  javascriptRules as javascriptRules2,
-  nodejsRules as nodejsRules2,
-  reactRules as reactRules2,
-  typescriptRules as typescriptRules2,
-  vueRules as vueRules2,
-  jsonRules as jsonRules2,
-} from './recommend'
-import { type ESLintRuleSet } from './types'
+import * as rules from './recommend'
+import type { ESLintPluginExport as PluginExport, ESLintRuleSet } from './types'
 import { isESLintV9, loadPlugins } from './utils'
 
 /**
@@ -43,7 +36,7 @@ interface ESLintPluginExport {
  * 包含错误防范、代码风格和导入规则等通用规则
  */
 const baseRules = {
-  ...javascriptRules2,
+  ...rules.javascriptRules,
 
   /*
    * 数组/对象排序
@@ -118,7 +111,7 @@ const baseRules = {
  * 包含TypeScript项目的类型检查和代码质量规则
  */
 const typescriptRules = {
-  ...typescriptRules2,
+  ...rules.typescriptRules,
   'no-unused-vars': 'off',
   '@typescript-eslint/no-unused-vars': 'off', // 关闭TS的未使用变量检查，使用unused-imports代替
   // 移除无用的代码规则
@@ -145,7 +138,7 @@ const typescriptRules = {
  * 包含React项目的JSX语法、Hooks使用和可访问性规则
  */
 const reactRules = {
-  ...reactRules2,
+  ...rules.reactRules,
 }
 
 /**
@@ -154,7 +147,7 @@ const reactRules = {
  * 包含Vue项目的组件定义、模板语法和代码风格规则
  */
 const vueRules = {
-  ...vueRules2,
+  ...rules.vueRules,
 }
 
 /**
@@ -163,7 +156,7 @@ const vueRules = {
  * 包含NestJS后端项目的Node.js相关规则，主要是放宽一些限制
  */
 const nestjsRules = {
-  ...nodejsRules2,
+  ...rules.nodejsRules,
 
   // nest官网推荐
   '@typescript-eslint/interface-name-prefix': 'off',
@@ -180,7 +173,7 @@ const nestjsRules = {
  * 包含JSON文件的格式化和排序规则
  */
 const jsonRules = {
-  ...jsonRules2,
+  ...rules.jsonRules,
 }
 
 /**
@@ -188,48 +181,48 @@ const jsonRules = {
  *
  * @returns ESLint插件导出对象
  */
-const createExportObject = (): ESLintPluginExport => {
+const createExportObject = (): PluginExport => {
   // 加载插件
   const plugins = loadPlugins()
 
-  // 规则集合
-  const rules = {
-    baseRules,
-    typescriptRules,
-    reactRules,
-    vueRules,
-    nestjsRules,
-    jsonRules,
-  }
-
-  // 创建基本导出对象
-  const exportObj: ESLintPluginExport = {
-    // 规则集
+  // 创建导出对象
+  const exportObj: PluginExport = {
     rules: {
-      base: baseRules,
-      typescript: typescriptRules,
-      react: reactRules,
-      vue: vueRules,
-      nestjs: nestjsRules,
-      json: jsonRules,
+      base: rules.javascriptRules,
+      typescript: rules.typescriptRules,
+      react: rules.reactRules,
+      vue: rules.vueRules,
+      nestjs: rules.nodejsRules,
+      json: rules.jsonRules,
     },
-
-    // 内置插件导出
     plugins: {
+      // 只保留确定存在的插件
       import: plugins.import,
       'simple-import-sort': plugins.simpleImportSort,
       'unused-imports': plugins.unusedImports,
+      '@typescript-eslint': plugins.typescriptEslint,
+      react: plugins.react,
+      'react-hooks': plugins.reactHooks,
+      'jsx-a11y': plugins.jsxA11y,
+      vue: plugins.vue,
+      node: plugins.node,
+      prettier: plugins.prettier,
       jsonc: plugins.jsonc,
     },
   }
 
   // 根据ESLint版本导出不同格式的配置
   if (isESLintV9()) {
-    // ESLint v9+ 使用扁平配置
-    exportObj.configs = createFlatConfigs(plugins, rules)
+    exportObj.configs = createFlatConfigs(plugins)
   } else {
-    // ESLint v8 及以下使用传统配置
-    exportObj.configs = createLegacyConfigs(rules)
+    exportObj.configs = createLegacyConfigs(plugins, {
+      baseRules,
+      typescriptRules,
+      reactRules,
+      vueRules,
+      nestjsRules,
+      jsonRules,
+    })
   }
 
   return exportObj
@@ -238,16 +231,9 @@ const createExportObject = (): ESLintPluginExport => {
 // 创建导出对象
 const exportObj = createExportObject()
 
-// 根据环境选择合适的导出方式
+// 兼容 CommonJS 和 ESM
 if (typeof module !== 'undefined' && module.exports) {
-  // CommonJS环境
   module.exports = exportObj
-} else {
-  /*
-   * ESM环境
-   * export default已经在文件末尾
-   */
 }
 
-// ESM导出
 export default exportObj

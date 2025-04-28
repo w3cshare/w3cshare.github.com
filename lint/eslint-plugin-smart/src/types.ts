@@ -23,6 +23,15 @@ export interface ESLintPlugin {
 export type ESLintRuleSet = Record<string, unknown>
 
 /**
+ * ESLint插件导出类型
+ */
+export interface ESLintPluginExport {
+  rules: Record<string, ESLintRuleSet>
+  plugins: Record<string, ESLintPlugin>
+  configs?: Record<string, unknown>
+}
+
+/**
  * ESLint v9扁平配置类型
  */
 export interface FlatConfig {

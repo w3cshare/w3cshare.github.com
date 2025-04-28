@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 13:30:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-28 01:29:10
+ * @LastEditTime: 2025-04-28 03:03:56
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/recommend.ts
  * @Description: ESLint规则集合，按照不同技术栈分类
  */
@@ -533,6 +533,7 @@ export const jsonRules: ESLintRuleSet = {
   // 特殊文件的排序优先级设置
   'jsonc/sort-keys': [
     'error',
+
     // 第一个配置对象：处理package.json的根级属性
     {
       pathPattern: '^$', // 适用于根级别属性
@@ -571,16 +572,19 @@ export const jsonRules: ESLintRuleSet = {
         'eslintConfig',
       ],
     },
+
     // 第二个配置对象：处理依赖项对象
     {
       pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
       order: { type: 'asc' }, // 依赖项按字母排序
     },
+
     // 第三个配置对象：处理scripts对象
     {
       pathPattern: '^scripts$',
       order: ['start', 'dev', 'build', 'serve', 'test', 'lint', 'format', 'prepare'],
     },
+
     // 第四个配置对象：处理其他所有对象
     {
       pathPattern: '.*', // 适用于其他所有路径
