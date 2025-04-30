@@ -22,13 +22,13 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: ./getting-started
+      link: ./docs/getting-started
     - theme: alt
       text: 组件文档
-      link: ./components/
+      link: ./docs/components/
     - theme: alt
       text: 设计规范
-      link: ./design
+      link: ./docs/design
 features:
   - icon: ⚛️
     title: 多渲染目标支持

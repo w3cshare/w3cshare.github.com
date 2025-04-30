@@ -22,10 +22,10 @@ hero:
   actions:
     - theme: brand
       text: 架构概述
-      link: ./architecture
+      link: ./docs/architecture
     - theme: alt
       text: 快速开始
-      link: ./getting-started
+      link: ./docs/getting-started
 features:
   - icon: 🧩
     title: 领域驱动设计
