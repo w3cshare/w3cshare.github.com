@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-30 16:05:40
+ * @LastEditTime: 2025-04-30 17:52:18
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -71,14 +71,13 @@ export default withMermaid(
           items: [
             { text: '首页', link: '/apps/README.md' },
             {
-              text: 'Google Tab 首页',
+              text: 'GoogleTab首页',
               link: '/apps/google-tab-home/README.md',
             },
-            { text: 'VSCode 低代码', link: '/apps/vscode-lowcode/README.md' },
-            { text: 'AI Agent', link: '/apps-native/README.md' },
-            { text: 'Web3 以太坊', link: '/apps-native/README.md' },
-            { text: 'iOS 端', link: '/apps-native/README.md' },
-            { text: '印章识别', link: '/apps-native/README.md' },
+            { text: 'VSCode低代码', link: '/apps/vscode-lowcode/README.md' },
+            { text: 'AIAgent', link: '/apps-native/README.md' },
+            { text: 'Web3以太坊', link: '/apps-native/README.md' },
+            { text: 'iOS端', link: '/apps-native/README.md' },
             {
               text: '商城微前端项目',
               items: [
@@ -102,48 +101,56 @@ export default withMermaid(
           text: '组件库',
           items: [
             {
-              text: 'Vue 组件',
+              text: 'Vue',
               items: [
                 { text: '首页', link: '/lib-vue/README.md' },
                 {
                   link: '/lib-vue/ant-design-lib/README.md',
-                  text: 'Ant Design 业务组件库',
+                  text: 'Ant Design 业务组件',
                 },
                 {
                   link: '/lib-vue/element-ui-lib/README.md',
-                  text: 'Element UI 业务组件库',
+                  text: 'Element UI 业务组件',
                 },
                 {
                   link: '/lib-vue/pure-ui-lib/README.md',
-                  text: 'Pure 业务组件库',
+                  text: 'Pure 业务组件',
                 },
                 {
                   link: '/lib-vue/uniapp-lib/README.md',
-                  text: 'UniApp 跨端组件库',
+                  text: 'UniApp 跨端组件',
                 },
               ],
             },
             {
-              text: 'React 组件',
+              text: 'React',
               items: [
                 { link: '/lib-react/README.md', text: '首页' },
                 {
                   link: '/lib-react/ant-design-lib/README.md',
-                  text: 'Ant Design 业务组件库',
+                  text: 'Ant Design 业务组件',
                 },
                 {
                   link: '/lib-react/ant-design-web3-lib/README.md',
-                  text: 'Web3 业务组件库',
+                  text: 'Web3 业务组件',
                 },
                 {
                   link: '/lib-react/ant-design-x-lib/README.md',
-                  text: 'AI 业务组件库',
+                  text: 'AI 业务组件',
                 },
                 {
                   link: '/lib-react/taro-ui-lib/README.md',
-                  text: 'taroJs 业务组件库',
+                  text: 'taroJs 业务组件',
                 },
               ],
+            },
+            {
+              text: 'ArtTs 业务组件',
+              link: '/packages/artts-ui-lib/README.md',
+            },
+            {
+              text: 'UniApp-X 业务组件',
+              link: '/packages/uniapp-x-lib/README.md',
             },
           ],
         },
@@ -155,25 +162,55 @@ export default withMermaid(
               link: '/lib-nest/README.md',
             },
             {
-              text: 'Swagger 组件',
+              text: 'Swagger',
               link: '/lib-nest/nestjs-swagger/README.md',
             },
           ],
         },
         {
-          text: '公共库',
+          text: '通用工具',
+          items: [
+            {
+              text: 'JS库',
+              items: [
+                {
+                  text: '首页',
+                  link: '/libs/README.md',
+                },
+              ],
+            },
+            {
+              text: 'Python库',
+              items: [
+                { text: '印章识别', link: '/apps-python/ocr-vlm/README.md' },
+                {
+                  link: '/apps-python/pdf-compressed/README.md',
+                  text: 'PDF压缩',
+                },
+                {
+                  link: '/apps-python/md-pdf/README.md',
+                  text: 'Markdown转PDF',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          text: 'MCP服务',
           items: [
             {
               text: '首页',
               link: '/packages/README.md',
             },
+
+            { text: '印章识别', link: '/apps-python/ocr-vlm/README.md' },
             {
-              text: 'ArtTs 业务组件库',
-              link: '/packages/artts-ui-lib/README.md',
+              link: '/apps-python/pdf-compressed/README.md',
+              text: 'PDF压缩',
             },
             {
-              text: 'UniApp-X 业务组件库',
-              link: '/packages/uniapp-x-lib/README.md',
+              link: '/apps-python/md-pdf/README.md',
+              text: 'Markdown转PDF',
             },
           ],
         },
@@ -240,7 +277,7 @@ export default withMermaid(
                   text: 'gRPC Go 模板',
                 },
                 {
-                  link: '/micro-service/nestjs-template/README.md',
+                  link: '/micro-service/nest-template/README.md',
                   text: 'NestJS 模板',
                 },
                 // {
@@ -248,10 +285,6 @@ export default withMermaid(
                 //   items: [
                 //   ],
                 // },
-                {
-                  link: '/micro-service/grpc-pdfcompressed/README.md',
-                  text: 'PDF压缩',
-                },
               ],
             },
           ],
@@ -259,26 +292,26 @@ export default withMermaid(
         {
           text: '脚手架',
           items: [
-            { link: '/cli/README.md', text: '首页' },
+            { link: '/lib-cli/README.md', text: '首页' },
             {
               text: '提交规范',
-              link: '/cli/cli-commit/README.md',
+              link: '/lib-cli/cli-commit/README.md',
             },
             {
               text: '检测环境',
-              link: '/cli/cli-env-check/README.md',
+              link: '/lib-cli/cli-env-check/README.md',
             },
             {
               text: 'Git 自动化',
-              link: '/cli/cli-git/README.md',
+              link: '/lib-cli/cli-git/README.md',
             },
             {
               text: '初始化模板',
-              link: '/cli/init/README.md',
+              link: '/lib-cli/init/README.md',
             },
             {
               text: 'npx',
-              link: '/cli/cli-npx/README.md',
+              link: '/lib-cli/cli-npx/README.md',
             },
           ],
         },
@@ -286,23 +319,23 @@ export default withMermaid(
           text: '规范',
           items: [
             {
-              link: '/lint/README.md',
+              link: '/lib-lint/README.md',
               text: '首页',
             },
             {
-              link: '/lint/eslint-plugin-smart/README.md',
+              link: '/lib-lint/eslint-plugin-smart/README.md',
               text: 'ESLint',
             },
             {
-              link: '/lint/stylelint-config-smart/README.md',
+              link: '/lib-lint/stylelint-config-smart/README.md',
               text: 'Stylelint',
             },
             {
-              link: '/lint/prettier-plugin-smart/README.md',
+              link: '/lib-lint/prettier-plugin-smart/README.md',
               text: 'Prettier',
             },
             {
-              link: '/lint/commitlint-smart/README.md',
+              link: '/lib-lint/commitlint-smart/README.md',
               text: 'Commitlint',
             },
           ],
@@ -475,7 +508,7 @@ export default withMermaid(
         ],
 
         // Nest 包文档
-        '/package-nest/': [
+        '/lib-nest/': [
           {
             text: 'NestJS 包',
             items: [
@@ -536,7 +569,7 @@ export default withMermaid(
         ],
 
         // React 组件库文档
-        '/package-react/': [
+        '/lib-react/': [
           {
             text: 'React 组件库',
             items: [
@@ -575,7 +608,7 @@ export default withMermaid(
         ],
 
         // Vue 组件库文档
-        '/package-vue/': [
+        '/lib-vue/': [
           {
             text: 'Vue 组件库',
             items: [
@@ -641,31 +674,31 @@ export default withMermaid(
         ],
 
         // CLI 工具文档
-        '/cli/': [
+        '/lib-cli/': [
           {
             text: '脚手架',
             items: [
-              { text: '概述', link: '/cli/README.md' },
-              { text: '快速开始', link: '/cli/docs/getting-started' },
-              { text: '命令列表', link: '/cli/docs/commands' },
-              { text: '工具集', link: '/cli/docs/tools' },
-              { text: '模板说明', link: '/cli/docs/templates' },
-              { text: '插件开发', link: '/cli/docs/plugin-development' },
-              { text: '项目结构', link: '/cli/docs/project-structure' },
+              { text: '概述', link: '/lib-cli/README.md' },
+              { text: '快速开始', link: '/lib-cli/docs/getting-started' },
+              { text: '命令列表', link: '/lib-cli/docs/commands' },
+              { text: '工具集', link: '/lib-cli/docs/tools' },
+              { text: '模板说明', link: '/lib-cli/docs/templates' },
+              { text: '插件开发', link: '/lib-cli/docs/plugin-development' },
+              { text: '项目结构', link: '/lib-cli/docs/project-structure' },
             ],
           },
           {
             text: '工具',
             items: [
-              { text: '提交规范工具', link: '/cli/cli-commit/README.md' },
-              { text: '环境检测工具', link: '/cli/cli-env-check/README.md' },
-              { text: 'Git 自动化工具', link: '/cli/cli-git/README.md' },
-              { text: '模板初始化工具', link: '/cli/init/README.md' },
-              { text: 'NPX 工具', link: '/cli/cli-npx/README.md' },
-              { text: '通用工具库', link: '/cli/cli-utils/README.md' },
+              { text: '提交规范工具', link: '/lib-cli/cli-commit/README.md' },
+              { text: '环境检测工具', link: '/lib-cli/cli-env-check/README.md' },
+              { text: 'Git 自动化工具', link: '/lib-cli/cli-git/README.md' },
+              { text: '模板初始化工具', link: '/lib-cli/init/README.md' },
+              { text: 'NPX 工具', link: '/lib-cli/cli-npx/README.md' },
+              { text: '通用工具库', link: '/lib-cli/cli-utils/README.md' },
               {
                 text: 'Swagger 转 TS 工具',
-                link: '/cli/swagger-to-typescript/README.md',
+                link: '/lib-cli/swagger-to-typescript/README.md',
               },
             ],
           },
@@ -701,24 +734,24 @@ export default withMermaid(
           {
             text: 'Commitlint 指南',
             items: [
-              { text: '概述', link: '/lint/commitlint-smart/README.md' },
+              { text: '概述', link: '/lib-lint/commitlint-smart/README.md' },
               {
                 text: '快速开始',
-                link: '/lint/commitlint-smart/docs/quickstart',
+                link: '/lib-lint/commitlint-smart/docs/quickstart',
               },
-              { text: '提交类型', link: '/lint/commitlint-smart/docs/types' },
+              { text: '提交类型', link: '/lib-lint/commitlint-smart/docs/types' },
               {
                 text: '作用域规范',
-                link: '/lint/commitlint-smart/docs/scopes',
+                link: '/lib-lint/commitlint-smart/docs/scopes',
               },
               {
                 text: '主题行规范',
-                link: '/lint/commitlint-smart/docs/subject',
+                link: '/lib-lint/commitlint-smart/docs/subject',
               },
-              { text: '正文规范', link: '/lint/commitlint-smart/docs/body' },
+              { text: '正文规范', link: '/lib-lint/commitlint-smart/docs/body' },
               {
                 text: '配置选项',
-                link: '/lint/commitlint-smart/docs/configuration',
+                link: '/lib-lint/commitlint-smart/docs/configuration',
               },
             ],
           },
@@ -727,15 +760,15 @@ export default withMermaid(
           {
             text: 'ESLint 插件指南',
             items: [
-              { text: '概述', link: '/lint/eslint-plugin-smart/README.md' },
+              { text: '概述', link: '/lib-lint/eslint-plugin-smart/README.md' },
               {
                 text: '快速开始',
-                link: '/lint/eslint-plugin-smart/docs/快速开始',
+                link: '/lib-lint/eslint-plugin-smart/docs/快速开始',
               },
-              { text: '质量', link: '/lint/eslint-plugin-smart/docs/质量' },
+              { text: '质量', link: '/lib-lint/eslint-plugin-smart/docs/质量' },
               {
                 text: '常见问题',
-                link: '/lint/eslint-plugin-smart/docs/常见问题',
+                link: '/lib-lint/eslint-plugin-smart/docs/常见问题',
               },
             ],
           },
@@ -744,18 +777,18 @@ export default withMermaid(
           {
             text: 'Prettier 插件指南',
             items: [
-              { text: '概述', link: '/lint/prettier-plugin-smart/README.md' },
+              { text: '概述', link: '/lib-lint/prettier-plugin-smart/README.md' },
               {
                 text: '开始使用',
-                link: '/lint/prettier-plugin-smart/docs/开始使用',
+                link: '/lib-lint/prettier-plugin-smart/docs/开始使用',
               },
               {
                 text: 'TypeScript支持',
-                link: '/lint/prettier-plugin-smart/docs/TypeScript支持',
+                link: '/lib-lint/prettier-plugin-smart/docs/TypeScript支持',
               },
               {
                 text: 'JSON自动排序',
-                link: '/lint/prettier-plugin-smart/docs/JSON自动排序',
+                link: '/lib-lint/prettier-plugin-smart/docs/JSON自动排序',
               },
             ],
           },
@@ -764,18 +797,18 @@ export default withMermaid(
           {
             text: 'Stylelint 配置指南',
             items: [
-              { text: '概述', link: '/lint/stylelint-config-smart/README.md' },
+              { text: '概述', link: '/lib-lint/stylelint-config-smart/README.md' },
               {
                 text: '开始使用',
-                link: '/lint/stylelint-config-smart/docs/开始使用',
+                link: '/lib-lint/stylelint-config-smart/docs/开始使用',
               },
               {
                 text: 'Less支持',
-                link: '/lint/stylelint-config-smart/docs/Less支持',
+                link: '/lib-lint/stylelint-config-smart/docs/Less支持',
               },
               {
                 text: 'Vue框架支持',
-                link: '/lint/stylelint-config-smart/docs/Vue框架支持',
+                link: '/lib-lint/stylelint-config-smart/docs/Vue框架支持',
               },
             ],
           },
