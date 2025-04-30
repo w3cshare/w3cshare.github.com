@@ -13,7 +13,7 @@ hero:
       link: ./docs/快速开始
     - theme: alt
       text: 质量
-      link: /lint/stylelint-config-smart/docs/质量
+      link: ./docs/质量
     - theme: alt
       text: 常见问题
       link: ./docs/常见问题
@@ -167,18 +167,18 @@ TypeScript 配置包含了接口和枚举类型的自动排序功能，可以保
 ```typescript
 // 自动排序前
 interface User {
-  name: string;
-  id: number;
-  age: number;
-  createdAt: Date;
+  name: string
+  id: number
+  age: number
+  createdAt: Date
 }
 
 // 自动排序后
 interface User {
-  age: number;
-  createdAt: Date;
-  id: number;
-  name: string;
+  age: number
+  createdAt: Date
+  id: number
+  name: string
 }
 
 // 枚举类型也会自动排序
@@ -190,6 +190,7 @@ enum Color {
 ```
 
 此功能在以下配置中默认启用：
+
 - `typescript`
 - `react`
 - `vue`
@@ -305,7 +306,7 @@ export default [
       // 关闭 TypeScript 接口自动排序
       'typescript-sort-keys/interface': 'off',
     },
-  }
+  },
 ]
 ```
 
@@ -349,9 +350,7 @@ pnpm add -D @fullstack/eslint-plugin-smart
 ```js
 module.exports = {
   plugins: ['@fullstack/smart'],
-  extends: [
-    'plugin:@fullstack/smart/recommended'
-  ]
+  extends: ['plugin:@fullstack/smart/recommended'],
 }
 ```
 

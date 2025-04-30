@@ -22,13 +22,13 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /package-vue/getting-started
+      link: ./getting-started
     - theme: alt
       text: 组件文档
-      link: /package-vue/components
+      link: ./components
     - theme: alt
       text: 设计规范
-      link: /package-vue/design
+      link: ./design
 features:
   - icon: 🧩
     title: Element UI专业扩展

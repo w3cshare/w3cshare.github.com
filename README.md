@@ -7,10 +7,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /docs/getting-started
+      link: ./docs/getting-started
     - theme: alt
       text: 查看文档
-      link: /docs/architecture
+      link: ./docs/architecture
 features:
   - icon: 🚀
     title: 微前端架构

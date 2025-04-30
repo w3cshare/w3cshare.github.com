@@ -10,13 +10,13 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /lint/prettier-plugin-smarts/docs/开始使用
+      link: ./docs/开始使用
     - theme: alt
       text: TypeScript支持
-      link: /lint/prettier-plugin-smarts/docs/TypeScript支持
+      link: ./docs/TypeScript支持
     - theme: alt
       text: JSON自动排序
-      link: /lint/prettier-plugin-smarts/docs/JSON自动排序
+      link: ./docs/JSON自动排序
 features:
   - icon: 🎨
     title: 统一风格

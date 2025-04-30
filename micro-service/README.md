@@ -22,10 +22,10 @@ hero:
   actions:
     - theme: brand
       text: 架构概述
-      link: /micro-service/architecture
+      link: ./architecture
     - theme: alt
       text: 快速开始
-      link: /micro-service/getting-started
+      link: ./getting-started
 features:
   - icon: 🧩
     title: 领域驱动设计

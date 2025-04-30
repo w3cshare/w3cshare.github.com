@@ -22,16 +22,16 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /lint/docs/getting-started
+      link: ./docs/getting-started
     - theme: alt
       text: 规范总览
-      link: /lint/docs/overview
+      link: ./docs/overview
     - theme: alt
       text: 最佳实践
-      link: /lint/docs/best-practices
+      link: ./docs/best-practices
     - theme: alt
       text: 常见问题
-      link: /lint/docs/troubleshooting
+      link: ./docs/troubleshooting
 features:
   - icon: ✨
     title: ESLint与TypeScript增强

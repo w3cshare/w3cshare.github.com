@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /docs/getting-started
+      link: ./docs/getting-started
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/w3cshare/micro-app-vap

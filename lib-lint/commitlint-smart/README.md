@@ -7,13 +7,13 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /lint/commitlint-smart/docs/quickstart
+      link: ./docs/quickstart
     - theme: alt
       text: 规范说明
-      link: /lint/commitlint-smart/docs/types
+      link: ./docs/types
     - theme: alt
       text: 配置指南
-      link: /lint/commitlint-smart/docs/configuration
+      link: ./docs/configuration
 features:
   - icon: 🚀
     title: 规范统一

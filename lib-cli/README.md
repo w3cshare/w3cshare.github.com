@@ -22,13 +22,13 @@ hero:
   actions:
     - theme: brand
       text: 工具总览
-      link: /cli/docs/overview
+      link: ./docs/overview
     - theme: alt
       text: 快速上手
-      link: /cli/docs/getting-started
+      link: ./docs/getting-started
     - theme: alt
       text: 插件开发
-      link: /cli/docs/plugin-development
+      link: ./docs/plugin-development
 features:
   - icon: 🏗️
     title: 智能代码生成器

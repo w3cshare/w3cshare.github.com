@@ -22,7 +22,7 @@ hero:
   actions:
     - theme: brand
       text: 应用概览
-      link: /apps/docs/overview
+      link: ./apps/docs/overview
 features:
   - icon: 🖥️
     title: 中后台项目

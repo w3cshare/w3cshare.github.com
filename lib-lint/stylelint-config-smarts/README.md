@@ -10,10 +10,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /lint/stylelint-config-smart/docs/开始使用
+      link: ./docs/开始使用
     - theme: alt
       text: 质量
-      link: /lint/stylelint-config-smart/docs/质量
+      link: ./docs/质量
 features:
   - icon: 🎭
     title: 样式规范化
