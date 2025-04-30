@@ -47,7 +47,7 @@ features:
     details: 与Husky、lint-staged、CI/CD管道无缝集成，确保规范在整个开发流程中的执行
 ---
 
-## &nbsp;
+### &nbsp;
 
 # 代码规范、质量检测、代码风格、提交规范等统一管理
 
