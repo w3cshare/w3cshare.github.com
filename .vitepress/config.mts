@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-30 17:52:18
+ * @LastEditTime: 2025-04-30 18:22:36
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -811,6 +811,36 @@ export default withMermaid(
                 link: '/lib-lint/stylelint-config-smart/docs/Vue框架支持',
               },
             ],
+          },
+        ],
+        '/apps-python/ocr-vlm/': [
+          {
+            text: '印章识别',
+            link: '/apps-python/ocr-vlm/README.md',
+          },
+          {
+            link: '/apps-python/ocr-vlm/docs/installation.md',
+            text: '环境安装',
+          },
+          {
+            link: '/apps-python/ocr-vlm/docs/models.md',
+            text: '模型列表',
+          },
+          {
+            link: '/apps-python/ocr-vlm/docs/architecture.md',
+            text: '架构设计',
+          },
+          {
+            link: '/apps-python/ocr-vlm/docs/training.md',
+            text: '模型训练',
+          },
+          {
+            link: '/apps-python/ocr-vlm/docs/labeling.md',
+            text: '数据标注',
+          },
+          {
+            link: '/apps-python/ocr-vlm/docs/api.md',
+            text: 'API接口',
           },
         ],
       },
