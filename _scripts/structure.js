@@ -10,6 +10,22 @@ const fs = require('fs')
 const { globSync } = require('glob')
 const path = require('path')
 
+// 从README.md文件中提取标题
+function extractTitleFromReadme(filePath) {
+  if (!fs.existsSync(filePath)) {
+    return ''
+  }
+
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8')
+    // 查找第一个 # 开头的行作为标题
+    const titleMatch = content.match(/^# (.+)$/m)
+    return titleMatch ? titleMatch[1].trim() : ''
+  } catch (e) {
+    return ''
+  }
+}
+
 // 生成目录结构文档
 function generateStructureDoc(basePath, outputPath) {
   const directories = globSync(path.join(basePath, '**/'), {
@@ -37,21 +53,9 @@ function generateStructureDoc(basePath, outputPath) {
         groups[groupName].push(dirName)
       }
 
-      // 读取 package.json 中的描述
-      const packagePath = path.join(dir, 'package.json')
-      if (fs.existsSync(packagePath)) {
-        try {
-          const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf-8'))
-          // ‘’暂无描述
-          descriptions[`${groupName}/${dirName}`] = packageJson.description || ''
-        } catch (e) {
-          // ‘’暂无描述
-          descriptions[`${groupName}/${dirName}`] = ''
-        }
-      } else {
-        // ‘’暂无描述
-        descriptions[`${groupName}/${dirName}`] = ''
-      }
+      // 读取 README.md 中的标题
+      const readmePath = path.join(dir, 'README.md')
+      descriptions[`${groupName}/${dirName}`] = extractTitleFromReadme(readmePath) || ''
     }
   })
 
@@ -107,21 +111,9 @@ try {
       parentDirs.add(parentDir)
     }
 
-    // 读取 package.json 中的描述
-    const packagePath = path.join(dir, 'package.json')
-    if (fs.existsSync(packagePath)) {
-      try {
-        const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf-8'))
-        // ‘’暂无描述
-        descriptions[`${groupName}/${dirName}`] = packageJson.description || ''
-      } catch (e) {
-        // ‘’暂无描述
-        descriptions[`${groupName}/${dirName}`] = ''
-      }
-    } else {
-      // ‘’暂无描述
-      descriptions[`${groupName}/${dirName}`] = ''
-    }
+    // 读取 README.md 中的标题
+    const readmePath = path.join(dir, 'README.md')
+    descriptions[`${groupName}/${dirName}`] = extractTitleFromReadme(readmePath) || ''
   })
 
   // 生成分组目录结构文档

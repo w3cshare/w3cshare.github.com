@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-27 23:20:29
+ * @LastEditTime: 2025-04-30 16:05:40
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -75,27 +75,27 @@ export default withMermaid(
               link: '/apps/google-tab-home/README.md',
             },
             { text: 'VSCode 低代码', link: '/apps/vscode-lowcode/README.md' },
-            { text: 'AI Agent', link: '/app/README.md' },
-            { text: 'Web3 以太坊', link: '/app/README.md' },
-            { text: 'iOS 端', link: '/app/README.md' },
+            { text: 'AI Agent', link: '/apps-native/README.md' },
+            { text: 'Web3 以太坊', link: '/apps-native/README.md' },
+            { text: 'iOS 端', link: '/apps-native/README.md' },
+            { text: '印章识别', link: '/apps-native/README.md' },
             {
               text: '商城微前端项目',
               items: [
                 {
                   text: '基座',
-                  link: '/app/README.md',
+                  link: '/apps-native/README.md',
                 },
                 {
                   text: '管理端',
-                  link: '/app/README.md',
+                  link: '/apps-native/README.md',
                 },
                 {
                   text: '商家端',
-                  link: '/app/README.md',
+                  link: '/apps-native/README.md',
                 },
               ],
             },
-            { text: '印章识别', link: '/apps/py-ocr/README.md' },
           ],
         },
         {
@@ -104,21 +104,21 @@ export default withMermaid(
             {
               text: 'Vue 组件',
               items: [
-                { text: '首页', link: '/package-vue/README.md' },
+                { text: '首页', link: '/lib-vue/README.md' },
                 {
-                  link: '/package-vue/ant-design-lib/README.md',
+                  link: '/lib-vue/ant-design-lib/README.md',
                   text: 'Ant Design 业务组件库',
                 },
                 {
-                  link: '/package-vue/element-ui-lib/README.md',
+                  link: '/lib-vue/element-ui-lib/README.md',
                   text: 'Element UI 业务组件库',
                 },
                 {
-                  link: '/package-vue/pure-ui-lib/README.md',
+                  link: '/lib-vue/pure-ui-lib/README.md',
                   text: 'Pure 业务组件库',
                 },
                 {
-                  link: '/package-vue/uniapp-lib/README.md',
+                  link: '/lib-vue/uniapp-lib/README.md',
                   text: 'UniApp 跨端组件库',
                 },
               ],
@@ -126,21 +126,21 @@ export default withMermaid(
             {
               text: 'React 组件',
               items: [
-                { link: '/package-react/README.md', text: '首页' },
+                { link: '/lib-react/README.md', text: '首页' },
                 {
-                  link: '/package-react/ant-design-lib/README.md',
+                  link: '/lib-react/ant-design-lib/README.md',
                   text: 'Ant Design 业务组件库',
                 },
                 {
-                  link: '/package-react/ant-design-web3-lib/README.md',
+                  link: '/lib-react/ant-design-web3-lib/README.md',
                   text: 'Web3 业务组件库',
                 },
                 {
-                  link: '/package-react/ant-design-x-lib/README.md',
+                  link: '/lib-react/ant-design-x-lib/README.md',
                   text: 'AI 业务组件库',
                 },
                 {
-                  link: '/package-react/taro-ui-lib/README.md',
+                  link: '/lib-react/taro-ui-lib/README.md',
                   text: 'taroJs 业务组件库',
                 },
               ],
@@ -152,11 +152,11 @@ export default withMermaid(
           items: [
             {
               text: '首页',
-              link: '/package-nest/README.md',
+              link: '/lib-nest/README.md',
             },
             {
               text: 'Swagger 组件',
-              link: '/package-nest/nestjs-swagger/README.md',
+              link: '/lib-nest/nestjs-swagger/README.md',
             },
           ],
         },
@@ -479,11 +479,11 @@ export default withMermaid(
           {
             text: 'NestJS 包',
             items: [
-              { text: '概述', link: '/package-nest/README.md' },
-              { text: '组件概览', link: '/package-nest/docs/overview' },
+              { text: '概述', link: '/lib-nest/README.md' },
+              { text: '组件概览', link: '/lib-nest/docs/overview' },
               {
                 text: '项目结构',
-                link: '/package-nest/docs/project-structure',
+                link: '/lib-nest/docs/project-structure',
               },
             ],
           },
@@ -492,23 +492,23 @@ export default withMermaid(
             items: [
               {
                 text: 'Swagger 文档组件',
-                link: '/package-nest/nestjs-swagger/README.md',
+                link: '/lib-nest/nestjs-swagger/README.md',
               },
               {
                 text: '配置中心组件',
-                link: '/package-nest/nestjs-config/README.md',
+                link: '/lib-nest/nestjs-config/README.md',
               },
               {
                 text: '日志组件',
-                link: '/package-nest/nestjs-logger/README.md',
+                link: '/lib-nest/nestjs-logger/README.md',
               },
               {
                 text: '静态资源组件',
-                link: '/package-nest/nestjs-static/README.md',
+                link: '/lib-nest/nestjs-static/README.md',
               },
               {
                 text: 'gRPC Proto 包',
-                link: '/package-nest/grpc-proto-pkg/README.md',
+                link: '/lib-nest/grpc-proto-pkg/README.md',
               },
             ],
           },
@@ -517,19 +517,19 @@ export default withMermaid(
             items: [
               {
                 text: 'Fastify 静态资源',
-                link: '/package-nest/fastify-static/README.md',
+                link: '/lib-nest/fastify-static/README.md',
               },
               {
                 text: 'Koa 静态资源',
-                link: '/package-nest/koa-static/README.md',
+                link: '/lib-nest/koa-static/README.md',
               },
               {
                 text: 'Koa 上传组件',
-                link: '/package-nest/koa-upload/README.md',
+                link: '/lib-nest/koa-upload/README.md',
               },
               {
                 text: 'Egg 静态资源',
-                link: '/package-nest/egg-static/README.md',
+                link: '/lib-nest/egg-static/README.md',
               },
             ],
           },
@@ -540,14 +540,14 @@ export default withMermaid(
           {
             text: 'React 组件库',
             items: [
-              { text: '概述', link: '/package-react/README.md' },
-              { text: '快速开始', link: '/package-react/docs/getting-started' },
-              { text: '组件总览', link: '/package-react/docs/components' },
-              { text: '设计规范', link: '/package-react/docs/design' },
-              { text: '主题定制', link: '/package-react/docs/theming' },
+              { text: '概述', link: '/lib-react/README.md' },
+              { text: '快速开始', link: '/lib-react/docs/getting-started' },
+              { text: '组件总览', link: '/lib-react/docs/components' },
+              { text: '设计规范', link: '/lib-react/docs/design' },
+              { text: '主题定制', link: '/lib-react/docs/theming' },
               {
                 text: '项目结构',
-                link: '/package-react/docs/project-structure',
+                link: '/lib-react/docs/project-structure',
               },
             ],
           },
@@ -556,19 +556,19 @@ export default withMermaid(
             items: [
               {
                 text: 'Ant Design 业务组件库',
-                link: '/package-react/ant-design-lib/README.md',
+                link: '/lib-react/ant-design-lib/README.md',
               },
               {
                 text: 'Ant Design Web3 组件库',
-                link: '/package-react/ant-design-web3-lib/README.md',
+                link: '/lib-react/ant-design-web3-lib/README.md',
               },
               {
                 text: 'Ant Design AI 组件库',
-                link: '/package-react/ant-design-x-lib/README.md',
+                link: '/lib-react/ant-design-x-lib/README.md',
               },
               {
                 text: 'Taro UI 组件库',
-                link: '/package-react/taro-ui-lib/README.md',
+                link: '/lib-react/taro-ui-lib/README.md',
               },
             ],
           },
@@ -579,12 +579,12 @@ export default withMermaid(
           {
             text: 'Vue 组件库',
             items: [
-              { text: '概述', link: '/package-vue/README.md' },
-              { text: '快速开始', link: '/package-vue/docs/getting-started' },
-              { text: '组件总览', link: '/package-vue/docs/components' },
-              { text: '设计规范', link: '/package-vue/docs/design' },
-              { text: '主题定制', link: '/package-vue/docs/theming' },
-              { text: '项目结构', link: '/package-vue/docs/project-structure' },
+              { text: '概述', link: '/lib-vue/README.md' },
+              { text: '快速开始', link: '/lib-vue/docs/getting-started' },
+              { text: '组件总览', link: '/lib-vue/docs/components' },
+              { text: '设计规范', link: '/lib-vue/docs/design' },
+              { text: '主题定制', link: '/lib-vue/docs/theming' },
+              { text: '项目结构', link: '/lib-vue/docs/project-structure' },
             ],
           },
           {
@@ -592,19 +592,19 @@ export default withMermaid(
             items: [
               {
                 text: 'Ant Design 业务组件库',
-                link: '/package-vue/ant-design-lib/README.md',
+                link: '/lib-vue/ant-design-lib/README.md',
               },
               {
                 text: 'Element UI 业务组件库',
-                link: '/package-vue/element-ui-lib/README.md',
+                link: '/lib-vue/element-ui-lib/README.md',
               },
               {
                 text: 'Pure 业务组件库',
-                link: '/package-vue/pure-ui-lib/README.md',
+                link: '/lib-vue/pure-ui-lib/README.md',
               },
               {
                 text: 'UniApp 跨端组件库',
-                link: '/package-vue/uniapp-lib/README.md',
+                link: '/lib-vue/uniapp-lib/README.md',
               },
             ],
           },
