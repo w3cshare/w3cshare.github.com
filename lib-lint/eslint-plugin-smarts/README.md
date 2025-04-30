@@ -35,7 +35,7 @@ features:
     details: 内置 Prettier 支持，确保代码风格一致性和格式化规范
 ---
 
-# &nbsp;
+## &nbsp;
 
 # eslint-plugin-smarts
 

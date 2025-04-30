@@ -1,4 +1,4 @@
-# `@smarts-isoftstone/vue-template`
+# vue工程模板 for `@smarts-isoftstone/vue-template`
 
 > TODO: description
 

@@ -43,7 +43,9 @@ PPOCRLabel --lang en  # 英文界面
 5. 点击【下一张】继续标注
 6. 标注完成后，点击【保存】生成标注文件
 
-![文本检测标注演示](./img/det_labeling.png)
+![文本检测标注演示](../images/det_labeling.png)
+
+*注：图片无法显示时，可访问PaddleOCR官方文档查看相关截图*
 
 标注快捷键：
 - 鼠标左键：绘制标注框
@@ -63,7 +65,9 @@ PPOCRLabel --lang en  # 英文界面
 4. 填写印章文本内容
 5. 继续标注下一个区域
 
-![印章标注演示](./img/seal_labeling.png)
+![印章标注演示](../images/seal_labeling.png)
+
+*注：图片无法显示时，可参考PaddleOCR GitHub仓库中的印章标注示例*
 
 ### 3. 表格结构标注
 
@@ -75,7 +79,9 @@ PPOCRLabel --lang en  # 英文界面
 4. 调整单元格位置
 5. 点击【导出HTML】生成表格结构文件
 
-![表格标注演示](./img/table_labeling.png)
+![表格标注演示](../images/table_labeling.png)
+
+*注：图片无法显示时，可查看PaddleOCR官方文档中的表格标注指南*
 
 表格标注快捷键：
 - Ctrl+L：添加行
@@ -179,7 +185,9 @@ PPOCRLabel支持半自动标注功能，可预先使用模型识别，再人工�
 3. 人工校正错误的标注结果
 4. 继续下一张图片标注
 
-![半自动标注演示](./img/auto_labeling.png)
+![半自动标注演示](../images/auto_labeling.png)
+
+*注：如需了解半自动标注的详细操作，请参考PaddleOCR官方文档*
 
 ## 数据版本管理
 

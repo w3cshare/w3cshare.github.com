@@ -36,6 +36,7 @@ function generateStructureDoc(basePath, outputPath) {
   // 创建目录分组结构
   const groups = {}
   const descriptions = {}
+  const groupDescriptions = {} // 存储二级目录的描述
 
   directories.forEach(dir => {
     // 跳过根目录
@@ -44,18 +45,28 @@ function generateStructureDoc(basePath, outputPath) {
     const relativePath = path.relative(basePath, dir)
     const parts = relativePath.split(path.sep)
 
-    if (parts.length > 1) {
-      const groupName = parts[0]
-      const dirName = parts[1]
-
-      groups[groupName] = groups[groupName] || []
-      if (!groups[groupName].includes(dirName)) {
-        groups[groupName].push(dirName)
+    if (parts.length > 0) {
+      // 为一级目录（如apps、libs等）提取描述
+      if (parts.length === 1) {
+        const groupName = parts[0]
+        // 读取二级目录 README.md 中的标题作为描述
+        const readmePath = path.join(dir, 'README.md')
+        groupDescriptions[groupName] = extractTitleFromReadme(readmePath) || ''
       }
+      
+      if (parts.length > 1) {
+        const groupName = parts[0]
+        const dirName = parts[1]
 
-      // 读取 README.md 中的标题
-      const readmePath = path.join(dir, 'README.md')
-      descriptions[`${groupName}/${dirName}`] = extractTitleFromReadme(readmePath) || ''
+        groups[groupName] = groups[groupName] || []
+        if (!groups[groupName].includes(dirName)) {
+          groups[groupName].push(dirName)
+        }
+
+        // 读取 README.md 中的标题
+        const readmePath = path.join(dir, 'README.md')
+        descriptions[`${groupName}/${dirName}`] = extractTitleFromReadme(readmePath) || ''
+      }
     }
   })
 
@@ -69,6 +80,7 @@ ${Object.entries(groups)
   .map(([group, items]) => {
     const groupPrefix = '├── '
     const itemPrefix = '│   '
+    const groupDesc = groupDescriptions[group] || ''
     const treeItems = items
       .map((item, index) => {
         const isLast = index === items.length - 1
@@ -77,7 +89,7 @@ ${Object.entries(groups)
         return `${prefix}${item}${desc ? ` // ${desc}` : ''}`
       })
       .join('\n')
-    return `${groupPrefix}${group}/\n${treeItems}`
+    return `${groupPrefix}${group}${groupDesc ? ` // ${groupDesc}` : ''}/\n${treeItems}`
   })
   .join('\n')}
 
@@ -97,6 +109,7 @@ try {
   // 创建目录分组结构
   const groups = {}
   const descriptions = {}
+  const groupDescriptions = {} // 存储二级目录的描述
   const parentDirs = new Set() // 用于存储上级目录路径
 
   directories.forEach(dir => {
@@ -109,6 +122,10 @@ try {
     const parentDir = path.dirname(dir)
     if (!parentDirs.has(parentDir)) {
       parentDirs.add(parentDir)
+      
+      // 读取二级目录 README.md 中的标题作为描述
+      const readmePath = path.join(parentDir, 'README.md')
+      groupDescriptions[groupName] = extractTitleFromReadme(readmePath) || ''
     }
 
     // 读取 README.md 中的标题
@@ -125,6 +142,7 @@ ${Object.entries(groups)
   .map(([group, items]) => {
     const groupPrefix = '├── '
     const itemPrefix = '│   '
+    const groupDesc = groupDescriptions[group] || ''
     const treeItems = items
       .map((item, index) => {
         const isLast = index === items.length - 1
@@ -133,7 +151,7 @@ ${Object.entries(groups)
         return `${prefix}${item}${desc ? ` // ${desc}` : ''}`
       })
       .join('\n')
-    return `${groupPrefix}${group}/\n${treeItems}`
+    return `${groupPrefix}${group}${groupDesc ? ` // ${groupDesc}` : ''}/\n${treeItems}`
   })
   .join('\n')}
 \`\`\``

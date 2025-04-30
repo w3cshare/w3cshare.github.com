@@ -35,9 +35,9 @@ features:
     details: 预设合理的配置，安装后即可使用，无需复杂设置
 ---
 
-# &nbsp;
+## &nbsp;
 
-# commitlint-smarts
+# 提交规范工具 for commitlint-smarts
 
 commitlint-smarts 是一个为公司内部项目设计的 Git 提交信息规范配置，基于 Conventional Commits 规范，并进行了扩展和定制。此配置旨在统一团队的 Git 提交信息格式，提高代码历史的可读性和可追溯性。
 

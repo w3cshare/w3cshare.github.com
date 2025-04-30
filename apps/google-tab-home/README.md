@@ -1,4 +1,4 @@
-# Google 标签页首页扩展
+# Google标签页首页扩展
 
 一个简洁美观的浏览器标签页首页，支持自定义背景、搜索引擎、快捷方式等功能。基于TypeScript和Vite构建。
 
@@ -91,41 +91,41 @@ pnpm run preview
 ### 基本用法
 
 ```javascript
-import { initTabHome } from "google-tab-home";
+import { initTabHome } from 'google-tab-home'
 
 // 初始化标签页
 initTabHome({
-  container: "#app",
+  container: '#app',
   config: {
     weatherEnabled: true,
     searchEnabled: true,
-    customBackground: "https://example.com/background.jpg",
+    customBackground: 'https://example.com/background.jpg',
   },
-});
+})
 ```
 
 ### 完整配置示例
 
 ```javascript
 const tabHome = initTabHome({
-  container: document.getElementById("app"),
+  container: document.getElementById('app'),
   config: {
     weatherEnabled: true,
     searchEnabled: true,
-    customBackground: "https://example.com/background.jpg",
+    customBackground: 'https://example.com/background.jpg',
   },
-});
+})
 
 // 更新设置
 tabHome.updateSettings({
   shortcuts: [
     {
-      name: "自定义网站",
-      url: "https://example.com",
-      icon: "https://example.com/favicon.ico",
+      name: '自定义网站',
+      url: 'https://example.com',
+      icon: 'https://example.com/favicon.ico',
     },
   ],
-});
+})
 ```
 
 ## ⚙️ 自定义设置

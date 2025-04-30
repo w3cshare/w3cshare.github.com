@@ -32,7 +32,7 @@ features:
     details: 提供企业级代码风格标准，适配不同项目类型
 ---
 
-# &nbsp;
+## &nbsp;
 
 # prettier-plugin-smarts
 

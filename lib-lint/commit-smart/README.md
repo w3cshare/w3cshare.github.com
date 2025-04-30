@@ -1,4 +1,4 @@
-# `commit-smart`
+# 提交规范工具 for `commit-smart`
 
 > TODO: description
 

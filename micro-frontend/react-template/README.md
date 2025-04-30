@@ -1,4 +1,4 @@
-# `@smarts-isoftstone/react-template`
+# react工程模板 for `@smarts-isoftstone/react-template`
 
 > TODO: description
 

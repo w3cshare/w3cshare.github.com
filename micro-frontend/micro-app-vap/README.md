@@ -1,12 +1,3 @@
-<!--
- * @Author: wangwei wwdqq7@qq.com
- * @Date: 2025-04-14 11:14:30
- * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-20 16:12:24
- * @FilePath: /FullStack/micro-frontend/micro-app-vap/README.md
- * @Description: vite react ts for @ant-design/pro-components and @ant-design/x
--->
-
 # Micro App VAP
 
 > 参考文档：https://github.com/ant-design/ant-design-pro-layout

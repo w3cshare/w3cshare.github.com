@@ -1,12 +1,3 @@
-<!--
- * @Author: wangwei wwdqq7@qq.com
- * @Date: 2025-04-14 22:39:20
- * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-27 17:40:33
- * @FilePath: /FullStack/micro-frontend/micro-app-vue/README.md
- * @Description:
--->
-
 # micro-app-vue
 
 This template should help get you started developing with Vue 3 in Vite.

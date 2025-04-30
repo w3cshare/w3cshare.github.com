@@ -80,6 +80,8 @@ PaddleXOCR是一套基于飞桨PaddlePaddle的文档场景信息抽取系统，�
 - [架构设计](./docs/architecture.md)
 - [模型训练指南](./docs/training.md)
 - [数据标注工具](./docs/labeling.md)
+- [模型部署指南](./docs/deployment.md)
+- [DOCX图片提取](./docs/image_extraction.md)
 - [API接口](./docs/api.md)
 
 ## 许可证
