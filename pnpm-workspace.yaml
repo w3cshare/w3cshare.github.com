@@ -1,14 +1,16 @@
 packages:
-  - 'app/*'
-  - 'cli/*'
-  - 'lint/*'
-  - 'micro-frontend/*'
-  - 'micro-service/*'
-  - 'package-nest/*'
-  - 'package-react/*'
-  - 'package-vue/*'
-  - 'packages/*'
-  - '.temp/*'
+  - "apps/*"
+  - "lib-cli/*"
+  - "lib-lint/*"
+  - "lib-mcp/*"
+  - "lib-nest/*"
+  - "lib-react/*"
+  - "lib-vue/*"
+  - "libs/*"
+  - "micro-frontend/*"
+  - "micro-service/*"
+  - "packages/*"
+  - ".temp/*"
 linkWorkspacePackages: true
 # publish: registry
 # strict: true
