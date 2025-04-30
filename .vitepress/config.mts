@@ -95,6 +95,7 @@ export default withMermaid(
                 },
               ],
             },
+            { text: '印章识别', link: '/apps/py-ocr/README.md' },
           ],
         },
         {

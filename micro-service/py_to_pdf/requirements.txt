@@ -1,0 +1,6 @@
+
+# pip freeze > requirements.txt
+
+-i https://pypi.tuna.tsinghua.edu.cn/simple
+
+weasyprint==65.1

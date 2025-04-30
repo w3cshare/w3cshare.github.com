@@ -105,3 +105,6 @@
 - 以上四类插件的功能实现是一样的，只是包名不一样，所以每次更新都同步更新一下相关代码和文档
 
 ---
+
+
+pip install 时必须带上 `-i https://pypi.tuna.tsinghua.edu.cn/simple`

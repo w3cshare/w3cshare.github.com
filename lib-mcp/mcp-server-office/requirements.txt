@@ -1,0 +1,4 @@
+
+-i https://pypi.tuna.tsinghua.edu.cn/simple
+
+mcp-server-office==0.2.0
