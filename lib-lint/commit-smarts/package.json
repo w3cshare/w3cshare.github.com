@@ -22,5 +22,10 @@
   },
   "bugs": {
     "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
+  },
+  "devDependencies": {
+    "eslint": "9.25.1",
+    "eslint-plugin-smart": "workspace:^",
+    "prettier": "3.5.3"
   }
 }

@@ -36,7 +36,6 @@
     "react"
   ],
   "dependencies": {
-    "prettier": "^3.1.0",
     "sort-package-json": "^2.6.0",
     "tsup": "^8.4.0"
   },
@@ -46,6 +45,9 @@
   "devDependencies": {
     "@types/node": "^20.9.2",
     "@types/prettier": "^3.0.0",
+    "eslint": "9.25.1",
+    "eslint-plugin-smart": "workspace:^",
+    "prettier": "^3.5.3",
     "typescript": "^5.2.2"
   }
 }

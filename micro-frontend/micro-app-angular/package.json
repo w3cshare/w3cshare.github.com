@@ -34,9 +34,10 @@
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
-    "eslint": "^9.25.0",
+    "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
@@ -44,6 +45,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "3.5.3",
     "typescript": "~5.7.2"
   }
 }
