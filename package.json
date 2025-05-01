@@ -97,6 +97,8 @@
     "stylelint": "15.11.0",
     "stylelint-config-smart": "workspace:^",
     "vitepress": "^1.6.3",
+    "dayjs": "^1.11.13",
+    "debug": "^4.4.0",
     "vitepress-plugin-mermaid": "^2.0.17"
   },
   "keywords": [
@@ -111,9 +113,5 @@
   "engines": {
     "node": ">=16",
     "pnpm": ">=8"
-  },
-  "dependencies": {
-    "dayjs": "^1.11.13",
-    "debug": "^4.4.0"
   }
 }
