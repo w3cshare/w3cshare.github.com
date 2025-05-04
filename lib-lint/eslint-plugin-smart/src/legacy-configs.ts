@@ -2,12 +2,12 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:42:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-28 03:04:31
+ * @LastEditTime: 2025-05-04 22:33:23
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/legacy-configs.ts
  * @Description: ESLint v8及以下版本的传统配置
  */
 
-import type { ESLintRuleSet, LoadedPlugins } from './types'
+import type { ESLintPluginExport, ESLintRuleSet, LoadedPlugins } from './types'
 
 /**
  * 创建ESLint v8及以下版本的传统配置
@@ -26,7 +26,7 @@ export function createLegacyConfigs(
     typescriptRules: ESLintRuleSet
     vueRules: ESLintRuleSet
   },
-): Record<string, unknown> {
+): ESLintPluginExport['configs'] {
   const {
     import: importPlugin,
     simpleImportSort: simpleImportSortPlugin,

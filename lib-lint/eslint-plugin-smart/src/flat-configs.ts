@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:40:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-28 12:18:14
+ * @LastEditTime: 2025-05-04 22:28:33
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/flat-configs.ts
  * @Description: ESLint v9 扁平配置
  *
@@ -22,7 +22,12 @@ import {
   typescriptRules,
   vueRules,
 } from './recommend'
-import { type ESLintRuleSet, type FlatConfig, type LoadedPlugins } from './types'
+import {
+  type ESLintPluginExport,
+  type ESLintRuleSet,
+  type FlatConfig,
+  type LoadedPlugins,
+} from './types'
 import { isObject } from './utils'
 
 /**
@@ -31,7 +36,7 @@ import { isObject } from './utils'
  * @param plugins 加载的ESLint插件
  * @returns ESLint v9扁平配置对象集合
  */
-export function createFlatConfigs(plugins: LoadedPlugins): Record<string, FlatConfig[]> {
+export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['configs'] {
   const {
     import: importPlugin,
     simpleImportSort: simpleImportSortPlugin,

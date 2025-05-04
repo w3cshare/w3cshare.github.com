@@ -2,30 +2,92 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-30 18:22:36
+ * @LastEditTime: 2025-05-04 23:52:09
  * @FilePath: /FullStack/.vitepress/config.ts
- * @Description:
+ * @Description: VitePress 配置文件 - 优化版
  */
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
+import { readdirSync, statSync } from 'fs'
+import { join, resolve } from 'path'
+
+// 自动扫描 Monorepo 包目录
+const scanMonorepoPackages = basePath => {
+  try {
+    return readdirSync(basePath)
+      .filter(dir => statSync(join(basePath, dir)).isDirectory())
+      .filter(dir => !dir.startsWith('_') && !dir.startsWith('.'))
+  } catch (e) {
+    console.warn(`无法扫描目录 ${basePath}:`, e.message)
+    return []
+  }
+}
+
+// 动态生成包的侧边栏配置
+const generatePackageSidebar = (packageName, path) => {
+  const defaultItems = [
+    { text: '概述', link: `/${path}/${packageName}/README.md` },
+    { text: '快速开始', link: `/${path}/${packageName}/docs/getting-started` },
+    { text: '项目结构', link: `/${path}/${packageName}/docs/project-structure` },
+  ]
+
+  return [
+    {
+      text: packageName,
+      items: defaultItems,
+    },
+  ]
+}
+
+// 扫描特定目录下的所有包
+const appPackages = scanMonorepoPackages(resolve(__dirname, '../apps'))
+const libReactPackages = scanMonorepoPackages(resolve(__dirname, '../lib-react'))
+const libVuePackages = scanMonorepoPackages(resolve(__dirname, '../lib-vue'))
+const microServicePackages = scanMonorepoPackages(resolve(__dirname, '../micro-service'))
+const microFrontendPackages = scanMonorepoPackages(resolve(__dirname, '../micro-frontend'))
+
+// 自动生成侧边栏配置
+const generateSidebars = () => {
+  const sidebars = {
+    '/': [
+      {
+        text: '指南',
+        items: [
+          { text: '快速开始', link: '/docs/getting-started' },
+          { text: '架构设计', link: '/docs/architecture' },
+          { text: '目录结构', link: '/docs/directory-structure' },
+          { text: '开发规范', link: '/docs/development-standards' },
+          { text: '部署方案', link: '/docs/deployment' },
+          { text: 'PNPM 指南', link: '/docs/pnpm-workspace-guide' },
+          { text: 'Monorepo指南', link: '/docs/monorepo-guide' },
+        ],
+      },
+    ],
+  }
+
+  // ... 其他侧边栏配置保持不变
+
+  return sidebars
+}
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid(
   defineConfig({
     title: '全栈开发文档',
     description: '基于 Monorepo 的全栈开发项目文档',
-    keywords: ['全栈开发', 'Monorepo', '微前端', '微服务', 'AI', '区块链', 'TypeScript'],
     lang: 'zh-CN',
     locales: {
       '/': {
         lang: 'zh-CN',
         title: '全栈开发文档',
         description: '基于 Monorepo 的全栈开发项目文档',
+        label: '简体中文',
       },
       '/en/': {
         lang: 'en-US',
         title: 'FullStack Development Docs',
         description: 'Monorepo based fullstack development project documentation',
+        label: 'English',
       },
     },
     lastUpdated: true,
@@ -40,6 +102,11 @@ export default withMermaid(
     // 重写规则
     rewrites: {
       'README.md': 'index.md',
+      // 简化rewrites规则，避免复杂的路径模式
+      'apps/:path/README.md': 'apps/:path/index.md',
+      'lib-:type/:path/README.md': 'lib-:type/:path/index.md',
+      'micro-:type/:path/README.md': 'micro-:type/:path/index.md',
+      'packages/:path/README.md': 'packages/:path/index.md',
     },
 
     // markdown 配置
@@ -62,6 +129,7 @@ export default withMermaid(
     // 首页配置
     themeConfig: {
       siteTitle: '阿伟的开发文档',
+      logo: '/_public/logo.png',
 
       // 导航栏配置
       nav: [
@@ -280,11 +348,6 @@ export default withMermaid(
                   link: '/micro-service/nest-template/README.md',
                   text: 'NestJS 模板',
                 },
-                // {
-                //   text: 'Python',
-                //   items: [
-                //   ],
-                // },
               ],
             },
           ],
@@ -340,10 +403,15 @@ export default withMermaid(
             },
           ],
         },
+        {
+          text: 'Monorepo指南',
+          link: '/docs/monorepo-guide',
+        },
       ],
 
-      // 侧边栏配置
+      // 侧边栏配置 - 合并动态生成的部分和静态配置
       sidebar: {
+        // 主页侧边栏
         '/': [
           {
             text: '指南',
@@ -354,6 +422,8 @@ export default withMermaid(
               { text: '开发规范', link: '/docs/development-standards' },
               { text: '部署方案', link: '/docs/deployment' },
               { text: 'PNPM 指南', link: '/docs/pnpm-workspace-guide' },
+              { text: 'Monorepo指南', link: '/docs/monorepo-guide' },
+              { text: 'Lerna+Nx指南', link: '/docs/lerna-nx-guide' },
             ],
           },
         ],
@@ -729,10 +799,69 @@ export default withMermaid(
           },
         ],
 
-        // 规范文档 (lint 部分 - 已存在，保留)
-        '/lint/commitlint-smart/': [
+        // 规范文档 (lib-lint 部分)
+        '/lib-lint/': [
           {
-            text: 'Commitlint 指南',
+            text: '规范总览',
+            items: [
+              { text: '概述', link: '/lib-lint/README.md' },
+              { text: '快速开始', link: '/lib-lint/docs/getting-started' },
+              { text: '规范目录', link: '/lib-lint/docs/linting-guide' },
+            ],
+          },
+          {
+            text: 'ESLint 规范',
+            items: [
+              { text: '概述', link: '/lib-lint/eslint-plugin-smart/README.md' },
+              {
+                text: '快速开始',
+                link: '/lib-lint/eslint-plugin-smart/docs/快速开始',
+              },
+              { text: '质量', link: '/lib-lint/eslint-plugin-smart/docs/质量' },
+              {
+                text: '常见问题',
+                link: '/lib-lint/eslint-plugin-smart/docs/常见问题',
+              },
+            ],
+          },
+          {
+            text: 'Prettier 规范',
+            items: [
+              { text: '概述', link: '/lib-lint/prettier-plugin-smart/README.md' },
+              {
+                text: '开始使用',
+                link: '/lib-lint/prettier-plugin-smart/docs/开始使用',
+              },
+              {
+                text: 'TypeScript支持',
+                link: '/lib-lint/prettier-plugin-smart/docs/TypeScript支持',
+              },
+              {
+                text: 'JSON自动排序',
+                link: '/lib-lint/prettier-plugin-smart/docs/JSON自动排序',
+              },
+            ],
+          },
+          {
+            text: 'Stylelint 规范',
+            items: [
+              { text: '概述', link: '/lib-lint/stylelint-config-smart/README.md' },
+              {
+                text: '开始使用',
+                link: '/lib-lint/stylelint-config-smart/docs/开始使用',
+              },
+              {
+                text: 'Less支持',
+                link: '/lib-lint/stylelint-config-smart/docs/Less支持',
+              },
+              {
+                text: 'Vue框架支持',
+                link: '/lib-lint/stylelint-config-smart/docs/Vue框架支持',
+              },
+            ],
+          },
+          {
+            text: 'Commitlint 规范',
             items: [
               { text: '概述', link: '/lib-lint/commitlint-smart/README.md' },
               {
@@ -756,98 +885,101 @@ export default withMermaid(
             ],
           },
         ],
-        '/lint/eslint-plugin-smart/': [
+
+        // Python 应用文档
+        '/apps-python/': [
           {
-            text: 'ESLint 插件指南',
+            text: 'Python 应用',
             items: [
-              { text: '概述', link: '/lib-lint/eslint-plugin-smart/README.md' },
-              {
-                text: '快速开始',
-                link: '/lib-lint/eslint-plugin-smart/docs/快速开始',
-              },
-              { text: '质量', link: '/lib-lint/eslint-plugin-smart/docs/质量' },
-              {
-                text: '常见问题',
-                link: '/lib-lint/eslint-plugin-smart/docs/常见问题',
-              },
+              { text: '概述', link: '/apps-python/README.md' },
+              { text: '环境配置', link: '/apps-python/docs/environment' },
             ],
           },
-        ],
-        '/lint/prettier-plugin-smart/': [
-          {
-            text: 'Prettier 插件指南',
-            items: [
-              { text: '概述', link: '/lib-lint/prettier-plugin-smart/README.md' },
-              {
-                text: '开始使用',
-                link: '/lib-lint/prettier-plugin-smart/docs/开始使用',
-              },
-              {
-                text: 'TypeScript支持',
-                link: '/lib-lint/prettier-plugin-smart/docs/TypeScript支持',
-              },
-              {
-                text: 'JSON自动排序',
-                link: '/lib-lint/prettier-plugin-smart/docs/JSON自动排序',
-              },
-            ],
-          },
-        ],
-        '/lint/stylelint-config-smart/': [
-          {
-            text: 'Stylelint 配置指南',
-            items: [
-              { text: '概述', link: '/lib-lint/stylelint-config-smart/README.md' },
-              {
-                text: '开始使用',
-                link: '/lib-lint/stylelint-config-smart/docs/开始使用',
-              },
-              {
-                text: 'Less支持',
-                link: '/lib-lint/stylelint-config-smart/docs/Less支持',
-              },
-              {
-                text: 'Vue框架支持',
-                link: '/lib-lint/stylelint-config-smart/docs/Vue框架支持',
-              },
-            ],
-          },
-        ],
-        '/apps-python/ocr-vlm/': [
           {
             text: '印章识别',
-            link: '/apps-python/ocr-vlm/README.md',
+            items: [
+              {
+                text: '概述',
+                link: '/apps-python/ocr-vlm/README.md',
+              },
+              {
+                link: '/apps-python/ocr-vlm/docs/installation.md',
+                text: '环境安装',
+              },
+              {
+                link: '/apps-python/ocr-vlm/docs/models.md',
+                text: '模型列表',
+              },
+              {
+                link: '/apps-python/ocr-vlm/docs/architecture.md',
+                text: '架构设计',
+              },
+              {
+                link: '/apps-python/ocr-vlm/docs/training.md',
+                text: '模型训练',
+              },
+              {
+                link: '/apps-python/ocr-vlm/docs/labeling.md',
+                text: '数据标注',
+              },
+              {
+                link: '/apps-python/ocr-vlm/docs/api.md',
+                text: 'API接口',
+              },
+            ],
           },
           {
-            link: '/apps-python/ocr-vlm/docs/installation.md',
-            text: '环境安装',
+            text: 'PDF工具',
+            items: [
+              {
+                text: 'PDF压缩',
+                link: '/apps-python/pdf-compressed/README.md',
+              },
+              {
+                text: 'Markdown转PDF',
+                link: '/apps-python/md-pdf/README.md',
+              },
+            ],
           },
+        ],
+
+        // Monorepo指南
+        '/docs/': [
           {
-            link: '/apps-python/ocr-vlm/docs/models.md',
-            text: '模型列表',
-          },
-          {
-            link: '/apps-python/ocr-vlm/docs/architecture.md',
-            text: '架构设计',
-          },
-          {
-            link: '/apps-python/ocr-vlm/docs/training.md',
-            text: '模型训练',
-          },
-          {
-            link: '/apps-python/ocr-vlm/docs/labeling.md',
-            text: '数据标注',
-          },
-          {
-            link: '/apps-python/ocr-vlm/docs/api.md',
-            text: 'API接口',
+            text: 'Monorepo指南',
+            items: [
+              { text: '概述', link: '/docs/monorepo-guide' },
+              { text: 'Lerna+Nx指南', link: '/docs/lerna-nx-guide' },
+              { text: 'PNPM工作空间', link: '/docs/pnpm-workspace-guide' },
+            ],
           },
         ],
       },
 
-      // 搜索配置
+      // 搜索配置增强
       search: {
         provider: 'local',
+        options: {
+          locales: {
+            zh: {
+              translations: {
+                button: {
+                  buttonText: '搜索文档',
+                  buttonAriaLabel: '搜索文档',
+                },
+                modal: {
+                  noResultsText: '无法找到相关结果',
+                  resetButtonTitle: '清除查询条件',
+                  footer: {
+                    selectText: '选择',
+                    navigateText: '切换',
+                    closeText: '关闭',
+                  },
+                },
+              },
+            },
+          },
+        },
       },
 
       // 社交链接
@@ -861,8 +993,43 @@ export default withMermaid(
       // 页脚配置
       footer: {
         message: '基于 MIT 许可发布',
-        copyright: `Copyright © ${new Date().getFullYear()}`,
+        copyright: `Copyright © ${new Date().getFullYear()} 阿伟的开发文档`,
       },
+
+      // 文档更新时间显示格式
+      lastUpdatedText: '上次更新',
+
+      // 其他主题配置
+      outline: {
+        level: 'deep',
+        label: '目录',
+      },
+
+      docFooter: {
+        prev: '上一页',
+        next: '下一页',
+      },
+
+      darkModeSwitchLabel: '外观',
+      sidebarMenuLabel: '菜单',
+      returnToTopLabel: '返回顶部',
     },
+
+    // 头部配置
+    head: [
+      ['link', { rel: 'icon', href: '/_public/logo.png' }],
+      ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+      ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+      ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
+      ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+      [
+        'meta',
+        {
+          name: 'keywords',
+          content: '全栈开发,Monorepo,Lerna,Nx,pnpm,Workspace,微前端,微服务,AI,区块链,TypeScript',
+        },
+      ],
+    ],
   }),
 )

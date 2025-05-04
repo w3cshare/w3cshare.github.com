@@ -306,8 +306,8 @@ export const javascriptRules: ESLintRuleSet = {
    */
   /*
    * 对象排序
-   * 'sort-keys-fix/sort-keys-fix': 'warn',
-   */
+  */
+  'sort-keys-fix/sort-keys-fix': 'error',
   // 'sort-keys-fix/sort-keys-fix': ['error', 'asc', { caseSensitive: false }], // 按升序排序，忽略大小写
 
   // ==================三方插件规则 END==================

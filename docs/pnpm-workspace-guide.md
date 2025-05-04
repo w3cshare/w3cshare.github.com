@@ -1,311 +1,269 @@
-# PNPM 工作区依赖安装指南
+# PNPM Workspace 指南
 
-## 常见问题与解决方案
+> 本指南详细介绍如何在 Monorepo 项目中使用 pnpm 工作空间功能
 
-### 作用域包名安装问题
+## pnpm 简介
 
-在使用 pnpm 工作区安装带有 `@` 作用域的包时，可能会遇到 shell 解析问题，导致依赖安装失败。这是因为 `@` 符号在某些 shell 环境中有特殊含义。
+[pnpm](https://pnpm.io/) 是一个快速、节省磁盘空间的包管理器，具有以下特点：
 
-#### 解决方案
+- **高效的依赖安装**：比npm和yarn安装速度更快
+- **节省磁盘空间**：使用硬链接和内容寻址存储避免重复安装
+- **严格的依赖管理**：默认防止访问未声明的依赖
+- **Workspace支持**：内置支持多包存储库（Monorepo）管理
 
-1. **使用引号包裹过滤器参数**：
+在我们的项目中，pnpm 与 Lerna 和 Nx 结合使用，提供高效的包管理和工作空间功能。
 
-```bash
-pnpm add <package> --filter="@smarts-isoftstone/tcp-main"
-```
+## 配置工作空间
 
-2. **使用相对路径过滤器**：
+### pnpm-workspace.yaml
 
-```bash
-pnpm add <package> --filter=./micro-service/tcp-main
-```
-
-3. **使用转义字符**：
-
-```bash
-pnpm add <package> --filter=\@smarts-isoftstone/tcp-main
-```
-
-### 工作区依赖安装失败
-
-如果遇到工作区依赖安装失败的情况，可以尝试以下步骤：
-
-1. **清除 pnpm 缓存**：
-
-```bash
-pnpm store prune
-```
-
-2. **确保 pnpm-workspace.yaml 配置正确**：
+pnpm 工作空间通过项目根目录的 `pnpm-workspace.yaml` 文件配置：
 
 ```yaml
 packages:
-  - 'micro-frontend/*'
-  - 'micro-service/*'
-  # 其他工作区目录
-linkWorkspacePackages: true # 确保此选项已启用
+  # 所有直接子目录中的包
+  - "apps/*"
+  - "lib-cli/*"
+  - "lib-lint/*"
+  - "lib-mcp/*"
+  - "lib-nest/*"
+  - "lib-react/*"
+  - "lib-vue/*"
+  - "libs/*"
+  - "micro-frontend/*"
+  - "micro-service/*"
+  - "packages/*"
+  - ".temp/*"
+
+# 启用工作空间包链接
+linkWorkspacePackages: true
 ```
 
-3. **重新安装依赖**：
+这个配置告诉 pnpm 哪些目录包含工作空间的包。glob 模式 `"apps/*"` 表示 `apps` 目录下的所有直接子目录都被视为包。
+
+## 安装依赖
+
+### 全局依赖安装
+
+在项目根目录安装所有包共享的依赖：
 
 ```bash
-pnpm install
+# 安装开发依赖到根工作空间
+pnpm add -D typescript eslint -w
+
+# 安装生产依赖到根工作空间
+pnpm add lodash -w
 ```
 
-## 正确的依赖安装命令格式
+### 为特定包安装依赖
 
-### 为单个工作区包安装依赖
+使用 `--filter` 参数为特定包安装依赖：
 
 ```bash
-pnpm add <package> --filter="<workspace-package>"
+# 为 google-tab-home 包安装 vue 依赖
+pnpm add vue --filter @scope/google-tab-home
+
+# 为多个包安装依赖
+pnpm add react --filter "@scope/{package-a,package-b}"
+
+# 为所有 React 组件库安装依赖
+pnpm add react-dom --filter "./lib-react/*"
 ```
 
-示例：
+### 包之间的相互依赖
+
+在 Monorepo 中，包可以相互依赖：
 
 ```bash
-pnpm add express --filter="@smarts-isoftstone/tcp-main"
+# 将公共工具包添加为应用的依赖
+pnpm add @scope/utils --filter @scope/my-app
+
+# 将组件库添加为微前端应用的依赖
+pnpm add @scope/ant-design-lib --filter @scope/micro-app-react
 ```
 
-### 为多个工作区包安装相同的依赖
+pnpm 会自动创建包之间的符号链接，确保依赖是最新的。
+
+## 工作空间脚本
+
+### 在所有包中运行脚本
+
+使用 `-r` 参数在所有包中运行相同的脚本：
 
 ```bash
-pnpm add <package> --filter="<workspace-package-1>" --filter="<workspace-package-2>"
+# 在所有包中运行构建脚本
+pnpm -r build
+
+# 限制并行度
+pnpm -r --parallel=3 build
 ```
 
-示例：
+### 在特定包中运行脚本
+
+使用 `--filter` 参数在特定包中运行脚本：
 
 ```bash
-pnpm add @nestjs/microservices --filter="@smarts-isoftstone/tcp-main" --filter="@smarts-isoftstone/tcp-client"
+# 在单个包中运行测试
+pnpm --filter @scope/my-package test
+
+# 在多个包中运行脚本
+pnpm --filter "@scope/package-{a,b}" lint
 ```
 
-### 安装工作区内的本地包作为依赖
+### 顺序执行
+
+考虑依赖关系顺序执行脚本：
 
 ```bash
-pnpm add <workspace-package> --filter="<target-package>"
+# 按拓扑顺序构建所有包
+pnpm -r --workspace-concurrency=1 build
 ```
 
-示例：
+## 高级功能
+
+### 过滤脚本执行
+
+根据不同条件筛选包：
 
 ```bash
-pnpm add "@smarts-isoftstone/nestjs-logger" --filter="@smarts-isoftstone/tcp-main"
+# 只在已修改的包中运行测试
+pnpm -r --filter="[origin/main...HEAD]" test
+
+# 在package-a及其所有依赖项中运行脚本
+pnpm --filter @scope/package-a... build
+
+# 在package-a及其依赖包中运行脚本
+pnpm --filter ...@scope/package-a test
 ```
 
-### 安装开发依赖
+### 工作空间协议
 
-```bash
-pnpm add <package> -D --filter="<workspace-package>"
-```
-
-## 注意事项
-
-1. 确保 `nx.json` 中的 `packageManager` 设置为 `pnpm`
-2. 确保 `pnpm-workspace.yaml` 中的 `linkWorkspacePackages` 设置为 `true`
-3. 使用双引号包裹带有 `@` 符号的包名，避免 shell 解析问题
-4. 如果依赖安装仍然失败，尝试使用相对路径过滤器代替包名
-
-## 常用命令参考
-
-```bash
-# 安装所有依赖
-pnpm install
-
-# 清除缓存
-pnpm store prune
-
-# 为特定工作区包安装依赖
-pnpm add <package> --filter="<workspace-package>"
-
-# 移除特定工作区包的依赖
-pnpm remove <package> --filter="<workspace-package>"
-
-# 运行特定工作区包的脚本
-pnpm run <script> --filter="<workspace-package>"
-```
-
-## NX 构建优化指南
-
-### NX 基本概念
-
-NX 是一个智能、快速和可扩展的构建系统，具有以下特点：
-
-1. **增量构建**：只重新构建发生更改的部分
-2. **分布式缓存**：跨团队共享构建缓存
-3. **智能任务编排**：自动并行执行任务
-4. **项目依赖图**：可视化项目依赖关系
-
-### 配置说明
-
-1. **nx.json 基础配置**：
+在 `package.json` 中使用工作空间协议引用其他包：
 
 ```json
 {
-  "extends": "nx/presets/npm.json",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "test", "lint", "package", "prepare"],
-        "parallel": 3,
-        "useDaemonProcess": true
-      }
-    }
-  },
-  "targetDefaults": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/dist"]
+  "dependencies": {
+    "@scope/utils": "workspace:*",
+    "@scope/components": "workspace:^1.0.0"
+  }
+}
+```
+
+- `workspace:*` - 接受任何版本
+- `workspace:^1.0.0` - 接受符合语义化版本的任何版本
+
+### 管理 Node.js 版本
+
+使用 `.nvmrc` 文件统一项目的 Node.js 版本：
+
+```
+v16.15.0
+```
+
+## 常见问题与解决方案
+
+### 1. 幻影依赖问题
+
+**问题**：使用了未显式声明的依赖
+**解决方案**：启用严格模式，显式声明所有依赖
+
+```bash
+# 在 .npmrc 文件中设置
+echo "strict-peer-dependencies=true" >> .npmrc
+```
+
+### 2. 依赖提升问题
+
+**问题**：依赖未正确提升，导致多个版本共存
+**解决方案**：使用 shamefully-hoist 选项
+
+```bash
+# 在 .npmrc 文件中设置
+echo "shamefully-hoist=true" >> .npmrc
+```
+
+### 3. 包版本不一致
+
+**问题**：工作空间中的包依赖同一库的不同版本
+**解决方案**：使用 pnpm 的 overrides 功能强制使用统一版本
+
+```json
+{
+  "pnpm": {
+    "overrides": {
+      "react": "^17.0.0",
+      "react-dom": "^17.0.0"
     }
   }
 }
 ```
 
-2. **项目特定配置**：
+## 与其他工具集成
+
+### 与 Lerna 集成
+
+将 Lerna 配置为使用 pnpm 作为客户端：
 
 ```json
+// lerna.json
 {
-  "name": "micro-app-react",
-  "projectType": "application",
-  "targets": {
-    "build": {
-      "executor": "@nrwl/web:webpack",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "outputPath": "dist/micro-app-react"
-      }
-    }
-  }
-}
-```
-
-### 常用命令
-
-```bash
-# 构建受影响的项目
-nx affected:build
-
-# 并行构建所有项目
-nx run-many --target=build --all --parallel=3
-
-# 使用缓存构建
-nx build micro-app-react --skip-nx-cache=false
-
-# 生成依赖图
-nx graph
-```
-
-### 性能优化建议
-
-1. **启用分布式缓存**：
-
-```bash
-nx connect-to-nx-cloud
-```
-
-2. **优化缓存配置**：
-
-```json
-{
-  "tasksRunnerOptions": {
-    "default": {
-      "options": {
-        "cacheDirectory": ".nx-cache",
-        "parallel": true,
-        "useDaemonProcess": true,
-        "cacheableOperations": ["build", "test"]
-      }
-    }
-  }
-}
-```
-
-## Lerna 包管理指南
-
-### 基本配置
-
-1. **lerna.json 配置**：
-
-```json
-{
-  "version": "independent",
   "npmClient": "pnpm",
-  "useWorkspaces": true,
-  "command": {
-    "publish": {
-      "conventionalCommits": true,
-      "message": "chore(release): publish",
-      "registry": "https://registry.npmjs.org"
-    },
-    "version": {
-      "conventionalCommits": true,
-      "message": "chore(release): version packages"
-    }
-  }
+  "useWorkspaces": true
 }
 ```
 
-### 版本管理命令
+### 与 Nx 集成
 
-```bash
-# 创建新版本
-lerna version
+Nx 可以识别 pnpm 工作空间，无需额外配置即可协同工作。
 
-# 发布包
-lerna publish
+### 与 TypeScript 集成
 
-# 查看包差异
-lerna diff
+使用 TypeScript 项目引用功能增强工作空间：
 
-# 列出本地包
-lerna list
+```json
+// tsconfig.json
+{
+  "references": [
+    { "path": "./packages/utils" },
+    { "path": "./packages/components" }
+  ]
+}
 ```
 
-### 工作流最佳实践
+## 性能优化
 
-1. **版本管理流程**：
+### 并行安装
 
-   - 使用 `independent` 模式管理版本
-   - 遵循语义化版本规范
-   - 使用 conventional commits 规范
+利用 pnpm 的并行安装功能加速安装过程：
 
-2. **发布流程**：
+```bash
+# 设置最大并行度
+pnpm install --network-concurrency 10
+```
 
-   - 确保所有更改已提交
-   - 运行测试和构建
-   - 使用 `lerna version` 更新版本
-   - 使用 `lerna publish` 发布包
+### 使用 .npmrc 优化
 
-3. **CI/CD 集成**：
-   ```yaml
-   build:
-     steps:
-       - uses: actions/checkout@v2
-       - uses: actions/setup-node@v2
-       - run: |
-           pnpm install
-           nx affected:build
-           lerna version --yes
-           lerna publish from-git --yes
-   ```
+创建项目级 `.npmrc` 文件包含以下配置：
 
-## 项目优化建议
+```
+# 启用链接工作空间包
+link-workspace-packages=true
 
-1. **构建优化**：
+# 设置网络并发数
+network-concurrency=10
 
-   - 使用 NX 的增量构建
-   - 启用并行构建
-   - 配置合适的缓存策略
+# 使用严格模式
+strict-peer-dependencies=true
 
-2. **依赖管理**：
+# 启用 store 服务器以提高性能
+use-store-server=true
+```
 
-   - 使用 pnpm 管理依赖
-   - 使用 Lerna 管理版本和发布
-   - 定期更新和清理依赖
+## 最佳实践
 
-3. **工作流程优化**：
-   - 集成 husky 进行提交检查
-   - 使用 commitlint 规范提交信息
-   - 配置 CI/CD 自动化流程
+1. **统一版本管理**：在根 `package.json` 中维护依赖版本
+2. **避免全局安装**：使用 `pnpm dlx` 代替全局安装命令
+3. **利用缓存**：CI/CD 环境中缓存 pnpm store 目录
+4. **定期更新**：使用 `pnpm update -r` 定期更新所有依赖
+5. **版本锁定**：使用 `pnpm-lock.yaml` 锁定依赖版本
+6. **清晰的脚本命名**：使用统一的脚本命名约定

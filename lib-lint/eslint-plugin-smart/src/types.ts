@@ -11,10 +11,10 @@
  */
 export interface ESLintPlugin {
   configs?: Record<string, unknown>
-  rules?: Record<string, unknown>
   parser?: {
     parse(text: string, options?: unknown): unknown
   }
+  rules?: Record<string, unknown>
 }
 
 /**
@@ -23,24 +23,15 @@ export interface ESLintPlugin {
 export type ESLintRuleSet = Record<string, unknown>
 
 /**
- * ESLint插件导出类型
- */
-export interface ESLintPluginExport {
-  rules: Record<string, ESLintRuleSet>
-  plugins: Record<string, ESLintPlugin>
-  configs?: Record<string, unknown>
-}
-
-/**
  * ESLint v9扁平配置类型
  */
 export interface FlatConfig {
   files?: string[]
   ignores?: string[]
   languageOptions?: {
+    globals?: Record<string, boolean>
     parser?: unknown
     parserOptions?: Record<string, unknown>
-    globals?: Record<string, boolean>
   }
   linterOptions?: {
     noInlineConfig?: boolean
@@ -53,23 +44,40 @@ export interface FlatConfig {
 }
 
 /**
+ * ESLint插件导出类型
+ */
+export interface ESLintPluginExport {
+  configs: {
+    base: FlatConfig[]
+    json: FlatConfig[]
+    nestjs: FlatConfig[]
+    react: FlatConfig[]
+    recommended: FlatConfig[]
+    typescript: FlatConfig[]
+    vue: FlatConfig[]
+  }
+  plugins: Record<string, ESLintPlugin>
+  rules: Record<string, ESLintRuleSet>
+}
+
+/**
  * ESLint插件加载结果类型
  */
 export interface LoadedPlugins {
+  eslintConfigPrettier: ESLintPlugin
   import: ESLintPlugin
-  simpleImportSort: ESLintPlugin
-  unusedImports: ESLintPlugin
-  typescriptEslint: ESLintPlugin
-  typescriptEslintParser: ESLintPlugin
-  react: ESLintPlugin
-  reactHooks: ESLintPlugin
+  jsonc: ESLintPlugin
   jsxA11y: ESLintPlugin
-  vue: ESLintPlugin
-  vueEslintParser: ESLintPlugin
   node: ESLintPlugin
   prettier: ESLintPlugin
-  eslintConfigPrettier: ESLintPlugin
-  jsonc: ESLintPlugin
-  typescriptSortKeys: ESLintPlugin
+  react: ESLintPlugin
+  reactHooks: ESLintPlugin
+  simpleImportSort: ESLintPlugin
   sortKeysFix: ESLintPlugin
+  typescriptEslint: ESLintPlugin
+  typescriptEslintParser: ESLintPlugin
+  typescriptSortKeys: ESLintPlugin
+  unusedImports: ESLintPlugin
+  vue: ESLintPlugin
+  vueEslintParser: ESLintPlugin
 }

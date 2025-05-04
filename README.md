@@ -36,36 +36,84 @@ features:
 
 # 全栈开发文档
 
-欢迎使用全栈开发文档！这是一个基于 Monorepo 架构的现代化全栈开发解决方案，集成了前端、后端、AI 和区块链等多种技术栈。
+> 基于 Lerna + Nx + pnpm + Workspace 的 Monorepo 全栈开发项目
 
-## 项目特点
+## 项目概述
 
-- **微前端架构**：支持多种前端框架和开发模式
-- **微服务架构**：灵活的后端服务架构
-- **AI 集成**：内置 AI 能力
-- **区块链支持**：以太坊相关功能
-- **现代化工具链**：完整的开发工具支持
-- **类型安全**：全栈 TypeScript 开发
+这是一个基于 Monorepo 架构的全栈开发项目，集成了前端、后端、移动端、AI、区块链等多种技术栈。本项目采用 Lerna + Nx + pnpm Workspace 的组合方案，实现了高效的包管理、构建流程和版本控制。
+
+## 技术栈
+
+- **前端框架**：Vue, React, Angular, Pure JS
+- **后端框架**：NestJS, gRPC, Passport, TypeORM
+- **移动端**：UniAppX, React Native, Flutter, Kotlin, Swift
+- **AI**：LangChain, LlamaIndex, TensorFlow, PyTorch
+- **区块链**：Web3.js, ethers.js
+- **微前端**：基于Micro App/Single-SPA/Module Federation的微前端架构
+- **微服务**：基于gRPC的微服务架构
+- **DevOps**：Docker, GitHub Actions, CI/CD
+
+## 目录结构
+
+```
+FullStack/
+├── apps/                 # 应用项目目录
+├── apps-python/          # Python应用目录
+├── apps-native/          # 原生应用目录
+├── lib-vue/              # Vue组件库目录
+├── lib-react/            # React组件库目录
+├── lib-nest/             # Nest.js包目录
+├── lib-cli/              # CLI工具目录
+├── lib-lint/             # 代码规范工具目录
+├── libs/                 # 通用模块目录
+├── micro-frontend/       # 微前端项目目录
+├── micro-service/        # 微服务项目目录
+├── packages/             # 公共包目录
+└── docs/                 # 文档目录
+```
 
 ## 快速开始
 
-1. 克隆项目
+### 环境准备
+
+- Node.js >= 16
+- pnpm >= 7.0.0
+- Git
+
+### 克隆项目
 
 ```bash
-git clone https://github.com/w3cshare/w3cshare.github.io.git
+git clone https://github.com/w3cshare/w3cshare.github.io.git FullStack
 cd FullStack
 ```
 
-2. 安装依赖
+### 安装依赖
 
 ```bash
+# 安装全局pnpm（如果尚未安装）
+npm install -g pnpm
+
+# 安装项目依赖
 pnpm install
 ```
 
-3. 启动开发服务器
+### 开发命令
 
 ```bash
-pnpm docs:dev
+# 启动开发服务
+pnpm dev
+
+# 构建项目
+pnpm build
+
+# 运行测试
+pnpm test
+
+# 检查代码规范
+pnpm lint
+pnpm lint:json
+pnpm format
+pnpm stylelint
 ```
 
 ## 文档导航
@@ -74,29 +122,57 @@ pnpm docs:dev
 - [架构设计](/docs/architecture)
 - [目录结构](/docs/directory-structure)
 - [开发规范](/docs/development-standards)
-- [ESLint配置指南](/docs/eslint-configuration)
 - [部署方案](/docs/deployment)
 - [PNPM 指南](/docs/pnpm-workspace-guide)
+- [Monorepo指南](/docs/monorepo-guide)
+- [Lerna+Nx指南](/docs/lerna-nx-guide)
 
-## 🤝 贡献指南
+## 项目板块
 
-1. Fork 本项目
-2. 创建您的特性分支 (`git checkout -b feature/amazing-feature`)
-3. 提交您的更改 (`git commit -m 'Add some amazing feature'`)
+### 应用项目
+
+- [Google Tab 首页](/apps/google-tab-home/)
+- [VSCode 低代码平台](/apps/vscode-lowcode/)
+- [融合门户Web](/apps/ismart-swbn-converged-web/)
+
+### 组件库
+
+- [Vue 组件库](/lib-vue/)
+- [React 组件库](/lib-react/)
+- [ArtTs 业务组件库](/packages/artts-ui-lib/)
+- [UniApp-X 业务组件库](/packages/uniapp-x-lib/)
+
+### 微应用
+
+- [微前端项目](/micro-frontend/)
+- [微服务项目](/micro-service/)
+
+### 工具与规范
+
+- [CLI工具](/lib-cli/)
+- [代码规范](/lib-lint/)
+- [API库](/lib-nest/)
+
+### Python应用
+
+- [印章识别](/apps-python/ocr-vlm/)
+- [PDF压缩](/apps-python/pdf-compressed/)
+- [Markdown转PDF](/apps-python/md-pdf/)
+
+## 贡献指南
+
+1. Fork 本仓库
+2. 创建你的特性分支 (`git checkout -b feature/amazing-feature`)
+3. 提交你的变更 (`git commit -m 'feat: add some amazing feature'`)
 4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 打开一个 Pull Request
+5. 开启一个 Pull Request
 
-## 📄 许可证
+## 许可证
 
-本项目基于 [LICENSE](./LICENSE.md) 许可证开源。
+本项目采用 MIT 许可证 - 详见 [LICENSE.md](LICENSE.md) 文件
 
-## 🙏 致谢
+## 联系方式
 
-感谢所有为本项目做出贡献的开发者！
-
-## 📮 联系我们
-
-如有任何问题或建议，请通过以下方式联系我们：
-
-- Issue: [创建 Issue](https://github.com/w3cshare/w3cshare.github.io.git/issues)
-- Email: wwdqq7@qq.com
+- **作者**：阿伟
+- **邮箱**：wwdqq7@qq.com
+- **GitHub**：[https://github.com/w3cshare](https://github.com/w3cshare)

@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:31:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-28 12:28:52
+ * @LastEditTime: 2025-05-04 22:25:24
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/eslint-plugin-smart.ts
  * @Description: ESLint插件公共配置，适用于React、Vue、NestJS和TypeScript项目
  */
@@ -25,6 +25,7 @@ const createExportObject = (): PluginExport => {
 
   // 创建导出对象
   const exportObj: PluginExport = {
+    configs: createFlatConfigs(plugins),
     plugins: {
       '@typescript-eslint': plugins.typescriptEslint,
 
