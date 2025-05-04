@@ -98,5 +98,6 @@
   },
   "engines": {
     "node": ">=12.0.0"
-  }
+  },
+  "displayName": "React模板"
 }

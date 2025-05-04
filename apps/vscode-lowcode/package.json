@@ -1,7 +1,7 @@
 {
   "name": "vscode-lowcode",
   "private": true,
-  "displayName": "VSCode Pro",
+  "displayName": "VSCode低代码平台",
   "version": "0.0.7",
   "description": "一个用于拖放式UI开发的低代码VS Code扩展",
   "publisher": "smarts-isoftstone",

@@ -31,5 +31,6 @@
     "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
     "prettier": "3.5.3"
-  }
+  },
+  "displayName": "Vue模板"
 }

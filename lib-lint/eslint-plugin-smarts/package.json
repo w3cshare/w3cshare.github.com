@@ -2,35 +2,6 @@
   "name": "eslint-plugin-smarts",
   "version": "0.0.7",
   "description": "内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
-  "main": "lib/eslint-plugin-smarts.js",
-  "types": "lib/eslint-plugin-smarts.d.ts",
-  "module": "lib/eslint-plugin-smarts.mjs",
-  "exports": {
-    ".": {
-      "types": "./lib/eslint-plugin-smarts.d.ts",
-      "import": "./lib/eslint-plugin-smarts.mjs",
-      "require": "./lib/eslint-plugin-smarts.js"
-    }
-  },
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib",
-    "src",
-    "docs",
-    "README.md"
-  ],
-  "scripts": {
-    "copy": "node copy.js",
-    "dev:ts": "tsc -w",
-    "build:ts": "tsc",
-    "build": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --outDir lib",
-    "dev": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --watch --outDir lib",
-    "test": "node ./__tests__/eslint-plugin-smarts.test.js",
-    "lint:json": "eslint --fix \"**/*.json\""
-  },
   "keywords": [
     "eslint",
     "eslintplugin",
@@ -39,8 +10,41 @@
     "typescript",
     "vue"
   ],
-  "author": "wangwei <wwdqq7@qq.com>",
   "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": [
+    "README.md",
+    "docs",
+    "lib",
+    "src"
+  ],
+  "main": "lib/eslint-plugin-smarts.js",
+  "module": "lib/eslint-plugin-smarts.mjs",
+  "types": "lib/eslint-plugin-smarts.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/eslint-plugin-smarts.mjs",
+      "require": "./lib/eslint-plugin-smarts.js",
+      "types": "./lib/eslint-plugin-smarts.d.ts"
+    }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "scripts": {
+    "copy": "node copy.js",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc",
+    "dev": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --outDir lib",
+    "test": "node ./__tests__/eslint-plugin-smarts.test.js",
+    "lint:json": "eslint --fix \"**/*.json\""
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "prettier": ">=3.5.3"
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
@@ -60,15 +64,12 @@
     "tsup": "^8.4.0",
     "typescript": "^5.5.2"
   },
-  "peerDependencies": {
-    "eslint": ">=9.0.0",
-    "prettier": ">=3.5.3"
-  },
   "devDependencies": {
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^"
   },
-  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
+  "displayName": "eslint推荐配置（备份）"
 }

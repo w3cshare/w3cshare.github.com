@@ -76,5 +76,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "displayName": "TCP主服务"
 }

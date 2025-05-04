@@ -77,5 +77,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "displayName": "TCP客户端"
 }

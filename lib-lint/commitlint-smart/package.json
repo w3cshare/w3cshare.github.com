@@ -47,5 +47,6 @@
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
     "typescript": "^5.2.2"
-  }
+  },
+  "displayName": "Commitlint规范"
 }

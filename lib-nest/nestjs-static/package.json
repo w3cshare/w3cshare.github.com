@@ -38,5 +38,6 @@
     "eslint-plugin-smarts": "workspace:^",
     "prettier": "3.5.3"
   },
-  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
+  "displayName": "静态资源组件"
 }

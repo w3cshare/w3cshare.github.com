@@ -68,5 +68,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "displayName": "gRPC网关"
 }

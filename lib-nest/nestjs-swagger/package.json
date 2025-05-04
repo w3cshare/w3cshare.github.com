@@ -35,5 +35,6 @@
     "nestjs-knife4j2": "^1.0.6",
     "prettier": "3.5.3"
   },
-  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
+  "displayName": "Swagger文档组件"
 }

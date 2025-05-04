@@ -44,5 +44,6 @@
     "build-extension": "pnpm run create-icons && pnpm run build",
     "test": "node ./__tests__/@smarts-isoftstone/google-pro.test.js"
   },
-  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
+  "displayName": "Google Tab首页"
 }

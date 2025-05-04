@@ -32,5 +32,6 @@
     "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
     "prettier": "3.5.3"
-  }
+  },
+  "displayName": "日志组件"
 }
