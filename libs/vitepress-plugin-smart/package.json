@@ -1,7 +1,14 @@
 {
   "name": "vitepress-plugin-smart",
-  "version": "0.0.1",
-  "description": "> TODO: description",
+  "version": "0.0.2",
+  "description": "为 VitePress 提供一站式智能功能集成的插件，当前集成了 Mermaid 图表支持",
+  "keywords": [
+    "documentation",
+    "markdown",
+    "mermaid",
+    "vitepress",
+    "vitepress-plugin"
+  ],
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "bugs": {
     "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
@@ -14,6 +21,13 @@
   "main": "lib/vitepress-plugin-smart.js",
   "module": "lib/vitepress-plugin-smart.mjs",
   "types": "lib/vitepress-plugin-smart.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/vitepress-plugin-smart.mjs",
+      "require": "./lib/vitepress-plugin-smart.js",
+      "types": "./lib/vitepress-plugin-smart.d.ts"
+    }
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -27,9 +41,9 @@
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
     "dev": "tsup src/vitepress-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "rimraf lib && rollup -c rollup.config.ts --configPlugin typescript2",
+    "build": "tsup src/vitepress-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
     "test": "node ./__tests__/vitepress-plugin-smart.test.js",
-    "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}' --fix",
+    "lint": "eslint \"src/**/*.ts\" --fix",
     "lint:json": "eslint --fix \"**/*.json\"",
     "format": "prettier --write \"src/**/*.{ts,js}\""
   },
@@ -40,6 +54,7 @@
     "dayjs": "^1.11.13",
     "debug": "^4.4.0",
     "mermaid": "^11.6.0",
+    "tsup": "^8.4.0",
     "typescript": "5.7.3",
     "vitepress-plugin-mermaid": "^2.0.17"
   },
