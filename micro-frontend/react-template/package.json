@@ -36,7 +36,8 @@
     "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
     "prettier": "3.5.3",
-    "prettier-plugin-smart": "workspace:^"
+    "prettier-plugin-smart": "workspace:^",
+    "tsconfig-base-smart": "workspace:^"
   },
   "displayName": "React模板"
 }

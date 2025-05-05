@@ -44,6 +44,7 @@
     "eslint-plugin-smart": "workspace:^",
     "prettier": "^3.5.3",
     "prettier-plugin-smart": "workspace:^",
+    "tsconfig-base-smart": "workspace:^",
     "typescript": "^5.2.2"
   },
   "displayName": "Prettier推荐配置（备份）"

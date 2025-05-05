@@ -41,7 +41,8 @@
     "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
     "prettier": "3.5.3",
-    "prettier-plugin-smart": "workspace:^"
+    "prettier-plugin-smart": "workspace:^",
+    "tsconfig-base-smart": "workspace:^"
   },
   "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
   "displayName": "静态资源组件"

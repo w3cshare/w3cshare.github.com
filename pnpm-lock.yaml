@@ -66,6 +66,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.7.3
         version: 5.8.3
@@ -79,8 +82,8 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       eslint:
-        specifier: 9.26.0
-        version: 9.26.0(jiti@2.4.2)
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
       eslint-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/eslint-plugin-smart
@@ -111,6 +114,9 @@ importers:
       simple-git:
         specifier: ^3.27.0
         version: 3.27.0
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   apps/vscode-lowcode:
     devDependencies:
@@ -138,23 +144,138 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.7.3
         version: 5.8.3
 
-  lib-cli/cli-commit: {}
+  lib-cli/cli-commit:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-cli/cli-env-check: {}
+  lib-cli/cli-env-check:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-cli/cli-git: {}
+  lib-cli/cli-git:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-cli/cli-npx: {}
+  lib-cli/cli-npx:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-cli/cli-utils: {}
+  lib-cli/cli-utils:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-cli/init: {}
+  lib-cli/init:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-cli/swagger-to-typescript: {}
+  lib-cli/swagger-to-typescript:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-lint/commit-smart:
     devDependencies:
@@ -170,6 +291,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-lint/commit-smarts:
     devDependencies:
@@ -185,6 +309,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-lint/commitlint-smart:
     dependencies:
@@ -210,6 +337,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.2.2
         version: 5.8.3
@@ -238,6 +368,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.2.2
         version: 5.8.3
@@ -314,6 +447,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-lint/eslint-plugin-smarts:
     dependencies:
@@ -381,6 +517,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-lint/prettier-plugin-smart:
     dependencies:
@@ -409,6 +548,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: 'link:'
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.2.2
         version: 5.8.3
@@ -440,6 +582,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.2.2
         version: 5.8.3
@@ -492,6 +637,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -544,13 +692,48 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
 
-  lib-nest/egg-static: {}
+  lib-nest/egg-static:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-nest/fastify-static: {}
+  lib-nest/fastify-static:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-nest/grpc-proto-pkg:
     dependencies:
@@ -585,10 +768,45 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-nest/koa-static: {}
+  lib-nest/koa-static:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-nest/koa-upload: {}
+  lib-nest/koa-upload:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-nest/nestjs-config:
     dependencies:
@@ -629,6 +847,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-nest/nestjs-logger:
     dependencies:
@@ -663,6 +884,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-nest/nestjs-static:
     dependencies:
@@ -706,6 +930,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-nest/nestjs-swagger:
     dependencies:
@@ -746,6 +973,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   lib-nest/umijs-server:
     dependencies:
@@ -786,24 +1016,171 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-react/ant-design-lib: {}
+  lib-react/ant-design-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-react/ant-design-web3-lib: {}
+  lib-react/ant-design-web3-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-react/ant-design-x-lib: {}
+  lib-react/ant-design-x-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-react/taro-ui-lib: {}
+  lib-react/taro-ui-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-vue/ant-design-lib: {}
+  lib-vue/ant-design-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-vue/element-ui-lib: {}
+  lib-vue/element-ui-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-vue/pure-ui-lib: {}
+  lib-vue/pure-ui-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  lib-vue/uniapp-lib: {}
+  lib-vue/uniapp-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  libs/rollup-plugin-smarts: {}
+  libs/rollup-plugin-smarts:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../tsconfig-base-smart
 
   libs/tsconfig-base-smart:
     dependencies:
@@ -823,10 +1200,45 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: 'link:'
 
-  libs/vite-plugin-smarts: {}
+  libs/vite-plugin-smarts:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../tsconfig-base-smart
 
-  libs/vite-plugin-swagger: {}
+  libs/vite-plugin-swagger:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../tsconfig-base-smart
 
   libs/vitepress-plugin-smart:
     dependencies:
@@ -925,6 +1337,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
@@ -1034,6 +1449,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
@@ -1061,6 +1479,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
@@ -1212,6 +1633,9 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.11.24)(@types/node@20.17.32)(typescript@5.8.3)
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.3.3
         version: 5.8.3
@@ -1306,6 +1730,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ^5.3.3
         version: 5.8.3
@@ -1406,6 +1833,9 @@ importers:
       stylelint-config-smarts:
         specifier: workspace:^
         version: link:../../lib-lint/stylelint-config-smarts
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ~5.8.0
         version: 5.8.3
@@ -1473,6 +1903,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
@@ -1534,6 +1967,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
@@ -1567,6 +2003,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   micro-frontend/vue-template:
     devDependencies:
@@ -1591,6 +2030,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   micro-service/grpc-client:
     dependencies:
@@ -1706,6 +2148,9 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.11.24)(@types/node@22.15.3)(typescript@5.8.3)
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -1794,6 +2239,9 @@ importers:
       ts-node:
         specifier: ^10.9.1
         version: 10.9.2(@swc/core@1.11.24)(@types/node@20.17.32)(typescript@5.8.3)
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -1827,6 +2275,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   micro-service/grpc-java:
     devDependencies:
@@ -1851,6 +2302,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   micro-service/grpc-main:
     dependencies:
@@ -1954,6 +2408,9 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.11.24)(@types/node@22.15.3)(typescript@5.8.3)
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -1987,6 +2444,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   micro-service/grpc-user:
     dependencies:
@@ -2081,6 +2541,9 @@ importers:
       ts-node:
         specifier: ^10.9.1
         version: 10.9.2(@swc/core@1.11.24)(@types/node@20.17.32)(typescript@5.8.3)
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -2111,6 +2574,9 @@ importers:
       prettier-plugin-smart:
         specifier: workspace:^
         version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
   micro-service/nest-template:
     dependencies:
@@ -2238,6 +2704,9 @@ importers:
       ts-node:
         specifier: ^10.9.1
         version: 10.9.2(@swc/core@1.11.24)(@types/node@20.17.32)(typescript@5.8.3)
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -2347,6 +2816,9 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.11.24)(@types/node@22.15.3)(typescript@5.8.3)
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -2456,6 +2928,9 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.11.24)(@types/node@22.15.3)(typescript@5.8.3)
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
       tsconfig-paths:
         specifier: ^4.2.0
         version: 4.2.0
@@ -2466,9 +2941,41 @@ importers:
         specifier: ^8.20.0
         version: 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.8.3)
 
-  packages/artts-ui-lib: {}
+  packages/artts-ui-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
-  packages/uniapp-x-lib: {}
+  packages/uniapp-x-lib:
+    devDependencies:
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
+      eslint-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/eslint-plugin-smart
+      prettier:
+        specifier: 3.5.3
+        version: 3.5.3
+      prettier-plugin-smart:
+        specifier: workspace:^
+        version: link:../../lib-lint/prettier-plugin-smart
+      tsconfig-base-smart:
+        specifier: workspace:^
+        version: link:../../libs/tsconfig-base-smart
 
 packages:
 
@@ -5209,10 +5716,6 @@ packages:
     resolution: {integrity: sha512-dEIwmjntEx8u3Uvv+kr3PDeeArL8Hw07H9kyYxCjnM9pBjfEhk6uLXSchxxzgiwtRhhzVzqmUSDFBOi1TuZ7qg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/js@9.26.0':
-    resolution: {integrity: sha512-I9XlJawFdSMvWjDt6wksMCrgns5ggLNfFwFvnShsleWruvXM514Qxk8V246efTw+eo9JABvVz+u3q2RiAowKxQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
   '@eslint/object-schema@2.1.6':
     resolution: {integrity: sha512-RBMg5FRL0I0gs51M/guSAj5/e14VQ4tpZnQNWwuDT66P14I43ItmPfIZRhO9fUVIPOAQXU47atlywZ/czoqFPA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -5799,10 +6302,6 @@ packages:
 
   '@microsoft/tsdoc@0.15.1':
     resolution: {integrity: sha512-4aErSrCR/On/e5G2hDP0wjooqDdauzEbIq8hIkIe5pXV0rtWJZvdCEKL0ykZxex+IxIwBp0eGeV48hQN07dXtw==}
-
-  '@modelcontextprotocol/sdk@1.11.0':
-    resolution: {integrity: sha512-k/1pb70eD638anoi0e8wUGAlbMJXyvdV4p62Ko+EZ7eBe1xMx8Uhak1R5DgfoofsK5IBBnRwsYGTaLZl+6/+RQ==}
-    engines: {node: '>=18'}
 
   '@module-federation/error-codes@0.8.12':
     resolution: {integrity: sha512-K+F4iiV62KY+IpjK6ggn3vI5Yt/T/LUb6xuazY78bhAGwLaHe1DYr7BfSutKMpiB+Dcs6U4dYOBogSMnnl0j4Q==}
@@ -11740,16 +12239,6 @@ packages:
       jiti:
         optional: true
 
-  eslint@9.26.0:
-    resolution: {integrity: sha512-Hx0MOjPh6uK9oq9nVsATZKE/Wlbai7KFjfCuw9UHaguDW3x+HF0O5nIi3ud39TWgrTjTO5nHxmL3R1eANinWHQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    hasBin: true
-    peerDependencies:
-      jiti: '*'
-    peerDependenciesMeta:
-      jiti:
-        optional: true
-
   esm@3.2.25:
     resolution: {integrity: sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==}
     engines: {node: '>=6'}
@@ -11833,14 +12322,6 @@ packages:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
 
-  eventsource-parser@3.0.1:
-    resolution: {integrity: sha512-VARTJ9CYeuQYb0pZEPbzi740OWFgpHe7AYJ2WFZVnUDUQp5Dk2yJUgF36YsZ81cOyxT0QxmXD2EQpapAouzWVA==}
-    engines: {node: '>=18.0.0'}
-
-  eventsource@3.0.6:
-    resolution: {integrity: sha512-l19WpE2m9hSuyP06+FbuUUf1G+R0SFLrtQfbRb9PRr+oimOfxQhgGCbVaXg5IvZyyTThJsxh6L/srkMiCeBPDA==}
-    engines: {node: '>=18.0.0'}
-
   evp_bytestokey@1.0.3:
     resolution: {integrity: sha512-/f2Go4TognH/KvCISP7OUsHn85hT9nUkxxA9BEWxFn+Oj9o8ZNLm/40hdlgSLyuOimsrTKLUMEorQexp/aPQeA==}
 
@@ -11901,12 +12382,6 @@ packages:
   express-http-proxy@2.1.1:
     resolution: {integrity: sha512-4aRQRqDQU7qNPV5av0/hLcyc0guB9UP71nCYrQEYml7YphTo8tmWf3nDZWdTJMMjFikyz9xKXaURor7Chygdwg==}
     engines: {node: '>=6.0.0'}
-
-  express-rate-limit@7.5.0:
-    resolution: {integrity: sha512-eB5zbQh5h+VenMPM3fh+nw1YExi5nMr6HUCR62ELSP11huvxm/Uir1H1QEyTkk5QX6A58pX6NmaTMceKZ0Eodg==}
-    engines: {node: '>= 16'}
-    peerDependencies:
-      express: ^4.11 || 5 || ^5.0.0-beta.1
 
   express@4.17.1:
     resolution: {integrity: sha512-mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g==}
@@ -15938,10 +16413,6 @@ packages:
 
   piscina@4.9.2:
     resolution: {integrity: sha512-Fq0FERJWFEUpB4eSY59wSNwXD4RYqR+nR/WiEVcZW8IWfVBxJJafcgTEZDQo8k3w0sUarJ8RyVbbUF4GQ2LGbQ==}
-
-  pkce-challenge@5.0.0:
-    resolution: {integrity: sha512-ueGLflrrnvwB3xuo/uGob5pd5FN7l0MsLf0Z87o/UQmRtwjvfylfc9MurIxRAWywCYTgrvpXBcqjV4OfCYGCIQ==}
-    engines: {node: '>=16.20.0'}
 
   pkg-conf@2.1.0:
     resolution: {integrity: sha512-C+VUP+8jis7EsQZIhDYmS5qlNtjv2yP4SNtjXK9AP1ZcTRlnSfuumaTnRfYZnYgUUYVIKqL0fRvmUGDV2fmp6g==}
@@ -20570,11 +21041,6 @@ packages:
     resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
     engines: {node: '>=18'}
 
-  zod-to-json-schema@3.24.5:
-    resolution: {integrity: sha512-/AuWwMP+YqiPbsJx5D6TfgRTc4kTLjsh5SOcd4bLsfUg2RcEXrFMJl1DGgdHy2aCfsIA/cr/1JM0xcB2GZji8g==}
-    peerDependencies:
-      zod: ^3.24.1
-
   zod-validation-error@2.1.0:
     resolution: {integrity: sha512-VJh93e2wb4c3tWtGgTa0OF/dTt/zoPCPzXq4V11ZjxmEAFaPi/Zss1xIZdEB5RD8GD00U0/iVXgqkF77RV7pdQ==}
     engines: {node: '>=18.0.0'}
@@ -24751,11 +25217,6 @@ snapshots:
       eslint: 9.25.1(jiti@2.4.2)
       eslint-visitor-keys: 3.4.3
 
-  '@eslint-community/eslint-utils@4.6.1(eslint@9.26.0(jiti@2.4.2))':
-    dependencies:
-      eslint: 9.26.0(jiti@2.4.2)
-      eslint-visitor-keys: 3.4.3
-
   '@eslint-community/regexpp@4.12.1': {}
 
   '@eslint/config-array@0.20.0':
@@ -24819,8 +25280,6 @@ snapshots:
   '@eslint/js@8.57.1': {}
 
   '@eslint/js@9.25.1': {}
-
-  '@eslint/js@9.26.0': {}
 
   '@eslint/object-schema@2.1.6': {}
 
@@ -25845,21 +26304,6 @@ snapshots:
   '@micro-zoe/micro-app@1.0.0-rc.24': {}
 
   '@microsoft/tsdoc@0.15.1': {}
-
-  '@modelcontextprotocol/sdk@1.11.0':
-    dependencies:
-      content-type: 1.0.5
-      cors: 2.8.5
-      cross-spawn: 7.0.6
-      eventsource: 3.0.6
-      express: 5.1.0
-      express-rate-limit: 7.5.0(express@5.1.0)
-      pkce-challenge: 5.0.0
-      raw-body: 3.0.0
-      zod: 3.24.3
-      zod-to-json-schema: 3.24.5(zod@3.24.3)
-    transitivePeerDependencies:
-      - supports-color
 
   '@module-federation/error-codes@0.8.12': {}
 
@@ -34164,50 +34608,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint@9.26.0(jiti@2.4.2):
-    dependencies:
-      '@eslint-community/eslint-utils': 4.6.1(eslint@9.26.0(jiti@2.4.2))
-      '@eslint-community/regexpp': 4.12.1
-      '@eslint/config-array': 0.20.0
-      '@eslint/config-helpers': 0.2.2
-      '@eslint/core': 0.13.0
-      '@eslint/eslintrc': 3.3.1
-      '@eslint/js': 9.26.0
-      '@eslint/plugin-kit': 0.2.8
-      '@humanfs/node': 0.16.6
-      '@humanwhocodes/module-importer': 1.0.1
-      '@humanwhocodes/retry': 0.4.2
-      '@modelcontextprotocol/sdk': 1.11.0
-      '@types/estree': 1.0.7
-      '@types/json-schema': 7.0.15
-      ajv: 6.12.6
-      chalk: 4.1.2
-      cross-spawn: 7.0.6
-      debug: 4.4.0
-      escape-string-regexp: 4.0.0
-      eslint-scope: 8.3.0
-      eslint-visitor-keys: 4.2.0
-      espree: 10.3.0
-      esquery: 1.6.0
-      esutils: 2.0.3
-      fast-deep-equal: 3.1.3
-      file-entry-cache: 8.0.0
-      find-up: 5.0.0
-      glob-parent: 6.0.2
-      ignore: 5.3.2
-      imurmurhash: 0.1.4
-      is-glob: 4.0.3
-      json-stable-stringify-without-jsonify: 1.0.1
-      lodash.merge: 4.6.2
-      minimatch: 3.1.2
-      natural-compare: 1.4.0
-      optionator: 0.9.4
-      zod: 3.24.3
-    optionalDependencies:
-      jiti: 2.4.2
-    transitivePeerDependencies:
-      - supports-color
-
   esm@3.2.25: {}
 
   esniff@2.0.1:
@@ -34281,12 +34681,6 @@ snapshots:
   events-okam@3.3.0: {}
 
   events@3.3.0: {}
-
-  eventsource-parser@3.0.1: {}
-
-  eventsource@3.0.6:
-    dependencies:
-      eventsource-parser: 3.0.1
 
   evp_bytestokey@1.0.3:
     dependencies:
@@ -34415,10 +34809,6 @@ snapshots:
       raw-body: 2.5.2
     transitivePeerDependencies:
       - supports-color
-
-  express-rate-limit@7.5.0(express@5.1.0):
-    dependencies:
-      express: 5.1.0
 
   express@4.17.1:
     dependencies:
@@ -39780,8 +40170,6 @@ snapshots:
   piscina@4.9.2:
     optionalDependencies:
       '@napi-rs/nice': 1.0.1
-
-  pkce-challenge@5.0.0: {}
 
   pkg-conf@2.1.0:
     dependencies:
@@ -45835,10 +46223,6 @@ snapshots:
   yoctocolors-cjs@2.1.2: {}
 
   yoctocolors@2.1.1: {}
-
-  zod-to-json-schema@3.24.5(zod@3.24.3):
-    dependencies:
-      zod: 3.24.3
 
   zod-validation-error@2.1.0(zod@3.24.3):
     dependencies:

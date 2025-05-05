@@ -43,7 +43,8 @@
     "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
     "prettier": "3.5.3",
-    "prettier-plugin-smart": "workspace:^"
+    "prettier-plugin-smart": "workspace:^",
+    "tsconfig-base-smart": "workspace:^"
   },
   "gitHead": "3a6c98edc4caf157dd7ac6cb15be75b965ed5df4",
   "displayName": "UmiJS服务器"

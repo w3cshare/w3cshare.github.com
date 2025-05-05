@@ -38,7 +38,8 @@
     "eslint-plugin-smarts": "workspace:^",
     "nestjs-knife4j2": "^1.0.6",
     "prettier": "3.5.3",
-    "prettier-plugin-smart": "workspace:^"
+    "prettier-plugin-smart": "workspace:^",
+    "tsconfig-base-smart": "workspace:^"
   },
   "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
   "displayName": "Swagger文档组件"

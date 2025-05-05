@@ -1,3 +1,126 @@
 .main > .heading:first-child > .name.clip:first-child {
   white-space: nowrap;
 }
+
+/* 移除容器宽度限制，实现页面平铺布局 */
+.VPDoc {
+  --vp-layout-max-width: 100% !important;
+}
+
+.VPContent .container {
+  max-width: 100% !important;
+  padding: 0 32px !important;
+}
+
+.VPNavBar .container {
+  max-width: 100% !important;
+  padding: 0 32px !important;
+}
+
+.VPDoc.has-aside .content-container {
+  max-width: 100% !important;
+}
+
+.VPDoc:not(.has-sidebar) .container {
+  max-width: 100% !important;
+}
+
+/* 优化侧边栏布局 */
+.VPSidebar {
+  padding-left: 32px !important;
+}
+
+/* 优化内容区域布局 */
+.VPDoc .content {
+  max-width: 100% !important;
+}
+
+/* 确保表格能适应全宽布局 */
+.vp-doc table {
+  display: table;
+  width: 100%;
+}
+
+/* 优化自定义容器 */
+.vp-doc .custom-block {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 16px 0;
+}
+
+/* 优化主页面布局 */
+.VPHomeHero .container {
+  max-width: 100% !important;
+  padding: 0 32px !important;
+}
+
+.VPHomeFeatures .container {
+  max-width: 100% !important;
+  padding: 0 32px !important;
+}
+
+/* 确保页脚也遵循全宽布局 */
+.VPFooter .container {
+  max-width: 100% !important;
+  padding: 0 32px !important;
+}
+
+/* 优化代码块显示 */
+.vp-doc div[class*="language-"] {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 调整内容和aside的宽度比例 */
+.VPDoc.has-aside .content-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18rem;
+  gap: 64px;
+}
+
+/* 处理页内导航菜单 */
+.VPDocAside {
+  max-width: 18rem;
+}
+
+/* 调整搜索框布局 */
+.VPNavBarSearch {
+  flex-grow: 1;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* 优化API区域 */
+.vp-doc .VPApiBlock {
+  width: 100% !important;
+}
+
+/* 优化图片显示 */
+.vp-doc img {
+  max-width: 100%;
+}
+
+/* 调整文档内容部分宽度和布局 */
+.VPDoc.has-aside .content-container .content {
+  width: 100%;
+}
+
+/* 媒体查询适配移动设备 */
+@media (max-width: 768px) {
+  .VPContent .container,
+  .VPNavBar .container,
+  .VPHomeHero .container,
+  .VPHomeFeatures .container,
+  .VPFooter .container {
+    padding: 0 16px !important;
+  }
+  
+  .VPDoc.has-aside .content-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .VPSidebar {
+    padding-left: 16px !important;
+  }
+}

@@ -13,7 +13,7 @@
     "structure": "node ./_scripts/structure.js",
     "build:pnpm": "pnpm -r run build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,vue,json,md}\" --ignore-path .gitignore",
-    "install:eslint": "pnpm add eslint@9.25.1 eslint-plugin-smart prettier@3.5.3 prettier-plugin-smart -r -D",
+    "install:eslint": "pnpm add eslint@9.25.1 eslint-plugin-smart prettier@3.5.3 prettier-plugin-smart tsconfig-base-smart -r -D",
     "install:stylelint": "pnpm add stylelint@15.11.0 stylelint-config-smart -w -D",
     "install:commitlint": "pnpm add @commitlint/cli@17.7.0 commitlint-smart -w -D",
     "prepare:husky": "husky install",

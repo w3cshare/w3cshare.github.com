@@ -1,0 +1,35 @@
+/**
+ * 自定义CSS变量
+ * 覆盖VitePress默认的布局限制，实现全宽页面
+ */
+
+:root {
+  /* 布局变量 */
+  --vp-layout-max-width: 100% !important;
+  --vp-sidebar-width: 272px;
+  --vp-content-min-width: 100%;
+
+  /* 内容区域变量 */
+  --vp-content-width: 100%;
+  --vp-home-hero-width: 100%;
+  
+  /* 调整内边距以适应全宽 */
+  --vp-layout-top-padding: 32px;
+  --vp-layout-bottom-padding: 32px;
+}
+
+/* 调整边距获得更好的阅读体验 */
+@media (min-width: 1440px) {
+  :root {
+    --vp-layout-top-padding: 48px;
+    --vp-layout-bottom-padding: 48px;
+  }
+}
+
+/* 移动设备优化 */
+@media (max-width: 768px) {
+  :root {
+    --vp-layout-top-padding: 24px;
+    --vp-layout-bottom-padding: 24px;
+  }
+} 

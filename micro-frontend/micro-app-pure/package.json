@@ -21,6 +21,7 @@
     "eslint-plugin-smarts": "workspace:^",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
+    "tsconfig-base-smart": "workspace:^",
     "typescript": "~5.7.2",
     "vite": "^6.2.0"
   },
