@@ -1,8 +1,11 @@
 {
   "name": "grpc-java",
-  "private": true,
   "version": "0.0.7",
+  "private": true,
   "description": "微服务GRPC Java语言示例",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,9 +14,6 @@
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",

@@ -1,8 +1,8 @@
 {
   "name": "micro-app-pure",
-  "description": "微前端pure子应用示例示例",
-  "private": true,
   "version": "0.0.7",
+  "private": true,
+  "description": "微前端pure子应用示例示例",
   "type": "module",
   "scripts": {
     "dev": "vite",

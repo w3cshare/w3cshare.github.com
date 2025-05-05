@@ -3,8 +3,11 @@
   "version": "0.0.7",
   "description": "微服务GRPC通信协议包",
   "keywords": [],
-  "author": "wangwei <wwdqq7@qq.com>",
   "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": [
+    "lib"
+  ],
   "main": "lib/proto-pkg.js",
   "types": "lib/proto-pkg.d.ts",
   "exports": {
@@ -20,9 +23,6 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "start": "pnpm run dev",
     "dev": "tsc -w",

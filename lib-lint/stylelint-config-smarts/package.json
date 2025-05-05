@@ -2,36 +2,39 @@
   "name": "stylelint-config-smarts",
   "version": "0.0.6",
   "description": "智能样式代码规范配置，适用于公司内部所有前端项目",
-  "main": "lib/stylelint-config-smarts.js",
-  "types": "lib/stylelint-config-smarts.d.ts",
-  "module": "lib/stylelint-config-smarts.mjs",
-  "files": [
-    "lib",
-    "src",
-    "docs"
+  "keywords": [
+    "css",
+    "less",
+    "lint",
+    "scss",
+    "style",
+    "stylelint",
+    "stylelint-config",
+    "vue"
   ],
+  "files": [
+    "docs",
+    "lib",
+    "src"
+  ],
+  "main": "lib/stylelint-config-smarts.js",
+  "module": "lib/stylelint-config-smarts.mjs",
+  "types": "lib/stylelint-config-smarts.d.ts",
   "scripts": {
     "start": "pnpm run dev",
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
-    "build": " tsup src/stylelint-config-smarts.ts --format=cjs,esm --dts --outDir lib",
     "dev": " tsup src/stylelint-config-smarts.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": " tsup src/stylelint-config-smarts.ts --format=cjs,esm --dts --outDir lib",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
-  "keywords": [
-    "stylelint",
-    "stylelint-config",
-    "css",
-    "scss",
-    "less",
-    "vue",
-    "lint",
-    "style"
-  ],
+  "peerDependencies": {
+    "stylelint": ">=15.0.0"
+  },
   "dependencies": {
     "stylelint": "^15.11.0",
     "stylelint-bem-newbie": "^0.0.10",
@@ -43,9 +46,6 @@
     "stylelint-order": "^6.0.3",
     "stylelint-scss": "^5.2.1",
     "tsup": "^8.4.0"
-  },
-  "peerDependencies": {
-    "stylelint": ">=15.0.0"
   },
   "devDependencies": {
     "@types/stylelint": "^14.0.0",

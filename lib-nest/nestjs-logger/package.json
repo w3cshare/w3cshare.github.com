@@ -3,16 +3,16 @@
   "version": "0.0.7",
   "description": "NestJS日志模块，提供统一的日志记录、格式化和管理功能",
   "keywords": [],
-  "author": "wangwei <wwdqq7@qq.com>",
   "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": [
+    "lib"
+  ],
   "main": "lib/nestjs-logger.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "start": "pnpm run dev",
     "dev": "tsc -w",

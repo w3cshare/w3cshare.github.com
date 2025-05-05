@@ -2,17 +2,20 @@
   "name": "commit-smarts",
   "version": "0.0.1",
   "description": "> TODO: description",
-  "author": "wangwei <wwdqq7@qq.com>",
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
+  },
   "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": [
+    "lib"
+  ],
   "main": "lib/commit-smarts.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
@@ -23,9 +26,6 @@
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
-  },
-  "bugs": {
-    "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
   },
   "devDependencies": {
     "eslint": "9.25.1",

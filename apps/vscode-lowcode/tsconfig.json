@@ -1,26 +1,26 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "target": "ES2021",
-    "module": "CommonJS",
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "strict": true,
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
     "incremental": true,
     "lib": ["ES2021"],
-    "types": ["node", "vscode"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "dist",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "removeComments": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES2021",
+    "types": ["node", "vscode"]
   },
-  "include": ["src/global.d.ts", "src/**/*.ts"],
-  "exclude": ["node_modules", "test", "dist", "lib", "**/*spec.ts"]
+  "include": ["src/**/*.ts","src/global.d.ts"],
+  "exclude": ["**/*spec.ts","dist", "lib","node_modules", "test"]
 }

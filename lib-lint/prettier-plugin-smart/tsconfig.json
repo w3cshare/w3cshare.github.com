@@ -1,21 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
-    "target": "ES6",
-    "module": "CommonJS",
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "sourceMap": false,
     "baseUrl": ".",
     "checkJs": false,
-    "strict": true,
-    "lib": ["esnext", "DOM"],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "lib": ["DOM","esnext"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "lib",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "strict": true,
+    "target": "ES6"
   },
-  "include": ["src/global.d.ts", "src/**/*.ts"],
+  "include": ["src/**/*.ts","src/global.d.ts"],
   "exclude": ["node_modules"]
 }

@@ -2,9 +2,21 @@
   "name": "stylelint-config-smart",
   "version": "0.0.7",
   "description": "智能样式代码规范配置，适用于公司内部所有前端项目",
-  "author": "wangwei <wwdqq7@qq.com>",
+  "keywords": [
+    "css",
+    "less",
+    "scss",
+    "stylelint",
+    "stylelint-config"
+  ],
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": [
+    "docs",
+    "lib",
+    "src"
+  ],
   "main": "lib/stylelint-config-smart.js",
   "typings": "lib/stylelint-config-smart.d.ts",
   "module": "lib/stylelint-config-smart.mjs",
@@ -12,11 +24,6 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib",
-    "src",
-    "docs"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
@@ -25,21 +32,17 @@
     "start": "pnpm run dev",
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
-    "build": " tsup src/stylelint-config-smart.ts --format=cjs,esm --dts --outDir lib",
     "dev": " tsup src/stylelint-config-smart.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": " tsup src/stylelint-config-smart.ts --format=cjs,esm --dts --outDir lib",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
-  "keywords": [
-    "stylelint",
-    "stylelint-config",
-    "css",
-    "scss",
-    "less"
-  ],
+  "peerDependencies": {
+    "stylelint": ">=15.0.0"
+  },
   "dependencies": {
     "stylelint": "^15.11.0",
     "stylelint-bem-newbie": "^0.0.10",
@@ -51,9 +54,6 @@
     "stylelint-order": "^6.0.3",
     "stylelint-scss": "^5.2.1",
     "tsup": "^8.4.0"
-  },
-  "peerDependencies": {
-    "stylelint": ">=15.0.0"
   },
   "devDependencies": {
     "@types/stylelint": "^14.0.0",

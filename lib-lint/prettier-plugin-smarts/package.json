@@ -2,40 +2,40 @@
   "name": "prettier-plugin-smarts",
   "version": "0.0.6",
   "description": "智能格式化插件，适用于公司内部所有前端项目",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "module": "lib/index.mjs",
+  "keywords": [
+    "formatter",
+    "javascript",
+    "json",
+    "prettier",
+    "prettier-plugin",
+    "react",
+    "typescript",
+    "vue"
+  ],
+  "license": "ISC",
+  "author": "",
   "files": [
     "lib"
   ],
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
   "scripts": {
     "start": "pnpm run dev",
-    "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
     "dev": "tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
-  "keywords": [
-    "prettier",
-    "prettier-plugin",
-    "formatter",
-    "json",
-    "typescript",
-    "javascript",
-    "vue",
-    "react"
-  ],
-  "author": "",
-  "license": "ISC",
+  "peerDependencies": {
+    "prettier": ">=2.0.0"
+  },
   "dependencies": {
     "sort-package-json": "^2.6.0",
     "tsup": "^8.4.0"
-  },
-  "peerDependencies": {
-    "prettier": ">=2.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.9.2",

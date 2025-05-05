@@ -3,17 +3,17 @@
   "version": "0.0.7",
   "description": "NestJS静态资源服务模块，用于处理静态文件的托管和访问",
   "keywords": [],
-  "author": "wangwei <wwdqq7@qq.com>",
   "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": [
+    "lib"
+  ],
   "main": "lib/nestjs-static.js",
   "types": "lib/nestjs-static.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "start": "pnpm run dev",
     "dev": "tsc -w",

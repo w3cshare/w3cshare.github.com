@@ -1,8 +1,8 @@
 {
   "name": "micro-app-vue",
-  "description": "微前端vue3子应用",
-  "private": true,
   "version": "0.0.7",
+  "private": true,
+  "description": "微前端vue3子应用",
   "type": "module",
   "scripts": {
     "dev": "vite",

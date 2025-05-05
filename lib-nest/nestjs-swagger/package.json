@@ -3,17 +3,17 @@
   "version": "0.0.7",
   "description": "NestJS Swagger模块，用于自动生成API文档和接口测试界面",
   "keywords": [],
-  "author": "wangwei <wwdqq7@qq.com>",
   "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": [
+    "lib"
+  ],
   "main": "lib/nestjs-swagger.js",
   "types": "lib/nestjs-swagger.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "start": "pnpm run dev",
     "dev": "tsc -w",

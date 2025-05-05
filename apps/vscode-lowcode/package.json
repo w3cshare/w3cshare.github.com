@@ -1,42 +1,31 @@
 {
   "name": "vscode-lowcode",
+  "version": "0.0.7",
   "private": true,
   "displayName": "VSCode低代码平台",
-  "version": "0.0.7",
   "description": "一个用于拖放式UI开发的低代码VS Code扩展",
   "publisher": "smarts-isoftstone",
-  "author": "wangwei <wwdqq7@qq.com>",
+  "keywords": [],
+  "homepage": "https://github.com/smarts-isoftstone/vscode-pro#readme",
+  "bugs": {
+    "url": "https://github.com/smarts-isoftstone/vscode-pro/issues"
+  },
   "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/smarts-isoftstone/vscode-pro.git"
   },
-  "engines": {
-    "vscode": "^1.99.1"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:vscode-pro.openDragDropUI"
-  ],
   "main": "./dist/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "vscode-pro.openDragDropUI",
-        "title": "Open Drag & Drop UI Builder"
-      }
-    ]
-  },
+  "types": "./dist/extension.d.ts",
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src --ext ts",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
@@ -54,11 +43,22 @@
     "tsconfig-base-smart": "workspace:^",
     "typescript": "^5.7.3"
   },
-  "types": "./dist/extension.d.ts",
-  "bugs": {
-    "url": "https://github.com/smarts-isoftstone/vscode-pro/issues"
+  "engines": {
+    "vscode": "^1.99.1"
   },
-  "homepage": "https://github.com/smarts-isoftstone/vscode-pro#readme",
-  "keywords": [],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vscode-pro.openDragDropUI"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-pro.openDragDropUI",
+        "title": "Open Drag & Drop UI Builder"
+      }
+    ]
+  },
   "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
 }
