@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-13 22:15:34
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-13 23:03:30
+ * @LastEditTime: 2025-05-05 17:30:08
  * @FilePath: /FullStack/_scripts/structure.js
  * @Description: 生成目录结构文档
  */
@@ -53,7 +53,7 @@ function generateStructureDoc(basePath, outputPath) {
         const readmePath = path.join(dir, 'README.md')
         groupDescriptions[groupName] = extractTitleFromReadme(readmePath) || ''
       }
-      
+
       if (parts.length > 1) {
         const groupName = parts[0]
         const dirName = parts[1]
@@ -122,7 +122,7 @@ try {
     const parentDir = path.dirname(dir)
     if (!parentDirs.has(parentDir)) {
       parentDirs.add(parentDir)
-      
+
       // 读取二级目录 README.md 中的标题作为描述
       const readmePath = path.join(parentDir, 'README.md')
       groupDescriptions[groupName] = extractTitleFromReadme(readmePath) || ''
@@ -155,7 +155,7 @@ ${Object.entries(groups)
   })
   .join('\n')}
 \`\`\``
-  fs.writeFileSync('PROJECT_STRUCTURE.md', readmeContent)
+  fs.writeFileSync('docs/PROJECT_STRUCTURE.md', readmeContent)
 
   // 为每个子项目和上级目录生成结构文档
   directories.forEach(dir => {
