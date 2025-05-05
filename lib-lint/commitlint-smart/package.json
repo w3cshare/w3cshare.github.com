@@ -1,6 +1,7 @@
 {
   "name": "commitlint-smart",
   "version": "0.0.1",
+  "displayName": "Commitlint规范",
   "description": "> TODO: description",
   "keywords": [
     "commit",
@@ -53,6 +54,5 @@
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^",
     "typescript": "^5.2.2"
-  },
-  "displayName": "Commitlint规范"
+  }
 }

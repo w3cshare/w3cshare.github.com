@@ -1,6 +1,7 @@
 {
   "name": "prettier-plugin-smart",
   "version": "0.0.7",
+  "displayName": "Prettier推荐配置（备份）",
   "description": "一个智能的Prettier插件，无需配置，自动应用一致的代码格式化规则",
   "keywords": [
     "formatter",
@@ -55,6 +56,5 @@
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^",
     "typescript": "^5.2.2"
-  },
-  "displayName": "Prettier推荐配置（备份）"
+  }
 }

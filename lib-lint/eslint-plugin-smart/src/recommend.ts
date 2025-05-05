@@ -640,6 +640,7 @@ export const jsonRules: ESLintRuleSet = {
         'version',
         'private',
         'packageManager',
+        'displayName',
         'description',
         'type',
         'keywords',

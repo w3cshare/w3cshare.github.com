@@ -2,6 +2,7 @@
   "name": "grpc-gateway",
   "version": "0.0.1",
   "private": true,
+  "displayName": "gRPC网关",
   "description": "",
   "license": "UNLICENSED",
   "author": "",
@@ -72,6 +73,5 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     }
-  },
-  "displayName": "gRPC网关"
+  }
 }

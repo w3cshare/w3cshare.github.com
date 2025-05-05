@@ -1,6 +1,7 @@
 {
   "name": "commit-smart",
   "version": "0.0.1",
+  "displayName": "Commitlint规范（备份）",
   "description": "> TODO: description",
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "bugs": {
@@ -33,6 +34,5 @@
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
-  },
-  "displayName": "Commitlint规范（备份）"
+  }
 }

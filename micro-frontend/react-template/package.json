@@ -2,6 +2,7 @@
   "name": "react-template",
   "version": "0.0.7",
   "private": true,
+  "displayName": "React模板",
   "description": "react18+业务项目模板",
   "keywords": [],
   "license": "ISC",
@@ -38,6 +39,5 @@
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
-  },
-  "displayName": "React模板"
+  }
 }

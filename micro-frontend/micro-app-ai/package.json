@@ -1,8 +1,9 @@
 {
   "name": "micro-app-ai",
-  "description": "微前端AI子应用",
-  "private": true,
   "version": "0.0.7",
+  "private": true,
+  "displayName": "AI模板",
+  "description": "微前端AI子应用",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -37,6 +38,5 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
-  },
-  "displayName": "AI模板"
+  }
 }

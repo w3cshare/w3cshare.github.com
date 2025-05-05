@@ -2,6 +2,7 @@
   "name": "grpc-java",
   "version": "0.0.7",
   "private": true,
+  "displayName": "gRPC Java",
   "description": "微服务GRPC Java语言示例",
   "keywords": [],
   "license": "ISC",
@@ -23,6 +24,5 @@
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
-  },
-  "displayName": "gRPC Java"
+  }
 }

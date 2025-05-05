@@ -2,9 +2,16 @@
   "name": "tsconfig-base-smart",
   "version": "0.0.1",
   "description": "> TODO: description",
-  "author": "wangwei <wwdqq7@qq.com>",
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
+  },
   "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": [
+    "lib",
+    "tsconfig.base.json"
+  ],
   "main": "lib/tsconfig-base-smart.js",
   "module": "lib/tsconfig-base-smart.mjs",
   "types": "lib/tsconfig-base-smart.d.ts",
@@ -12,10 +19,6 @@
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib",
-    "tsconfig.base.json"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
@@ -31,9 +34,6 @@
   },
   "dependencies": {
     "typescript": "5.7.3"
-  },
-  "bugs": {
-    "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
   },
   "devDependencies": {
     "eslint": "9.25.1",

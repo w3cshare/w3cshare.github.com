@@ -1,8 +1,9 @@
 {
   "name": "micro-app-web3",
-  "description": "微前端区块链子应用",
-  "private": true,
   "version": "0.0.7",
+  "private": true,
+  "displayName": "区块链模板",
+  "description": "微前端区块链子应用",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -37,6 +38,5 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
-  },
-  "displayName": "区块链模板"
+  }
 }

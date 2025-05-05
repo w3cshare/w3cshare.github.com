@@ -2,6 +2,7 @@
   "name": "micro-app-angular",
   "version": "0.0.7",
   "private": true,
+  "displayName": "Angular模板",
   "description": "微前端angular19+子应用示例",
   "scripts": {
     "ng": "ng",
@@ -53,6 +54,5 @@
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^",
     "typescript": "~5.7.2"
-  },
-  "displayName": "Angular模板"
+  }
 }

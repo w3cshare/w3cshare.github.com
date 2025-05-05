@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-21 11:31:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-04 22:25:24
+ * @LastEditTime: 2025-05-05 22:44:27
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/eslint-plugin-smart.ts
  * @Description: ESLint插件公共配置，适用于React、Vue、NestJS和TypeScript项目
  */

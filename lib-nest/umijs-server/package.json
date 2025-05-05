@@ -1,6 +1,7 @@
 {
   "name": "@smarts-isoftstone/umijs-server",
   "version": "0.0.7",
+  "displayName": "UmiJS服务器",
   "description": "UmiJS服务端插件，用于提供UmiJS项目的服务端功能支持",
   "keywords": [],
   "license": "ISC",
@@ -46,6 +47,5 @@
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
   },
-  "gitHead": "3a6c98edc4caf157dd7ac6cb15be75b965ed5df4",
-  "displayName": "UmiJS服务器"
+  "gitHead": "3a6c98edc4caf157dd7ac6cb15be75b965ed5df4"
 }

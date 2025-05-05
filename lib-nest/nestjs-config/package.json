@@ -1,6 +1,7 @@
 {
   "name": "@smarts-isoftstone/nestjs-config",
   "version": "0.0.7",
+  "displayName": "配置中心组件",
   "description": "NestJS配置模块，提供统一的配置管理和环境变量处理功能",
   "keywords": [],
   "license": "ISC",
@@ -40,6 +41,5 @@
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
-  },
-  "displayName": "配置中心组件"
+  }
 }

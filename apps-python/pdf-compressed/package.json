@@ -1,15 +1,15 @@
 {
   "name": "pdf2compressed",
-  "private": true,
   "version": "0.0.7",
+  "private": true,
   "description": "PDF文件压缩微服务",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "eslint": "^9.25.0",
     "eslint-config-prettier": "^10.1.2",

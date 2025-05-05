@@ -1,6 +1,7 @@
 {
   "name": "langchain",
   "version": "0.0.7",
+  "displayName": "LangChain集成",
   "description": "Python LangChain人工智能测试项目",
   "keywords": [],
   "license": "ISC",
@@ -22,6 +23,5 @@
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
-  },
-  "displayName": "LangChain集成"
+  }
 }

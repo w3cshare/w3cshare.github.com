@@ -1,6 +1,7 @@
 {
   "name": "commitlint-smarts",
   "version": "0.0.1",
+  "displayName": "Commitlint规范（备份）",
   "description": "智能提交规范配置，适用于公司内部所有项目",
   "keywords": [
     "commit",
@@ -42,6 +43,5 @@
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^",
     "typescript": "^5.2.2"
-  },
-  "displayName": "Commitlint规范（备份）"
+  }
 }

@@ -2,6 +2,7 @@
   "name": "micro-app-pure",
   "version": "0.0.7",
   "private": true,
+  "displayName": "Pure模板",
   "description": "微前端pure子应用示例示例",
   "type": "module",
   "scripts": {
@@ -24,6 +25,5 @@
     "tsconfig-base-smart": "workspace:^",
     "typescript": "~5.7.2",
     "vite": "^6.2.0"
-  },
-  "displayName": "Pure模板"
+  }
 }

@@ -1,6 +1,7 @@
 {
   "name": "@smarts-isoftstone/nestjs-swagger",
   "version": "0.0.7",
+  "displayName": "Swagger文档组件",
   "description": "NestJS Swagger模块，用于自动生成API文档和接口测试界面",
   "keywords": [],
   "license": "ISC",
@@ -41,6 +42,5 @@
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
   },
-  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
-  "displayName": "Swagger文档组件"
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
 }

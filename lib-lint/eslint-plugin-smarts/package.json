@@ -1,6 +1,7 @@
 {
   "name": "eslint-plugin-smarts",
   "version": "0.0.7",
+  "displayName": "eslint推荐配置（备份）",
   "description": "内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
   "keywords": [
     "eslint",
@@ -74,6 +75,5 @@
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
   },
-  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
-  "displayName": "eslint推荐配置（备份）"
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
 }

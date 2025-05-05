@@ -2,6 +2,15 @@
   "name": "root",
   "private": true,
   "description": "Lerna + NX + PNPM Workspace 的现代化 Monorepo 架构",
+  "keywords": [
+    "fullstack",
+    "lerna",
+    "monorepo",
+    "nx",
+    "pnpm"
+  ],
+  "license": "ISC",
+  "author": "wangwei wwdqq7@qq.com",
   "scripts": {
     "// ====== 基础命令 ======": "",
     "start": "npm run dev",
@@ -19,9 +28,10 @@
     "prepare:husky": "husky install",
     "postinstall.husky": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
     "// ====== Lint 相关命令 ======": "",
-    "lint": "nx run-many --target=lint --all  --parallel",
+
     "lint:js": "nx run-many --target=lint:js --all  --parallel",
-    "lint:json": "nx run-many --target=lint:json --all  --parallel",
+    "lint:json1": "nx run-many --target=lint:json --all  --parallel",
+    "lint:json": "eslint --fix \"*/*/package.json\"",
     "lint:style": "nx run-many --target=lint:style --all  --parallel",
     "lint:format": "nx run-many --target=format --all  --parallel",
     "// ====== 微前端应用 ======": "",
@@ -45,14 +55,6 @@
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
-  "devDependencies": {
-    "commitlint-smart": "workspace:^",
-    "lerna": "^8.2.1",
-    "markdown-it-mathjax3": "^4.3.2",
-    "nx": "^20.7.2",
-    "vitepress": "^1.6.3",
-    "vitepress-plugin-smart": "workspace:^"
-  },
   "peerDependencies": {
     "@braintree/sanitize-url": "^7.1.1",
     "cytoscape": "^3.31.2",
@@ -61,13 +63,19 @@
     "debug": "^4.4.0",
     "vitepress-plugin-mermaid": "^2.0.17"
   },
-  "keywords": [
-    "monorepo",
-    "lerna",
-    "nx",
-    "pnpm",
-    "fullstack"
-  ],
+  "devDependencies": {
+    "commitlint-smart": "workspace:^",
+    "eslint": "9.25.1",
+    "eslint-plugin-smart": "workspace:^",
+    "lerna": "^8.2.1",
+    "markdown-it-mathjax3": "^4.3.2",
+    "nx": "^20.7.2",
+    "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^",
+    "tsconfig-base-smart": "workspace:^",
+    "vitepress": "^1.6.3",
+    "vitepress-plugin-smart": "workspace:^"
+  },
   "workspaces": [
     "apps/*",
     "lib-cli/*",
@@ -81,8 +89,6 @@
     "micro-service/*",
     "packages/*"
   ],
-  "author": "wangwei wwdqq7@qq.com",
-  "license": "ISC",
   "engines": {
     "node": ">=16",
     "pnpm": ">=8"

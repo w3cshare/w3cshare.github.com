@@ -2,6 +2,7 @@
   "name": "micro-app-vue",
   "version": "0.0.7",
   "private": true,
+  "displayName": "Vue模板",
   "description": "微前端vue3子应用",
   "type": "module",
   "scripts": {
@@ -56,6 +57,5 @@
     "vite-plugin-vue-devtools": "^7.7.2",
     "vitest": "^3.1.1",
     "vue-tsc": "^2.2.8"
-  },
-  "displayName": "Vue模板"
+  }
 }

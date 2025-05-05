@@ -2,6 +2,7 @@
   "name": "vue-template",
   "version": "0.0.7",
   "private": true,
+  "displayName": "Vue模板",
   "description": "vue3业务通用模板",
   "keywords": [],
   "license": "ISC",
@@ -37,6 +38,5 @@
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
-  },
-  "displayName": "Vue模板"
+  }
 }

@@ -1,6 +1,7 @@
 {
   "name": "@smarts-isoftstone/nestjs-static",
   "version": "0.0.7",
+  "displayName": "静态资源组件",
   "description": "NestJS静态资源服务模块，用于处理静态文件的托管和访问",
   "keywords": [],
   "license": "ISC",
@@ -44,6 +45,5 @@
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^"
   },
-  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
-  "displayName": "静态资源组件"
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
 }
