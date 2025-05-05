@@ -14,7 +14,9 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "lint:style": "stylelint --fix **/*.*ss --custom-syntax postcss-less --ignore-path .gitignore --config .stylelintrc.cjs"
+    "lint:style": "stylelint --fix **/*.*ss --custom-syntax postcss-less --ignore-path .gitignore --config .stylelintrc.cjs",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@micro-zoe/micro-app": "1.0.0-rc.24",
@@ -45,6 +47,7 @@
     "jsdom": "^26.0.0",
     "npm-run-all2": "^7.0.2",
     "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^",
     "stylelint": "^15.11.0",
     "stylelint-config-smarts": "workspace:^",
     "typescript": "~5.8.0",

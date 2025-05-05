@@ -27,7 +27,11 @@
     "start": "pnpm run dev",
     "dev": "tsc -w",
     "build": "tsc",
-    "test": "node ./__tests__/@smarts-isoftstone/grpc-proto-pkg.test.js"
+    "test": "node ./__tests__/@smarts-isoftstone/grpc-proto-pkg.test.js",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.7.13",
@@ -41,7 +45,8 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^"
   },
   "displayName": "gRPC Proto包"
 }

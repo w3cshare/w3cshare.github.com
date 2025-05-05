@@ -39,7 +39,10 @@
     "dev": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --watch --outDir lib",
     "build": "tsup src/eslint-plugin-smarts.ts --format=cjs,esm --dts --outDir lib",
     "test": "node ./__tests__/eslint-plugin-smarts.test.js",
-    "lint:json": "eslint --fix \"**/*.json\""
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "peerDependencies": {
     "eslint": ">=9.0.0",

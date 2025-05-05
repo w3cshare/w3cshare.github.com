@@ -1,13 +1,18 @@
+/**
+ * MonoRepo项目根目录TypeScript配置
+ * 此配置作为所有子项目的基础配置
+ * 子项目可以通过extends继承此配置，并根据需要覆盖特定选项
+ * 示例: { "extends": "tsconfig-base-smart", "compilerOptions": { "outDir": "dist" } }
+ */
 {
+  "extends": "tsconfig-base-smart",
   "compilerOptions": {
-    "declaration": true,
-    "esModuleInterop": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "outDir": "./lib",
-    "rootDir": "./src",
-    "target": "ES2020"
+    /* 可在此处覆盖基础配置中的选项 */
+    "outDir": "lib"
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/*.test.ts","dist","node_modules"]
+  /* 此处的references可用于指定项目依赖关系 */
+  "references": [
+    /* 示例: { "path": "./lib-nest/grpc-proto-pkg" } */
+  ],
+  "include": ["src/**/*"]
 }

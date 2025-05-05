@@ -27,11 +27,11 @@
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
     "dev": "tsup src/vitepress-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "tsup src/vitepress-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
+    "build": "rimraf lib && rollup -c rollup.config.ts --configPlugin typescript2",
     "test": "node ./__tests__/vitepress-plugin-smart.test.js",
-    "lint": "eslint \"src/**/*.ts\" --fix",
+    "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}' --fix",
     "lint:json": "eslint --fix \"**/*.json\"",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+    "format": "prettier --write \"src/**/*.{ts,js}\""
   },
   "dependencies": {
     "@braintree/sanitize-url": "^7.1.1",
@@ -45,7 +45,9 @@
   },
   "devDependencies": {
     "eslint": "9.25.1",
+    "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
-    "vitepress-plugin-smart": "workspace:^"
+    "prettier-plugin-smart": "workspace:^",
+    "tsconfig-base-smart": "workspace:^"
   }
 }

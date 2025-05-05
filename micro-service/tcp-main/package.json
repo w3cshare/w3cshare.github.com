@@ -16,7 +16,10 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/jest/bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\""
   },
   "engines": {
     "npm": ">=10.0.0",
@@ -51,6 +54,7 @@
     "globals": "^15.14.0",
     "jest": "^29.7.0",
     "prettier": "^3.5.3",
+    "prettier-plugin-smart": "workspace:^",
     "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",

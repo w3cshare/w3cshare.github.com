@@ -22,7 +22,11 @@
     "url": "git@gitee.com:w3cshare/full-stack.git"
   },
   "scripts": {
-    "test": "node ./__tests__/@smarts-isoftstone/vue-template.test.js"
+    "test": "node ./__tests__/@smarts-isoftstone/vue-template.test.js",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "devDependencies": {
     "eslint": "^9.25.1",
@@ -30,7 +34,8 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^"
   },
   "displayName": "Vue模板"
 }

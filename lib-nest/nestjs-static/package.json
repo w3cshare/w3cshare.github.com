@@ -18,7 +18,11 @@
     "start": "pnpm run dev",
     "dev": "tsc -w",
     "build": "tsc",
-    "test": "node ./__tests__/@smarts-isoftstone/nestjs-static.test.js"
+    "test": "node ./__tests__/@smarts-isoftstone/nestjs-static.test.js",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "peerDependencies": {
     "@nestjs/common": "^11.0.1",
@@ -36,7 +40,8 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^"
   },
   "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
   "displayName": "静态资源组件"

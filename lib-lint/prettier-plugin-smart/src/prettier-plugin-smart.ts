@@ -1,210 +1,128 @@
-import type { Parser, ParserOptions, SupportOptions } from 'prettier'
-import { parsers as babelParsers } from 'prettier/plugins/babel'
-import { parsers as htmlParsers } from 'prettier/plugins/html'
-import { parsers as postcssParsers } from 'prettier/plugins/postcss'
-import { parsers as typescriptParsers } from 'prettier/plugins/typescript'
-import sortPackageJson from 'sort-package-json'
+/*
+ * @Author: wangwei wwdqq7@qq.com
+ * @Date: 2025-04-23 20:44:00
+ * @LastEditors: wangwei wwdqq7@qq.com
+ * @LastEditTime: 2025-05-05 12:12:29
+ * @FilePath: /FullStack/lib-lint/prettier-plugin-smart/src/prettier-plugin-smart.ts
+ * @Description: .prettier配置 for prettier-plugin-smart
+ */
 
-// 定义插件选项
-const options: SupportOptions = {
-  sortJsonKeys: {
-    type: 'boolean',
-    category: 'Global',
-    default: true,
-    description: '是否对JSON文件的键进行排序',
-  },
-  importOrder: {
-    type: 'string',
-    category: 'JavaScript',
-    default: '',
-    description:
-      'import语句排序规则，使用逗号分隔不同组，使用^表示正则匹配，例如：^react,^@/,^[./]',
-  },
-  vueIndentScriptAndStyle: {
-    type: 'boolean',
-    category: 'Vue',
-    default: true,
-    description: '是否缩进Vue文件中的<script>和<style>标签内容',
-  },
+// 导入必要的Prettier类型
+import type { Options, Plugin } from 'prettier'
+
+// 检查是否在Node环境中运行
+const isNodeEnv = typeof process !== 'undefined' && process.versions && process.versions.node
+
+/**
+ * 智能默认配置 - 这些配置会自动应用到所有项目
+ */
+const smartOptions: Partial<Options> = {
+  semi: false,
+  singleQuote: true,
+  trailingComma: 'all',
+  printWidth: 100,
+  tabWidth: 2,
+  useTabs: false,
+  bracketSpacing: true,
+  arrowParens: 'avoid',
+  endOfLine: 'lf',
 }
 
-// 用于排序JSON对象键的函数
-function sortObjectKeys(
-  obj: Record<string, any>,
-  defaultOrder: string[] = [],
-): Record<string, any> {
-  if (!obj || typeof obj !== 'object' || Array.isArray(obj)) {
-    return obj
+// 打印欢迎信息，表明插件已被加载
+if (isNodeEnv) {
+  console.log('\x1b[32m%s\x1b[0m', '[prettier-plugin-smart] 智能格式化插件已加载，自动应用默认规则')
+}
+
+/**
+ * Prettier初始化后自动应用配置的钩子
+ * 这是真正实现零配置的关键部分
+ */
+let originalResolveConfig: any = null
+
+if (isNodeEnv) {
+  try {
+    // 获取 prettier 模块
+    const prettier = require('prettier')
+    
+    // 保存原始方法
+    originalResolveConfig = prettier.resolveConfig.sync
+    
+    // 覆盖配置解析方法，注入我们的默认配置
+    prettier.resolveConfig.sync = function(filePath: string, options: any) {
+      const originalConfig = originalResolveConfig(filePath, options) || {}
+      
+      // 合并我们的默认配置，但保留用户配置的优先级
+      return {
+        ...smartOptions,
+        ...originalConfig
+      }
+    }
+    
+    console.log('\x1b[32m%s\x1b[0m', '[prettier-plugin-smart] 配置注入成功，将对所有文件应用智能格式化规则')
+  } catch (error) {
+    console.warn('\x1b[33m%s\x1b[0m', '[prettier-plugin-smart] 无法访问Prettier API，降级为标准插件模式')
   }
-
-  // 递归处理嵌套对象
-  const sortedObj: Record<string, any> = {}
-
-  // 首先按照默认顺序添加键
-  for (const key of defaultOrder) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      sortedObj[key] =
-        typeof obj[key] === 'object' && obj[key] !== null ? sortObjectKeys(obj[key]) : obj[key]
-    }
-  }
-
-  // 然后添加剩余的键（按字母顺序）
-  Object.keys(obj)
-    .sort((a, b) => a.localeCompare(b))
-    .forEach(key => {
-      if (!defaultOrder.includes(key)) {
-        sortedObj[key] =
-          typeof obj[key] === 'object' && obj[key] !== null ? sortObjectKeys(obj[key]) : obj[key]
-      }
-    })
-
-  return sortedObj
 }
 
-// 扩展JSON解析器
-const jsonParser: Parser = {
-  ...babelParsers.json,
-  parse: (text: string, options: ParserOptions) => {
-    const ast = babelParsers.json.parse(text, options)
-
-    // 如果是package.json，使用sort-package-json库进行排序
-    if (
-      options.filepath &&
-      options.filepath.endsWith('package.json') &&
-      options.sortJsonKeys !== false
-    ) {
-      try {
-        const packageJson = JSON.parse(text)
-        const sortedPackageJson = sortPackageJson(packageJson)
-
-        // 我们需要重新解析排序后的package.json
-        return babelParsers.json.parse(JSON.stringify(sortedPackageJson, null, 2), options)
-      } catch (error) {
-        // 解析失败时回退到原始AST
-        console.error('解析package.json失败:', error)
-        return ast
-      }
-    }
-
-    // 处理其他JSON文件
-    if (options.sortJsonKeys !== false) {
-      try {
-        const jsonObj = JSON.parse(text)
-        const sortedJsonObj = sortObjectKeys(jsonObj)
-        return babelParsers.json.parse(JSON.stringify(sortedJsonObj, null, 2), options)
-      } catch (error) {
-        // 解析失败时回退到原始AST
-        console.error('解析JSON失败:', error)
-        return ast
-      }
-    }
-
-    return ast
+/**
+ * 标准插件实现 - 作为备用方案
+ * 即使上面的高级方法不起作用，这个标准实现也能确保插件正常工作
+ */
+const prettierPluginSmart: Plugin = {
+  // 提供标准的插件选项接口
+  options: {
+    smartFormatEnabled: {
+      type: 'boolean',
+      category: 'Global',
+      default: true,
+      description: '是否启用智能格式化规则',
+    },
   },
-}
-
-// 定义ESLint配置文件排序规则
-const eslintConfigOrder = [
-  'root',
-  'env',
-  'extends',
-  'parser',
-  'parserOptions',
-  'plugins',
-  'settings',
-  'rules',
-]
-
-// 处理.eslintrc.json文件的特殊排序
-const eslintJsonParser: Parser = {
-  ...jsonParser,
-  parse: (text: string, options: ParserOptions) => {
-    const ast = jsonParser.parse(text, options)
-
-    // 检查是否是.eslintrc.json文件
-    if (
-      options.filepath &&
-      (options.filepath.endsWith('.eslintrc.json') || options.filepath.endsWith('.eslintrc')) &&
-      options.sortJsonKeys !== false
-    ) {
-      try {
-        const eslintConfig = JSON.parse(text)
-        const sortedEslintConfig = sortObjectKeys(eslintConfig, eslintConfigOrder)
-        return babelParsers.json.parse(JSON.stringify(sortedEslintConfig, null, 2), options)
-      } catch (error) {
-        console.error('解析ESLint配置失败:', error)
-        return ast
-      }
-    }
-
-    return ast
-  },
-}
-
-// 修改JavaScript/TypeScript解析器，处理import排序
-const jsParser: Parser = {
-  ...babelParsers.babel,
-  preprocess: (text: string, options: ParserOptions) => {
-    if (options.importOrder && typeof options.importOrder === 'string') {
-      /*
-       * 这里是一个简化实现，实际上需要更复杂的AST处理
-       * 在完整实现中，我们需要分析AST并重新排序import语句
-       * 此处仅作为示例
-       */
-      return text
-    }
-    return text
-  },
-}
-
-const tsParser: Parser = {
-  ...typescriptParsers.typescript,
-  preprocess: (text: string, options: ParserOptions) => {
-    if (options.importOrder && typeof options.importOrder === 'string') {
-      // 与JavaScript解析器相同，这里需要真正的AST处理
-      return text
-    }
-    return text
-  },
-}
-
-// 修改Vue解析器，处理缩进
-const vueParser: Parser = {
-  ...htmlParsers.vue,
-  preprocess: (text: string, options: ParserOptions) => {
-    // 设置Vue文件中script和style标签的缩进选项
-    if (options.vueIndentScriptAndStyle === false) {
-      return text
-    }
-    return text
-  },
-}
-
-// 注册所有解析器
-const parsers = {
-  json: jsonParser,
-  json5: jsonParser,
-  'json-stringify': jsonParser,
-  '.eslintrc': eslintJsonParser,
-  babel: jsParser,
-  'babel-flow': jsParser,
-  flow: jsParser,
-  typescript: tsParser,
-  vue: vueParser,
-  css: postcssParsers.css,
-  scss: postcssParsers.scss,
-  less: postcssParsers.less,
-}
-
-// 插件定义
-const plugin = {
-  parsers,
-  options,
+  
+  // 提供默认选项，确保规则被应用
   defaultOptions: {
-    sortJsonKeys: true,
-    importOrder: '',
-    vueIndentScriptAndStyle: true,
+    ...smartOptions,
+    smartFormatEnabled: true,
+  },
+  
+  // 提供解析器确保插件被加载
+  parsers: {
+    __dummy: {
+      parse: () => ({}),
+      astFormat: '__dummy',
+      locStart: () => 0,
+      locEnd: () => 0,
+    },
   },
 }
 
-export default plugin
+/**
+ * 在安装时运行的一次性代码
+ * 尝试修改全局Prettier配置
+ */
+if (isNodeEnv && process.env.npm_lifecycle_event === 'install') {
+  try {
+    const fs = require('fs')
+    const path = require('path')
+    
+    // 尝试检测用户项目目录
+    const projectDir = process.cwd()
+    
+    // 尝试创建最小化的配置文件
+    const configPath = path.join(projectDir, '.prettierrc')
+    
+    // 如果不存在配置文件，则创建一个
+    if (!fs.existsSync(configPath)) {
+      console.log('\x1b[32m%s\x1b[0m', '[prettier-plugin-smart] 创建最小化配置文件')
+      fs.writeFileSync(configPath, '{}', 'utf-8')
+    }
+    
+    console.log('\x1b[32m%s\x1b[0m', '[prettier-plugin-smart] 配置完成')
+  } catch (error) {
+    // 忽略错误
+  }
+}
+
+// 导出插件和智能配置选项，便于在JS配置文件中引用
+export { smartOptions as defaultOptions }
+export default prettierPluginSmart

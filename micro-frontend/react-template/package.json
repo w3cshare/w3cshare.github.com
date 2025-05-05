@@ -22,7 +22,11 @@
     "url": "git@gitee.com:w3cshare/full-stack.git"
   },
   "scripts": {
-    "test": "node ./__tests__/@smarts-isoftstone/react-template.test.js"
+    "test": "node ./__tests__/@smarts-isoftstone/react-template.test.js",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
   "devDependencies": {
@@ -31,7 +35,8 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-smart": "workspace:^",
     "eslint-plugin-smarts": "workspace:^",
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^"
   },
   "displayName": "React模板"
 }

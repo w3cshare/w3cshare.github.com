@@ -18,7 +18,11 @@
     "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
-    "test": "node ./__tests__/commit-smart.test.js"
+    "test": "node ./__tests__/commit-smart.test.js",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "bugs": {
     "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
@@ -26,7 +30,8 @@
   "devDependencies": {
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^"
   },
   "displayName": "Commitlint规范（备份）"
 }

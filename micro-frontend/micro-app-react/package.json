@@ -30,7 +30,10 @@
     "test": "jest",
     "test:coverage": "npm run jest -- --coverage",
     "test:update": "npm run jest -- -u",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
@@ -89,6 +92,7 @@
     "lint-staged": "^10.5.4",
     "mockjs": "^1.1.0",
     "prettier": "^3.5.3",
+    "prettier-plugin-smart": "workspace:^",
     "react-dev-inspector": "^1.9.0",
     "swagger-ui-dist": "^4.19.1",
     "ts-node": "^10.9.2",

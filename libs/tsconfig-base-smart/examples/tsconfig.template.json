@@ -1,0 +1,14 @@
+{
+  "extends": "tsconfig-base-smart",
+  "compilerOptions": {
+    /* 必须设置outDir，否则编译结果可能输出到错误位置 */
+    "outDir": "lib"
+    /* 其他项目特定配置可在此添加 */
+  },
+  /* 此处的references可用于指定项目依赖关系 */
+  "references": [
+    /* 示例: { "path": "../other-package" } */
+  ],
+  /* 指定要包含的源文件 */
+  "include": ["src/**/*"]
+} 

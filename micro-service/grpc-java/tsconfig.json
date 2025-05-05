@@ -1,0 +1,10 @@
+{
+  "extends": "tsconfig-base-smart",
+  "compilerOptions": {
+    "outDir": "lib"
+  },
+  "references": [],
+  "include": [
+    "src/**/*"
+  ]
+}

@@ -51,7 +51,14 @@ module.exports = {
 // .prettierrc.js
 module.exports = {
   sortJsonKeys: {
-    order: ['name', 'version', 'description', '*', 'dependencies', 'devDependencies'],
+    order: [
+      'name',
+      'version',
+      'description',
+      '*',
+      'dependencies',
+      'devDependencies',
+    ],
     indentSize: 2,
   },
 }

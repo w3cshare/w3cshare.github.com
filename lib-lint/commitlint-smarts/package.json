@@ -13,7 +13,11 @@
     "start": "pnpm run dev",
     "dev": "tsc -w",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "keywords": [
     "commitlint",
@@ -35,6 +39,7 @@
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^",
     "typescript": "^5.2.2"
   },
   "displayName": "Commitlint规范（备份）"
