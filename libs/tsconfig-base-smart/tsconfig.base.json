@@ -12,6 +12,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "incremental": true,
+    "tsBuildInfoFile": "tsconfig.tsbuildinfo",
     "skipLibCheck": true,
     "strictNullChecks": false,
     "noImplicitAny": false,

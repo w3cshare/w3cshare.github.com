@@ -1,0 +1,61 @@
+{
+  "name": "package-name",
+  "version": "0.0.1",
+  "displayName": "包的中文名称",
+  "description": "该包的功能描述",
+  "type": "module",
+  "keywords": ["fullstack", "lerna", "monorepo", "nx", "pnpm"],
+  "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
+  },
+  "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": ["README.md", "dist", "lib", "src", "tsconfig.json"],
+  "directories": {
+    "dist": "dist",
+    "docs": "docs",
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "repository": {
+    "directory": "packages/子包路径",
+    "type": "git",
+    "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
+  },
+  "scripts": {
+    "lint": "eslint --fix \"**/*.{vue,js,jsx,ts,tsx,json}\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {},
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "9.25.1",
+    "eslint-plugin-smart": "workspace:^",
+    "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^",
+    "tsconfig-base-smart": "workspace:^"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": ["{projectRoot}/dist", "{projectRoot}/lib"]
+      }
+    }
+  }
+}
