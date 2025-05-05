@@ -45,7 +45,9 @@
     "test": "node ./__tests__/vitepress-plugin-smart.test.js",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "lint:json": "eslint --fix \"**/*.json\"",
-    "format": "prettier --write \"src/**/*.{ts,js}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\""
   },
   "dependencies": {
     "@braintree/sanitize-url": "^7.1.1",

@@ -30,7 +30,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "lint:json": "eslint --fix \"**/*.json\"",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\""
   },

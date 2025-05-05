@@ -23,7 +23,11 @@
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",
-    "test": "node ./__tests__/tsconfig-base-smart.test.js"
+    "test": "node ./__tests__/tsconfig-base-smart.test.js",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "dependencies": {
     "typescript": "5.7.3"
