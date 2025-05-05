@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-05-05 20:13:48
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-05 20:39:48
+ * @LastEditTime: 2025-05-05 21:05:07
  * @FilePath: /FullStack/_scripts/replace-package.js
  * @Description:
  */
@@ -61,14 +61,14 @@ function replacePackageConfig(packageConfig, replacement) {
   return mergeObjects(packageConfig, replacement)
 }
 
-const subProjectPaths = globSync('{apps,lib-*,micro-*,libs}/*/', {
+const subProjectPaths = globSync('{lib-*,libs}/*/', {
   cwd: process.cwd(),
   ignore: ['**/node_modules/**', '**/.git/**', '**/docs/**', 'docs/**'],
   onlyDirectories: true,
 })
 const packageConfigPath = path.join(__dirname, './', '_package.json')
 const packageConfig = JSON.parse(fs.readFileSync(packageConfigPath, 'utf-8'))
-subProjectPaths.forEach(subProjectPath => {
+subProjectPaths.forEach((subProjectPath, index) => {
   const packagePath = path.join(subProjectPath, 'package.json')
   if (!fs.existsSync(packagePath)) {
     return
@@ -76,6 +76,7 @@ subProjectPaths.forEach(subProjectPath => {
 
   const replacement = JSON.parse(fs.readFileSync(packagePath, 'utf-8'))
   packageConfig.repository.directory = subProjectPath
+  packageConfig.name = `package-name-${index}`
   const updatedPackageConfig = replacePackageConfig(packageConfig, replacement)
 
   fs.writeFileSync(packagePath, `${JSON.stringify(updatedPackageConfig, null, 2)}\n`, 'utf-8')

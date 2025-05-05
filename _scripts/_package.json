@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "displayName": "包的中文名称",
   "description": "该包的功能描述",
-  "type": "module",
   "keywords": ["fullstack", "lerna", "monorepo", "nx", "pnpm"],
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "bugs": {
@@ -12,6 +11,7 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": ["README.md", "dist", "lib", "src", "tsconfig.json"],
+
   "directories": {
     "dist": "dist",
     "docs": "docs",
@@ -24,6 +24,11 @@
     "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
+    "start": "pnpm run dev",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc",
+    "dev": "tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
     "lint": "eslint --fix \"**/*.{vue,js,jsx,ts,tsx,json}\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:json": "eslint --fix \"**/*.json\"",
@@ -49,7 +54,9 @@
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
-    "tsconfig-base-smart": "workspace:^"
+    "tsconfig-base-smart": "workspace:^",
+    "tsup": "^8.0.0",
+    "typescript": "5.3.3"
   },
   "nx": {
     "targets": {
