@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:40:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-04 22:28:33
+ * @LastEditTime: 2025-05-06 10:29:05
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/flat-configs.ts
  * @Description: ESLint v9 扁平配置
  *
@@ -12,7 +12,7 @@
  * 3. 优化的规则组合，避免规则冲突
  * 4. 提供多种预设配置组合
  */
-import js from '@eslint/js'
+import eslint from '@eslint/js'
 
 import {
   javascriptRules,
@@ -65,7 +65,7 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
    * 获取eslint:recommended的规则集
    * 注意：在ESLint v9中，我们需要直接引入这些规则，而不是通过extends字段
    */
-  const eslintRecommendedRules = js.configs.recommended.rules
+  const eslintRecommendedRules = eslint.configs.recommended.rules
 
   /*
    * 获取prettier推荐的规则集
