@@ -3,3 +3,6 @@ lib
 
 # 系统文件
 .DS_Store
+
+# 类型系统缓存
+tsconfig.tsbuildinfo
