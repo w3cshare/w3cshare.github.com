@@ -6,8 +6,8 @@ package-lock.json
 # dist
 # lib
 # cache
-output
-input
+# output
+# input
 .eslintcache
 
 # 系统文件
