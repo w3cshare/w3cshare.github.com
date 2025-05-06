@@ -8,7 +8,10 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     /* 可在此处覆盖基础配置中的选项 */
-    "outDir": "lib"
+    "outDir": "lib",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2020",
   },
   /* 此处的references可用于指定项目依赖关系 */
   "references": [

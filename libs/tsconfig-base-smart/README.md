@@ -69,15 +69,40 @@ fs.writeFileSync('./tsconfig.json', JSON.stringify(customConfig, null, 2))
 
 基础配置包含以下主要设置：
 
-- target: ES2021
-- module: commonjs
-- moduleResolution: node
+- target: ES2022
+- module: NodeNext
+- moduleResolution: NodeNext
 - 启用装饰器和元数据反射
 - 启用源映射
 - 配置路径别名
 - 排除不需要编译的文件和目录
+- 完整支持 ES 模块（ESM）特性
 
 详细配置请查看包内的`tsconfig.base.json`文件。
+
+### ESM 支持说明
+
+本配置已完全支持 ES 模块（ESM）特性，包括：
+
+- `import.meta.url` 的使用
+- 原生 ES 模块导入/导出语法
+- Node.js ESM 解析策略
+
+要在项目中使用 ESM 特性，确保：
+
+1. package.json 中设置 `"type": "module"`
+2. 使用 `.mjs` 扩展名或在 package.json 中设置 `"type": "module"`
+3. 使用 ESM 兼容的导入/导出语法
+
+示例：
+
+```typescript
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+```
 
 ## 故障排除
 

@@ -82,7 +82,6 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
     '**/dist/**',
     '**/lib/**',
     '**/test/**',
-    '**/dify/**',
     '**/cache/**',
     '**/__tests__/**',
     '**/coverage/**',
@@ -90,9 +89,6 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
     '**/.eslintcache',
     '**/.eslintrc.js',
     '**/eslint.config.mjs',
-
-    // '**/**.spec.ts',
-    // '**/**.spec.js',
   ]
 
   /**
