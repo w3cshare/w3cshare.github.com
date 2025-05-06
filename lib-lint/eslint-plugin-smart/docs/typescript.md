@@ -20,9 +20,7 @@
 ```javascript
 import eslintPlugin from 'eslint-plugin-smart'
 
-export default [
-  ...eslintPlugin.configs.typescript
-]
+export default [...eslintPlugin.configs.typescript]
 ```
 
 ### 完整配置示例
@@ -32,19 +30,16 @@ import eslintPlugin from 'eslint-plugin-smart'
 
 export default [
   {
-    ignores: [
-      'dist/**',
-      'node_modules/**'
-    ]
+    ignores: ['dist/**', 'node_modules/**'],
   },
   ...eslintPlugin.configs.typescript,
   {
     // 自定义规则
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'off',
-      '@typescript-eslint/no-explicit-any': 'warn'
-    }
-  }
+      '@typescript-eslint/no-explicit-any': 'warn',
+    },
+  },
 ]
 ```
 
@@ -115,9 +110,9 @@ export default [
     files: ['src/models/**/*.ts'],
     rules: {
       // 模型文件特定的规则
-      '@typescript-eslint/explicit-member-accessibility': ['error']
-    }
-  }
+      '@typescript-eslint/explicit-member-accessibility': ['error'],
+    },
+  },
 ]
 ```
 
@@ -129,9 +124,9 @@ export default [
 // 在配置中
 export default [
   {
-    ignores: ['src/legacy/**/*.ts']
+    ignores: ['src/legacy/**/*.ts'],
   },
-  ...eslintPlugin.configs.typescript
+  ...eslintPlugin.configs.typescript,
 ]
 
 // 或在文件中
@@ -161,26 +156,17 @@ import { someFunction } from './utils'
 ### 与 React 一起使用
 
 ```javascript
-export default [
-  ...eslintPlugin.configs.typescript,
-  ...eslintPlugin.configs.react
-]
+export default [...eslintPlugin.configs.typescript, ...eslintPlugin.configs.react]
 ```
 
 ### 与 Vue 一起使用
 
 ```javascript
-export default [
-  ...eslintPlugin.configs.typescript,
-  ...eslintPlugin.configs.vue
-]
+export default [...eslintPlugin.configs.typescript, ...eslintPlugin.configs.vue]
 ```
 
 ### 与 NestJS 一起使用
 
 ```javascript
-export default [
-  ...eslintPlugin.configs.typescript,
-  ...eslintPlugin.configs.nestjs
-]
-``` 
+export default [...eslintPlugin.configs.typescript, ...eslintPlugin.configs.nestjs]
+```

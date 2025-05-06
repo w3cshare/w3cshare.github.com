@@ -19,9 +19,7 @@
 ```javascript
 import eslintPlugin from 'eslint-plugin-smart'
 
-export default [
-  ...eslintPlugin.configs.json
-]
+export default [...eslintPlugin.configs.json]
 ```
 
 ### 完整配置示例
@@ -31,10 +29,7 @@ import eslintPlugin from 'eslint-plugin-smart'
 
 export default [
   {
-    ignores: [
-      'dist/**',
-      'node_modules/**'
-    ]
+    ignores: ['dist/**', 'node_modules/**'],
   },
   ...eslintPlugin.configs.json,
   {
@@ -49,11 +44,11 @@ export default [
             'name',
             'version',
             // ... 其他字段
-          ]
-        }
-      ]
-    }
-  }
+          ],
+        },
+      ],
+    },
+  },
 ]
 ```
 
@@ -117,17 +112,20 @@ export default [
   {
     files: ['package.json'],
     rules: {
-      'jsonc/sort-keys': ['error', {
-        // package.json 特定的排序规则
-      }]
-    }
+      'jsonc/sort-keys': [
+        'error',
+        {
+          // package.json 特定的排序规则
+        },
+      ],
+    },
   },
   {
     files: ['tsconfig.json'],
     rules: {
       // tsconfig.json 特定的规则
-    }
-  }
+    },
+  },
 ]
 ```
 
@@ -138,12 +136,9 @@ export default [
 ```javascript
 export default [
   {
-    ignores: [
-      'specific-file.json',
-      'specific-directory/**/*.json'
-    ]
+    ignores: ['specific-file.json', 'specific-directory/**/*.json'],
   },
-  ...eslintPlugin.configs.json
+  ...eslintPlugin.configs.json,
 ]
 ```
 
@@ -156,17 +151,20 @@ export default [
   ...eslintPlugin.configs.json,
   {
     rules: {
-      'jsonc/sort-keys': ['error', {
-        pathPattern: '^$',
-        order: [
-          // 自定义排序顺序
-          'name',
-          'version',
-          // ... 其他字段
-        ]
-      }]
-    }
-  }
+      'jsonc/sort-keys': [
+        'error',
+        {
+          pathPattern: '^$',
+          order: [
+            // 自定义排序顺序
+            'name',
+            'version',
+            // ... 其他字段
+          ],
+        },
+      ],
+    },
+  },
 ]
 ```
 
@@ -175,4 +173,4 @@ export default [
 1. 总是在项目中启用 JSON 配置，以确保 JSON 文件的一致性
 2. 使用默认的字段排序顺序，除非有特殊需求
 3. 对于大型项目，考虑为不同类型的 JSON 文件配置不同的规则
-4. 定期运行 lint 命令以保持 JSON 文件的整洁 
+4. 定期运行 lint 命令以保持 JSON 文件的整洁

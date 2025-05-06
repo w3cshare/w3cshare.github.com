@@ -420,7 +420,7 @@ module.exports = {
   plugins: [require('prettier-plugin-smart')],
   ...require('prettier-plugin-smart').defaultOptions,
   // 在这里添加自定义配置以覆盖默认设置
-};
+}
 ```
 
 ### 默认格式化规则
@@ -458,7 +458,7 @@ module.exports = {
    module.exports = {
      plugins: [require('prettier-plugin-smart')],
      ...require('prettier-plugin-smart').defaultOptions,
-   };
+   }
    ```
 
 ### 贡献

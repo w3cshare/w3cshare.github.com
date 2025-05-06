@@ -18,7 +18,9 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
+    ".prettierrc.js",
     "docs",
+    "eslint.config.js",
     "lib",
     "src",
     "tsconfig.json"

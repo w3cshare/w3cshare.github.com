@@ -3,6 +3,7 @@
   "version": "0.0.9",
   "displayName": "ESLint插件",
   "description": "内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
+  "type": "module",
   "keywords": [
     "eslint",
     "eslintplugin",
@@ -14,9 +15,11 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
+    ".gitignore",
     "docs",
     "eslint.config.js",
     "lib",
+    ".prettierrc.js",
     "src",
     "tsconfig.json"
   ],
@@ -29,10 +32,9 @@
     "build:ts": "tsc",
     "dev": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
     "build": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "lint:json": "eslint --fix \"**/*.json\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
+    "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\""
   },

@@ -13,6 +13,7 @@
 ## 使用方法
 
 此功能在以下配置预设中默认启用：
+
 - `typescript`
 - `react`
 - `vue`
@@ -27,20 +28,20 @@
 ```typescript
 // 自动排序前
 interface User {
-  name: string;
-  id: number;
-  role: 'admin' | 'user';
-  age: number;
-  createdAt: Date;
+  name: string
+  id: number
+  role: 'admin' | 'user'
+  age: number
+  createdAt: Date
 }
 
 // 自动排序后
 interface User {
-  age: number;
-  createdAt: Date;
-  id: number;
-  name: string;
-  role: 'admin' | 'user';
+  age: number
+  createdAt: Date
+  id: number
+  name: string
+  role: 'admin' | 'user'
 }
 ```
 
@@ -71,19 +72,19 @@ enum HttpStatus {
 ```typescript
 // 自动排序前
 type Config = {
-  port: number;
-  host: string;
-  debug: boolean;
-  timeout: number;
-};
+  port: number
+  host: string
+  debug: boolean
+  timeout: number
+}
 
 // 自动排序后
 type Config = {
-  debug: boolean;
-  host: string;
-  port: number;
-  timeout: number;
-};
+  debug: boolean
+  host: string
+  port: number
+  timeout: number
+}
 ```
 
 ## 配置选项
@@ -97,11 +98,11 @@ export default [
     rules: {
       // 关闭接口排序
       'typescript-sort-keys/interface': 'off',
-      
+
       // 修改枚举类型排序配置
       'typescript-sort-keys/string-enum': ['error', 'asc', { caseSensitive: false }],
-    }
-  }
+    },
+  },
 ]
 ```
 
@@ -137,12 +138,12 @@ export default [
 ```typescript
 // eslint-disable-next-line typescript-sort-keys/interface
 interface Config {
-  port: number;
-  host: string;
+  port: number
+  host: string
   // 属性顺序不会被强制排序
 }
 ```
 
 ### 排序是否会修改源代码？
 
-是的，如果启用了 ESLint 的自动修复功能（使用 `--fix` 参数或在 IDE 中启用自动修复），排序规则会自动修改源代码，将接口属性按照字母顺序排序。 
+是的，如果启用了 ESLint 的自动修复功能（使用 `--fix` 参数或在 IDE 中启用自动修复），排序规则会自动修改源代码，将接口属性按照字母顺序排序。

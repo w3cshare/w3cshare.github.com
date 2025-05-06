@@ -198,7 +198,7 @@ const prettierRules: ESLintRuleSet = {
       endOfLine: 'lf', // 换行符使用LF（Unix风格）
     },
   ],
-  
+
   // 关闭可能与Prettier冲突的规则
   'arrow-body-style': 'off',
   'prefer-arrow-callback': 'off', // 禁用对回调函数使用箭头函数的强制要求
@@ -210,7 +210,7 @@ const prettierRules: ESLintRuleSet = {
  */
 const unusedCodeRules: ESLintRuleSet = {
   'no-unused-vars': 'off',
-  
+
   // 移除无用的代码规则
   'unused-imports/no-unused-imports': 'error', // 禁止未使用的导入
   'unused-imports/no-unused-vars': [
@@ -240,10 +240,9 @@ const importSortRules: ESLintRuleSet = {
  * @description 处理对象属性的排序
  */
 const objectSortRules: ESLintRuleSet = {
-  'sort-keys-fix/sort-keys-fix': 
-  // 'error'
-  ['error', 'asc', { caseSensitive: false }], // 按升序排序，忽略大小写
-  
+  'sort-keys-fix/sort-keys-fix':
+    // 'error'
+    ['error', 'asc', { caseSensitive: false }], // 按升序排序，忽略大小写
 }
 
 /**
@@ -595,7 +594,6 @@ const nodeModuleRules: ESLintRuleSet = {
 export const nodejsRules: ESLintRuleSet = {
   ...nodeEnvironmentRules,
   ...nodeModuleRules,
-
 }
 
 /**
