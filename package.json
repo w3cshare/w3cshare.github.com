@@ -28,7 +28,6 @@
     "prepare:husky": "husky install",
     "postinstall.husky": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
     "// ====== Lint 相关命令 ======": "",
-
     "lint:js": "nx run-many --target=lint:js --all  --parallel",
     "lint:json1": "nx run-many --target=lint:json --all  --parallel",
     "lint:json": "eslint --fix \"*/*/package.json\"",
@@ -64,10 +63,11 @@
     "vitepress-plugin-mermaid": "^2.0.17"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.3",
     "commitlint-smart": "workspace:^",
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
-    "lerna": "^8.2.1",
+    "lerna": "^8.2.2",
     "markdown-it-mathjax3": "^4.3.2",
     "nx": "^20.7.2",
     "prettier": "3.5.3",

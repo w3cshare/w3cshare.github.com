@@ -1,6 +1,6 @@
 {
   "name": "stylelint-config-smarts",
-  "version": "0.0.7",
+  "version": "0.0.3",
   "displayName": "Stylelint推荐配置",
   "description": "智能样式代码规范配置，适用于公司内部所有前端项目",
   "keywords": [

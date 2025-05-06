@@ -10,17 +10,17 @@
     "incremental": true,
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "ES2021",
-    "removeComments": true,
     "noFallthroughCasesInSwitch": false,
     "noImplicitAny": false,
     "paths": {
       "@/*": ["src/*"]
     },
+    "removeComments": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strictBindCallApply": false,
     "strictNullChecks": false,
+    "target": "ES2021",
     "tsBuildInfoFile": "tsconfig.tsbuildinfo"
   },
   "exclude": [
@@ -32,12 +32,12 @@
     ".vitepress",
     "_docker-compose",
     "_public",
-    "build",
-    "dist",
-    "node_modules",
-    "lib",
     "_resume",
     "_scripts",
-    "docker-compose"
+    "build",
+    "dist",
+    "docker-compose",
+    "lib",
+    "node_modules"
   ]
 }

@@ -1,5 +1,18 @@
 {
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "version": "0.0.7",
-  "npmClient": "pnpm"
+  "version": "independent",
+  "npmClient": "pnpm",
+  "packages": [
+    "apps/*",
+    "lib-cli/*",
+    "lib-lint/*",
+    "lib-mcp/*",
+    "lib-nest/*",
+    "lib-react/*",
+    "lib-vue/*",
+    "libs/*",
+    "micro-frontend/*",
+    "micro-service/*",
+    "packages/*"
+  ]
 }

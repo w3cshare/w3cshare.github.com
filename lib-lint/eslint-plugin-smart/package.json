@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-smart",
-  "version": "0.0.11",
+  "version": "0.0.9",
   "displayName": "ESLint插件",
   "description": "内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
   "keywords": [
@@ -14,10 +14,10 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
-    "README.md",
     "docs",
     "lib",
-    "src"
+    "src",
+    "tsconfig.json"
   ],
   "main": "lib/eslint-plugin-smart.js",
   "module": "lib/eslint-plugin-smart.mjs",
@@ -42,6 +42,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "9.25.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsonc": "^2.20.0",
@@ -61,7 +62,6 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.3",
-    "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",

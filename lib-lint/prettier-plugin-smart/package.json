@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-smart",
-  "version": "0.0.8",
+  "version": "0.0.2",
   "displayName": "Prettier推荐配置",
   "description": "一个智能的Prettier插件，无需配置，自动应用一致的代码格式化规则",
   "type": "module",
@@ -18,16 +18,19 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
-    "lib"
+    "lib",
+    "src",
+    "docs",
+    "tsconfig.json"
   ],
   "main": "lib/prettier-plugin-smart.cjs",
   "module": "lib/prettier-plugin-smart.js",
   "types": "lib/prettier-plugin-smart.d.ts",
   "exports": {
     ".": {
+      "types": "./lib/prettier-plugin-smart.d.ts",
       "import": "./lib/prettier-plugin-smart.js",
-      "require": "./lib/prettier-plugin-smart.cjs",
-      "types": "./lib/prettier-plugin-smart.d.ts"
+      "require": "./lib/prettier-plugin-smart.cjs"
     }
   },
   "directories": {
@@ -52,6 +55,7 @@
     "prettier": ">=3.0.0"
   },
   "dependencies": {
+    "prettier": "^3.5.3",
     "sort-package-json": "^2.6.0"
   },
   "devDependencies": {
@@ -59,7 +63,6 @@
     "@types/prettier": "^3.0.0",
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
-    "prettier": "^3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^",
     "tsup": "^8.4.0",

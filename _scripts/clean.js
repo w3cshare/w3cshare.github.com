@@ -2,12 +2,12 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-03-28 23:11:36
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 16:46:54
+ * @LastEditTime: 2025-05-06 16:51:13
  * @FilePath: /FullStack/clean.js
  * @Description: 删除子项目下的 node_modules 文件夹
  */
-const fs = require('fs').promises
-const path = require('path')
+import fs from 'fs/promises'
+import path from 'path'
 
 /**
  * 递归查找特定名称的文件夹
@@ -35,28 +35,30 @@ async function findFolders(dir, targetFolderName) {
       }
     }
   } catch (err) {
-    console.error(`Error reading directory ${dir}:`, err)
+    // console.error(`Error reading directory ${dir}:`, err)
   }
 
   return results
 }
 
-removeFolders = ['node_modules'].forEach(async targetFolderName => {
-  await handleRemoveFolder(targetFolderName)
-})
-
 async function handleRemoveFolder(targetFolderName) {
   const startDir = './' // 起始目录
   try {
     const folders = await findFolders(startDir, targetFolderName)
-    console.log('Found folders:', folders)
+
+    // console.log('Found folders:', folders)
 
     // 执行删除操作
     for (const folder of folders) {
       await fs.rm(folder, { recursive: true })
-      console.log(`Deleted folder: ${folder}`)
+
+      // console.log(`Deleted folder: ${folder}`)
     }
   } catch (err) {
-    console.error('Error finding folders:', err)
+    // console.error('Error finding folders:', err)
   }
 }
+
+;['node_modules'].forEach(async targetFolderName => {
+  await handleRemoveFolder(targetFolderName)
+})

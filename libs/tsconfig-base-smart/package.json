@@ -1,7 +1,8 @@
 {
   "name": "tsconfig-base-smart",
   "version": "0.0.1",
-  "description": "> TODO: description",
+  "displayName": "typescript通用配置",
+  "description": "typescript通用配置 for tsconfig-base-smart",
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "bugs": {
     "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
@@ -9,8 +10,12 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
+    "docs",
+    "eslint.config.js",
     "lib",
-    "tsconfig.base.json"
+    "src",
+    "tsconfig.base.json",
+    "tsconfig.json"
   ],
   "main": "lib/tsconfig-base-smart.js",
   "module": "lib/tsconfig-base-smart.mjs",
@@ -39,7 +44,6 @@
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
-    "prettier-plugin-smart": "workspace:^",
-    "tsconfig-base-smart": "workspace:^"
+    "prettier-plugin-smart": "workspace:^"
   }
 }

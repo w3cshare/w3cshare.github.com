@@ -702,6 +702,10 @@ const packageJsonSortRules: ESLintRuleSet = {
       pathPattern: '^scripts$',
       order: ['start', 'dev', 'build', 'serve', 'test', 'lint', 'format', 'prepare'],
     },
+    {
+      pathPattern: '^exports$',
+      order: ['types', 'import', 'require'],
+    },
     // 第四个配置对象：处理其他所有对象
     {
       pathPattern: '.*', // 适用于其他所有路径

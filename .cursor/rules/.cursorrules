@@ -108,3 +108,5 @@
 
 
 pip install 时必须带上 `-i https://pypi.tuna.tsinghua.edu.cn/simple`
+
+不要自行修改版本号
