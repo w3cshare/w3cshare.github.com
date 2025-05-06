@@ -2,12 +2,12 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-05-05 00:53:38
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-05 00:53:44
+ * @LastEditTime: 2025-05-06 21:42:22
  * @FilePath: /FullStack/libs/tsconfig-base/src/tsconfig-base.ts
  * @Description: TypeScript配置基础插件，提供统一的TS配置供子项目继承
  */
-import * as fs from 'fs'
-import * as path from 'path'
+import fs from 'fs'
+import path from 'path'
 
 /**
  * 获取基础TypeScript配置路径
@@ -26,21 +26,23 @@ export function getBaseTsConfigPath(): string {
 export function createTsConfig(customOptions: Record<string, any> = {}): Record<string, any> {
   const baseTsConfigPath = getBaseTsConfigPath()
   const baseTsConfig = JSON.parse(fs.readFileSync(baseTsConfigPath, 'utf8'))
-  
+
   // 确保设置了outDir
   if (!customOptions.compilerOptions?.outDir) {
-    console.warn('警告: 未设置 compilerOptions.outDir，这可能导致编译输出到错误位置。请确保设置outDir！');
-    
+    console.warn(
+      '警告: 未设置 compilerOptions.outDir，这可能导致编译输出到错误位置。请确保设置outDir！',
+    )
+
     // 为防止问题，如果未设置则添加默认值
     if (!customOptions.compilerOptions) {
-      customOptions.compilerOptions = {};
+      customOptions.compilerOptions = {}
     }
-    customOptions.compilerOptions.outDir = 'lib';
-    console.warn('已自动设置 outDir 为 "lib"，建议手动指定输出目录');
+    customOptions.compilerOptions.outDir = 'lib'
+    console.warn('已自动设置 outDir 为 "lib"，建议手动指定输出目录')
   }
 
   return {
-    extends: "tsconfig-base-smart",
+    extends: 'tsconfig-base-smart',
     ...customOptions,
   }
 }

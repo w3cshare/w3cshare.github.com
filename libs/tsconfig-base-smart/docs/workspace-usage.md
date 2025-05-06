@@ -88,4 +88,4 @@ pnpm tsc -w
 
 ## 示例
 
-完整示例请参考：[tsconfig-base-smart/examples](../examples) 
+完整示例请参考：[tsconfig-base-smart/examples](../examples)

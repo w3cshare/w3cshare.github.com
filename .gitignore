@@ -1,11 +1,10 @@
-.git.bak
 # 开发依赖
 node_modules
 package-lock.json
 
 # 构建产物
 dist
-lib
+# lib
 cache
 output
 input
