@@ -1,8 +1,8 @@
 {
   "name": "prettier-plugin-smarts",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "displayName": "Prettier推荐配置（备份）",
-  "description": "智能格式化插件，适用于公司内部所有前端项目",
+  "description": "一个智能的Prettier插件，无需配置，自动应用一致的代码格式化规则",
   "keywords": [
     "formatter",
     "javascript",
@@ -13,18 +13,27 @@
     "typescript",
     "vue"
   ],
+  "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "license": "ISC",
-  "author": "",
+  "author": "wangwei <wwdqq7@qq.com>",
   "files": [
     "lib"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "types": "lib/index.d.ts",
+  "main": "lib/prettier-plugin-smart.js",
+  "module": "lib/prettier-plugin-smart.mjs",
+  "types": "lib/prettier-plugin-smart.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
+  },
   "scripts": {
     "start": "pnpm run dev",
-    "dev": "tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "tsup ../prettier-plugin-smart/src/**.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "tsup ../prettier-plugin-smart/src/**.ts --format=cjs,esm --dts --outDir lib",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
