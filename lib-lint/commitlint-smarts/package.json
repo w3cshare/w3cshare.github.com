@@ -44,14 +44,14 @@
   },
   "dependencies": {
     "@commitlint/config-conventional": "^17.7.0",
-    "@commitlint/types": "^17.4.4",
-    "tsup": "^8.4.0"
+    "@commitlint/types": "^17.4.4"
   },
   "devDependencies": {
     "eslint": "9.25.1",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^",
+    "tsup": "^8.4.0",
     "typescript": "^5.2.2"
   }
 }

@@ -30,14 +30,13 @@
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
-    "tsconfig-base-smart": "workspace:^"
-  },
-  "dependencies": {
+    "tsconfig-base-smart": "workspace:^",
     "tsup": "^8.4.0"
   }
 }

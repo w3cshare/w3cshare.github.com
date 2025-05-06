@@ -44,8 +44,7 @@
     "prettier": ">=2.0.0"
   },
   "dependencies": {
-    "sort-package-json": "^2.6.0",
-    "tsup": "^8.4.0"
+    "sort-package-json": "^2.6.0"
   },
   "devDependencies": {
     "@types/node": "^20.9.2",
@@ -55,6 +54,7 @@
     "prettier": "^3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^",
+    "tsup": "^8.4.0",
     "typescript": "^5.2.2"
   }
 }
