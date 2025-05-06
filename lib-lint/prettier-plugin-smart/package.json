@@ -18,21 +18,14 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
+    "docs",
     "lib",
     "src",
-    "docs",
     "tsconfig.json"
   ],
   "main": "lib/prettier-plugin-smart.cjs",
   "module": "lib/prettier-plugin-smart.js",
   "types": "lib/prettier-plugin-smart.d.ts",
-  "exports": {
-    ".": {
-      "types": "./lib/prettier-plugin-smart.d.ts",
-      "import": "./lib/prettier-plugin-smart.js",
-      "require": "./lib/prettier-plugin-smart.cjs"
-    }
-  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"

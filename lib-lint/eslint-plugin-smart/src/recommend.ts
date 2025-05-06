@@ -572,7 +572,7 @@ export const vueRules: ESLintRuleSet = {
  */
 const nodeEnvironmentRules: ESLintRuleSet = {
   'no-process-exit': 'error', // 禁止使用process.exit()
-  'no-sync': 'warn', // 警告使用同步方法
+  'no-sync': 'off', // 警告使用同步方法
   'handle-callback-err': 'error', // 要求回调函数中有错误处理
   'no-new-require': 'error', // 禁止使用new require
   'no-path-concat': 'error', // 禁止使用__dirname或__filename做路径拼接
@@ -595,6 +595,7 @@ const nodeModuleRules: ESLintRuleSet = {
 export const nodejsRules: ESLintRuleSet = {
   ...nodeEnvironmentRules,
   ...nodeModuleRules,
+
 }
 
 /**

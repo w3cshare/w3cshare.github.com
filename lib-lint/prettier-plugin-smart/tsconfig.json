@@ -1,8 +1,11 @@
 {
   "extends": "tsconfig-base-smart",
   "compilerOptions": {
-    "outDir": "lib"
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "lib",
+    "target": "ES2020"
   },
   "references": [],
-  "include": ["../stylelint-config-smart/src/**/*"]
+  "include": ["src/**/*", "src/**/*.ts"]
 }
