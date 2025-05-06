@@ -2,12 +2,14 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-23 20:44:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-05 12:12:29
+ * @LastEditTime: 2025-05-06 15:48:23
  * @FilePath: /FullStack/lib-lint/prettier-plugin-smart/src/prettier-plugin-smart.ts
  * @Description: .prettier配置 for prettier-plugin-smart
  */
 
 // 导入必要的Prettier类型
+import path from 'path'
+import process from 'process'
 import type { Options, Plugin } from 'prettier'
 
 // 检查是否在Node环境中运行
@@ -34,89 +36,117 @@ if (isNodeEnv) {
 }
 
 /**
- * Prettier初始化后自动应用配置的钩子
- * 这是真正实现零配置的关键部分
- */
-let originalResolveConfig: any = null
-
-if (isNodeEnv) {
-  try {
-    // 获取 prettier 模块
-    const prettier = require('prettier')
-    
-    // 保存原始方法
-    originalResolveConfig = prettier.resolveConfig.sync
-    
-    // 覆盖配置解析方法，注入我们的默认配置
-    prettier.resolveConfig.sync = function(filePath: string, options: any) {
-      const originalConfig = originalResolveConfig(filePath, options) || {}
-      
-      // 合并我们的默认配置，但保留用户配置的优先级
-      return {
-        ...smartOptions,
-        ...originalConfig
-      }
-    }
-    
-    console.log('\x1b[32m%s\x1b[0m', '[prettier-plugin-smart] 配置注入成功，将对所有文件应用智能格式化规则')
-  } catch (error) {
-    console.warn('\x1b[33m%s\x1b[0m', '[prettier-plugin-smart] 无法访问Prettier API，降级为标准插件模式')
-  }
-}
-
-/**
- * 标准插件实现 - 作为备用方案
- * 即使上面的高级方法不起作用，这个标准实现也能确保插件正常工作
+ * 标准插件实现
+ * 在Prettier 3.x中，插件的工作方式有所改变
+ * 我们需要确保defaultOptions能够正确应用到所有使用此插件的项目中
  */
 const prettierPluginSmart: Plugin = {
-  // 提供标准的插件选项接口
-  options: {
-    smartFormatEnabled: {
-      type: 'boolean',
-      category: 'Global',
-      default: true,
-      description: '是否启用智能格式化规则',
-    },
-  },
-  
   // 提供默认选项，确保规则被应用
-  defaultOptions: {
-    ...smartOptions,
-    smartFormatEnabled: true,
-  },
-  
-  // 提供解析器确保插件被加载
-  parsers: {
-    __dummy: {
-      parse: () => ({}),
-      astFormat: '__dummy',
-      locStart: () => 0,
-      locEnd: () => 0,
+  defaultOptions: smartOptions,
+
+  // 提供插件选项定义
+  options: {
+    semi: {
+      type: 'boolean',
+      default: false,
+      description: '是否添加分号',
+      category: 'Global',
     },
+    singleQuote: {
+      type: 'boolean',
+      default: true,
+      description: '使用单引号',
+      category: 'Global',
+    },
+    trailingComma: {
+      type: 'choice',
+      default: 'all',
+      description: '尾随逗号',
+      choices: [
+        { value: 'all', description: '所有可能的地方' },
+        { value: 'es5', description: 'ES5语法支持的地方' },
+        { value: 'none', description: '不使用尾随逗号' },
+      ],
+      category: 'Global',
+    },
+    printWidth: {
+      type: 'int',
+      default: 100,
+      description: '每行最大宽度',
+      category: 'Global',
+    },
+    tabWidth: {
+      type: 'int',
+      default: 2,
+      description: '缩进宽度',
+      category: 'Global',
+    },
+    useTabs: {
+      type: 'boolean',
+      default: false,
+      description: '使用Tab缩进',
+      category: 'Global',
+    },
+    bracketSpacing: {
+      type: 'boolean',
+      default: true,
+      description: '对象括号间距',
+      category: 'Global',
+    },
+    arrowParens: {
+      type: 'choice',
+      default: 'avoid',
+      description: '箭头函数参数括号',
+      choices: [
+        { value: 'avoid', description: '可以省略时省略' },
+        { value: 'always', description: '总是使用括号' },
+      ],
+      category: 'Global',
+    },
+    endOfLine: {
+      type: 'choice',
+      default: 'lf',
+      description: '行尾符号',
+      choices: [
+        { value: 'lf', description: '\\n' },
+        { value: 'crlf', description: '\\r\\n' },
+        { value: 'cr', description: '\\r' },
+        { value: 'auto', description: '保持现有的行尾' },
+      ],
+      category: 'Global',
+    },
+  },
+
+  // 提供插件的核心功能
+  parsers: {
+    // 空对象表示我们不提供自定义解析器
+  },
+
+  // 提供格式化逻辑
+  printers: {
+    // 空对象表示我们使用默认的打印逻辑
   },
 }
 
 /**
  * 在安装时运行的一次性代码
- * 尝试修改全局Prettier配置
+ * 创建最小化的配置文件
  */
 if (isNodeEnv && process.env.npm_lifecycle_event === 'install') {
   try {
     const fs = require('fs')
-    const path = require('path')
-    
-    // 尝试检测用户项目目录
-    const projectDir = process.cwd()
-    
-    // 尝试创建最小化的配置文件
-    const configPath = path.join(projectDir, '.prettierrc')
-    
-    // 如果不存在配置文件，则创建一个
+    const configPath = path.join(process.cwd(), '.prettierrc')
+
+    // 如果不存在配置文件，则创建一个最小配置
     if (!fs.existsSync(configPath)) {
       console.log('\x1b[32m%s\x1b[0m', '[prettier-plugin-smart] 创建最小化配置文件')
-      fs.writeFileSync(configPath, '{}', 'utf-8')
+      fs.writeFileSync(
+        configPath,
+        JSON.stringify({ plugins: ['prettier-plugin-smart'] }, null, 2),
+        'utf-8',
+      )
     }
-    
+
     console.log('\x1b[32m%s\x1b[0m', '[prettier-plugin-smart] 配置完成')
   } catch (error) {
     // 忽略错误

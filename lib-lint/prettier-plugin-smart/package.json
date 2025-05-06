@@ -1,8 +1,9 @@
 {
   "name": "prettier-plugin-smart",
-  "version": "0.0.7",
-  "displayName": "Prettier推荐配置（备份）",
+  "version": "0.0.8",
+  "displayName": "Prettier推荐配置",
   "description": "一个智能的Prettier插件，无需配置，自动应用一致的代码格式化规则",
+  "type": "module",
   "keywords": [
     "formatter",
     "javascript",
@@ -19,9 +20,16 @@
   "files": [
     "lib"
   ],
-  "main": "lib/prettier-plugin-smart.js",
-  "module": "lib/prettier-plugin-smart.mjs",
+  "main": "lib/prettier-plugin-smart.cjs",
+  "module": "lib/prettier-plugin-smart.js",
   "types": "lib/prettier-plugin-smart.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/prettier-plugin-smart.js",
+      "require": "./lib/prettier-plugin-smart.cjs",
+      "types": "./lib/prettier-plugin-smart.d.ts"
+    }
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -41,7 +49,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "peerDependencies": {
-    "prettier": ">=2.0.0"
+    "prettier": ">=3.0.0"
   },
   "dependencies": {
     "sort-package-json": "^2.6.0"

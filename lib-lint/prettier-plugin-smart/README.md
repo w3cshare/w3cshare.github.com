@@ -377,3 +377,94 @@ ISC
 - [通用配置](/lint/prettier-plugin-smarts/docs/通用配置) - 了解如何配置通用代码风格
 - [TypeScript支持](/lint/prettier-plugin-smarts/docs/TypeScript支持) - 增强的 TypeScript 格式化
 - [JSON自动排序](/lint/prettier-plugin-smarts/docs/JSON自动排序) - JSON 文件智能排序
+
+## Prettier Plugin Smart
+
+一个智能的Prettier插件，无需配置，自动应用一致的代码格式化规则。
+
+### 特性
+
+- **零配置**：直接安装后即可在项目中使用，无需额外设置
+- **统一格式**：为项目提供一致的代码格式化体验
+- **可覆盖**：预设配置可以被本地`.prettierrc`文件覆盖，灵活适应项目需求
+
+### 安装
+
+```bash
+# 使用npm
+npm install --save-dev prettier-plugin-smart
+
+# 使用pnpm
+pnpm add -D prettier-plugin-smart
+
+# 使用yarn
+yarn add -D prettier-plugin-smart
+```
+
+### 使用方法
+
+无需额外配置，安装后即可在项目中使用。如果需要自定义配置，可以在项目根目录创建`.prettierrc`文件进行覆盖。
+
+#### 在已有项目中使用
+
+1. 安装插件
+2. 正常使用Prettier命令格式化代码
+3. 享受统一的代码格式化体验
+
+#### 手动引入（对于特殊项目）
+
+在`.prettierrc.js`或`.prettierrc.cjs`文件中：
+
+```js
+module.exports = {
+  plugins: [require('prettier-plugin-smart')],
+  ...require('prettier-plugin-smart').defaultOptions,
+  // 在这里添加自定义配置以覆盖默认设置
+};
+```
+
+### 默认格式化规则
+
+```js
+{
+  semi: false,          // 不添加分号
+  singleQuote: true,    // 使用单引号
+  trailingComma: 'all', // 尾随逗号
+  printWidth: 100,      // 每行最大宽度
+  tabWidth: 2,          // 缩进宽度
+  useTabs: false,       // 使用空格缩进
+  bracketSpacing: true, // 对象括号间距
+  arrowParens: 'avoid', // 箭头函数参数括号
+  endOfLine: 'lf',      // 行尾符号
+}
+```
+
+### Prettier 3.x 兼容说明
+
+从Prettier 3.0开始，插件API有所变化。本插件已针对3.x版本进行了适配，确保在最新版本的Prettier中正常工作。主要变更：
+
+1. 移除了不必要的解析器配置
+2. 配置注入顺序调整，确保`semi: false`等配置能够正确生效
+3. 简化了插件结构，提高了兼容性
+
+### 故障排除
+
+如果你发现配置未生效，可以：
+
+1. 确认项目中没有其他的`.prettierrc`文件覆盖配置
+2. 确保在使用Prettier命令时正确加载了插件
+3. 尝试在`.prettierrc.js`文件中显式引入插件配置:
+   ```js
+   module.exports = {
+     plugins: [require('prettier-plugin-smart')],
+     ...require('prettier-plugin-smart').defaultOptions,
+   };
+   ```
+
+### 贡献
+
+欢迎提交PR和Issue，一起改进这个插件！
+
+### 许可证
+
+MIT

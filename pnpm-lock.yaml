@@ -299,10 +299,6 @@ importers:
         version: link:../../libs/tsconfig-base-smart
 
   lib-lint/commit-smart:
-    dependencies:
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
     devDependencies:
       eslint:
         specifier: 9.25.1
@@ -319,6 +315,9 @@ importers:
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../../libs/tsconfig-base-smart
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
 
   lib-lint/commit-smarts:
     devDependencies:
@@ -383,9 +382,6 @@ importers:
       '@commitlint/types':
         specifier: ^17.4.4
         version: 17.8.1
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
     devDependencies:
       eslint:
         specifier: 9.25.1
@@ -399,6 +395,9 @@ importers:
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../../libs/tsconfig-base-smart
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
       typescript:
         specifier: ^5.2.2
         version: 5.8.3
@@ -453,9 +452,6 @@ importers:
       jsonc-eslint-parser:
         specifier: ^2.4.0
         version: 2.4.0
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
       typescript:
         specifier: ^5.5.2
         version: 5.8.3
@@ -481,6 +477,9 @@ importers:
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../../libs/tsconfig-base-smart
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
 
   lib-lint/eslint-plugin-smarts:
     dependencies:
@@ -532,9 +531,6 @@ importers:
       jsonc-eslint-parser:
         specifier: ^2.4.0
         version: 2.4.0
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
       typescript:
         specifier: ^5.5.2
         version: 5.8.3
@@ -560,15 +556,15 @@ importers:
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../../libs/tsconfig-base-smart
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
 
   lib-lint/prettier-plugin-smart:
     dependencies:
       sort-package-json:
         specifier: ^2.6.0
         version: 2.15.1
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
     devDependencies:
       '@types/node':
         specifier: ^20.9.2
@@ -591,6 +587,9 @@ importers:
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../../libs/tsconfig-base-smart
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
       typescript:
         specifier: ^5.2.2
         version: 5.8.3
@@ -600,9 +599,6 @@ importers:
       sort-package-json:
         specifier: ^2.6.0
         version: 2.15.1
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
     devDependencies:
       '@types/node':
         specifier: ^20.9.2
@@ -625,6 +621,9 @@ importers:
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../../libs/tsconfig-base-smart
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
       typescript:
         specifier: ^5.2.2
         version: 5.8.3
@@ -658,9 +657,6 @@ importers:
       stylelint-scss:
         specifier: ^5.2.1
         version: 5.3.2(stylelint@15.11.0(typescript@5.8.3))
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
     devDependencies:
       '@types/stylelint':
         specifier: ^14.0.0
@@ -680,6 +676,9 @@ importers:
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../../libs/tsconfig-base-smart
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -713,9 +712,6 @@ importers:
       stylelint-scss:
         specifier: ^5.2.1
         version: 5.3.2(stylelint@15.11.0(typescript@5.8.3))
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
     devDependencies:
       '@types/stylelint':
         specifier: ^14.0.0
@@ -735,6 +731,9 @@ importers:
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../../libs/tsconfig-base-smart
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -1300,9 +1299,6 @@ importers:
       mermaid:
         specifier: ^11.6.0
         version: 11.6.0
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.7.3)(yaml@2.7.1)
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -1325,6 +1321,9 @@ importers:
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../tsconfig-base-smart
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24)(jiti@2.4.2)(postcss@8.5.3)(typescript@5.7.3)(yaml@2.7.1)
 
   micro-frontend/micro-app-ai:
     dependencies:

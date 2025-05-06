@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-05-06 12:06:19
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-06 12:19:30
+ * @LastEditTime: 2025-05-06 12:30:34
  * @FilePath: /FullStack/_scripts/check_package_dev.js
  * @Description: 检查package.json中包是否需要放在devDependencies
  */
