@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-smart",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "displayName": "Prettier推荐配置",
   "description": "一个智能的Prettier插件，无需配置，自动应用一致的代码格式化规则",
   "type": "module",
