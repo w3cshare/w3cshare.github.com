@@ -1,10 +1,11 @@
 {
   "extends": "tsconfig-base-smart",
   "compilerOptions": {
-    "outDir": "lib"
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "lib",
+    "target": "ES2020"
   },
   "references": [],
-  "include": [
-    "../prettier-plugin-smart/src/**/*"
-  ]
+  "include": ["../prettier-plugin-smart/src/**/*"]
 }

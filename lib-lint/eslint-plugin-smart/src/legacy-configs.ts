@@ -1,20 +1,20 @@
 /*
  * @Author: wangwei wwdqq7@qq.com
- * @Date: 2025-04-22 16:42:09
+ * @Date: 2025-04-22 16:45:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-04 22:33:23
+ * @LastEditTime: 2025-04-28 13:10:12
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/legacy-configs.ts
- * @Description: ESLint v8及以下版本的传统配置
+ * @Description: ESLint传统配置
  */
 
-import type { ESLintPluginExport, ESLintRuleSet, LoadedPlugins } from './types'
+import { type ESLintPluginExport, type ESLintRuleSet, type LoadedPlugins } from './types'
 
 /**
- * 创建ESLint v8及以下版本的传统配置
+ * 创建传统ESLint配置
  *
- * @param plugins 加载的ESLint插件
- * @param rules 规则集合
- * @returns ESLint传统配置对象集合
+ * @param plugins - 加载的插件
+ * @param rules - 规则集
+ * @returns ESLint配置对象
  */
 export function createLegacyConfigs(
   plugins: LoadedPlugins,
@@ -27,127 +27,101 @@ export function createLegacyConfigs(
     vueRules: ESLintRuleSet
   },
 ): ESLintPluginExport['configs'] {
-  const {
-    import: importPlugin,
-    simpleImportSort: simpleImportSortPlugin,
-    unusedImports: unusedImportsPlugin,
-    typescriptEslint: typescriptEslintPlugin,
-    typescriptEslintParser,
-    typescriptSortKeys: typescriptSortKeysPlugin,
-    react: reactPlugin,
-    reactHooks: reactHooksPlugin,
-    jsxA11y: jsxA11yPlugin,
-    vue: vuePlugin,
-    vueEslintParser,
-    node: nodePlugin,
-    prettier: prettierPlugin,
-    eslintConfigPrettier,
-    jsonc: jsoncPlugin,
-  } = plugins
+  // 导入插件
+  const _importPlugin = plugins.import
+  const _simpleImportSortPlugin = plugins.simpleImportSort
+  const _unusedImportsPlugin = plugins.unusedImports
+  const _typescriptEslintPlugin = plugins.typescriptEslint
+  const _typescriptEslintParser = plugins.typescriptEslintParser
+  const _typescriptSortKeysPlugin = plugins.typescriptSortKeys
+  const _reactPlugin = plugins.react
+  const _reactHooksPlugin = plugins.reactHooks
+  const _jsxA11yPlugin = plugins.jsxA11y
+  const _vuePlugin = plugins.vue
+  const _vueEslintParser = plugins.vueEslintParser
+  const _nodePlugin = plugins.node
+  const _prettierPlugin = plugins.prettier
+  const _eslintConfigPrettier = plugins.eslintConfigPrettier
+  const _jsoncPlugin = plugins.jsonc
 
   const { baseRules, typescriptRules, reactRules, vueRules, nestjsRules, jsonRules } = rules
 
-  /**
-   * 基础配置，适用于所有项目
-   */
-  const baseConfig = {
-    extends: ['plugin:prettier/recommended'],
-    plugins: ['import', 'simple-import-sort', 'unused-imports', 'prettier'],
-    rules: baseRules,
-  }
-
-  /**
-   * TypeScript配置
-   */
-  const typescriptConfig = {
-    extends: [
-      'plugin:@typescript-eslint/recommended',
-      'plugin:typescript-sort-keys/recommended',
-      'plugin:prettier/recommended',
-    ],
-    parser: '@typescript-eslint/parser',
-    plugins: ['@typescript-eslint', 'typescript-sort-keys', 'prettier'],
-    rules: {
-      ...baseRules,
-      ...typescriptRules,
-    },
-  }
-
-  /**
-   * React配置
-   */
-  const reactConfig = {
-    extends: [
-      'plugin:react/recommended',
-      'plugin:react-hooks/recommended',
-      'plugin:jsx-a11y/recommended',
-      'plugin:typescript-sort-keys/recommended',
-      'plugin:prettier/recommended',
-    ],
-    plugins: ['react', 'react-hooks', 'jsx-a11y', 'typescript-sort-keys', 'prettier'],
-    rules: {
-      ...baseRules,
-      ...typescriptRules,
-      ...reactRules,
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
-  }
-
-  /**
-   * Vue配置
-   */
-  const vueConfig = {
-    extends: ['plugin:vue/vue3-recommended', 'plugin:prettier/recommended'],
-    plugins: ['vue', 'typescript-sort-keys', 'prettier'],
-    rules: {
-      ...baseRules,
-      ...typescriptRules,
-      ...vueRules,
-    },
-  }
-
-  /**
-   * NestJS配置
-   */
-  const nestjsConfig = {
-    extends: [
-      'plugin:node/recommended',
-      'plugin:typescript-sort-keys/recommended',
-      'plugin:prettier/recommended',
-    ],
-    plugins: ['node', 'typescript-sort-keys', 'prettier'],
-    rules: {
-      ...baseRules,
-      ...typescriptRules,
-      ...nestjsRules,
-    },
-  }
-
-  /**
-   * JSON配置
-   */
-  const jsonConfig = {
-    extends: ['plugin:jsonc/recommended-with-jsonc'],
-    plugins: ['jsonc'],
-    rules: jsonRules,
-  }
-
-  // 返回所有配置
   return {
-    base: baseConfig,
-    json: jsonConfig,
-    nestjs: nestjsConfig,
-    react: reactConfig,
-
-    // 推荐配置，默认使用typescript配置
-    recommended: typescriptConfig,
-
-    typescript: typescriptConfig,
-
-    vue: vueConfig,
+    base: [
+      {
+        files: ['**/*.{js,jsx,mjs,cjs}'],
+        plugins: {
+          import: _importPlugin,
+          'simple-import-sort': _simpleImportSortPlugin,
+          'unused-imports': _unusedImportsPlugin,
+        },
+        rules: baseRules,
+      },
+    ],
+    json: [
+      {
+        files: ['**/*.json'],
+        parser: 'jsonc-eslint-parser',
+        plugins: {
+          jsonc: _jsoncPlugin,
+        },
+        rules: jsonRules,
+      },
+    ],
+    nestjs: [
+      {
+        files: ['**/*.{ts,tsx}'],
+        plugins: {
+          '@typescript-eslint': _typescriptEslintPlugin,
+        },
+        rules: nestjsRules,
+      },
+    ],
+    react: [
+      {
+        files: ['**/*.{jsx,tsx}'],
+        plugins: {
+          'jsx-a11y': _jsxA11yPlugin,
+          react: _reactPlugin,
+          'react-hooks': _reactHooksPlugin,
+        },
+        rules: reactRules,
+        settings: {
+          react: {
+            version: 'detect',
+          },
+        },
+      },
+    ],
+    recommended: [
+      {
+        files: ['**/*.{js,jsx,ts,tsx}'],
+        plugins: {
+          prettier: _prettierPlugin,
+        },
+        rules: baseRules,
+      },
+    ],
+    typescript: [
+      {
+        files: ['**/*.{ts,tsx}'],
+        parser: '@typescript-eslint/parser',
+        plugins: {
+          '@typescript-eslint': _typescriptEslintPlugin,
+          'typescript-sort-keys': _typescriptSortKeysPlugin,
+        },
+        rules: typescriptRules,
+      },
+    ],
+    vue: [
+      {
+        files: ['**/*.vue'],
+        parser: 'vue-eslint-parser',
+        plugins: {
+          vue: _vuePlugin,
+        },
+        rules: vueRules,
+      },
+    ],
   }
 }

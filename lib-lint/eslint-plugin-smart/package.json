@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-smart",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "displayName": "ESLint插件",
   "description": "内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
   "type": "module",
@@ -16,22 +16,28 @@
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
     ".gitignore",
+    ".prettierrc.js",
     "docs",
     "eslint.config.js",
     "lib",
-    ".prettierrc.js",
     "src",
     "tsconfig.json"
   ],
-  "main": "lib/eslint-plugin-smart.js",
-  "module": "lib/eslint-plugin-smart.mjs",
-  "types": "lib/eslint-plugin-smart.d.ts",
+  "main": "./lib/eslint-plugin-smart.js",
+  "types": "./lib/eslint-plugin-smart.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/eslint-plugin-smart.d.ts",
+      "import": "./lib/eslint-plugin-smart.js",
+      "require": "./lib/eslint-plugin-smart.cjs"
+    }
+  },
   "scripts": {
     "start": "pnpm run dev",
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
-    "dev": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "tsup src/eslint-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "tsup src/**/*.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "tsup src/**/*.ts --format=cjs,esm --dts --outDir lib",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
     "lint:json": "eslint --fix \"**/*.json\"",

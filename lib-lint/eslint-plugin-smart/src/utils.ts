@@ -7,6 +7,26 @@
  * @Description: 工具函数，用于检测ESLint版本和加载插件
  */
 
+/* global console */
+
+import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin'
+import typescriptEslintParser from '@typescript-eslint/parser'
+import eslintConfigPrettier from 'eslint-config-prettier'
+import importPlugin from 'eslint-plugin-import'
+import jsoncPlugin from 'eslint-plugin-jsonc'
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
+import nodePlugin from 'eslint-plugin-node'
+import prettierPlugin from 'eslint-plugin-prettier'
+import reactPlugin from 'eslint-plugin-react'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort'
+import sortKeysFixPlugin from 'eslint-plugin-sort-keys-fix'
+import typescriptSortKeysPlugin from 'eslint-plugin-typescript-sort-keys'
+import unusedImportsPlugin from 'eslint-plugin-unused-imports'
+import vuePlugin from 'eslint-plugin-vue'
+import jsoncParser from 'jsonc-eslint-parser'
+import vueEslintParser from 'vue-eslint-parser'
+
 import { type ESLintPlugin, type LoadedPlugins } from './types'
 
 /**
@@ -26,11 +46,26 @@ export function isObject(value: unknown): value is Record<string, unknown> {
  */
 export function isESLintV9(): boolean {
   try {
-    const eslintVersion = require('eslint/package.json').version
-    return parseInt(eslintVersion.split('.')[0], 10) >= 9
+    // 使用动态导入来获取ESLint版本信息
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const eslintPkg = (globalThis as any).require?.('eslint/package.json')
+
+    // 如果能够获取到版本信息，则检查版本号
+    if (eslintPkg?.version) {
+      return parseInt(eslintPkg.version.split('.')[0], 10) >= 9
+    }
+
+    /*
+     * 通过检查是否存在新的flat config API来判断
+     * 如果globalThis上没有require方法，则很可能是在ESM环境下运行
+     * ESLint v9默认使用ESM和flat config
+     */
+    return true
   } catch (error) {
-    console.warn('无法检测ESLint版本，将使用ESLint v8兼容模式。')
-    return false
+    console.warn('无法检测ESLint版本，将使用ESLint v9兼容模式。', error)
+
+    // 默认使用ESLint v9配置，因为现在的主流版本
+    return true
   }
 }
 
@@ -41,27 +76,29 @@ export function isESLintV9(): boolean {
  */
 export function loadPlugins(): LoadedPlugins {
   try {
-    const jsoncPlugin = require('eslint-plugin-jsonc') as ESLintPlugin
-    const jsoncParser = require('jsonc-eslint-parser')
-    jsoncPlugin.parser = jsoncParser
+    // 为jsonc插件添加parser
+    const jsoncPluginWithParser = jsoncPlugin as ESLintPlugin
+    jsoncPluginWithParser.parser = jsoncParser as unknown as {
+      parse(text: string, options?: unknown): unknown
+    }
 
     return {
-      import: require('eslint-plugin-import') as ESLintPlugin,
-      simpleImportSort: require('eslint-plugin-simple-import-sort') as ESLintPlugin,
-      unusedImports: require('eslint-plugin-unused-imports') as ESLintPlugin,
-      typescriptEslint: require('@typescript-eslint/eslint-plugin') as ESLintPlugin,
-      typescriptEslintParser: require('@typescript-eslint/parser') as ESLintPlugin,
-      react: require('eslint-plugin-react') as ESLintPlugin,
-      reactHooks: require('eslint-plugin-react-hooks') as ESLintPlugin,
-      jsxA11y: require('eslint-plugin-jsx-a11y') as ESLintPlugin,
-      vue: require('eslint-plugin-vue') as ESLintPlugin,
-      vueEslintParser: require('vue-eslint-parser') as ESLintPlugin,
-      node: require('eslint-plugin-node') as ESLintPlugin,
-      prettier: require('eslint-plugin-prettier') as ESLintPlugin,
-      eslintConfigPrettier: require('eslint-config-prettier') as ESLintPlugin,
-      jsonc: jsoncPlugin,
-      typescriptSortKeys: require('eslint-plugin-typescript-sort-keys') as ESLintPlugin,
-      sortKeysFix: require('eslint-plugin-sort-keys-fix') as ESLintPlugin,
+      eslintConfigPrettier: eslintConfigPrettier as ESLintPlugin,
+      import: importPlugin as ESLintPlugin,
+      jsonc: jsoncPluginWithParser,
+      jsxA11y: jsxA11yPlugin as ESLintPlugin,
+      node: nodePlugin as ESLintPlugin,
+      prettier: prettierPlugin as ESLintPlugin,
+      react: reactPlugin as ESLintPlugin,
+      reactHooks: reactHooksPlugin as ESLintPlugin,
+      simpleImportSort: simpleImportSortPlugin as ESLintPlugin,
+      sortKeysFix: sortKeysFixPlugin as ESLintPlugin,
+      typescriptEslint: typescriptEslintPlugin as ESLintPlugin,
+      typescriptEslintParser: typescriptEslintParser as ESLintPlugin,
+      typescriptSortKeys: typescriptSortKeysPlugin as ESLintPlugin,
+      unusedImports: unusedImportsPlugin as ESLintPlugin,
+      vue: vuePlugin as ESLintPlugin,
+      vueEslintParser: vueEslintParser as ESLintPlugin,
     }
   } catch (error: unknown) {
     console.error('Error loading plugins:', error)

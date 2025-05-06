@@ -73,9 +73,4 @@ const createExportObject = (): PluginExport => {
 // 创建导出对象
 const exportObj = createExportObject()
 
-// 兼容 CommonJS 和 ESM
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = exportObj
-}
-
 export default exportObj

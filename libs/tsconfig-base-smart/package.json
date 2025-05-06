@@ -1,9 +1,8 @@
 {
   "name": "tsconfig-base-smart",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "displayName": "typescript通用配置",
   "description": "typescript通用配置 for tsconfig-base-smart",
-  "type": "module",
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "bugs": {
     "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
@@ -12,16 +11,15 @@
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
     ".gitignore",
-    ".prettierrc.js",
+    ".prettierrc.mjs",
     "docs",
-    "eslint.config.js",
+    "eslint.config.mjs",
     "lib",
     "src",
     "tsconfig.base.json",
     "tsconfig.json"
   ],
   "main": "lib/tsconfig-base-smart.js",
-  "module": "lib/tsconfig-base-smart.mjs",
   "types": "lib/tsconfig-base-smart.d.ts",
   "directories": {
     "lib": "lib",
@@ -34,18 +32,19 @@
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",
-    "test": "node ./__tests__/tsconfig-base-smart.test.js",
-    "lint:json": "eslint --fix \"**/*.json\" --ignore-pattern .gitignore",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\" --ignore-pattern .gitignore",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\" --ignore-path .gitignore",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\" --ignore-path .gitignore"
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
+  },
+  "dependencies": {
+    "typescript": "5.7.3"
   },
   "devDependencies": {
-    "@types/node": "^22.15.12",
+    "@types/node": "^22.15.14",
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
-    "prettier-plugin-smart": "workspace:^",
-    "typescript": "5.7.3"
+    "prettier-plugin-smart": "workspace:^"
   }
 }

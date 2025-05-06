@@ -37,6 +37,7 @@ export interface FlatConfig {
     noInlineConfig?: boolean
     reportUnusedDisableDirectives?: boolean
   }
+  parser?: string | unknown
   plugins?: Record<string, unknown>
   processor?: unknown
   rules?: Record<string, unknown>

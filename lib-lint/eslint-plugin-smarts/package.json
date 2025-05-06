@@ -1,8 +1,9 @@
 {
   "name": "eslint-plugin-smarts",
-  "version": "0.0.7",
+  "version": "0.0.10",
   "displayName": "ESLint插件",
   "description": "内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目",
+  "type": "module",
   "keywords": [
     "eslint",
     "eslintplugin",
