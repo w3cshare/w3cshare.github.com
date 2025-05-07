@@ -8,6 +8,5 @@
     "resolveJsonModule": true,
     "target": "ES2020"
   },
-  "references": [],
-  "include": ["../eslint-plugin-smart/src/**/*"]
+  "references": []
 }

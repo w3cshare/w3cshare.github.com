@@ -6,6 +6,5 @@
     "outDir": "lib",
     "target": "ES2020"
   },
-  "references": [],
-  "include": ["../prettier-plugin-smart/src/**/*"]
+  "references": []
 }

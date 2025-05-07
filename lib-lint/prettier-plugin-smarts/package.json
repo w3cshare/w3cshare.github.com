@@ -1,7 +1,7 @@
 {
   "name": "prettier-plugin-smarts",
   "version": "0.0.4",
-  "displayName": "Prettier推荐配置（备份）",
+  "displayName": "Prettier推荐配置",
   "description": "一个智能的Prettier插件，无需配置，自动应用一致的代码格式化规则",
   "type": "module",
   "keywords": [
@@ -18,15 +18,21 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
-    "lib"
+    ".prettierrc.js",
+    "docs",
+    "eslint.config.js",
+    "lib",
+    "src",
+    "tsconfig.json"
   ],
-  "main": "lib/prettier-plugin-smart.js",
-  "types": "lib/prettier-plugin-smart.d.ts",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/prettier-plugin-smart.js",
-      "require": "./lib/prettier-plugin-smart.cjs",
-      "types": "./lib/prettier-plugin-smart.d.ts"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
     }
   },
   "directories": {
@@ -41,16 +47,16 @@
     "start": "pnpm run dev",
     "dev": "tsup ../prettier-plugin-smart/src/**.ts --format=cjs,esm --dts --watch --outDir lib",
     "build": "tsup ../prettier-plugin-smart/src/**.ts --format=cjs,esm --dts --outDir lib",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
   "peerDependencies": {
-    "prettier": ">=2.0.0"
+    "prettier": ">=3.0.0"
   },
   "dependencies": {
+    "prettier": "^3.5.3",
     "sort-package-json": "^2.6.0"
   },
   "devDependencies": {
@@ -58,7 +64,6 @@
     "@types/prettier": "^3.0.0",
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
-    "prettier": "^3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "tsconfig-base-smart": "workspace:^",
     "tsup": "^8.4.0",

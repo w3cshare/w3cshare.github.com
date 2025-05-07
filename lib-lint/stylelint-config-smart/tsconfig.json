@@ -1,13 +1,10 @@
 {
+  "extends": "tsconfig-base-smart",
   "compilerOptions": {
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
-    "outDir": "./lib",
-    "rootDir": "./src",
-    "skipLibCheck": true,
-    "strict": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "lib",
     "target": "ES2020"
   },
-  "include": ["src/**/*.js","src/**/*.ts"]
+  "references": []
 }

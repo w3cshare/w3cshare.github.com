@@ -23,21 +23,22 @@
     "src",
     "tsconfig.json"
   ],
-  "main": "./lib/eslint-plugin-smart.js",
-  "types": "./lib/eslint-plugin-smart.d.ts",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/eslint-plugin-smart.d.ts",
-      "import": "./lib/eslint-plugin-smart.js",
-      "require": "./lib/eslint-plugin-smart.cjs"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
     }
   },
   "scripts": {
     "start": "pnpm run dev",
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
-    "dev": "tsup src/**/*.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "tsup src/**/*.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "tsup src/index.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "tsup src/index.ts --format=cjs,esm --dts --outDir lib",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
     "lint:json": "eslint --fix \"**/*.json\"",

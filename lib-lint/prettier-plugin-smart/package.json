@@ -25,13 +25,14 @@
     "src",
     "tsconfig.json"
   ],
-  "main": "lib/prettier-plugin-smart.js",
-  "types": "lib/prettier-plugin-smart.d.ts",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/prettier-plugin-smart.js",
-      "require": "./lib/prettier-plugin-smart.cjs",
-      "types": "./lib/prettier-plugin-smart.d.ts"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
     }
   },
   "directories": {

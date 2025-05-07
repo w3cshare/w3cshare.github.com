@@ -15,30 +15,33 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
-    "README.md",
+    ".gitignore",
+    ".prettierrc.js",
     "docs",
+    "eslint.config.js",
     "lib",
-    "src"
+    "src",
+    "tsconfig.json"
   ],
-  "main": "lib/eslint-plugin-smart.js",
-  "types": "lib/eslint-plugin-smart.d.ts",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/eslint-plugin-smart.js",
-      "require": "./lib/eslint-plugin-smart.cjs",
-      "types": "./lib/eslint-plugin-smart.d.ts"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
     }
   },
   "scripts": {
     "start": "pnpm run dev",
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
-    "dev": "tsup ../eslint-plugin-smart/src/eslint-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "tsup ../eslint-plugin-smart/src/eslint-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsup ../eslint-plugin-smart/src/index.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "tsup ../eslint-plugin-smart/src/index.ts --format=cjs,esm --dts --outDir lib",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "lint:json": "eslint --fix \"**/*.json\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
+    "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\""
   },
@@ -49,6 +52,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "9.25.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsonc": "^2.20.0",
@@ -63,12 +67,11 @@
     "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vue": "^9.21.1",
     "jsonc-eslint-parser": "^2.4.0",
-    "typescript": "^5.5.2",
+    "typescript": "^5.5.4",
     "vue-eslint-parser": "^9.4.2"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",
-    "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",

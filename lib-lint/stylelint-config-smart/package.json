@@ -14,13 +14,16 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
+    ".prettierrc.js",
     "docs",
+    "eslint.config.js",
     "lib",
-    "src"
+    "src",
+    "tsconfig.json"
   ],
-  "main": "lib/stylelint-config-smart.js",
-  "typings": "lib/stylelint-config-smart.d.ts",
-  "module": "lib/stylelint-config-smart.mjs",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "module": "lib/index.mjs",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -33,9 +36,8 @@
     "start": "pnpm run dev",
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
-    "dev": " tsup src/stylelint-config-smart.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": " tsup src/stylelint-config-smart.ts --format=cjs,esm --dts --outDir lib",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": " tsup src/index.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": " tsup src/index.ts --format=cjs,esm --dts --outDir lib",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
