@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 13:30:00
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-07 01:58:57
+ * @LastEditTime: 2025-05-07 10:31:25
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/recommend.ts
  * @Description: ESLint规则集合，按照不同技术栈分类
  */
@@ -701,7 +701,7 @@ const packageJsonSortRules: ESLintRuleSet = {
     },
     {
       order: ['types', 'import', 'require'],
-      pathPattern: '^exports$',
+      pathPattern: '^.*$',
     },
     {
       order: { type: 'asc' },

@@ -48,7 +48,7 @@ features:
 
 # eslint-plugin-smart
 
-内测版-公司通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目。
+内测版-通用ESLint规则集，适用于React、Vue、NestJS和TypeScript项目。
 
 ## 集成的插件
 
