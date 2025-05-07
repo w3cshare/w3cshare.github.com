@@ -12,4 +12,5 @@ yarn add -D stylelint stylelint-config-smarts
 ```
 
 ## 配置
+
 [文档参考](https://www.npmjs.com/package/stylelint-config-smart)

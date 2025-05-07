@@ -310,6 +310,54 @@ export default [
 ]
 ```
 
+### 3. TypeScript 文件 ESLint 解析错误
+
+如果你在运行 ESLint 时遇到以下错误：
+
+```bash
+error  Parsing error: ESLint was configured to run on `<tsconfigRootDir>/src/file.ts` using `parserOptions.project`: <tsconfigRootDir>/tsconfig.json
+However, that TSConfig does not include this file.
+```
+
+#### 解决方案
+
+这个错误通常出现是因为你的 `tsconfig.json` 文件没有包含要检查的源代码文件。解决方法如下：
+
+1. 在 `tsconfig.json` 文件中添加 `include` 字段：
+
+```json
+{
+  "compilerOptions": {
+    // ... 其他配置
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}
+```
+
+2. 如果你有多个 TypeScript 源码目录，确保所有目录都被包含：
+
+```json
+{
+  "include": ["src/**/*.ts", "lib/**/*.ts", "test/**/*.ts"]
+}
+```
+
+3. 重新运行 ESLint 命令，问题应该已解决。
+
+## 本地开发
+
+要在本地开发和测试此插件，请按照以下步骤操作：
+
+1. 克隆项目
+2. 安装依赖：`pnpm install`
+3. 构建插件：`pnpm build`
+4. 运行测试：`pnpm test`
+
+对源代码进行更改后，使用 `pnpm build` 重新构建插件。
+
+**注意**：确保你的 `tsconfig.json` 已正确配置 `include` 字段以包含所有源代码文件，否则可能会遇到 TypeScript 编译错误或 ESLint 解析错误。
+
 ## 许可证
 
 ISC
