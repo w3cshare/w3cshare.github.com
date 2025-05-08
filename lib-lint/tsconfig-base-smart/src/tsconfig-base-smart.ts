@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-05-05 00:53:38
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-07 16:51:59
+ * @LastEditTime: 2025-05-08 14:58:57
  * @FilePath: /FullStack/lib-lint/tsconfig-base-smart/src/tsconfig-base-smart.ts
  * @Description: TypeScript配置基础插件，提供统一的TS配置供子项目继承
  */
@@ -10,15 +10,22 @@ import * as fs from 'fs'
 import * as path from 'path'
 import process from 'process'
 
+// 获取当前目录路径
+const currentDir = process.cwd()
+
 /**
  * TypeScript 配置类型定义
  */
+export interface CompilerOptions {
+  [key: string]: unknown
+  module?: string
+  outDir?: string
+  target?: string
+}
+
 export interface TsConfig {
-  [key: string]: any
-  compilerOptions?: {
-    [key: string]: any
-    outDir?: string
-  }
+  [key: string]: unknown
+  compilerOptions?: CompilerOptions
   exclude?: string[]
   extends?: string
   include?: string[]
@@ -66,53 +73,29 @@ function writeError(message: string): void {
  * 输出成功信息
  * @param message 成功消息
  */
-function writeSuccess(message: string): void {
-  process.stderr.write(formatColorMessage(`✅ 成功: ${message}`, 'green'))
-}
+/*
+ * function writeSuccess(message: string): void {
+ *   process.stderr.write(formatColorMessage(`✅ 成功: ${message}`, 'green'))
+ * }
+ */
 
 /**
  * 输出信息
  * @param message 普通消息
  */
-function writeInfo(message: string): void {
-  process.stderr.write(formatColorMessage(`ℹ️  信息: ${message}`, 'blue'))
-}
-
-/**
- * 深度合并两个对象
- * @param target 目标对象
- * @param source 源对象
- * @returns 合并后的对象
+/*
+ * function writeInfo(message: string): void {
+ *   process.stderr.write(formatColorMessage(`ℹ️  信息: ${message}`, 'blue'))
+ * }
  */
-function deepMerge(target: Record<string, any>, source: Record<string, any>): Record<string, any> {
-  if (!source) return target
-
-  const output = { ...target }
-
-  if (isObject(target) && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (isObject(source[key])) {
-        if (!(key in target)) {
-          output[key] = source[key]
-        } else {
-          output[key] = deepMerge(output[key], source[key])
-        }
-      } else {
-        output[key] = source[key]
-      }
-    })
-  }
-
-  return output
-}
 
 /**
  * 检查值是否为对象
  * @param item 检查的值
  * @returns 是否为对象
  */
-function isObject(item: any): boolean {
-  return item && typeof item === 'object' && !Array.isArray(item)
+function isObject(item: unknown): item is Record<string, unknown> {
+  return Boolean(item && typeof item === 'object' && !Array.isArray(item))
 }
 
 /**
@@ -120,7 +103,7 @@ function isObject(item: any): boolean {
  * @returns 返回tsconfig.base.json的绝对路径
  */
 export function getBaseTsConfigPath(): string {
-  return path.resolve(__dirname, '../tsconfig.base.json')
+  return path.resolve(currentDir, 'tsconfig.base.json')
 }
 
 /**
@@ -165,7 +148,7 @@ export function createTsConfig(
 
   // 处理自定义配置
   const mergedConfig = useDeepMerge
-    ? deepMerge(baseTsConfig, customOptions)
+    ? (deepMerge(baseTsConfig, customOptions) as TsConfig)
     : { extends: 'tsconfig-base-smart', ...customOptions }
 
   // 确保设置了outDir
@@ -174,7 +157,7 @@ export function createTsConfig(
 
     // 为防止问题，如果未设置则添加默认值
     if (!mergedConfig.compilerOptions) {
-      mergedConfig.compilerOptions = {}
+      mergedConfig.compilerOptions = {} as CompilerOptions
     }
     mergedConfig.compilerOptions.outDir = 'lib'
     writeWarning('已自动设置 outDir 为 "lib"，建议手动指定输出目录')
@@ -192,14 +175,14 @@ export function createTsConfig(
  */
 function ensureRequiredFields(config: TsConfig): void {
   if (!config.compilerOptions) {
-    config.compilerOptions = {}
+    config.compilerOptions = { outDir: 'lib' }
     writeWarning('缺少 compilerOptions 字段，已添加默认值')
+    return
   }
 
-  // 添加常用的默认排除项，如果没有设置
-  if (!config.exclude || config.exclude.length === 0) {
-    config.exclude = ['node_modules', 'dist', 'lib', '**/*.spec.ts', '**/*.test.ts']
-    writeInfo('已添加默认排除项')
+  if (!config.compilerOptions.outDir) {
+    config.compilerOptions.outDir = 'lib'
+    writeWarning('已自动设置 outDir 为 "lib"，建议手动指定输出目录')
   }
 }
 
@@ -226,6 +209,43 @@ export function validateTsConfig(config: TsConfig): { isValid: boolean; issues: 
     issues,
     isValid: issues.length === 0,
   }
+}
+
+/**
+ * 深度合并两个对象
+ * @param target 目标对象
+ * @param source 源对象
+ * @returns 合并后的对象
+ */
+function deepMerge(
+  target: Record<string, unknown>,
+  source: Record<string, unknown>,
+): Record<string, unknown> {
+  if (!source) return target
+
+  const output = { ...target }
+
+  if (isObject(target) && isObject(source)) {
+    Object.keys(source).forEach(key => {
+      const sourceValue = source[key]
+      const targetValue = target[key]
+
+      if (isObject(sourceValue)) {
+        if (key in target) {
+          output[key] = deepMerge(
+            targetValue as Record<string, unknown>,
+            sourceValue as Record<string, unknown>,
+          )
+        } else {
+          output[key] = sourceValue
+        }
+      } else {
+        output[key] = sourceValue
+      }
+    })
+  }
+
+  return output
 }
 
 /**
