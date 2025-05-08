@@ -80,15 +80,15 @@ docs(api-client): 更新API客户端文档
 
 ```js
 module.exports = {
-  extends: ["@company/commitlint-smart"],
+  extends: ['@company/commitlint-smart'],
   rules: {
-    "scope-enum": [
+    'scope-enum': [
       2,
-      "always",
-      ["ui", "auth", "api", "store", "router", "models", "utils", "config"],
+      'always',
+      ['ui', 'auth', 'api', 'store', 'router', 'models', 'utils', 'config'],
     ],
   },
-};
+}
 ```
 
 ## 动态作用域生成
@@ -97,25 +97,25 @@ module.exports = {
 
 ```js
 // 动态获取所有包名作为有效的scope
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs')
+const path = require('path')
 
 // 获取packages目录下的所有包名
 const getPackages = () => {
-  const packagesPath = path.resolve(__dirname, "packages");
+  const packagesPath = path.resolve(__dirname, 'packages')
   return fs.existsSync(packagesPath)
     ? fs
         .readdirSync(packagesPath)
-        .filter((f) => fs.statSync(path.join(packagesPath, f)).isDirectory())
-    : [];
-};
+        .filter(f => fs.statSync(path.join(packagesPath, f)).isDirectory())
+    : []
+}
 
 module.exports = {
-  extends: ["@company/commitlint-smart"],
+  extends: ['@company/commitlint-smart'],
   rules: {
-    "scope-enum": [2, "always", [...getPackages(), "release"]],
+    'scope-enum': [2, 'always', [...getPackages(), 'release']],
   },
-};
+}
 ```
 
 ## 作用域的最佳实践

@@ -14,8 +14,8 @@ outline: deep
 
 ```js
 module.exports = {
-  extends: ["@company/commitlint-smart"],
-};
+  extends: ['@company/commitlint-smart'],
+}
 ```
 
 这将使用 commitlint-smart 的默认配置。
@@ -26,12 +26,12 @@ module.exports = {
 
 ```js
 module.exports = {
-  extends: ["@company/commitlint-smart"],
+  extends: ['@company/commitlint-smart'],
   rules: {
-    "header-max-length": [2, "always", 100], // 将标题最大长度设为100个字符
-    "scope-enum": [2, "always", ["api", "ui", "core"]], // 自定义scope范围
+    'header-max-length': [2, 'always', 100], // 将标题最大长度设为100个字符
+    'scope-enum': [2, 'always', ['api', 'ui', 'core']], // 自定义scope范围
   },
-};
+}
 ```
 
 ## 配置项详解
@@ -71,8 +71,8 @@ commitlint-smart 提供了几种预设配置：
 
 ```js
 module.exports = {
-  extends: ["@company/commitlint-smart/strict"],
-};
+  extends: ['@company/commitlint-smart/strict'],
+}
 ```
 
 ## 项目配置示例
@@ -82,20 +82,20 @@ module.exports = {
 对于基于 Lerna 或 Nx 管理的单体仓库，可以自动从包名称生成 scope 列表：
 
 ```js
-const { getPackages } = require("@lerna/project");
-const path = require("path");
+const { getPackages } = require('@lerna/project')
+const path = require('path')
 
 const lernaPackages = async () => {
-  const packages = await getPackages();
-  return packages.map((pkg) => path.basename(pkg.location));
-};
+  const packages = await getPackages()
+  return packages.map(pkg => path.basename(pkg.location))
+}
 
 module.exports = {
-  extends: ["@company/commitlint-smart"],
+  extends: ['@company/commitlint-smart'],
   rules: {
-    "scope-enum": async (ctx) => [2, "always", await lernaPackages()],
+    'scope-enum': async ctx => [2, 'always', await lernaPackages()],
   },
-};
+}
 ```
 
 ### 集成JIRA工单号
@@ -104,15 +104,15 @@ module.exports = {
 
 ```js
 module.exports = {
-  extends: ["@company/commitlint-smart"],
-  plugins: ["commitlint-plugin-jira-rules"],
+  extends: ['@company/commitlint-smart'],
+  plugins: ['commitlint-plugin-jira-rules'],
   rules: {
-    "jira-task-id-max-length": [2, "always", 10],
-    "jira-task-id-min-length": [2, "always", 3],
-    "jira-task-id-case": [2, "always", "upper-case"],
-    "jira-task-id-project-key": [2, "always", ["ABC", "XYZ"]],
+    'jira-task-id-max-length': [2, 'always', 10],
+    'jira-task-id-min-length': [2, 'always', 3],
+    'jira-task-id-case': [2, 'always', 'upper-case'],
+    'jira-task-id-project-key': [2, 'always', ['ABC', 'XYZ']],
   },
-};
+}
 ```
 
 ## 配置文件类型

@@ -95,18 +95,14 @@ feat(user): 添加用户头像上传功能
 
 ```js
 module.exports = {
-  extends: ["@company/commitlint-smart"],
+  extends: ['@company/commitlint-smart'],
   rules: {
-    "subject-case": [
-      2,
-      "never",
-      ["sentence-case", "start-case", "pascal-case", "upper-case"],
-    ],
-    "subject-empty": [2, "never"],
-    "subject-full-stop": [2, "never", "."],
-    "subject-max-length": [2, "always", 50],
+    'subject-case': [2, 'never', ['sentence-case', 'start-case', 'pascal-case', 'upper-case']],
+    'subject-empty': [2, 'never'],
+    'subject-full-stop': [2, 'never', '.'],
+    'subject-max-length': [2, 'always', 50],
   },
-};
+}
 ```
 
 ## 小结

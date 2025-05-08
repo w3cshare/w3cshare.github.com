@@ -1,4 +1,3 @@
-
 ## 安装
 
 ::: code-group
@@ -16,4 +15,5 @@ yarn add -D @commitlint/cli commitlint-smarts husky
 ```
 
 ## 配置
+
 [文档参考](https://www.npmjs.com/package/commitlint-smart)

@@ -184,13 +184,13 @@ refactor(components): 重构表单组件以提高复用性
 
 ```js
 module.exports = {
-  extends: ["@company/commitlint-smart"],
+  extends: ['@company/commitlint-smart'],
   rules: {
-    "body-leading-blank": [2, "always"],
-    "body-max-line-length": [2, "always", 72],
-    "body-case": [0, "always", "lowerCase"],
+    'body-leading-blank': [2, 'always'],
+    'body-max-line-length': [2, 'always', 72],
+    'body-case': [0, 'always', 'lowerCase'],
   },
-};
+}
 ```
 
 ::: details 常用正文规则配置

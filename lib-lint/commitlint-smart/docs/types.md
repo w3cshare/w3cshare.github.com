@@ -120,30 +120,30 @@ revert: feat(login): 添加社交媒体登录选项
 
 ```js
 module.exports = {
-  extends: ["@company/commitlint-smart"],
+  extends: ['@company/commitlint-smart'],
   rules: {
-    "type-enum": [
+    'type-enum': [
       2,
-      "always",
+      'always',
       [
-        "feat",
-        "fix",
-        "docs",
-        "style",
-        "refactor",
-        "perf",
-        "test",
-        "build",
-        "ci",
-        "chore",
-        "revert",
+        'feat',
+        'fix',
+        'docs',
+        'style',
+        'refactor',
+        'perf',
+        'test',
+        'build',
+        'ci',
+        'chore',
+        'revert',
         // 自定义类型
-        "i18n", // 国际化相关
-        "security", // 安全相关
+        'i18n', // 国际化相关
+        'security', // 安全相关
       ],
     ],
   },
-};
+}
 ```
 
 ## 最佳实践

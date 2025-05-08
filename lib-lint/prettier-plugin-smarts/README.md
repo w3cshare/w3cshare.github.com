@@ -12,4 +12,5 @@ yarn add -D prettier prettier-plugin-smarts
 ```
 
 ## 配置
+
 [文档参考](https://www.npmjs.com/package/prettier-plugin-smart)

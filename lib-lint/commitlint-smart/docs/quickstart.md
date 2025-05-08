@@ -31,8 +31,8 @@ yarn add --dev @company/commitlint-smart
 
 ```js
 module.exports = {
-  extends: ["@company/commitlint-smart"],
-};
+  extends: ['@company/commitlint-smart'],
+}
 ```
 
 ### 步骤2：安装 husky
