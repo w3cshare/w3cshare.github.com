@@ -109,4 +109,6 @@
 
 pip install 时必须带上 `-i https://pypi.tuna.tsinghua.edu.cn/simple`
 
-不要自行修改版本号
+## 使用workspace下的包说明
+1、不要自行修改版本号
+2、加载monorepo下包名不要使用相对路径或者绝对路径，使用包的名称即可，如果项目依赖包发生错误请修改workspace下的包而不是修改项目配置

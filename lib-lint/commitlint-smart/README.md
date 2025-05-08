@@ -37,248 +37,191 @@ features:
 
 ## &nbsp;
 
-# 提交规范工具 for commitlint-smart
+# commitlint-smart
 
-commitlint-smart 是一个为公司内部项目设计的 Git 提交信息规范配置，基于 Conventional Commits 规范，并进行了扩展和定制。此配置旨在统一团队的 Git 提交信息格式，提高代码历史的可读性和可追溯性。
-
-::: tip 为什么需要统一的提交规范？
-统一的提交规范让团队能够自动化生成更新日志、简化语义化版本控制、提高代码审查效率，并使新成员更容易理解项目历史。
-:::
+一个智能的 commitlint 配置包，基于约定式提交规范（Conventional Commits）。
 
 ## 特性
 
-- ✅ 基于 Conventional Commits 规范
-- ✅ 扩展了更多适合业务场景的提交类型
-- ✅ 中文友好的交互式提交体验
-- ✅ 可自定义的作用域列表
-- ✅ 与 Husky 和 lint-staged 工具集成
-- ✅ 适用于各种前端和后端项目
-
-## 详细文档
-
-- [快速开始](/lint/commitlint-smart/docs/quickstart) - 快速上手使用指南
-- [提交类型](/lint/commitlint-smart/docs/types) - 详细的提交类型说明
-- [作用域使用](/lint/commitlint-smart/docs/scopes) - 如何正确使用作用域
-- [提交主题](/lint/commitlint-smart/docs/subject) - 编写清晰提交主题的指南
-- [提交正文](/lint/commitlint-smart/docs/body) - 如何编写详细的提交正文
-- [配置指南](/lint/commitlint-smart/docs/configuration) - 自定义配置选项
+- 支持完整的约定式提交规范
+- 自定义扩展的提交类型
+- 灵活的作用域配置
+- 中文友好的提交信息提示
+- 严格的提交格式验证
 
 ## 安装
 
-::: code-group
+```bash
+# npm
+npm install -D @commitlint/cli conventional-changelog-lint-config-smart
 
-```bash [pnpm]
-pnpm add -D @commitlint/cli commitlint-smart husky
+# yarn
+yarn add -D @commitlint/cli conventional-changelog-lint-config-smart
+
+# pnpm
+pnpm add -D @commitlint/cli conventional-changelog-lint-config-smart
 ```
 
-```bash [npm]
-npm install --save-dev @commitlint/cli commitlint-smart husky
-```
+## 配置
 
-```bash [yarn]
-yarn add -D @commitlint/cli commitlint-smart husky
-```
-
-:::
-
-## 使用方法
-
-### 配置 commitlint
-
-在项目根目录创建 `commitlint.config.js` 文件：
+1. 在项目根目录创建 `commitlint.config.js` 文件：
 
 ```js
 module.exports = {
-  extends: ['commitlint-smart'],
+  extends: ['conventional-changelog-lint-config-smart']
 }
 ```
 
-### 配置 Husky
+2. 配置 Git hooks（推荐使用 husky）：
 
-::: code-group
+```bash
+# 安装 husky
+pnpm add -D husky
 
-```bash [初始化]
-# 初始化 Husky
-npx husky install
+# 初始化 husky
+pnpm husky install
+
+# 添加 commit-msg hook
+pnpm husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 ```
 
-```bash [添加钩子]
-# 添加 commit-msg 钩子
-npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
-```
+## Monorepo 项目中的使用
 
-:::
+### 作为工作区包使用
 
-::: tip 单体仓库（Monorepo）配置
-在单体仓库中，建议在根目录配置 commitlint，并确保所有子包遵循相同的提交规范。详细配置请参考 [配置指南](/lint/commitlint-smart/docs/configuration)。
-:::
+如果在 Lerna + Nx + pnpm Workspace 的 Monorepo 项目中使用本包，需要注意以下几点：
 
-## 提交格式
+1. 在项目根目录的 `package.json` 中添加依赖：
 
-提交信息应遵循以下格式：
-
-```
-<类型>(<可选的作用域>): <描述>
-
-[可选的正文]
-
-[可选的脚注]
-```
-
-详细格式规范：
-
-- [提交类型](/lint/commitlint-smart/docs/types)：指明提交的变更类型
-- [作用域](/lint/commitlint-smart/docs/scopes)：指明变更影响的模块或功能
-- [主题描述](/lint/commitlint-smart/docs/subject)：简明扼要的变更说明
-- [提交正文](/lint/commitlint-smart/docs/body)：提供更详细的变更说明
-- [脚注](/lint/commitlint-smart/docs/configuration)：包含关闭问题、破坏性变更说明等
-
-### 示例
-
-::: details 功能添加示例
-
-```
-feat(user): 添加用户登录功能
-
-实现了基于JWT的用户登录认证机制
-同时添加了记住密码功能
-
-close #123
-```
-
-:::
-
-::: details 问题修复示例
-
-```
-fix(database): 修复高并发下连接池耗尽问题
-
-在高并发场景下，数据库连接未能正确释放，导致连接池资源耗尽，系统响应变慢并最终超时。
-
-问题原因：
-- 事务提交后连接未正确关闭
-- 异常处理路径中缺少连接释放代码
-- 连接池配置不合理
-
-解决方法：
-1. 添加try-finally确保连接总是被释放
-2. 调整连接池大小和超时设置
-3. 增加连接泄漏检测和自动回收机制
-
-性能测试显示该修复在高峰期将系统响应时间从2.5s降至0.8s。
-
-修复: #BUG-456
-```
-
-:::
-
-::: details 重构示例
-
-```
-refactor(components): 重构表单组件以提高复用性
-
-将原有的紧耦合表单组件拆分为更小的可组合组件，使其更容易被复用和测试。
-
-重构内容:
-- 抽取表单项为独立组件
-- 实现自定义Hook管理表单状态
-- 分离表单验证逻辑
-- 添加组合模式支持嵌套表单
-
-此次重构不改变现有功能，但大幅降低了代码复杂度（从循环复杂度15降至4）
-并减少了代码重复（减少约120行重复代码）。
-
-相关: #TECH-789
-```
-
-:::
-
-## 类型说明
-
-| 类型     | 说明                                |
-| -------- | ----------------------------------- |
-| feat     | 新功能                              |
-| fix      | 修复Bug                             |
-| docs     | 文档更新                            |
-| style    | 代码风格调整（不影响代码功能）      |
-| refactor | 代码重构（不包括bug修复或功能新增） |
-| perf     | 性能优化                            |
-| test     | 测试相关                            |
-| build    | 构建系统或外部依赖更改              |
-| ci       | CI配置更改                          |
-| chore    | 其他改动（不修改src或测试文件）     |
-| revert   | 回滚之前的提交                      |
-| ui       | UI相关更改                          |
-| wip      | 开发中的工作（Work In Progress）    |
-| api      | API相关更改                         |
-| release  | 版本发布                            |
-| deploy   | 部署相关                            |
-| config   | 配置调整                            |
-| i18n     | 国际化                              |
-| lint     | 代码检查调整                        |
-| types    | 类型定义文件更改                    |
-
-完整的类型说明和使用场景，请参考 [提交类型指南](/lint/commitlint-smart/docs/types)。
-
-## 交互式提交
-
-推荐使用 `@commitlint/cz-commitlint` 配合 commitizen 进行交互式提交：
-
-::: code-group
-
-```bash [安装]
-# 安装依赖
-pnpm add -D @commitlint/cz-commitlint commitizen
-```
-
-```bash [配置]
-# 添加配置文件
-echo '{ "path": "@commitlint/cz-commitlint" }' > .czrc
-```
-
-```json [package.json]
+```json
 {
-  "scripts": {
-    "commit": "git-cz"
+  "devDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "conventional-changelog-lint-config-smart": "workspace:^"
   }
 }
 ```
 
-:::
-
-使用交互式提交：
-
-```bash
-pnpm run commit
-```
-
-## 自定义配置
-
-如果需要自定义配置，可在项目的 `commitlint.config.js` 文件中覆盖默认规则：
+2. 在项目根目录创建 `commitlint.config.js` 文件：
 
 ```js
 module.exports = {
-  extends: ['commitlint-smart'],
-  rules: {
-    // 自定义规则
-    'scope-enum': [2, 'always', ['auth', 'api', 'ui', 'config']],
-  },
+  extends: ['conventional-changelog-lint-config-smart']
 }
 ```
 
-更多配置选项，请参考 [配置指南](/lint/commitlint-smart/docs/configuration)。
+> 注意：在 Monorepo 项目中，包名为 `conventional-changelog-lint-config-smart`，而不是 `commitlint-smart`。这是为了符合 commitlint 的包命名约定。
 
-## 禁用检查
-
-在特殊情况下，可以在提交时临时禁用 commitlint 检查：
+3. 安装依赖：
 
 ```bash
-git commit -m "紧急修复" --no-verify
+pnpm install
 ```
 
-::: warning 谨慎使用
-只有在紧急情况下才应使用此选项，避免养成绕过提交规范的习惯。
-:::
+4. 添加 Git hooks：
+
+```bash
+# 初始化 husky
+pnpm husky install
+
+# 添加 commit-msg hook
+pnpm husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
+```
+
+## 提交类型
+
+支持以下提交类型：
+
+### 常规类型
+
+- `feat`: 新功能
+- `fix`: 修复Bug
+- `docs`: 文档更新
+- `style`: 代码风格调整（不影响代码功能）
+- `refactor`: 代码重构（不包括 bug 修复或功能新增）
+- `perf`: 性能优化
+- `test`: 测试相关
+- `build`: 构建系统或外部依赖更改
+- `ci`: CI配置更改
+- `chore`: 其他改动（不修改src或测试文件）
+- `revert`: 回滚之前的提交
+
+### 扩展类型
+
+- `ui`: UI相关更改
+- `wip`: 开发中的工作（Work In Progress）
+- `api`: API相关更改
+- `release`: 版本发布
+- `deploy`: 部署相关
+- `config`: 配置调整
+- `i18n`: 国际化
+- `lint`: 代码检查调整
+- `types`: 类型定义文件更改
+
+## 作用域
+
+支持以下预定义作用域：
+
+- `components`: 组件
+- `utils`: 工具
+- `styles`: 样式
+- `deps`: 依赖
+- `config`: 配置
+- `core`: 核心功能
+- `ci`: 持续集成
+- `scripts`: 脚本
+- `docs`: 文档
+- `release`: 发布
+- `other`: 其他
+
+也可以使用空作用域。
+
+## 提交格式
+
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+示例：
+
+```
+feat(components): 添加新的按钮组件
+
+- 支持多种尺寸
+- 支持多种主题色
+- 添加加载状态
+
+Closes #123
+```
+
+## 常见问题与解决方案
+
+### 在Monorepo中提示"Cannot find module"错误
+
+如果在Monorepo中使用时遇到以下错误：
+
+```
+Error: Cannot find module "conventional-changelog-lint-config-smart" from "/path/to/your/project"
+```
+
+请检查：
+
+1. 确保包名称正确：在Monorepo中应使用`conventional-changelog-lint-config-smart`而非`commitlint-smart`
+2. 确保在项目根目录的package.json中正确引用了workspace包：`"conventional-changelog-lint-config-smart": "workspace:^"`
+3. 运行`pnpm install`重新安装依赖
+
+## 规则说明
+
+- `header` 最大长度：100
+- `scope` 必须小写
+- `subject` 必须小写开头
+- 不允许 `subject` 以 `.` 结尾
+- `type` 必须小写
+- `type` 必须是预定义的类型之一
 
 ## 许可证
 

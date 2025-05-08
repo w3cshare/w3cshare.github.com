@@ -214,4 +214,5 @@ const configuration: UserConfig = {
   },
 }
 
-export = configuration
+// 导出配置对象
+export default configuration

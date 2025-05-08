@@ -1,14 +1,17 @@
 {
-  "name": "commitlint-smart",
+  "name": "conventional-changelog-lint-config-smart",
   "version": "0.0.1",
   "displayName": "Commitlint规范",
-  "description": "> TODO: description",
+  "type": "module",
+  "description": "智能的 commitlint 配置包，基于约定式提交规范，支持中文友好的提交信息提示",
   "keywords": [
     "commit",
     "commitlint",
     "conventional-commits",
     "git",
-    "lint"
+    "lint",
+    "chinese",
+    "smart"
   ],
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "bugs": {
@@ -19,9 +22,19 @@
   "files": [
     "docs",
     "lib",
-    "src"
+    "src",
+    "docs"
   ],
-  "main": "lib/commitlint-smart.js",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
+    }
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -32,9 +45,11 @@
   },
   "scripts": {
     "start": "pnpm run dev",
-    "dev": "tsc -w",
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc",
+    "dev": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --outDir lib",
+    "prepublishOnly": "pnpm run build",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
@@ -54,6 +69,7 @@
     "prettier-plugin-smart": "workspace:^",
     "rimraf": "^6.0.1",
     "tsconfig-base-smart": "workspace:^",
+    "tsup": "^8.4.0",
     "typescript": "^5.2.2"
   }
 }
