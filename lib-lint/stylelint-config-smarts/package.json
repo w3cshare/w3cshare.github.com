@@ -22,9 +22,16 @@
     "src",
     "tsconfig.json"
   ],
-  "main": "lib/index.js",
+  "main": "lib/index.cjs",
   "typings": "lib/index.d.ts",
-  "module": "lib/index.mjs",
+  "module": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
+    }
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"

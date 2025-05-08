@@ -468,9 +468,6 @@ importers:
       '@types/node':
         specifier: ^22.15.3
         version: 22.15.3
-      eslint-plugin-smart:
-        specifier: workspace:^
-        version: 'link:'
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -492,6 +489,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.0.0
         version: 7.18.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.8.3)
+      eslint:
+        specifier: 9.25.1
+        version: 9.25.1(jiti@2.4.2)
       eslint-config-prettier:
         specifier: ^9.1.0
         version: 9.1.0(eslint@9.25.1(jiti@2.4.2))
@@ -535,7 +535,7 @@ importers:
         specifier: ^2.4.0
         version: 2.4.0
       typescript:
-        specifier: ^5.5.2
+        specifier: ^5.5.4
         version: 5.8.3
       vue-eslint-parser:
         specifier: ^9.4.2
@@ -544,12 +544,6 @@ importers:
       '@types/node':
         specifier: ^22.15.3
         version: 22.15.3
-      eslint:
-        specifier: 9.25.1
-        version: 9.25.1(jiti@2.4.2)
-      eslint-plugin-smart:
-        specifier: workspace:^
-        version: link:../eslint-plugin-smart
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -584,9 +578,6 @@ importers:
       eslint-plugin-smart:
         specifier: workspace:^
         version: link:../eslint-plugin-smart
-      prettier-plugin-smart:
-        specifier: workspace:^
-        version: 'link:'
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../tsconfig-base-smart
@@ -599,6 +590,9 @@ importers:
 
   lib-lint/prettier-plugin-smarts:
     dependencies:
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
       sort-package-json:
         specifier: ^2.6.0
         version: 2.15.1
@@ -615,12 +609,6 @@ importers:
       eslint-plugin-smart:
         specifier: workspace:^
         version: link:../eslint-plugin-smart
-      prettier:
-        specifier: ^3.5.3
-        version: 3.5.3
-      prettier-plugin-smart:
-        specifier: workspace:^
-        version: link:../prettier-plugin-smart
       tsconfig-base-smart:
         specifier: workspace:^
         version: link:../tsconfig-base-smart
