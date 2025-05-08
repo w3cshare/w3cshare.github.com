@@ -13,6 +13,7 @@
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
+    "rimraf": "^6.0.1",
     "tsconfig-base-smart": "workspace:^"
   }
 }

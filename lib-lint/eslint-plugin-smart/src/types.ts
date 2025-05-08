@@ -52,6 +52,7 @@ export interface ESLintPluginExport {
     base: FlatConfig[]
     json: FlatConfig[]
     nestjs: FlatConfig[]
+    nodejs: FlatConfig[]
     react: FlatConfig[]
     recommended: FlatConfig[]
     typescript: FlatConfig[]

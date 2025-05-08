@@ -84,6 +84,7 @@
     "prettier": "^3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "react-dev-inspector": "^1.9.0",
+    "rimraf": "^6.0.1",
     "swagger-ui-dist": "^4.19.1",
     "ts-node": "^10.9.2",
     "tsconfig-base-smart": "workspace:^",

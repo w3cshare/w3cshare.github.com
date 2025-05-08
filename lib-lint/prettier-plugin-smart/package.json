@@ -45,8 +45,8 @@
   },
   "scripts": {
     "start": "pnpm run dev",
-    "dev": "tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "tsup src/**.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --outDir lib",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
@@ -65,6 +65,7 @@
     "@types/prettier": "^3.0.0",
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
+    "rimraf": "^6.0.1",
     "tsconfig-base-smart": "workspace:^",
     "tsup": "^8.4.0",
     "typescript": "^5.2.2"

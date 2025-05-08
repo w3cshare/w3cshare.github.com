@@ -22,20 +22,20 @@
     "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
-    "dev": "tsup ../commitlint-smart/src/commitlint-smart.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "tsup ../commitlint-smart/src/commitlint-smart.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "rimraf lib && tsup ../commitlint-smart/src/commitlint-smart.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "rimraf lib && tsup ../commitlint-smart/src/commitlint-smart.ts --format=cjs,esm --dts --outDir lib",
     "test": "node ./__tests__/commit-smart.test.js",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
   },
-  "dependencies": {},
   "devDependencies": {
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
+    "rimraf": "^6.0.1",
     "tsconfig-base-smart": "workspace:^",
     "tsup": "^8.4.0"
   }

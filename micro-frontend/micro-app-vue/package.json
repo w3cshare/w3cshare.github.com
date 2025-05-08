@@ -49,6 +49,7 @@
     "npm-run-all2": "^7.0.2",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
+    "rimraf": "^6.0.1",
     "stylelint": "^15.11.0",
     "stylelint-config-smarts": "workspace:^",
     "tsconfig-base-smart": "workspace:^",

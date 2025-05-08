@@ -319,4 +319,4 @@ const config: Config = {
   ],
 }
 
-export = config
+export default config

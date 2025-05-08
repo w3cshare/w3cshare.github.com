@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:40:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-07 00:02:05
+ * @LastEditTime: 2025-05-08 14:00:14
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/flat-configs.ts
  * @Description: ESLint v9 扁平配置
  *
@@ -17,6 +17,7 @@ import eslint from '@eslint/js'
 import {
   javascriptRules,
   jsonRules,
+  nestjsRules,
   nodejsRules,
   reactRules,
   typescriptRules,
@@ -77,18 +78,15 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
       : {}
 
   const ignores = [
-    '.eslintrc.js',
     '**/node_modules/**',
     '**/dist/**',
     '**/lib/**',
     '**/test/**',
-    '**/cache/**',
     '**/__tests__/**',
+    '**/cache/**',
     '**/coverage/**',
     '**/.**/**',
     '**/.eslintcache',
-    '**/.eslintrc.js',
-    '**/eslint.config.mjs',
   ]
 
   /**
@@ -119,7 +117,7 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
    * 包含TypeScript特定的规则和类型检查
    */
   const typescriptFlatConfig: FlatConfig = {
-    files: ['**/*.ts', '**/*.tsx', 'src/**/*.{ts,tsx}'],
+    files: ['**/*.ts', 'src/**/*.{ts}'],
     ignores,
     languageOptions: {
       parser: typescriptEslintParser,
@@ -146,7 +144,7 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
    * 包含React和JSX特定的规则，以及可访问性检查
    */
   const reactFlatConfig: FlatConfig = {
-    files: ['**/*.jsx', '**/*.tsx'],
+    files: ['**/*.jsx', '**/*.tsx', 'src/**/*.{jsx,tsx}'],
     ignores,
     languageOptions: {
       parser: typescriptEslintParser,
@@ -201,7 +199,7 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
    * 包含Vue单文件组件和模板特定的规则
    */
   const vueFlatConfig: FlatConfig = {
-    files: ['**/*.vue'],
+    files: ['**/*.vue', 'src/**/*.{vue}'],
     ignores,
     languageOptions: {
       parser: vueEslintParser,
@@ -216,10 +214,13 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
       import: importPlugin,
       prettier: prettierPlugin,
       'simple-import-sort': simpleImportSortPlugin,
+      'sort-keys-fix': sortKeysFixPlugin,
       'unused-imports': unusedImportsPlugin,
       vue: vuePlugin,
     },
     rules: {
+      ...eslintRecommendedRules,
+      ...prettierRules,
       ...vueRules,
     },
   }
@@ -254,6 +255,25 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
       import: importPlugin,
       node: nodePlugin,
       prettier: prettierPlugin,
+    },
+    rules: {
+      ...nestjsRules,
+    },
+  }
+
+  /**
+   * ESLint v9 扁平配置 - NodeJS配置
+   *
+   * 适用于Node.js环境
+   */
+  const nodejsFlatConfig: FlatConfig = {
+    files: ['**/*.js', 'src/**/*.js'],
+    ignores,
+    languageOptions: {
+      globals: {
+        node: true, // 添加Node.js全局变量
+        process: true, // 添加process全局变量
+      },
     },
     rules: {
       ...nodejsRules,
@@ -310,6 +330,7 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
     base: [baseFlatConfig],
     json: [jsonFlatConfig],
     nestjs: [baseFlatConfig, jestFlatConfig, typescriptFlatConfig, nestjsFlatConfig],
+    nodejs: [baseFlatConfig, typescriptFlatConfig, nodejsFlatConfig],
     react: [baseFlatConfig, typescriptFlatConfig, reactFlatConfig],
     recommended: [baseFlatConfig, typescriptFlatConfig, prettierFlatConfig],
     typescript: [baseFlatConfig, typescriptFlatConfig],
