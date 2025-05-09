@@ -8,6 +8,6 @@
     "resolveJsonModule": true,
     "target": "ES2020"
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**.ts", "src/cz-git/**.ts"],
   "references": []
 }

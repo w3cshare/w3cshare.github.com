@@ -83,6 +83,7 @@
     "prettier-plugin-smart": "workspace:^",
     "stylelint": "^15.11.0",
     "stylelint-config-smart": "workspace:^",
+    "ts-node": "^10.9.2",
     "vitepress": "^1.6.3",
     "vitepress-plugin-smart": "workspace:^"
   },

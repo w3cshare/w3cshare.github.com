@@ -39,6 +39,12 @@
       "import": "./lib/commitlint-plugin-smart.js",
       "require": "./lib/commitlint-plugin-smart.cjs",
       "default": "./lib/commitlint-plugin-smart.js"
+    },
+    "./cz-git": {
+      "types": "./lib/cz-git/index.d.ts",
+      "import": "./lib/cz-git/index.js",
+      "require": "./lib/cz-git/index.cjs",
+      "default": "./lib/cz-git/index.js"
     }
   },
   "repository": {
@@ -50,8 +56,8 @@
     "start": "pnpm run dev",
     "dev:ts": "tsc -w",
     "build:ts": "tsc",
-    "dev": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --outDir lib",
+    "dev": "rimraf lib && tsup --watch",
+    "build": "rimraf lib && tsup",
     "lint": "eslint --fix \"**/*.{vue,js,jsx,ts,tsx,json}\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:json": "eslint --fix \"**/*.json\"",

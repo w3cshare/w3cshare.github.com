@@ -1,3 +1,5 @@
+import "./chunk-ZFLFQQFF.js";
+
 // src/commitlint-plugin-smart.ts
 var commitlint_plugin_smart_default = commitlintPluginSmart;
 function commitlintPluginSmart() {
