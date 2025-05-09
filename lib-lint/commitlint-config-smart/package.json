@@ -1,14 +1,17 @@
 {
-  "name": "commitlint-smarts",
+  "name": "commitlint-config-smart",
   "version": "0.0.1",
   "displayName": "Commitlint规范",
-  "description": "> TODO: description",
+  "description": "智能的 commitlint 配置包，基于约定式提交规范，支持中文友好的提交信息提示",
+  "type": "module",
   "keywords": [
+    "chinese",
     "commit",
     "commitlint",
     "conventional-commits",
     "git",
-    "lint"
+    "lint",
+    "smart"
   ],
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "bugs": {
@@ -17,11 +20,25 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
+    ".gitignore",
+    ".prettierrc.js",
     "docs",
+    "eslint.config.js",
     "lib",
-    "src"
+    "src",
+    "tsconfig.json"
   ],
-  "main": "lib/commitlint-smart.js",
+  "main": "lib/commitlint-plugin-smart.cjs",
+  "module": "lib/commitlint-plugin-smart.js",
+  "types": "lib/commitlint-plugin-smart.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/commitlint-plugin-smart.d.ts",
+      "import": "./lib/commitlint-plugin-smart.js",
+      "require": "./lib/commitlint-plugin-smart.cjs",
+      "default": "./lib/commitlint-plugin-smart.cjs"
+    }
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -30,10 +47,18 @@
     "type": "git",
     "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "start": "pnpm run dev",
-    "dev": "rimraf lib && tsup ../commitlint-smart/src/commitlint-smart.ts --format=cjs,esm --dts --watch --outDir lib",
-    "build": "rimraf lib && tsup ../commitlint-smart/src/commitlint-smart.ts --format=cjs,esm --dts --outDir lib",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc",
+    "dev": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --outDir lib && pnpm run post-build",
+    "post-build": "echo '// 手动确保CommonJS兼容性' > lib/__compatibility.js",
+    "prepublishOnly": "pnpm run build",
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
     "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
@@ -48,6 +73,7 @@
   },
   "devDependencies": {
     "eslint": "9.25.1",
+    "eslint-plugin-smart": "workspace:^",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "rimraf": "^6.0.1",

@@ -214,5 +214,5 @@ const configuration: UserConfig = {
   },
 }
 
-// 导出配置对象
+// 导出配置对象 - ESM方式
 export default configuration

@@ -6,7 +6,7 @@ outline: deep
 
 # 快速入门
 
-本指南将帮助您快速上手使用 commitlint-smart 进行 Git 提交信息规范化。
+本指南将帮助您快速上手使用@smarts-isoftstone/commitlint-smart进行 Git 提交信息规范化。
 
 ## 安装
 

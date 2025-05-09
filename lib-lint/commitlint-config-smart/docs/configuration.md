@@ -6,7 +6,7 @@ outline: deep
 
 # 配置指南
 
-本文档详细介绍了 commitlint-smart 的配置选项及其用法。
+本文档详细介绍了@smarts-isoftstone/commitlint-smart的配置选项及其用法。
 
 ## 基础配置
 
@@ -18,7 +18,7 @@ module.exports = {
 }
 ```
 
-这将使用 commitlint-smart 的默认配置。
+这将使用@smarts-isoftstone/commitlint-smart的默认配置。
 
 ## 自定义配置
 
@@ -61,7 +61,7 @@ module.exports = {
 
 ## 扩展配置
 
-commitlint-smart 提供了几种预设配置：
+@smarts-isoftstone/commitlint-smart提供了几种预设配置：
 
 - **基础配置**: `@company/commitlint-smart/base`
 - **严格模式**: `@company/commitlint-smart/strict`

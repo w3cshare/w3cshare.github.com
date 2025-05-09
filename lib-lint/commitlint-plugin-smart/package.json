@@ -1,0 +1,93 @@
+{
+  "name": "commitlint-plugin-smart",
+  "version": "0.0.1",
+  "displayName": "包的中文名称",
+  "description": "该包的功能描述",
+  "type": "module",
+  "keywords": [
+    "fullstack",
+    "lerna",
+    "monorepo",
+    "nx",
+    "pnpm"
+  ],
+  "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
+  },
+  "license": "ISC",
+  "author": "wangwei <wwdqq7@qq.com>",
+  "files": [
+    "README.md",
+    "dist",
+    "lib",
+    "src",
+    "tsconfig.json"
+  ],
+  "directories": {
+    "dist": "dist",
+    "docs": "docs",
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "main": "lib/commitlint-plugin-smart.cjs",
+  "module": "lib/commitlint-plugin-smart.js",
+  "types": "lib/commitlint-plugin-smart.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/commitlint-plugin-smart.d.ts",
+      "import": "./lib/commitlint-plugin-smart.js",
+      "require": "./lib/commitlint-plugin-smart.cjs",
+      "default": "./lib/commitlint-plugin-smart.js"
+    }
+  },
+  "repository": {
+    "directory": "commitlint-plugin-smart/子包路径",
+    "type": "git",
+    "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
+  },
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc",
+    "dev": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --outDir lib",
+    "lint": "eslint --fix \"**/*.{vue,js,jsx,ts,tsx,json}\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "eslint": "9.25.1",
+    "eslint-plugin-smart": "workspace:^",
+    "prettier": "3.5.3",
+    "prettier-plugin-smart": "workspace:^",
+    "rimraf": "^6.0.1",
+    "tsconfig-base-smart": "workspace:^",
+    "tsup": "^8.0.0",
+    "typescript": "5.3.3"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/dist",
+          "{projectRoot}/lib"
+        ]
+      }
+    }
+  }
+}

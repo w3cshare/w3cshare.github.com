@@ -1,6 +1,9 @@
+
 node_modules
 dist
 lib
-
-# 系统文件
 .DS_Store
+.idea
+.vscode
+.env
+.env.local

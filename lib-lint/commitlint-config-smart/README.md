@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: commitlint-smart
+  name: commitlint-config-smart
   text: 智能提交信息规范
   tagline: 为公司内部项目提供统一的Git提交信息规范
   actions:
@@ -37,7 +37,7 @@ features:
 
 ## &nbsp;
 
-# commitlint-smart
+# commitlint-config-smart
 
 一个智能的 commitlint 配置包，基于约定式提交规范（Conventional Commits）。
 
@@ -53,13 +53,13 @@ features:
 
 ```bash
 # npm
-npm install -D @commitlint/cli conventional-changelog-lint-config-smart
+npm install -D @commitlint/cli commitlint-config-smart
 
 # yarn
-yarn add -D @commitlint/cli conventional-changelog-lint-config-smart
+yarn add -D @commitlint/cli commitlint-config-smart
 
 # pnpm
-pnpm add -D @commitlint/cli conventional-changelog-lint-config-smart
+pnpm add -D @commitlint/cli commitlint-config-smart
 ```
 
 ## 配置
@@ -68,7 +68,7 @@ pnpm add -D @commitlint/cli conventional-changelog-lint-config-smart
 
 ```js
 module.exports = {
-  extends: ['conventional-changelog-lint-config-smart']
+  extends: ['commitlint-config-smart'],
 }
 ```
 
@@ -97,7 +97,7 @@ pnpm husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 {
   "devDependencies": {
     "@commitlint/cli": "^19.0.0",
-    "conventional-changelog-lint-config-smart": "workspace:^"
+    "commitlint-config-smart": "workspace:^"
   }
 }
 ```
@@ -106,11 +106,11 @@ pnpm husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 
 ```js
 module.exports = {
-  extends: ['conventional-changelog-lint-config-smart']
+  extends: ['commitlint-config-smart'],
 }
 ```
 
-> 注意：在 Monorepo 项目中，包名为 `conventional-changelog-lint-config-smart`，而不是 `commitlint-smart`。这是为了符合 commitlint 的包命名约定。
+> 注意：在 Monorepo 项目中，包名为 `commitlint-smart`，而不是 `commitlint-smart`。这是为了符合 commitlint 的包命名约定。
 
 3. 安装依赖：
 
@@ -205,13 +205,13 @@ Closes #123
 如果在Monorepo中使用时遇到以下错误：
 
 ```
-Error: Cannot find module "conventional-changelog-lint-config-smart" from "/path/to/your/project"
+Error: Cannot find module "commitlint-config-smart" from "/path/to/your/project"
 ```
 
 请检查：
 
-1. 确保包名称正确：在Monorepo中应使用`conventional-changelog-lint-config-smart`而非`commitlint-smart`
-2. 确保在项目根目录的package.json中正确引用了workspace包：`"conventional-changelog-lint-config-smart": "workspace:^"`
+1. 确保包名称正确：在Monorepo中应使用`commitlint-smart`而非`commitlint-smart`
+2. 确保在项目根目录的package.json中正确引用了workspace包：`"commitlint-config-smart": "workspace:^"`
 3. 运行`pnpm install`重新安装依赖
 
 ## 规则说明

@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['conventional-changelog-lint-config-smart']
+  extends: ["commitlint-config-smart"],
 };

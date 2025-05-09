@@ -4,7 +4,7 @@
  * @LastEditors: wangwei wwdqq7@qq.com
  * @LastEditTime: 2025-05-08 15:14:12
  * @FilePath: /FullStack/lib-lint/commitlint-smart/eslint.config.mjs
- * @Description: commitlint-smart eslint config
+ * @Description:@smarts-isoftstone/commitlint-smarteslint config
  */
 import eslintPlugin from 'eslint-plugin-smart'
 

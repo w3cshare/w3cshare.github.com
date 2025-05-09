@@ -6,7 +6,7 @@ outline: deep
 
 # 提交类型详解
 
-commitlint-smart 规范化了Git提交消息中使用的类型。本文档详细介绍了各种提交类型及其适用场景。
+@smarts-isoftstone/commitlint-smart规范化了Git提交消息中使用的类型。本文档详细介绍了各种提交类型及其适用场景。
 
 ## 标准提交类型
 

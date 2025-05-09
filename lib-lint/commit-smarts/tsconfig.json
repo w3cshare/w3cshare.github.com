@@ -1,8 +1,0 @@
-{
-  "extends": "tsconfig-base-smart",
-  "compilerOptions": {
-    "outDir": "lib"
-  },
-  "references": [],
-  "include": ["../commitlint-smart/src/**/*"]
-}
