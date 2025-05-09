@@ -1,4 +1,15 @@
 import { defineConfig } from "cz-git";
+import { globSync } from "glob";
+
+const subProject = globSync(
+  "{apps,apps-*,micro-*,lib-*,libs,packages,package-*}/*/",
+  {
+    cwd: process.cwd(),
+    ignore: ["**/node_modules/**", "**/.git/**", "**/docs/**", "docs/**"],
+    onlyDirectories: true,
+  },
+).map((path) => path.split("/")[1]);
+console.log("🚀 ~ file: .commitlintrc.mjs:12 ~ subProjectPaths:", subProject);
 
 /**
  * 自定义提交类型列表
@@ -33,6 +44,7 @@ const types = [
  * 自定义作用域列表（可根据实际项目组件/模块进行调整）
  */
 const scopes = [
+  ...subProject, // 子项目
   "components", // 组件
   "utils", // 工具
   "styles", // 样式
@@ -51,8 +63,6 @@ const scopes = [
  * Commitlint 配置
  */
 const configuration = {
-  // extends: ["commitlint-config-smart"],
-  // parserPreset: "commitlint-plugin-smart",
   rules: {
     // type类型定义
     "type-enum": [2, "always", types],
@@ -291,7 +301,7 @@ const configuration = {
     useAI: false,
     aiNumber: 1,
     themeColorCode: "",
-    scopes: [],
+    scopes: [...scopes],
     allowCustomScopes: true,
     allowEmptyScopes: true,
     customScopesAlign: "bottom",
