@@ -2,21 +2,27 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-05-09 14:59:44
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-09 23:41:25
+ * @LastEditTime: 2025-05-10 00:12:44
  * @FilePath: /FullStack/lib-lint/commitlint-plugin-smart/src/cz-git/index.ts
  * @Description:
  */
 import { defineConfig as _defineConfig } from 'cz-git'
-import { globSync } from 'glob'
 import deepmerge from 'deepmerge'
+import { globSync } from 'glob'
+import process from 'process'
+
 import { configuration as czConfiguration } from './config'
 import { configuration as otherConfiguration } from './other'
 
 const subProject = globSync('{apps,apps-*,micro-*,lib-*,libs,packages,package-*}/*/', {
   cwd: process.cwd(),
   ignore: ['**/node_modules/**', '**/.git/**', '**/docs/**', 'docs/**'],
-  onlyDirectories: true,
-}).map(path => path.split('/')[1])
+
+  // 使用标准的glob选项
+  withFileTypes: true,
+})
+  .filter(dirent => dirent.isDirectory())
+  .map(dirent => dirent.name.split('/')[0])
 
 const monoConfiguration = {
   prompt: { scopes: subProject },
@@ -25,8 +31,12 @@ otherConfiguration.rules['scope-enum'] = [2, 'always', subProject]
 
 /** @type {import('cz-git').UserConfig} */
 export const defineConfig = (config = {}) => {
-  //
-  return _defineConfig(
-    deepmerge.all([otherConfiguration, czConfiguration, monoConfiguration, config]),
-  )
+  // 合并配置并显式断言为 UserConfig 类型
+  const mergedConfig = deepmerge.all([
+    otherConfiguration,
+    czConfiguration,
+    monoConfiguration,
+    config,
+  ]) as import('cz-git').UserConfig
+  return _defineConfig(mergedConfig)
 }

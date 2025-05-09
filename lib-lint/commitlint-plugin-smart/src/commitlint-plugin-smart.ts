@@ -6,7 +6,7 @@
  * @FilePath: /FullStack/lib-lint/commitlint-plugin-smart/src/commitlint-plugin-smart.ts
  * @Description:
  */
-export default commitlintPluginSmart;
+export default commitlintPluginSmart
 function commitlintPluginSmart() {
-  return "Hello from commitlintPluginSmart";
+  return 'Hello from commitlintPluginSmart'
 }
