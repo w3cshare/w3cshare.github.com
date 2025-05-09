@@ -42,9 +42,9 @@
     }
   },
   "repository": {
-    "directory": "commitlint-plugin-smart/子包路径",
+    "directory": "lib-lint/commitlint-plugin-smart",
     "type": "git",
-    "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
     "start": "pnpm run dev",

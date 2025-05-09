@@ -1,7 +1,8 @@
 {
-  "name": "@packages/uniapp-x-lib",
+  "name": "@smarts-isoftstone/uniapp-x-lib",
   "version": "0.0.1",
   "private": true,
+  "displayName": "@smarts-isoftstone/uniapp-x-lib",
   "scripts": {
     "lint:json": "eslint --fix \"**/*.json\"",
     "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
@@ -15,5 +16,10 @@
     "prettier-plugin-smart": "workspace:^",
     "rimraf": "^6.0.1",
     "tsconfig-base-smart": "workspace:^"
+  },
+  "repository": {
+    "directory": "packages/uniapp-x-lib",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   }
 }

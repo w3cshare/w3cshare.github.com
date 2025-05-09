@@ -1,5 +1,5 @@
 {
-  "name": "@fullstack/micro-app-vap",
+  "name": "@smarts-isoftstone/micro-app-vap",
   "version": "0.0.1",
   "private": true,
   "displayName": "VAP研发工作台",
@@ -51,5 +51,10 @@
     "typescript": "^5.3.3",
     "vite": "^5.1.3",
     "vitest": "^1.3.0"
+  },
+  "repository": {
+    "directory": "micro-frontend/micro-app-vap",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   }
 }

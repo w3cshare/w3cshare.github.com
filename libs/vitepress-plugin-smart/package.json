@@ -1,6 +1,7 @@
 {
   "name": "vitepress-plugin-smart",
   "version": "0.0.2",
+  "displayName": "vitepress-plugin-smart",
   "description": "为 VitePress 提供一站式智能功能集成的插件，当前集成了 Mermaid 图表支持",
   "keywords": [
     "documentation",
@@ -33,8 +34,9 @@
     "test": "__tests__"
   },
   "repository": {
+    "directory": "libs/vitepress-plugin-smart",
     "type": "git",
-    "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
     "start": "pnpm run dev",

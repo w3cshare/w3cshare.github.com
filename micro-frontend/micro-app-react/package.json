@@ -105,5 +105,10 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 10"
-  ]
+  ],
+  "repository": {
+    "directory": "micro-frontend/micro-app-react",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
+  }
 }

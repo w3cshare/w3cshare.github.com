@@ -15,8 +15,9 @@
     "test": "__tests__"
   },
   "repository": {
+    "directory": "lib-nest/umijs-server",
     "type": "git",
-    "url": "git@gitee.com:w3cshare/full-stack.git"
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
     "start": "pnpm run dev",

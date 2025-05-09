@@ -85,5 +85,10 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     }
+  },
+  "repository": {
+    "directory": "micro-service/grpc-client",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   }
 }

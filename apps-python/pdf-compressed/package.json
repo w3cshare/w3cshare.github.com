@@ -2,6 +2,7 @@
   "name": "pdf2compressed",
   "version": "0.0.7",
   "private": true,
+  "displayName": "pdf2compressed",
   "description": "PDF文件压缩微服务",
   "keywords": [],
   "license": "ISC",
@@ -15,5 +16,10 @@
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-smarts": "workspace:^"
+  },
+  "repository": {
+    "directory": "apps-python/pdf-compressed",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   }
 }

@@ -58,5 +58,10 @@
     "vite-plugin-vue-devtools": "^7.7.2",
     "vitest": "^3.1.1",
     "vue-tsc": "^2.2.8"
+  },
+  "repository": {
+    "directory": "micro-frontend/micro-app-vue",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   }
 }

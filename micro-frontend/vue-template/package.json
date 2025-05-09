@@ -19,8 +19,9 @@
     "registry": "http://localhost:4873/"
   },
   "repository": {
+    "directory": "micro-frontend/vue-template",
     "type": "git",
-    "url": "git@gitee.com:w3cshare/full-stack.git"
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
     "test": "node ./__tests__/@smarts-isoftstone/vue-template.test.js",

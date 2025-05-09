@@ -2,6 +2,7 @@
   "name": "AwesomeProject",
   "version": "0.0.1",
   "private": true,
+  "displayName": "AwesomeProject",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -37,5 +38,10 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "repository": {
+    "directory": "apps-native/AwesomeProject",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   }
 }

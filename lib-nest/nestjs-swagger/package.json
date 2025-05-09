@@ -43,5 +43,10 @@
     "rimraf": "^6.0.1",
     "tsconfig-base-smart": "workspace:^"
   },
-  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6"
+  "gitHead": "c1a0d49faa5e497641118a5553370a5d441a61f6",
+  "repository": {
+    "directory": "lib-nest/nestjs-swagger",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
+  }
 }

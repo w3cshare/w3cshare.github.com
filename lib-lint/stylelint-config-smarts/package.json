@@ -37,8 +37,9 @@
     "test": "__tests__"
   },
   "repository": {
+    "directory": "lib-lint/stylelint-config-smarts",
     "type": "git",
-    "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
     "start": "pnpm run dev",

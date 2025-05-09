@@ -24,8 +24,9 @@
     "registry": "http://localhost:4873/"
   },
   "repository": {
+    "directory": "apps/google-tab-home",
     "type": "git",
-    "url": "git@gitee.com:w3cshare/full-stack.git"
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
     "start": "pnpm run dev",

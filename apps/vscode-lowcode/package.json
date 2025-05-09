@@ -13,8 +13,9 @@
   "license": "ISC",
   "author": "wangwei <wwdqq7@qq.com>",
   "repository": {
+    "directory": "apps/vscode-lowcode",
     "type": "git",
-    "url": "https://github.com/smarts-isoftstone/vscode-pro.git"
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "main": "./dist/extension.js",
   "types": "./dist/extension.d.ts",

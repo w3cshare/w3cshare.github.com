@@ -13,8 +13,8 @@
   "types": "lib/proto-pkg.d.ts",
   "exports": {
     ".": {
-      "require": "./lib/proto-pkg.js",
-      "types": "./lib/proto-pkg.d.ts"
+      "types": "./lib/proto-pkg.d.ts",
+      "require": "./lib/proto-pkg.js"
     },
     "./lib/hero.interface": {
       "types": "./lib/hero.interface.d.ts"
@@ -50,5 +50,10 @@
     "prettier-plugin-smart": "workspace:^",
     "rimraf": "^6.0.1",
     "tsconfig-base-smart": "workspace:^"
+  },
+  "repository": {
+    "directory": "lib-nest/grpc-proto-pkg",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   }
 }

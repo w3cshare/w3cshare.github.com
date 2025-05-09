@@ -24,5 +24,10 @@
     "prettier-plugin-smart": "workspace:^",
     "rimraf": "^6.0.1",
     "tsconfig-base-smart": "workspace:^"
+  },
+  "repository": {
+    "directory": "micro-service/langchain",
+    "type": "git",
+    "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   }
 }

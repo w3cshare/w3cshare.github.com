@@ -548,7 +548,7 @@
         "description": "已读未读列表的枚举",
         "type": "string",
         "properties": {},
-        "enum": ["notification", "message", "event"]
+        "enum": ["event","message","notification"]
       },
       "NoticeIconItem": {
         "type": "object",
