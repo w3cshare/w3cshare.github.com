@@ -176,3 +176,80 @@ pnpm stylelint
 - **作者**：阿伟
 - **邮箱**：wwdqq7@qq.com
 - **GitHub**：[https://github.com/w3cshare](https://github.com/w3cshare)
+
+# Git Commit 规范配置
+
+本项目使用了增强版的 Git Commit 规范配置，基于 `cz-git` 和 `commitlint` 实现，提供了更完善的提交信息规范和交互式提交体验。
+
+## 主要特性
+
+- 完整的提交类型定义，包含标准类型和扩展类型
+- 自定义作用域列表，便于归类不同模块的变更
+- 中文友好的交互式提交信息引导
+- 严格的提交信息校验规则
+- 支持表情符号（可选开启）
+- 支持 GitEE 工作流（链接和关闭 Issues）
+
+## 提交类型说明
+
+| 类型 | 说明 | 描述 |
+| --- | --- | --- |
+| feat | 新功能 | 新增功能 \| A new feature |
+| fix | 修复缺陷 | 修复Bug \| A bug fix |
+| docs | 文档更新 | 文档更新 \| Documentation only changes |
+| style | 代码格式 | 代码风格调整（不影响代码功能）\| Changes that do not affect the meaning of the code |
+| refactor | 代码重构 | 代码重构（不包括 bug 修复或功能新增）\| A code change that neither fixes a bug nor adds a feature |
+| perf | 性能优化 | 性能提升 \| A code change that improves performance |
+| test | 测试相关 | 测试相关 \| Adding missing tests or correcting existing tests |
+| build | 构建相关 | 构建系统或外部依赖更改 \| Changes that affect the build system or external dependencies |
+| ci | 持续集成 | CI配置更改 \| Changes to our CI configuration files and scripts |
+| chore | 其他修改 | 其他改动（不修改src或测试文件）\| Other changes that do not modify src or test files |
+| revert | 回退代码 | 回滚之前的提交 \| Revert to a commit |
+| ui | UI相关更改 | 用户界面相关更改 |
+| wip | 开发中的工作 | 开发中的工作（Work In Progress） |
+| api | API相关更改 | API接口相关变更 |
+| i18n | 国际化相关 | 国际化与本地化相关更改 |
+
+## 使用方法
+
+1. 安装依赖：
+
+```bash
+pnpm add -D @commitlint/cli @commitlint/config-conventional cz-git
+```
+
+2. 使用交互式提交：
+
+```bash
+npx cz
+# 或者
+pnpm exec cz
+```
+
+3. 提交信息格式：
+
+```
+<类型>[可选 作用域]: <描述>
+
+[可选 正文]
+
+[可选 脚注]
+```
+
+## 配置文件说明
+
+项目根目录下的 `.commitlintrc.js` 文件包含了完整的配置：
+
+- 定义了提交类型列表
+- 设置了作用域范围
+- 配置了校验规则
+- 自定义了交互式提交体验
+
+## 最佳实践
+
+- 提交描述应该简洁明了，描述"做了什么"而不是"怎么做的"
+- 正文应该详细说明变更的原因、影响范围等
+- 尽量使用作用域来归类变更
+- 对于破坏性变更，必须在正文或脚注中清晰说明
+
+这个规范有助于团队协作、自动化发布、变更日志生成等，请在开发过程中严格遵守。
