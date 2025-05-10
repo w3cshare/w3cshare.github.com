@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-05-08 17:49:23
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-10 12:19:13
+ * @LastEditTime: 2025-05-10 12:31:16
  * @FilePath: /FullStack/.commitlintrc.mjs
  * @Description:
  */
