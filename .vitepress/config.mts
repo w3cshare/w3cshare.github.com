@@ -2,12 +2,13 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-06 00:02:58
+ * @LastEditTime: 2025-05-10 20:56:49
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
 import { defineConfig } from 'vitepress'
-import { withMermaid } from 'vitepress-plugin-mermaid'
+// import { withMermaid } from 'vitepress-plugin-mermaid'
+import withSmart from 'vitepress-plugin-smart'
 import { generateSidebar } from './utils/sidebar1'
 import { resolve } from 'path'
 
@@ -15,7 +16,7 @@ import { resolve } from 'path'
 const rootDir = resolve(__dirname, '..')
 
 // https://vitepress.dev/reference/site-config
-export default withMermaid(
+export default withSmart(
   defineConfig({
     title: '全栈开发文档',
     description: '基于 Monorepo 的全栈开发项目文档',

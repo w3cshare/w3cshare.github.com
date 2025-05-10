@@ -35,6 +35,10 @@
     "lint:json:lib-lint": "pnpm run lint:json --projects=lib-lint/*",
     "format:lib-lint": "pnpm run --filter=\"./lib-lint/*\" format",
     "format:lib-lint:nx": "pnpm run format:format --projects=lib-lint/*",
+    "preinstall": "echo 'preinstall:started：给小主安装啦~'",
+    "postinstall": "echo 'postinstall:finished：安装完成啦~'",
+    "prepublish": "pnpm run build",
+    "prepare": "echo 'prepare:finished：模拟CICD完成啦~'",
     "// ====== 微前端应用 ======": "",
     "dev:micro": "pnpm run dev:micro-react & pnpm run dev:micro-vue & pnpm run dev:micro-angular",
     "dev:micro-react": "pnpm run --filter='micro-app-react' dev",
@@ -82,7 +86,6 @@
     "prettier-plugin-smart": "workspace:^",
     "stylelint": "^15.11.0",
     "stylelint-config-smart": "workspace:^",
-    "ts-node": "^10.9.2",
     "vitepress": "^1.6.3",
     "vitepress-plugin-smart": "workspace:^"
   },

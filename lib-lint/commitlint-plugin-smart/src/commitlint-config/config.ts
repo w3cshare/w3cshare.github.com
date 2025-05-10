@@ -32,6 +32,7 @@ const types = [
  */
 const scopes = [
   'components', // 组件
+  'modules', // 模块
   'utils', // 工具
   'styles', // 样式
   'deps', // 依赖
@@ -42,7 +43,7 @@ const scopes = [
   'docs', // 文档
   'release', // 发布
   'other', // 其他
-  '', // 允许空作用域
+  // '', // 允许空作用域
 ]
 
 /**

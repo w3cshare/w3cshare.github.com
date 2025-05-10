@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-03-28 23:11:36
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-06 16:51:13
+ * @LastEditTime: 2025-05-10 21:53:28
  * @FilePath: /FullStack/clean.js
  * @Description: 删除子项目下的 node_modules 文件夹
  */
@@ -35,7 +35,8 @@ async function findFolders(dir, targetFolderName) {
       }
     }
   } catch (err) {
-    // console.error(`Error reading directory ${dir}:`, err)
+    // disable-next-line no-console
+    console.error(`Error reading directory ${dir}:`, err)
   }
 
   return results
@@ -46,16 +47,19 @@ async function handleRemoveFolder(targetFolderName) {
   try {
     const folders = await findFolders(startDir, targetFolderName)
 
-    // console.log('Found folders:', folders)
+    // disable-next-line no-console
+    console.log('Found folders:', folders)
 
     // 执行删除操作
     for (const folder of folders) {
       await fs.rm(folder, { recursive: true })
 
-      // console.log(`Deleted folder: ${folder}`)
+    // disable-next-line no-console
+      console.log(`Deleted folder: ${folder}`)
     }
   } catch (err) {
-    // console.error('Error finding folders:', err)
+    // disable-next-line no-console
+    console.error('Error finding folders:', err)
   }
 }
 

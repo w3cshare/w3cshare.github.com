@@ -51,9 +51,9 @@ export default async function config() {
         config: {
           theme: 'neutral',
           // 更多 mermaid 配置选项...
-        }
-      }
-    }
+        },
+      },
+    },
   )
 }
 ```
@@ -83,10 +83,10 @@ module.exports = withMermaid(
         enable: true,
         config: {
           theme: 'neutral',
-        }
-      }
-    }
-  )
+        },
+      },
+    },
+  ),
 )
 ```
 

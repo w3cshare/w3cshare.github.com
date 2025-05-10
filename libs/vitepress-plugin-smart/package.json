@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "displayName": "vitepress-plugin-smart",
   "description": "为 VitePress 提供一站式智能功能集成的插件，当前集成了 Mermaid 图表支持",
+  "type": "module",
   "keywords": [
     "documentation",
     "markdown",
@@ -19,14 +20,14 @@
   "files": [
     "lib"
   ],
-  "main": "lib/vitepress-plugin-smart.js",
-  "module": "lib/vitepress-plugin-smart.mjs",
+  "main": "lib/vitepress-plugin-smart.cjs",
+  "module": "lib/vitepress-plugin-smart.js",
   "types": "lib/vitepress-plugin-smart.d.ts",
   "exports": {
     ".": {
       "types": "./lib/vitepress-plugin-smart.d.ts",
-      "import": "./lib/vitepress-plugin-smart.mjs",
-      "require": "./lib/vitepress-plugin-smart.js"
+      "import": "./lib/vitepress-plugin-smart.js",
+      "require": "./lib/vitepress-plugin-smart.cjs"
     }
   },
   "directories": {
@@ -44,7 +45,6 @@
     "build:ts": "tsc",
     "dev": "rimraf lib && tsup src/vitepress-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
     "build": "rimraf lib && tsup src/vitepress-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
-    "test": "node ./__tests__/vitepress-plugin-smart.test.js",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "lint:json": "eslint --fix \"**/*.json\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
