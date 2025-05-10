@@ -186,8 +186,8 @@ export const configuration = {
     // scope必须小写
     'scope-case': [2, 'always', 'lower-case'],
 
-    // 允许scope为空
-    'scope-empty': [0, 'never'],
+    // scope必须填写
+    'scope-empty': [2, 'never'],
 
     // scope定义
     'scope-enum': [2, 'always', scopes],
