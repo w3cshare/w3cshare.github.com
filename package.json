@@ -71,7 +71,6 @@
     "@commitlint/cli": "^19.8.1",
     "commitlint-config-smart": "workspace:^",
     "commitlint-plugin-smart": "workspace:^",
-    "cz-git": "^1.11.1",
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
     "glob": "^11.0.2",
@@ -93,7 +92,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-git"
+      "path": "node_modules/commitlint-plugin-smart"
     }
   },
   "husky": {

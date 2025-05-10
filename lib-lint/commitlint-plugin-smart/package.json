@@ -38,13 +38,13 @@
       "types": "./lib/commitlint-plugin-smart.d.ts",
       "import": "./lib/commitlint-plugin-smart.js",
       "require": "./lib/commitlint-plugin-smart.cjs",
-      "default": "./lib/commitlint-plugin-smart.js"
+      "default": "./lib/commitlint-plugin-smart.cjs"
     },
     "./cz-git": {
       "types": "./lib/cz-git/index.d.ts",
       "import": "./lib/cz-git/index.js",
       "require": "./lib/cz-git/index.cjs",
-      "default": "./lib/cz-git/index.js"
+      "default": "./lib/cz-git/index.cjs"
     }
   },
   "repository": {
@@ -76,6 +76,10 @@
       "optional": true
     }
   },
+  "dependencies": {
+    "cz-git": "^1.11.1",
+    "deepmerge": "^4.3.1"
+  },
   "devDependencies": {
     "eslint": "9.25.1",
     "eslint-plugin-smart": "workspace:^",
@@ -90,8 +94,7 @@
     "targets": {
       "build": {
         "outputs": [
-          "{projectRoot}/dist",
-          "{projectRoot}/lib"
+          "lib-lint/commitlint-plugin-smart/lib"
         ]
       }
     }

@@ -1,10 +1,8 @@
 import "./chunk-ZFLFQQFF.js";
 
 // src/commitlint-plugin-smart.ts
-var commitlint_plugin_smart_default = commitlintPluginSmart;
-function commitlintPluginSmart() {
-  return "Hello from commitlintPluginSmart";
-}
+import * as czGit from "cz-git";
+var commitlint_plugin_smart_default = czGit;
 export {
   commitlint_plugin_smart_default as default
 };

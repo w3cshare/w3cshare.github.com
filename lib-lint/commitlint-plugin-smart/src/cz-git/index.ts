@@ -2,17 +2,17 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-05-09 14:59:44
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-10 00:12:44
+ * @LastEditTime: 2025-05-10 11:28:53
  * @FilePath: /FullStack/lib-lint/commitlint-plugin-smart/src/cz-git/index.ts
- * @Description:
+ * @Description: --
  */
-import { defineConfig as _defineConfig } from 'cz-git'
+import { defineConfig as _defineConfig, UserConfig } from 'cz-git'
 import deepmerge from 'deepmerge'
 import { globSync } from 'glob'
 import process from 'process'
 
-import { configuration as czConfiguration } from './config'
-import { configuration as otherConfiguration } from './other'
+import { configuration as defaultConfiguration } from '@/commitlint-config/config'
+import { configuration as czConfiguration } from '@/cz-git-config/config'
 
 const subProject = globSync('{apps,apps-*,micro-*,lib-*,libs,packages,package-*}/*/', {
   cwd: process.cwd(),
@@ -24,16 +24,25 @@ const subProject = globSync('{apps,apps-*,micro-*,lib-*,libs,packages,package-*}
   .filter(dirent => dirent.isDirectory())
   .map(dirent => dirent.name.split('/')[0])
 
-const monoConfiguration = {
-  prompt: { scopes: subProject },
+interface UserConfigExtends extends UserConfig {
+  isMongo?: boolean
 }
-otherConfiguration.rules['scope-enum'] = [2, 'always', subProject]
 
 /** @type {import('cz-git').UserConfig} */
-export const defineConfig = (config = {}) => {
+export const defineConfig = (config: UserConfigExtends = {}) => {
+  let monoConfiguration = {
+    prompt: { scopes: [] },
+  }
+  if (config.isMongo) {
+    monoConfiguration = {
+      prompt: { scopes: subProject },
+    }
+    defaultConfiguration.rules['scope-enum'] = [2, 'always', subProject]
+  }
+
   // 合并配置并显式断言为 UserConfig 类型
   const mergedConfig = deepmerge.all([
-    otherConfiguration,
+    defaultConfiguration,
     czConfiguration,
     monoConfiguration,
     config,
