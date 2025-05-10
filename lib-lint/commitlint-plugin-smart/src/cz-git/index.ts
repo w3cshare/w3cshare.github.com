@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-05-09 14:59:44
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-10 11:28:53
+ * @LastEditTime: 2025-05-10 11:59:16
  * @FilePath: /FullStack/lib-lint/commitlint-plugin-smart/src/cz-git/index.ts
  * @Description: --
  */
@@ -29,15 +29,20 @@ interface UserConfigExtends extends UserConfig {
 }
 
 /** @type {import('cz-git').UserConfig} */
-export const defineConfig = (config: UserConfigExtends = {}) => {
+export const defineConfig = (
+  config: UserConfigExtends = {
+    isMongo: false,
+  },
+) => {
   let monoConfiguration = {
     prompt: { scopes: [] },
   }
   if (config.isMongo) {
+    const scopes = ['docs', ...subProject]
     monoConfiguration = {
-      prompt: { scopes: subProject },
+      prompt: { scopes },
     }
-    defaultConfiguration.rules['scope-enum'] = [2, 'always', subProject]
+    defaultConfiguration.rules['scope-enum'] = [2, 'always', scopes]
   }
 
   // 合并配置并显式断言为 UserConfig 类型
