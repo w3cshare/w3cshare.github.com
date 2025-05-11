@@ -173,12 +173,5 @@ export const configuration = {
   // 提交规则（可参考 commitlint 官方文档配置）
   rules: {
     // @see: https://commitlint.js.org/#/reference-rules
-    'type-regex': [
-      2,
-      'always',
-
-      // 正则表达式匹配 [type](scope)
-      /^($\w+$)(?:$(\w+)$)?: (.*)$/,
-    ],
   },
 }
