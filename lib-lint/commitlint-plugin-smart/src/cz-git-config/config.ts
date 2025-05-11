@@ -1,8 +1,132 @@
+export const types = [
+  {
+    emoji: ':sparkles:',
+    name: 'feat:     ✨  新功能 | A new feature',
+    value: 'feat',
+  },
+  {
+    emoji: ':bug:',
+    name: 'fix:      🐛  修复Bug | A bug fix',
+    value: 'fix',
+  },
+  {
+    emoji: ':memo:',
+    name: 'docs:     📝  文档更新 | Documentation only changes',
+    value: 'docs',
+  },
+  {
+    emoji: ':lipstick:',
+    name: 'style:    💄  格式调整 | Changes that do not affect the meaning of the code',
+    value: 'style',
+  },
+  {
+    emoji: ':art:',
+    name: 'refactor: 🎨  代码重构 | A code change that neither fixes a bug nor adds a feature',
+    value: 'refactor',
+  },
+  {
+    emoji: ':ok_hand:',
+    name: 'perf:     👌  性能优化 | A code change that improves performance',
+    value: 'perf',
+  },
+  {
+    emoji: ':white_check_mark:',
+    name: 'test:     ✅  测试相关 | Adding missing tests or correcting existing tests',
+    value: 'test',
+  },
+  {
+    emoji: ':package:',
+    name: 'build:    📦️  构建相关 | Changes that affect the build system or external dependencies',
+    value: 'build',
+  },
+  {
+    emoji: ':ferris_wheel:',
+    name: 'ci:       🎡  CI配置更改 | Changes to our CI configuration files and scripts',
+    value: 'ci',
+  },
+  {
+    emoji: ':rewind:',
+    name: 'revert:   ⏪  回退代码 | Revert to a commit',
+    value: 'revert',
+  },
+  {
+    emoji: ':recycle:',
+    name: 'chore:    ♻️   其他改动 | Other changes that do not modify src or test files',
+    value: 'chore',
+  },
+  {
+    emoji: ':electric_plug:',
+    name: 'api:      🔌  API相关更改 | API related changes',
+    value: 'api',
+  },
+  {
+    emoji: ':wrench:',
+    name: 'config:   🔧  修改配置文件 | Configuration changes',
+    value: 'config',
+  },
+  {
+    emoji: ':rocket:',
+    name: 'deploy:   🚀  部署相关 | Deployment related changes',
+    value: 'deploy',
+  },
+  {
+    emoji: ':package:',
+    name: 'file:     📦  添加新文件 | Add new files',
+    value: 'file',
+  },
+  {
+    emoji: ':see_no_evil:',
+    name: 'git:      🙈  添加或修改.gitignore文件 | Add or update .gitignore file',
+    value: 'git',
+  },
+  {
+    emoji: ':globe_with_meridians:',
+    name: 'i18n:     🌐  国际化相关 | Internationalization',
+    value: 'i18n',
+  },
+  {
+    emoji: ':tada:',
+    name: 'init:     🎉  项目初始化 | Project initialization',
+    value: 'init',
+  },
+  {
+    emoji: ':mag:',
+    name: 'lint:     🔍  代码检查调整 | Linting related changes',
+    value: 'lint',
+  },
+  {
+    emoji: ':ambulance:',
+    name: 'patch:    🚑  添加补丁更新 | Add patch update',
+    value: 'patch',
+  },
+  {
+    emoji: ':rocket:',
+    name: 'release:  🚀  版本发布 | Release version',
+    value: 'release',
+  },
+  {
+    emoji: ':package:',
+    name: 'types:    📦  类型定义文件更改 | TypeScript type definition changes',
+    value: 'types',
+  },
+  {
+    emoji: ':art:',
+    name: 'ui:       🎨  UI相关更改 | UI related changes',
+    value: 'ui',
+  },
+  {
+    emoji: ':construction:',
+    name: 'wip:      🚧  开发中的工作 | Work in progress',
+    value: 'wip',
+  },
+]
+
 /**
  * cz-git 配置文件
  * 用于规范 Git Commit 提交信息格式，提升团队协作与代码可维护性。
  */
 export const configuration = {
+  extends: ['@commitlint/config-conventional'],
   prompt: {
     // AI 模式下的建议数量
     aiNumber: 1,
@@ -103,62 +227,7 @@ export const configuration = {
     themeColorCode: '',
 
     // 支持的提交类型及其图标和说明
-    types: [
-      {
-        emoji: ':sparkles:',
-        name: 'feat:     ✨  新增功能 | A new feature',
-        value: 'feat',
-      },
-      {
-        emoji: ':bug:',
-        name: 'fix:      🐛  修复缺陷 | A bug fix',
-        value: 'fix',
-      },
-      {
-        emoji: ':memo:',
-        name: 'docs:     📝  文档更新 | Documentation only changes',
-        value: 'docs',
-      },
-      {
-        name: 'style:    💄  代码格式 | Changes that do not affect the meaning of the code',
-        value: 'style',
-      },
-      {
-        emoji: ':lipstick:',
-        name: 'refactor: ♻️   代码重构 | A code change that neither fixes a bug nor adds a feature',
-        value: 'refactor',
-      },
-      {
-        emoji: ':recycle:',
-        name: 'perf:     ⚡️  性能提升 | A code change that improves performance',
-        value: 'perf',
-      },
-      {
-        emoji: ':zap:',
-        name: 'test:     ✅  测试相关 | Adding missing tests or correcting existing tests',
-        value: 'test',
-      },
-      {
-        emoji: ':package:',
-        name: 'build:    📦️  构建相关 | Changes that affect the build system or external dependencies',
-        value: 'build',
-      },
-      {
-        emoji: ':ferris_wheel:',
-        name: 'ci:       🎡  持续集成 | Changes to our CI configuration files and scripts',
-        value: 'ci',
-      },
-      {
-        emoji: ':rewind:',
-        name: 'revert:   ⏪️  回退代码 | Revert to a commit',
-        value: 'revert',
-      },
-      {
-        emoji: ':hammer:',
-        name: 'chore:    🔨  其他修改 | Other changes that do not modify src or test files',
-        value: 'chore',
-      },
-    ],
+    types,
 
     // 提交标题是否大写
     upperCaseSubject: false,
@@ -172,6 +241,8 @@ export const configuration = {
 
   // 提交规则（可参考 commitlint 官方文档配置）
   rules: {
-    // @see: https://commitlint.js.org/#/reference-rules
+    /*
+     * @see: https://commitlint.js.org/#/reference-rules
+     */
   },
 }
