@@ -1,12 +1,18 @@
 {
   "name": "commitlint-plugin-smart",
   "version": "0.0.1",
-  "displayName": "包的中文名称",
-  "description": "该包的功能描述",
+  "displayName": "智能 Commitlint 解决方案",
+  "description": "为企业级项目提供全面的 Commitlint 规则与配置，基于 cz-git 的二次封装",
   "type": "module",
   "keywords": [
+    "commit",
+    "commitlint",
+    "conventional-commits",
+    "cz-git",
     "fullstack",
+    "git",
     "lerna",
+    "lint",
     "monorepo",
     "nx",
     "pnpm"

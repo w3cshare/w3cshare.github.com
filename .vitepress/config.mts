@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-10 20:56:49
+ * @LastEditTime: 2025-05-11 21:23:31
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -358,8 +358,12 @@ export default withSmart(
               text: 'Prettier推荐配置',
             },
             {
-              link: '/lib-lint/commitlint-smart/README.md',
+              link: '/lib-lint/commitlint-plugin-smart/README.md',
               text: 'Commitlint规范',
+            },
+            {
+              link: '/lib-lint/tsconfig-base-smart/README.md',
+              text: 'Typescript推荐配置',
             },
           ],
         },

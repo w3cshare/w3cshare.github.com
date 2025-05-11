@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-05-09 14:59:44
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-11 00:22:49
+ * @LastEditTime: 2025-05-11 21:44:50
  * @FilePath: /FullStack/lib-lint/commitlint-plugin-smart/src/cz-git/index.ts
  * @Description: --
  */
@@ -42,11 +42,13 @@ export const defineConfig = (
       defaultConfiguration.rules['scope-enum']?.length === 3
         ? defaultConfiguration.rules['scope-enum'][2]
         : []
-    const scopes = [...subProject].flatMap(item => {
-      return Array.isArray(singleRepoScopes)
-        ? singleRepoScopes.map(suffix => `${item}${String(suffix).trim() ? `/${suffix}` : ''}`)
-        : [...subProject]
-    })
+    const scopes = [...subProject]
+      .flatMap(item => {
+        return Array.isArray(singleRepoScopes)
+          ? singleRepoScopes.map(suffix => `${item}${String(suffix).trim() ? `/${suffix}` : ''}`)
+          : []
+      })
+      .concat(subProject)
 
     Array.prototype.unshift.apply(
       scopes,
