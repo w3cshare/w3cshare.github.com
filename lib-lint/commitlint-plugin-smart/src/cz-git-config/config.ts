@@ -140,7 +140,7 @@ export const configuration = {
       },
       {
         emoji: ':package:',
-        name: 'build:    📦️   构建相关 | Changes that affect the build system or external dependencies',
+        name: 'build:    📦️  构建相关 | Changes that affect the build system or external dependencies',
         value: 'build',
       },
       {
@@ -173,5 +173,12 @@ export const configuration = {
   // 提交规则（可参考 commitlint 官方文档配置）
   rules: {
     // @see: https://commitlint.js.org/#/reference-rules
+    'type-regex': [
+      2,
+      'always',
+
+      // 正则表达式匹配 [type](scope)
+      /^($\w+$)(?:$(\w+)$)?: (.*)$/,
+    ],
   },
 }

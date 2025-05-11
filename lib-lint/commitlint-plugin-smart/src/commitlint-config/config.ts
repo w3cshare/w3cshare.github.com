@@ -209,5 +209,14 @@ export const configuration = {
 
     // type类型定义
     'type-enum': [2, 'always', types],
+
+    // 修改 type 规则，允许使用 []
+    'type-regex': [
+      2,
+      'always',
+
+      // 修改正则表达式，匹配 [type]
+      /^($\w+$)(?:$(\w+)$)?: (.*)$/,
+    ],
   },
 }
