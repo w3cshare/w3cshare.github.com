@@ -29,7 +29,7 @@ features:
     details: 大部分规则支持自动修复，提高开发效率
 ---
 
-## &nbsp;
+### &nbsp;
 
 # stylelint-config-smart
 

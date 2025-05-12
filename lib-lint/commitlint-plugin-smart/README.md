@@ -85,7 +85,7 @@ export default commitlintPluginSmart.defineConfig()
   },
   "config": {
     "commitizen": {
-      "path": "node_modules/commitlint-plugin-smart/lib/cz-git"
+      "path": "node_modules/commitlint-plugin-smart"
     }
   }
 }
@@ -105,6 +105,8 @@ npx husky install
 # 添加 commit-msg 钩子
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit $1'
 ```
+
+###
 
 ## MonoRepo 项目配置
 

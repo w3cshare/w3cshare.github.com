@@ -4,7 +4,7 @@ title: Prettier 企业级插件
 description: 为企业级项目提供增强的 Prettier 代码风格统一方案
 outline: deep
 hero:
-  name: prettier-plugin-smarts
+  name: prettier-plugin-smart
   text: 智能代码格式化插件
   tagline: 一致的代码风格，提升团队协作效率
   actions:
@@ -26,7 +26,7 @@ features:
     details: 提供企业级代码风格标准，适配不同项目类型
 ---
 
-## &nbsp;
+###
 
 # prettier-plugin-smart
 

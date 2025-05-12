@@ -35,7 +35,7 @@ features:
     details: 预设合理的配置，安装后即可使用，无需复杂设置
 ---
 
-## &nbsp;
+### &nbsp;
 
 # commitlint-config-smart
 

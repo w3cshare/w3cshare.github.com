@@ -26,7 +26,7 @@ features:
     details: Complete development, build, testing, and deployment processes ensuring project quality and development efficiency
 ---
 
-## &nbsp;
+### &nbsp;
 
 # FullStack Monorepo Project Documentation
 
