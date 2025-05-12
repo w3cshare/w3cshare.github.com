@@ -16,7 +16,8 @@
     "test": "__tests__"
   },
   "publishConfig": {
-    "registry": "http://localhost:4873/"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "directory": "micro-frontend/vue-template",

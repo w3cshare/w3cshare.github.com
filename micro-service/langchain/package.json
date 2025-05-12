@@ -1,6 +1,7 @@
 {
   "name": "langchain",
   "version": "0.0.7",
+  "private": true,
   "displayName": "LangChain集成",
   "description": "Python LangChain人工智能测试项目",
   "keywords": [],

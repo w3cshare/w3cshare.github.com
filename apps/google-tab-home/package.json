@@ -1,6 +1,7 @@
 {
   "name": "google-tab-home",
   "version": "0.0.7",
+  "private": true,
   "displayName": "Google Tab首页",
   "description": "google-pro 谷歌首页",
   "type": "module",
@@ -21,7 +22,8 @@
     "test": "__tests__"
   },
   "publishConfig": {
-    "registry": "http://localhost:4873/"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "directory": "apps/google-tab-home",
