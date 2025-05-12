@@ -2,5 +2,25 @@
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "version": "independent",
   "npmClient": "pnpm",
-  "packages": ["lib-lint/*"]
+  "packages": [
+    "apps/*",
+    "lib-cli/*",
+    "lib-lint/*",
+    "lib-mcp/*",
+    "lib-nest/*",
+    "lib-react/*",
+    "lib-vue/*",
+    "libs/*",
+    "micro-frontend/*",
+    "micro-service/*",
+    "packages/*"
+  ],
+  "command": {
+    "run": {
+      "stream": true
+    },
+    "bootstrap": {
+      "hoist": true
+    }
+  }
 }

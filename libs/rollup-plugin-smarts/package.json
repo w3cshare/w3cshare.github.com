@@ -21,5 +21,9 @@
     "directory": "libs/rollup-plugin-smarts",
     "type": "git",
     "url": "https://github.com/w3cshare/w3cshare.github.io.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

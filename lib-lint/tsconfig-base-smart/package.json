@@ -48,5 +48,9 @@
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
     "rimraf": "^6.0.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

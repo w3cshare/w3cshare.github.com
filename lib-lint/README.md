@@ -89,18 +89,6 @@ pnpm lint:init
 - `vite-plugin-smarts/`: Vite插件，提供通用构建优化
 - `rollup-plugin-smarts/`: Rollup插件，提供通用打包优化
 - `vite-plugin-swagger/`: Vite插件，用于Swagger API文档生成
-- `docs/`: 文档目录
-  - `getting-started.md`: 使用指南，包含eslint-plugin-smart的配置说明
-  - `troubleshooting.md`: 常见问题解决方案
-  - `best-practices.md`: 最佳实践指南
-  - `overview.md`: 项目概述
-
-## 文档导航
-
-- [规范总览](/lint/docs/overview)
-- [快速开始](/lint/docs/getting-started)
-- [最佳实践](/lint/docs/best-practices)
-- [常见问题与故障排除](/lint/docs/troubleshooting)
 
 ### 子项目文档
 

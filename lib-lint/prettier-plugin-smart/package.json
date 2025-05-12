@@ -70,5 +70,9 @@
     "tsconfig-base-smart": "workspace:^",
     "tsup": "^8.4.0",
     "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
