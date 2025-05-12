@@ -2,6 +2,7 @@
   "name": "@smarts-isoftstone/swagger-to-typescript",
   "version": "0.0.1",
   "displayName": "@smarts-isoftstone/swagger-to-typescript",
+  "description": "内部测试 for swagger 转 typescript 工具",
   "type": "module",
   "main": "lib/index.cjs",
   "module": "lib/index.js",

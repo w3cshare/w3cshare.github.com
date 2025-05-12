@@ -2,6 +2,7 @@
   "name": "@smarts-isoftstone/cli-npx",
   "version": "0.0.1",
   "displayName": "@smarts-isoftstone/cli-npx",
+  "description": "内部测试 for npx 命令行工具",
   "type": "module",
   "main": "lib/index.cjs",
   "typings": "lib/index.d.ts",
