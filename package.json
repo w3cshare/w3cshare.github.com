@@ -37,7 +37,7 @@
     "format:lib-lint:nx": "pnpm run format:format --projects=lib-lint/*",
     "preinstall": "echo 'preinstall:started：给小主安装啦~'",
     "postinstall": "echo 'postinstall:finished：安装完成啦~'",
-    "prepublish": "pnpm run build",
+    "prepublish:bak": "pnpm run build",
     "prepare": "echo 'prepare:finished：模拟CICD完成啦~'",
     "// ====== 微前端应用 ======": "",
     "dev:micro": "pnpm run dev:micro-react & pnpm run dev:micro-vue & pnpm run dev:micro-angular",
