@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-14 13:46:22
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-12 05:07:29
+ * @LastEditTime: 2025-05-13 13:50:58
  * @FilePath: /FullStack/.vitepress/config.ts
  * @Description:
  */
@@ -350,7 +350,7 @@ export default withMermaid(
             },
             {
               link: '/lib-lint/stylelint-config-smart/README.md',
-              text: 'Stylelint推荐配置',
+              text: 'Stylelint插件',
             },
             {
               link: '/lib-lint/prettier-plugin-smart/README.md',
@@ -358,7 +358,7 @@ export default withMermaid(
             },
             {
               link: '/lib-lint/commitlint-plugin-smart/README.md',
-              text: 'Commitlint规范',
+              text: 'Commitlint插件',
             },
             {
               link: '/lib-lint/tsconfig-base-smart/README.md',
