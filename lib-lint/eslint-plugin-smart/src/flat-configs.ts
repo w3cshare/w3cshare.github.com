@@ -2,7 +2,7 @@
  * @Author: wangwei wwdqq7@qq.com
  * @Date: 2025-04-22 16:40:09
  * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-05-08 14:00:14
+ * @LastEditTime: 2025-05-31 16:20:51
  * @FilePath: /FullStack/lint/eslint-plugin-smart/src/flat-configs.ts
  * @Description: ESLint v9 扁平配置
  *
@@ -252,9 +252,7 @@ export function createFlatConfigs(plugins: LoadedPlugins): ESLintPluginExport['c
       },
     },
     plugins: {
-      import: importPlugin,
       node: nodePlugin,
-      prettier: prettierPlugin,
     },
     rules: {
       ...nestjsRules,
