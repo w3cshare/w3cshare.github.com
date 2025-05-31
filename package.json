@@ -100,21 +100,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS --config .mono-commitlint.mjs",
       "pre-commit": "pnpm run lint:js:lib-lint && pnpm run lint:json:lib-lint && pnpm run format:lib-lint"
     }
-  },
-  "workspaces": [
-    "apps/*",
-    "lib-cli/*",
-    "lib-lint/*",
-    "lib-mcp/*",
-    "lib-nest/*",
-    "lib-react/*",
-    "lib-vue/*",
-    "libs/*",
-    "micro-frontend/*",
-    "micro-service/*",
-    "packages/*"
-  ]
+  }
 }
