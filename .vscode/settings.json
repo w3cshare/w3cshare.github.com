@@ -25,5 +25,12 @@
     "json5"
   ],
   "baidu.comate.license": "5dbb6e75-78e5-486c-98fa-4a9478a9c290",
-  "baidu.comate.username": "wangwei"
+  "baidu.comate.username": "wangwei",
+  "files.exclude": {
+    "**/.DS_Store": false,
+    "**/.git": false,
+    "**/.hg": false,
+    "**/.svn": false,
+    "**/Thumbs.db": false
+  }
 }
