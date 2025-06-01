@@ -1,0 +1,26 @@
+{
+    "recommendations": [
+        // === Vue ===
+        "vue.volar",
+        // === Vue END ===
+        // === Python ===
+        "detachhead.basedpyright",
+        "ms-python.python",
+        "ms-python.debugpy",
+        // === Python END ===
+        // === AI ===
+        "alibaba-cloud.tongyi-lingma",
+        "baiducomate.comate",
+        // === AI END ===
+        // === lint ===
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint",
+        "davidanson.vscode-markdownlint",
+        // === lint END ===
+        // === preview ===
+        "bierner.markdown-mermaid",
+        "shd101wyy.markdown-preview-enhanced",
+        // === preview END ===
+    ]
+}

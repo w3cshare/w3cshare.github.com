@@ -1,4 +1,4 @@
-import { typeEnum } from '@/common-types'
+import { typeEnum } from '../common-types'
 
 /**
  * 自定义提交类型列表

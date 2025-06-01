@@ -4,11 +4,10 @@
  * @LastEditors: wangwei wwdqq7@qq.com
  * @LastEditTime: 2025-05-31 16:21:46
  * @FilePath: /FullStack/.commitlintrc.mjs
- * @Description:
+ * @Description: 自定义 commitlint 配置文件名称
  */
 import { defineConfig } from "commitlint-plugin-smart/cz-git";
 
-/** @type {import('cz-git').UserConfig} */
 export default defineConfig({
   isMongo: true,
 });

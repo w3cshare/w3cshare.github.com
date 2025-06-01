@@ -1,4 +1,4 @@
-import { types } from '@/common-types'
+import { types } from '../common-types'
 
 /**
  * cz-git 配置文件
