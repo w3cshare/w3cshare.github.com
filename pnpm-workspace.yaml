@@ -10,7 +10,6 @@ packages:
   - "micro-frontend/*"
   - "micro-service/*"
   - "packages/*"
-  - ".temp/*"
 linkWorkspacePackages: true
 # publish: registry
 # strict: true

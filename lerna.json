@@ -3,7 +3,6 @@
   "version": "independent",
   "npmClient": "pnpm",
   "packages": [
-    "apps/*",
     "lib-cli/*",
     "lib-lint/*",
     "lib-mcp/*",
@@ -11,8 +10,6 @@
     "lib-react/*",
     "lib-vue/*",
     "libs/*",
-    "micro-frontend/*",
-    "micro-service/*",
     "packages/*"
   ],
   "command": {
