@@ -1,48 +1,32 @@
 <template>
   <div class="v3c">
     <ul class="v3c-tab">
-      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 1 }" @click="onHandleTab(1)">
-        {{ state.text.Seconds.name }}
-      </li>
-      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 2 }" @click="onHandleTab(2)">
-        {{ state.text.Minutes.name }}
-      </li>
-      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 3 }" @click="onHandleTab(3)">
-        {{ state.text.Hours.name }}
-      </li>
-      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 4 }" @click="onHandleTab(4)">
-        {{ state.text.Day.name }}
-      </li>
-      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 5 }" @click="onHandleTab(5)">
-        {{ state.text.Month.name }}
-      </li>
-      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 6 }" @click="onHandleTab(6)">
-        {{ state.text.Year.name }}
-      </li>
-      <li
-        class="v3c-tab-item v3c-lang-btn"
-        @click="state.language = state.language === 'en' ? 'cn' : 'en'"
-      >
-        {{ state.language === 'en' ? 'cn' : 'en' }}
-      </li>
+      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 1 }" @click="onHandleTab(1)">{{ state.text.Seconds.name }}</li>
+      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 2 }" @click="onHandleTab(2)">{{ state.text.Minutes.name }}</li>
+      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 3 }" @click="onHandleTab(3)">{{ state.text.Hours.name }}</li>
+      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 4 }" @click="onHandleTab(4)">{{ state.text.Day.name }}</li>
+      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 5 }" @click="onHandleTab(5)">{{ state.text.Month.name }}</li>
+      <li class="v3c-tab-item" :class="{ 'v3c-active': tabActive == 6 }" @click="onHandleTab(6)">{{ state.text.Year.name }}</li>
+      <li class="v3c-tab-item v3c-lang-btn" @click="state.language = state.language === 'en' ? 'cn' : 'en'">{{ state.language === "en" ? "cn" : "en" }}</li>
     </ul>
     <!-- 秒 -->
     <div class="v3c-content" v-show="tabActive == 1">
       <!-- 每一秒 -->
       <div>
-        <el-radio-group v-model="state.second.cronEvery">
-          <el-radio :label="1">{{ state.text.Seconds.every }}</el-radio>
-        </el-radio-group>
+        <label for="seconds1">
+          <input type="radio" id="seconds1" value="1" v-model="state.second.cronEvery" />
+          {{ state.text.Seconds.every }}
+        </label>
       </div>
       <!-- 每隔多久 -->
       <div class="mt-20">
         <label for="seconds2">
           <input type="radio" id="seconds2" value="2" v-model="state.second.cronEvery" />
           {{ state.text.Seconds.interval[0] }}
-          <el-input-number v-model="state.second.incrementIncrement" :min="1" :max="60" />
-          {{ state.text.Seconds.interval[1] || '' }}
+          <input type="number" min="1" max="60" v-model="state.second.incrementIncrement" />
+          {{ state.text.Seconds.interval[1] || "" }}
           <input type="number" min="0" max="59" v-model="state.second.incrementStart" />
-          {{ state.text.Seconds.interval[2] || '' }}
+          {{ state.text.Seconds.interval[2] || "" }}
         </label>
       </div>
       <!-- 具体秒数 -->
@@ -50,9 +34,9 @@
         <label for="seconds3">
           <input type="radio" id="seconds3" value="3" v-model="state.second.cronEvery" />
           {{ state.text.Seconds.specific }}
-          <el-select v-model="state.second.specificSpecific" multiple placeholder="请选择">
-            <el-option v-for="index in 60" :key="index" :label="index" :value="index"></el-option>
-          </el-select>
+          <select multiple v-model="state.second.specificSpecific">
+            <option :value="index" v-for="(item, index) in 60" :key="index">{{ index }}</option>
+          </select>
         </label>
       </div>
       <!-- 具体秒数 -->
@@ -61,9 +45,9 @@
           <input type="radio" id="seconds4" value="4" v-model="state.second.cronEvery" />
           {{ state.text.Seconds.cycle[0] }}
           <input type="number" v-model="state.second.rangeStart" min="1" max="60" />
-          {{ state.text.Seconds.cycle[1] || '' }}
+          {{ state.text.Seconds.cycle[1] || "" }}
           <input type="number" v-model="state.second.rangeEnd" min="0" max="59" />
-          {{ state.text.Seconds.cycle[2] || '' }}
+          {{ state.text.Seconds.cycle[2] || "" }}
         </label>
       </div>
     </div>
@@ -71,19 +55,20 @@
     <div class="v3c-content" v-show="tabActive == 2">
       <!-- 每一秒 -->
       <div>
-        <el-radio-group v-model="state.minute.cronEvery">
-          <el-radio :label="1">{{ state.text.Minutes.every }}</el-radio>
-        </el-radio-group>
+        <label for="minute1">
+          <input type="radio" id="minute1" value="1" v-model="state.minute.cronEvery" />
+          {{ state.text.Minutes.every }}
+        </label>
       </div>
       <!-- 每隔多久 -->
       <div class="mt-20">
         <label for="minute2">
           <input type="radio" id="minute2" value="2" v-model="state.minute.cronEvery" />
           {{ state.text.Minutes.interval[0] }}
-          <el-input-number v-model="state.minute.incrementIncrement" :min="1" :max="60" />
-          {{ state.text.Minutes.interval[1] || '' }}
+          <input type="number" min="1" max="60" v-model="state.minute.incrementIncrement" />
+          {{ state.text.Minutes.interval[1] || "" }}
           <input type="number" min="0" max="59" v-model="state.minute.incrementStart" />
-          {{ state.text.Minutes.interval[2] || '' }}
+          {{ state.text.Minutes.interval[2] || "" }}
         </label>
       </div>
       <!-- 具体秒数 -->
@@ -91,9 +76,9 @@
         <label for="minute3">
           <input type="radio" id="minute3" value="3" v-model="state.minute.cronEvery" />
           {{ state.text.Minutes.specific }}
-          <el-select v-model="state.minute.specificSpecific" multiple placeholder="请选择">
-            <el-option v-for="index in 60" :key="index" :label="index" :value="index"></el-option>
-          </el-select>
+          <select multiple v-model="state.minute.specificSpecific">
+            <option :value="index" v-for="(item, index) in 60" :key="index">{{ index }}</option>
+          </select>
         </label>
       </div>
       <!-- 具体秒数 -->
@@ -102,9 +87,9 @@
           <input type="radio" id="minute4" value="4" v-model="state.minute.cronEvery" />
           {{ state.text.Minutes.cycle[0] }}
           <input type="number" v-model="state.minute.rangeStart" min="1" max="60" />
-          {{ state.text.Minutes.cycle[1] || '' }}
+          {{ state.text.Minutes.cycle[1] || "" }}
           <input type="number" v-model="state.minute.rangeEnd" min="0" max="59" />
-          {{ state.text.Minutes.cycle[2] || '' }}
+          {{ state.text.Minutes.cycle[2] || "" }}
         </label>
       </div>
     </div>
@@ -112,19 +97,20 @@
     <div class="v3c-content" v-show="tabActive == 3">
       <!-- 每一秒 -->
       <div>
-        <el-radio-group v-model="state.hour.cronEvery">
-          <el-radio :label="1">{{ state.text.Hours.every }}</el-radio>
-        </el-radio-group>
+        <label for="hour1">
+          <input type="radio" id="hour1" value="1" v-model="state.hour.cronEvery" />
+          {{ state.text.Hours.every }}
+        </label>
       </div>
       <!-- 每隔多久 -->
       <div class="mt-20">
         <label for="hour2">
           <input type="radio" id="hour2" value="2" v-model="state.hour.cronEvery" />
           {{ state.text.Hours.interval[0] }}
-          <el-input-number v-model="state.hour.incrementIncrement" :min="1" :max="60" />
-          {{ state.text.Hours.interval[1] || '' }}
+          <input type="number" min="1" max="60" v-model="state.hour.incrementIncrement" />
+          {{ state.text.Hours.interval[1] || "" }}
           <input type="number" min="0" max="59" v-model="state.hour.incrementStart" />
-          {{ state.text.Hours.interval[2] || '' }}
+          {{ state.text.Hours.interval[2] || "" }}
         </label>
       </div>
       <!-- 具体秒数 -->
@@ -143,9 +129,9 @@
           <input type="radio" id="hour4" value="4" v-model="state.hour.cronEvery" />
           {{ state.text.Hours.cycle[0] }}
           <input type="number" v-model="state.hour.rangeStart" min="1" max="60" />
-          {{ state.text.Hours.cycle[1] || '' }}
+          {{ state.text.Hours.cycle[1] || "" }}
           <input type="number" v-model="state.hour.rangeEnd" min="0" max="59" />
-          {{ state.text.Hours.cycle[2] || '' }}
+          {{ state.text.Hours.cycle[2] || "" }}
         </label>
       </div>
     </div>
@@ -153,16 +139,17 @@
     <div class="v3c-content" v-show="tabActive == 4">
       <!-- 1 -->
       <div>
-        <el-radio-group v-model="state.day.cronEvery">
-          <el-radio :label="1">{{ state.text.Day.every }}</el-radio>
-        </el-radio-group>
+        <label for="day1">
+          <input type="radio" id="day1" value="1" v-model="state.day.cronEvery" />
+          {{ state.text.Day.every }}
+        </label>
       </div>
       <!-- 2 -->
       <div class="mt-20">
         <label for="day2">
           <input type="radio" id="day2" value="2" v-model="state.day.cronEvery" />
           {{ state.text.Day.intervalWeek[0] }}
-          <el-input-number v-model="state.day.incrementIncrement" :min="1" :max="60" />
+          <input type="number" min="1" max="60" v-model="state.day.incrementIncrement" />
           {{ state.text.Day.intervalWeek[1] }}
           <input type="number" min="0" max="59" v-model="state.day.incrementStart" />
           {{ state.text.Day.intervalWeek[2] }}
@@ -173,7 +160,7 @@
         <label for="day3">
           <input type="radio" id="day3" value="3" v-model="state.day.cronEvery" />
           {{ state.text.Day.intervalDay[0] }}
-          <el-input-number v-model="state.hour.rangeStart" :min="1" :max="30" />
+          <input type="number" v-model="state.hour.rangeStart" min="1" max="30" />
           {{ state.text.Day.intervalDay[1] }}
           <input type="number" v-model="state.hour.rangeEnd" min="1" max="30" />
           {{ state.text.Day.intervalDay[2] }}
@@ -184,14 +171,11 @@
         <label for="day4">
           <input type="radio" id="day4" value="4" v-model="state.day.cronEvery" />
           {{ state.text.Day.specificWeek }}
-          <el-select v-model="state.week.specificSpecific" multiple placeholder="请选择">
-            <el-option
-              v-for="(val, index) in 7"
-              :key="index"
-              :label="state.text.Week[val - 1]"
-              :value="['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][val - 1]"
-            ></el-option>
-          </el-select>
+          <select multiple v-model="state.week.specificSpecific">
+            <option v-for="(val, index) in 7" :key="index" :value="['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][val - 1]">
+              {{ state.text.Week[val - 1] }}
+            </option>
+          </select>
         </label>
       </div>
       <!-- 5 -->
@@ -230,7 +214,7 @@
               {{ state.text.Week[val - 1] }}
             </option>
           </select>
-          {{ state.text.Day.lastWeek[1] || '' }}
+          {{ state.text.Day.lastWeek[1] || "" }}
         </label>
       </div>
       <!-- 9 -->
@@ -270,9 +254,10 @@
     <div class="v3c-content" v-show="tabActive == 5">
       <!-- 1 -->
       <div>
-        <el-radio-group v-model="state.month.cronEvery">
-          <el-radio :label="1">{{ state.text.Month.every }}</el-radio>
-        </el-radio-group>
+        <label for="month1">
+          <input type="radio" id="month1" value="1" v-model="state.month.cronEvery" />
+          {{ state.text.Month.every }}
+        </label>
       </div>
       <!-- 2 -->
       <div class="mt-20">
@@ -311,9 +296,10 @@
     <div class="v3c-content" v-show="tabActive == 6">
       <!-- 1 -->
       <div>
-        <el-radio-group v-model="state.year.cronEvery">
-          <el-radio :label="1">{{ state.text.Year.every }}</el-radio>
-        </el-radio-group>
+        <label for="year1">
+          <input type="radio" id="year1" value="1" v-model="state.year.cronEvery" />
+          {{ state.text.Year.every }}
+        </label>
       </div>
       <!-- 2 -->
       <div class="mt-20">
@@ -322,12 +308,7 @@
           {{ state.text.Year.interval[0] }}
           <input type="number" v-model="state.year.incrementIncrement" :min="1" :max="99" />
           {{ state.text.Year.interval[1] }}
-          <input
-            type="number"
-            v-model="state.year.incrementStart"
-            :min="currYear"
-            :max="currYear + 10"
-          />
+          <input type="number" v-model="state.year.incrementStart" :min="currYear" :max="currYear + 10" />
         </label>
       </div>
       <!-- 3 -->
@@ -347,19 +328,9 @@
         <label for="year3">
           <input type="radio" id="year3" value="4" v-model="state.year.cronEvery" />
           {{ state.text.Year.cycle[0] }}
-          <input
-            type="number"
-            v-model="state.month.rangeStart"
-            :min="currYear"
-            :max="currYear + 10"
-          />
+          <input type="number" v-model="state.month.rangeStart" :min="currYear" :max="currYear + 10" />
           {{ state.text.Year.cycle[1] }}
-          <input
-            type="number"
-            v-model="state.month.rangeEnd"
-            :min="currYear"
-            :max="currYear + 10"
-          />
+          <input type="number" v-model="state.month.rangeEnd" :min="currYear" :max="currYear + 10" />
         </label>
       </div>
     </div>
@@ -375,11 +346,11 @@
 </template>
 
 <script>
-import Language from './language'
-import { reactive, computed, toRefs, defineComponent, ref, watch } from 'vue'
+import Language from "./language";
+import { reactive, computed, toRefs, defineComponent, ref, watch } from "vue";
 
 export default defineComponent({
-  name: 'Vue3CronCore',
+  name: "Vue3CronCore",
   props: {
     i18n: {},
     maxHeight: String,
@@ -387,11 +358,11 @@ export default defineComponent({
     value: String,
   },
   setup(props, { emit }) {
-    const { i18n } = toRefs(props)
+    const { i18n } = toRefs(props);
     const state = reactive({
       language: i18n.value,
       second: {
-        cronEvery: '1',
+        cronEvery: "1",
         incrementStart: 3,
         incrementIncrement: 5,
         rangeStart: 0,
@@ -399,7 +370,7 @@ export default defineComponent({
         specificSpecific: [],
       },
       minute: {
-        cronEvery: '1',
+        cronEvery: "1",
         incrementStart: 3,
         incrementIncrement: 5,
         rangeStart: 0,
@@ -407,7 +378,7 @@ export default defineComponent({
         specificSpecific: [],
       },
       hour: {
-        cronEvery: '1',
+        cronEvery: "1",
         incrementStart: 3,
         incrementIncrement: 5,
         rangeStart: 0,
@@ -415,7 +386,7 @@ export default defineComponent({
         specificSpecific: [],
       },
       day: {
-        cronEvery: '1',
+        cronEvery: "1",
         incrementStart: 1,
         incrementIncrement: 1,
         rangeStart: 0,
@@ -426,7 +397,7 @@ export default defineComponent({
         cronDaysNearestWeekday: 1,
       },
       week: {
-        cronEvery: '1',
+        cronEvery: "1",
         incrementStart: 1,
         incrementIncrement: 1,
         specificSpecific: [],
@@ -434,7 +405,7 @@ export default defineComponent({
         cronNthDayNth: 1,
       },
       month: {
-        cronEvery: '1',
+        cronEvery: "1",
         incrementStart: 3,
         incrementIncrement: 5,
         rangeStart: 1,
@@ -442,7 +413,7 @@ export default defineComponent({
         specificSpecific: [],
       },
       year: {
-        cronEvery: '1',
+        cronEvery: "1",
         incrementStart: 2022,
         incrementIncrement: 1,
         rangeStart: 1,
@@ -450,235 +421,235 @@ export default defineComponent({
         specificSpecific: [],
       },
       output: {
-        second: '',
-        minute: '',
-        hour: '',
-        day: '',
-        month: '',
-        Week: '',
-        year: '',
+        second: "",
+        minute: "",
+        hour: "",
+        day: "",
+        month: "",
+        Week: "",
+        year: "",
       },
-      text: computed(() => Language[state.language || 'cn']),
+      text: computed(() => Language[state.language || "cn"]),
       secondsText: computed(() => {
-        let seconds = ''
-        let cronEvery = state.second.cronEvery
+        let seconds = "";
+        let cronEvery = state.second.cronEvery;
         switch (cronEvery.toString()) {
-          case '1':
-            seconds = '*'
-            break
-          case '2':
-            seconds = state.second.incrementStart + '/' + state.second.incrementIncrement
-            break
-          case '3':
-            state.second.specificSpecific.map(val => {
-              seconds += val + ','
-            })
-            seconds = seconds.slice(0, -1)
-            break
-          case '4':
-            seconds = state.second.rangeStart + '-' + state.second.rangeEnd
-            break
+          case "1":
+            seconds = "*";
+            break;
+          case "2":
+            seconds = state.second.incrementStart + "/" + state.second.incrementIncrement;
+            break;
+          case "3":
+            state.second.specificSpecific.map((val) => {
+              seconds += val + ",";
+            });
+            seconds = seconds.slice(0, -1);
+            break;
+          case "4":
+            seconds = state.second.rangeStart + "-" + state.second.rangeEnd;
+            break;
         }
-        return seconds
+        return seconds;
       }),
       minutesText: computed(() => {
-        let minutes = ''
-        let cronEvery = state.minute.cronEvery
+        let minutes = "";
+        let cronEvery = state.minute.cronEvery;
         switch (cronEvery.toString()) {
-          case '1':
-            minutes = '*'
-            break
-          case '2':
-            minutes = state.minute.incrementStart + '/' + state.minute.incrementIncrement
-            break
-          case '3':
-            state.minute.specificSpecific.map(val => {
-              minutes += val + ','
-            })
-            minutes = minutes.slice(0, -1)
-            break
-          case '4':
-            minutes = state.minute.rangeStart + '-' + state.minute.rangeEnd
-            break
+          case "1":
+            minutes = "*";
+            break;
+          case "2":
+            minutes = state.minute.incrementStart + "/" + state.minute.incrementIncrement;
+            break;
+          case "3":
+            state.minute.specificSpecific.map((val) => {
+              minutes += val + ",";
+            });
+            minutes = minutes.slice(0, -1);
+            break;
+          case "4":
+            minutes = state.minute.rangeStart + "-" + state.minute.rangeEnd;
+            break;
         }
-        return minutes
+        return minutes;
       }),
       hoursText: computed(() => {
-        let hours = ''
-        let cronEvery = state.hour.cronEvery
+        let hours = "";
+        let cronEvery = state.hour.cronEvery;
         switch (cronEvery.toString()) {
-          case '1':
-            hours = '*'
-            break
-          case '2':
-            hours = state.hour.incrementStart + '/' + state.hour.incrementIncrement
-            break
-          case '3':
-            state.hour.specificSpecific.map(val => {
-              hours += val + ','
-            })
-            hours = hours.slice(0, -1)
-            break
-          case '4':
-            hours = state.hour.rangeStart + '-' + state.hour.rangeEnd
-            break
+          case "1":
+            hours = "*";
+            break;
+          case "2":
+            hours = state.hour.incrementStart + "/" + state.hour.incrementIncrement;
+            break;
+          case "3":
+            state.hour.specificSpecific.map((val) => {
+              hours += val + ",";
+            });
+            hours = hours.slice(0, -1);
+            break;
+          case "4":
+            hours = state.hour.rangeStart + "-" + state.hour.rangeEnd;
+            break;
         }
-        return hours
+        return hours;
       }),
       daysText: computed(() => {
-        let days = ''
-        let cronEvery = state.day.cronEvery
+        let days = "";
+        let cronEvery = state.day.cronEvery;
         switch (cronEvery.toString()) {
-          case '1':
-            break
-          case '2':
-          case '4':
-          case '11':
-            days = '?'
-            break
-          case '3':
-            days = state.day.incrementStart + '/' + state.day.incrementIncrement
-            break
-          case '5':
-            state.day.specificSpecific.map(val => {
-              days += val + ','
-            })
-            days = days.slice(0, -1)
-            break
-          case '6':
-            days = 'L'
-            break
-          case '7':
-            days = 'LW'
-            break
-          case '8':
-            days = state.day.cronLastSpecificDomDay + 'L'
-            break
-          case '9':
-            days = 'L-' + state.day.cronDaysBeforeEomMinus
-            break
-          case '10':
-            days = state.day.cronDaysNearestWeekday + 'W'
-            break
+          case "1":
+            break;
+          case "2":
+          case "4":
+          case "11":
+            days = "?";
+            break;
+          case "3":
+            days = state.day.incrementStart + "/" + state.day.incrementIncrement;
+            break;
+          case "5":
+            state.day.specificSpecific.map((val) => {
+              days += val + ",";
+            });
+            days = days.slice(0, -1);
+            break;
+          case "6":
+            days = "L";
+            break;
+          case "7":
+            days = "LW";
+            break;
+          case "8":
+            days = state.day.cronLastSpecificDomDay + "L";
+            break;
+          case "9":
+            days = "L-" + state.day.cronDaysBeforeEomMinus;
+            break;
+          case "10":
+            days = state.day.cronDaysNearestWeekday + "W";
+            break;
         }
-        return days
+        return days;
       }),
       weeksText: computed(() => {
-        let weeks = ''
-        let cronEvery = state.day.cronEvery
+        let weeks = "";
+        let cronEvery = state.day.cronEvery;
         switch (cronEvery.toString()) {
-          case '1':
-          case '3':
-          case '5':
-            weeks = '?'
-            break
-          case '2':
-            weeks = state.week.incrementStart + '/' + state.week.incrementIncrement
-            break
-          case '4':
-            state.week.specificSpecific.map(val => {
-              weeks += val + ','
-            })
-            weeks = weeks.slice(0, -1)
-            break
-          case '6':
-          case '7':
-          case '8':
-          case '9':
-          case '10':
-            weeks = '?'
-            break
-          case '11':
-            weeks = state.week.cronNthDayDay + '#' + state.week.cronNthDayNth
-            break
+          case "1":
+          case "3":
+          case "5":
+            weeks = "?";
+            break;
+          case "2":
+            weeks = state.week.incrementStart + "/" + state.week.incrementIncrement;
+            break;
+          case "4":
+            state.week.specificSpecific.map((val) => {
+              weeks += val + ",";
+            });
+            weeks = weeks.slice(0, -1);
+            break;
+          case "6":
+          case "7":
+          case "8":
+          case "9":
+          case "10":
+            weeks = "?";
+            break;
+          case "11":
+            weeks = state.week.cronNthDayDay + "#" + state.week.cronNthDayNth;
+            break;
         }
-        return weeks
+        return weeks;
       }),
       monthsText: computed(() => {
-        let months = ''
-        let cronEvery = state.month.cronEvery
+        let months = "";
+        let cronEvery = state.month.cronEvery;
         switch (cronEvery.toString()) {
-          case '1':
-            months = '*'
-            break
-          case '2':
-            months = state.month.incrementStart + '/' + state.month.incrementIncrement
-            break
-          case '3':
-            state.month.specificSpecific.map(val => {
-              months += val + ','
-            })
-            months = months.slice(0, -1)
-            break
-          case '4':
-            months = state.month.rangeStart + '-' + state.month.rangeEnd
-            break
+          case "1":
+            months = "*";
+            break;
+          case "2":
+            months = state.month.incrementStart + "/" + state.month.incrementIncrement;
+            break;
+          case "3":
+            state.month.specificSpecific.map((val) => {
+              months += val + ",";
+            });
+            months = months.slice(0, -1);
+            break;
+          case "4":
+            months = state.month.rangeStart + "-" + state.month.rangeEnd;
+            break;
         }
-        return months
+        return months;
       }),
       yearsText: computed(() => {
-        let years = ''
-        let cronEvery = state.year.cronEvery
+        let years = "";
+        let cronEvery = state.year.cronEvery;
         switch (cronEvery.toString()) {
-          case '1':
-            years = '*'
-            break
-          case '2':
-            years = state.year.incrementStart + '/' + state.year.incrementIncrement
-            break
-          case '3':
-            state.year.specificSpecific.map(val => {
-              years += val + ','
-            })
-            years = years.slice(0, -1)
-            break
-          case '4':
-            years = state.year.rangeStart + '-' + state.year.rangeEnd
-            break
+          case "1":
+            years = "*";
+            break;
+          case "2":
+            years = state.year.incrementStart + "/" + state.year.incrementIncrement;
+            break;
+          case "3":
+            state.year.specificSpecific.map((val) => {
+              years += val + ",";
+            });
+            years = years.slice(0, -1);
+            break;
+          case "4":
+            years = state.year.rangeStart + "-" + state.year.rangeEnd;
+            break;
         }
-        return years
+        return years;
       }),
       cron: computed(() => {
-        return `${state.secondsText || '*'} ${state.minutesText || '*'} ${state.hoursText || '*'} ${state.daysText || '*'} ${state.monthsText || '*'} ${state.weeksText || '?'} ${
-          state.yearsText || '*'
-        }`
+        return `${state.secondsText || "*"} ${state.minutesText || "*"} ${state.hoursText || "*"} ${state.daysText || "*"} ${state.monthsText || "*"} ${state.weeksText || "?"} ${
+          state.yearsText || "*"
+        }`;
       }),
-    })
+    });
 
     const handleChange = () => {
-      if (typeof state.cron !== 'string') return false
-      emit('change', state.cron)
-    }
-    const rest = data => {
+      if (typeof state.cron !== "string") return false;
+      emit("change", state.cron);
+    };
+    const rest = (data) => {
       for (let i in data) {
         if (data[i] instanceof Object) {
-          this.rest(data[i])
+          this.rest(data[i]);
         } else {
           switch (typeof data[i]) {
-            case 'object':
-              data[i] = []
-              break
-            case 'string':
-              data[i] = ''
-              break
+            case "object":
+              data[i] = [];
+              break;
+            case "string":
+              data[i] = "";
+              break;
           }
         }
       }
-    }
+    };
 
-    const tabActive = ref(1)
-    const currYear = new Date().getFullYear() - 1
-    const onHandleTab = index => {
-      tabActive.value = index
-    }
+    const tabActive = ref(1);
+    const currYear = new Date().getFullYear() - 1;
+    const onHandleTab = (index) => {
+      tabActive.value = index;
+    };
 
     watch(
       () => state.cron,
-      value => {
-        if (typeof state.cron !== 'string') return
-        emit('update:value', value)
-      },
-    )
+      (value) => {
+        if (typeof state.cron !== "string") return;
+        emit("update:value", value);
+      }
+    );
 
     return {
       state,
@@ -687,9 +658,9 @@ export default defineComponent({
       tabActive,
       onHandleTab,
       currYear,
-    }
+    };
   },
-})
+});
 </script>
 
 <style lang="css" scoped>
@@ -746,11 +717,11 @@ export default defineComponent({
   margin-top: 20px;
 }
 
-.v3c input[type='text'] {
+.v3c input[type="text"] {
   width: 80px;
 }
 
-.v3c input[type='number'] {
+.v3c input[type="number"] {
   width: 80px;
   height: 28px;
   border: 1px solid #d9d9d9;
