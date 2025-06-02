@@ -1,11 +1,11 @@
 <script setup>
-import cron from "./components/vue3-cron-core/Index.vue";
-import { ref } from "vue";
+import cron from './components/vue3-cron-core/Index.vue'
+import { ref } from 'vue'
 
-const visible = ref(false);
+const visible = ref(false)
 const open = () => {
-  visible.value = true;
-};
+  visible.value = true
+}
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const open = () => {
       </a>
     </div>
 
-    <el-dialog v-model="visible" class="dialog" title="Cron 弹框">
+    <el-dialog v-model="visible" class="dialog" title="Cron 弹框" width="700">
       <cron />
       <template #footer>
         <div class="dialog-footer">

@@ -11,335 +11,295 @@
     </ul>
     <!-- 秒 -->
     <div class="v3c-content" v-show="tabActive == 1">
-      <!-- 每一秒 -->
-      <div>
-        <label for="seconds1">
-          <input type="radio" id="seconds1" value="1" v-model="state.second.cronEvery" />
-          {{ state.text.Seconds.every }}
-        </label>
-      </div>
-      <!-- 每隔多久 -->
-      <div class="mt-20">
-        <label for="seconds2">
-          <input type="radio" id="seconds2" value="2" v-model="state.second.cronEvery" />
-          {{ state.text.Seconds.interval[0] }}
-          <input type="number" min="1" max="60" v-model="state.second.incrementIncrement" />
-          {{ state.text.Seconds.interval[1] || "" }}
-          <input type="number" min="0" max="59" v-model="state.second.incrementStart" />
-          {{ state.text.Seconds.interval[2] || "" }}
-        </label>
-      </div>
-      <!-- 具体秒数 -->
-      <div class="mt-20">
-        <label for="seconds3">
-          <input type="radio" id="seconds3" value="3" v-model="state.second.cronEvery" />
-          {{ state.text.Seconds.specific }}
-          <select multiple v-model="state.second.specificSpecific">
-            <option :value="index" v-for="(item, index) in 60" :key="index">{{ index }}</option>
-          </select>
-        </label>
-      </div>
-      <!-- 具体秒数 -->
-      <div class="mt-20">
-        <label for="seconds4">
-          <input type="radio" id="seconds4" value="4" v-model="state.second.cronEvery" />
-          {{ state.text.Seconds.cycle[0] }}
-          <input type="number" v-model="state.second.rangeStart" min="1" max="60" />
-          {{ state.text.Seconds.cycle[1] || "" }}
-          <input type="number" v-model="state.second.rangeEnd" min="0" max="59" />
-          {{ state.text.Seconds.cycle[2] || "" }}
-        </label>
-      </div>
+      <el-radio-group v-model="state.second.cronEvery">
+        <!-- 每一秒 -->
+        <div>
+          <el-radio label="1">{{ state.text.Seconds.every }}</el-radio>
+        </div>
+        <!-- 每隔多久 -->
+        <div class="mt-20">
+          <el-radio label="2">
+            {{ state.text.Seconds.interval[0] }}
+            <el-input-number v-model="state.second.incrementIncrement" :min="1" :max="60" />
+            {{ state.text.Seconds.interval[1] || "" }}
+            <el-input-number v-model="state.second.incrementStart" :min="0" :max="59" />
+            {{ state.text.Seconds.interval[2] || "" }}
+          </el-radio>
+        </div>
+        <!-- 具体秒数 -->
+        <div class="mt-20">
+          <el-radio label="3">
+            {{ state.text.Seconds.specific }}
+            <el-select v-model="state.second.specificSpecific" multiple>
+              <el-option v-for="(item, index) in 60" :key="index" :label="index" :value="index" />
+            </el-select>
+          </el-radio>
+        </div>
+        <!-- 周期 -->
+        <div class="mt-20">
+          <el-radio label="4">
+            {{ state.text.Seconds.cycle[0] }}
+            <el-input-number v-model="state.second.rangeStart" :min="1" :max="60" />
+            {{ state.text.Seconds.cycle[1] || "" }}
+            <el-input-number v-model="state.second.rangeEnd" :min="0" :max="59" />
+            {{ state.text.Seconds.cycle[2] || "" }}
+          </el-radio>
+        </div>
+      </el-radio-group>
     </div>
     <!-- 分钟 -->
     <div class="v3c-content" v-show="tabActive == 2">
-      <!-- 每一秒 -->
-      <div>
-        <label for="minute1">
-          <input type="radio" id="minute1" value="1" v-model="state.minute.cronEvery" />
-          {{ state.text.Minutes.every }}
-        </label>
-      </div>
-      <!-- 每隔多久 -->
-      <div class="mt-20">
-        <label for="minute2">
-          <input type="radio" id="minute2" value="2" v-model="state.minute.cronEvery" />
-          {{ state.text.Minutes.interval[0] }}
-          <input type="number" min="1" max="60" v-model="state.minute.incrementIncrement" />
-          {{ state.text.Minutes.interval[1] || "" }}
-          <input type="number" min="0" max="59" v-model="state.minute.incrementStart" />
-          {{ state.text.Minutes.interval[2] || "" }}
-        </label>
-      </div>
-      <!-- 具体秒数 -->
-      <div class="mt-20">
-        <label for="minute3">
-          <input type="radio" id="minute3" value="3" v-model="state.minute.cronEvery" />
-          {{ state.text.Minutes.specific }}
-          <select multiple v-model="state.minute.specificSpecific">
-            <option :value="index" v-for="(item, index) in 60" :key="index">{{ index }}</option>
-          </select>
-        </label>
-      </div>
-      <!-- 具体秒数 -->
-      <div class="mt-20">
-        <label for="minute4">
-          <input type="radio" id="minute4" value="4" v-model="state.minute.cronEvery" />
-          {{ state.text.Minutes.cycle[0] }}
-          <input type="number" v-model="state.minute.rangeStart" min="1" max="60" />
-          {{ state.text.Minutes.cycle[1] || "" }}
-          <input type="number" v-model="state.minute.rangeEnd" min="0" max="59" />
-          {{ state.text.Minutes.cycle[2] || "" }}
-        </label>
-      </div>
+      <el-radio-group v-model="state.minute.cronEvery">
+        <!-- 每一分钟 -->
+        <div>
+          <el-radio label="1">{{ state.text.Minutes.every }}</el-radio>
+        </div>
+        <!-- 每隔多久 -->
+        <div class="mt-20">
+          <el-radio label="2">
+            {{ state.text.Minutes.interval[0] }}
+            <el-input-number v-model="state.minute.incrementIncrement" :min="1" :max="60" />
+            {{ state.text.Minutes.interval[1] || "" }}
+            <el-input-number v-model="state.minute.incrementStart" :min="0" :max="59" />
+            {{ state.text.Minutes.interval[2] || "" }}
+          </el-radio>
+        </div>
+        <!-- 具体分钟 -->
+        <div class="mt-20">
+          <el-radio label="3">
+            {{ state.text.Minutes.specific }}
+            <el-select v-model="state.minute.specificSpecific" multiple>
+              <el-option v-for="(item, index) in 60" :key="index" :label="index" :value="index" />
+            </el-select>
+          </el-radio>
+        </div>
+        <!-- 周期 -->
+        <div class="mt-20">
+          <el-radio label="4">
+            {{ state.text.Minutes.cycle[0] }}
+            <el-input-number v-model="state.minute.rangeStart" :min="1" :max="60" />
+            {{ state.text.Minutes.cycle[1] || "" }}
+            <el-input-number v-model="state.minute.rangeEnd" :min="0" :max="59" />
+            {{ state.text.Minutes.cycle[2] || "" }}
+          </el-radio>
+        </div>
+      </el-radio-group>
     </div>
     <!-- 小时 -->
     <div class="v3c-content" v-show="tabActive == 3">
-      <!-- 每一秒 -->
-      <div>
-        <label for="hour1">
-          <input type="radio" id="hour1" value="1" v-model="state.hour.cronEvery" />
-          {{ state.text.Hours.every }}
-        </label>
-      </div>
-      <!-- 每隔多久 -->
-      <div class="mt-20">
-        <label for="hour2">
-          <input type="radio" id="hour2" value="2" v-model="state.hour.cronEvery" />
-          {{ state.text.Hours.interval[0] }}
-          <input type="number" min="1" max="60" v-model="state.hour.incrementIncrement" />
-          {{ state.text.Hours.interval[1] || "" }}
-          <input type="number" min="0" max="59" v-model="state.hour.incrementStart" />
-          {{ state.text.Hours.interval[2] || "" }}
-        </label>
-      </div>
-      <!-- 具体秒数 -->
-      <div class="mt-20">
-        <label for="hour3">
-          <input type="radio" id="hour3" value="3" v-model="state.hour.cronEvery" />
-          {{ state.text.Hours.specific }}
-          <select multiple v-model="state.hour.specificSpecific">
-            <option :value="index" v-for="(item, index) in 60" :key="index">{{ index }}</option>
-          </select>
-        </label>
-      </div>
-      <!-- 具体秒数 -->
-      <div class="mt-20">
-        <label for="hour4">
-          <input type="radio" id="hour4" value="4" v-model="state.hour.cronEvery" />
-          {{ state.text.Hours.cycle[0] }}
-          <input type="number" v-model="state.hour.rangeStart" min="1" max="60" />
-          {{ state.text.Hours.cycle[1] || "" }}
-          <input type="number" v-model="state.hour.rangeEnd" min="0" max="59" />
-          {{ state.text.Hours.cycle[2] || "" }}
-        </label>
-      </div>
+      <el-radio-group v-model="state.hour.cronEvery">
+        <!-- 每小时 -->
+        <div>
+          <el-radio label="1">{{ state.text.Hours.every }}</el-radio>
+        </div>
+        <!-- 每隔多久 -->
+        <div class="mt-20">
+          <el-radio label="2">
+            {{ state.text.Hours.interval[0] }}
+            <el-input-number v-model="state.hour.incrementIncrement" :min="1" :max="60" />
+            {{ state.text.Hours.interval[1] || "" }}
+            <el-input-number v-model="state.hour.incrementStart" :min="0" :max="59" />
+            {{ state.text.Hours.interval[2] || "" }}
+          </el-radio>
+        </div>
+        <!-- 具体小时 -->
+        <div class="mt-20">
+          <el-radio label="3">
+            {{ state.text.Hours.specific }}
+            <el-select v-model="state.hour.specificSpecific" multiple>
+              <el-option v-for="(item, index) in 60" :key="index" :label="index" :value="index" />
+            </el-select>
+          </el-radio>
+        </div>
+        <!-- 周期 -->
+        <div class="mt-20">
+          <el-radio label="4">
+            {{ state.text.Hours.cycle[0] }}
+            <el-input-number v-model="state.hour.rangeStart" :min="1" :max="60" />
+            {{ state.text.Hours.cycle[1] || "" }}
+            <el-input-number v-model="state.hour.rangeEnd" :min="0" :max="59" />
+            {{ state.text.Hours.cycle[2] || "" }}
+          </el-radio>
+        </div>
+      </el-radio-group>
     </div>
     <!-- 天 -->
     <div class="v3c-content" v-show="tabActive == 4">
-      <!-- 1 -->
-      <div>
-        <label for="day1">
-          <input type="radio" id="day1" value="1" v-model="state.day.cronEvery" />
-          {{ state.text.Day.every }}
-        </label>
-      </div>
-      <!-- 2 -->
-      <div class="mt-20">
-        <label for="day2">
-          <input type="radio" id="day2" value="2" v-model="state.day.cronEvery" />
-          {{ state.text.Day.intervalWeek[0] }}
-          <input type="number" min="1" max="60" v-model="state.day.incrementIncrement" />
-          {{ state.text.Day.intervalWeek[1] }}
-          <input type="number" min="0" max="59" v-model="state.day.incrementStart" />
-          {{ state.text.Day.intervalWeek[2] }}
-        </label>
-      </div>
-      <!-- 3 -->
-      <div class="mt-20">
-        <label for="day3">
-          <input type="radio" id="day3" value="3" v-model="state.day.cronEvery" />
-          {{ state.text.Day.intervalDay[0] }}
-          <input type="number" v-model="state.hour.rangeStart" min="1" max="30" />
-          {{ state.text.Day.intervalDay[1] }}
-          <input type="number" v-model="state.hour.rangeEnd" min="1" max="30" />
-          {{ state.text.Day.intervalDay[2] }}
-        </label>
-      </div>
-      <!-- 4 -->
-      <div class="mt-20">
-        <label for="day4">
-          <input type="radio" id="day4" value="4" v-model="state.day.cronEvery" />
-          {{ state.text.Day.specificWeek }}
-          <select multiple v-model="state.week.specificSpecific">
-            <option v-for="(val, index) in 7" :key="index" :value="['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][val - 1]">
-              {{ state.text.Week[val - 1] }}
-            </option>
-          </select>
-        </label>
-      </div>
-      <!-- 5 -->
-      <div class="mt-20">
-        <label for="day5">
-          <input type="radio" id="day5" value="5" v-model="state.day.cronEvery" />
-          {{ state.text.Day.specificDay }}
-          <select multiple v-model="state.week.specificSpecific">
-            <option v-for="(val, index) in 31" :key="index" :value="val">
-              {{ val }}
-            </option>
-          </select>
-        </label>
-      </div>
-      <!-- 6 -->
-      <div class="mt-20">
-        <label for="day6">
-          <input type="radio" id="day6" value="6" v-model="state.day.cronEvery" />
-          {{ state.text.Day.lastDay }}
-        </label>
-      </div>
-      <!-- 7 -->
-      <div class="mt-20">
-        <label for="day7">
-          <input type="radio" id="day7" value="7" v-model="state.day.cronEvery" />
-          {{ state.text.Day.lastWeekday }}
-        </label>
-      </div>
-      <!-- 8 -->
-      <div class="mt-20">
-        <label for="day8">
-          <input type="radio" id="day8" value="8" v-model="state.day.cronEvery" />
-          {{ state.text.Day.lastWeek[0] }}
-          <select v-model="state.day.cronLastSpecificDomDay">
-            <option v-for="(val, index) in 7" :key="index" :value="val">
-              {{ state.text.Week[val - 1] }}
-            </option>
-          </select>
-          {{ state.text.Day.lastWeek[1] || "" }}
-        </label>
-      </div>
-      <!-- 9 -->
-      <div class="mt-20">
-        <label for="day9">
-          <input type="radio" id="day9" value="9" v-model="state.day.cronEvery" />
-          <input type="number" v-model="state.day.cronDaysBeforeEomMinus" min="1" max="31" />
-          {{ state.text.Day.beforeEndMonth[0] }}
-        </label>
-      </div>
-      <!-- 10 -->
-      <div class="mt-20">
-        <label for="day10">
-          <input type="radio" id="day10" value="10" v-model="state.day.cronEvery" />
-          {{ state.text.Day.nearestWeekday[0] }}
-          <input type="number" v-model="state.day.cronDaysNearestWeekday" :min="1" :max="31" />
-          {{ state.text.Day.nearestWeekday[1] }}
-        </label>
-      </div>
-      <!-- 11 -->
-      <div class="mt-20">
-        <label for="day11">
-          <input type="radio" id="day11" value="11" v-model="state.day.cronEvery" />
-          {{ state.text.Day.someWeekday[0] }}
-          <input type="number" v-model="state.week.cronNthDayNth" :min="1" :max="5" />
-          &nbsp;
-          <select v-model="state.week.cronNthDayDay">
-            <option v-for="(val, index) in 7" :key="index" :value="val">
-              {{ state.text.Week[val - 1] }}
-            </option>
-          </select>
-          {{ state.text.Day.someWeekday[1] }}
-        </label>
-      </div>
+      <el-radio-group v-model="state.day.cronEvery">
+        <!-- 每天 -->
+        <div>
+          <el-radio label="1">{{ state.text.Day.every }}</el-radio>
+        </div>
+        <!-- 每隔多久 -->
+        <div class="mt-20">
+          <el-radio label="2">
+            {{ state.text.Day.intervalWeek[0] }}
+            <el-input-number v-model="state.day.incrementIncrement" :min="1" :max="60" />
+            {{ state.text.Day.intervalWeek[1] }}
+            <el-input-number v-model="state.day.incrementStart" :min="0" :max="59" />
+            {{ state.text.Day.intervalWeek[2] }}
+          </el-radio>
+        </div>
+        <!-- 周期 -->
+        <div class="mt-20">
+          <el-radio label="3">
+            {{ state.text.Day.intervalDay[0] }}
+            <el-input-number v-model="state.hour.rangeStart" :min="1" :max="30" />
+            {{ state.text.Day.intervalDay[1] }}
+            <el-input-number v-model="state.hour.rangeEnd" :min="1" :max="30" />
+            {{ state.text.Day.intervalDay[2] }}
+          </el-radio>
+        </div>
+        <!-- 具体星期 -->
+        <div class="mt-20">
+          <el-radio label="4">
+            {{ state.text.Day.specificWeek }}
+            <el-select v-model="state.week.specificSpecific" multiple>
+              <el-option v-for="(val, index) in 7" :key="index" 
+                :label="state.text.Week[val - 1]"
+                :value="['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][val - 1]" />
+            </el-select>
+          </el-radio>
+        </div>
+        <!-- 具体天数 -->
+        <div class="mt-20">
+          <el-radio label="5">
+            {{ state.text.Day.specificDay }}
+            <el-select v-model="state.week.specificSpecific" multiple>
+              <el-option v-for="(val, index) in 31" :key="index" :label="val" :value="val" />
+            </el-select>
+          </el-radio>
+        </div>
+        <!-- 最后一天 -->
+        <div class="mt-20">
+          <el-radio label="6">{{ state.text.Day.lastDay }}</el-radio>
+        </div>
+        <!-- 最后一个工作日 -->
+        <div class="mt-20">
+          <el-radio label="7">{{ state.text.Day.lastWeekday }}</el-radio>
+        </div>
+        <!-- 最后一个星期几 -->
+        <div class="mt-20">
+          <el-radio label="8">
+            {{ state.text.Day.lastWeek[0] }}
+            <el-select v-model="state.day.cronLastSpecificDomDay">
+              <el-option v-for="(val, index) in 7" :key="index" 
+                :label="state.text.Week[val - 1]"
+                :value="val" />
+            </el-select>
+            {{ state.text.Day.lastWeek[1] || "" }}
+          </el-radio>
+        </div>
+        <!-- 倒数第几天 -->
+        <div class="mt-20">
+          <el-radio label="9">
+            <el-input-number v-model="state.day.cronDaysBeforeEomMinus" :min="1" :max="31" />
+            {{ state.text.Day.beforeEndMonth[0] }}
+          </el-radio>
+        </div>
+        <!-- 最近的工作日 -->
+        <div class="mt-20">
+          <el-radio label="10">
+            {{ state.text.Day.nearestWeekday[0] }}
+            <el-input-number v-model="state.day.cronDaysNearestWeekday" :min="1" :max="31" />
+            {{ state.text.Day.nearestWeekday[1] }}
+          </el-radio>
+        </div>
+        <!-- 第几个星期几 -->
+        <div class="mt-20">
+          <el-radio label="11">
+            {{ state.text.Day.someWeekday[0] }}
+            <el-input-number v-model="state.week.cronNthDayNth" :min="1" :max="5" />
+            <el-select v-model="state.week.cronNthDayDay">
+              <el-option v-for="(val, index) in 7" :key="index" 
+                :label="state.text.Week[val - 1]"
+                :value="val" />
+            </el-select>
+            {{ state.text.Day.someWeekday[1] }}
+          </el-radio>
+        </div>
+      </el-radio-group>
     </div>
     <!-- 月 -->
     <div class="v3c-content" v-show="tabActive == 5">
-      <!-- 1 -->
-      <div>
-        <label for="month1">
-          <input type="radio" id="month1" value="1" v-model="state.month.cronEvery" />
-          {{ state.text.Month.every }}
-        </label>
-      </div>
-      <!-- 2 -->
-      <div class="mt-20">
-        <label for="month2">
-          <input type="radio" id="month2" value="2" v-model="state.month.cronEvery" />
-          {{ state.text.Month.interval[0] }}
-          <input type="number" v-model="state.month.incrementIncrement" :min="0" :max="12" />
-          {{ state.text.Month.interval[1] }}
-          <input type="number" v-model="state.month.incrementStart" :min="0" :max="12" />
-        </label>
-      </div>
-      <!-- 3 -->
-      <div class="mt-20">
-        <label for="month3">
-          <input type="radio" id="month3" value="3" v-model="state.month.cronEvery" />
-          {{ state.text.Month.specific }}
-          <select multiple v-model="state.month.specificSpecific">
-            <option v-for="(val, index) in 12" :key="index" :value="val">
-              {{ val }}
-            </option>
-          </select>
-        </label>
-      </div>
-      <!-- 4 -->
-      <div class="mt-20">
-        <label for="month4">
-          <input type="radio" id="month4" value="4" v-model="state.month.cronEvery" />
-          {{ state.text.Month.cycle[0] }}
-          <input type="number" v-model="state.month.rangeStart" :min="1" :max="12" />
-          {{ state.text.Month.cycle[1] }}
-          <input type="number" v-model="state.month.rangeEnd" :min="1" :max="12" />
-        </label>
-      </div>
+      <el-radio-group v-model="state.month.cronEvery">
+        <!-- 每月 -->
+        <div>
+          <el-radio label="1">{{ state.text.Month.every }}</el-radio>
+        </div>
+        <!-- 每隔多久 -->
+        <div class="mt-20">
+          <el-radio label="2">
+            {{ state.text.Month.interval[0] }}
+            <el-input-number v-model="state.month.incrementIncrement" :min="0" :max="12" />
+            {{ state.text.Month.interval[1] }}
+            <el-input-number v-model="state.month.incrementStart" :min="0" :max="12" />
+          </el-radio>
+        </div>
+        <!-- 具体月份 -->
+        <div class="mt-20">
+          <el-radio label="3">
+            {{ state.text.Month.specific }}
+            <el-select v-model="state.month.specificSpecific" multiple>
+              <el-option v-for="(val, index) in 12" :key="index" :label="val" :value="val" />
+            </el-select>
+          </el-radio>
+        </div>
+        <!-- 周期 -->
+        <div class="mt-20">
+          <el-radio label="4">
+            {{ state.text.Month.cycle[0] }}
+            <el-input-number v-model="state.month.rangeStart" :min="1" :max="12" />
+            {{ state.text.Month.cycle[1] }}
+            <el-input-number v-model="state.month.rangeEnd" :min="1" :max="12" />
+          </el-radio>
+        </div>
+      </el-radio-group>
     </div>
     <!-- 年 -->
     <div class="v3c-content" v-show="tabActive == 6">
-      <!-- 1 -->
-      <div>
-        <label for="year1">
-          <input type="radio" id="year1" value="1" v-model="state.year.cronEvery" />
-          {{ state.text.Year.every }}
-        </label>
-      </div>
-      <!-- 2 -->
-      <div class="mt-20">
-        <label for="year2">
-          <input type="radio" id="year2" value="2" v-model="state.year.cronEvery" />
-          {{ state.text.Year.interval[0] }}
-          <input type="number" v-model="state.year.incrementIncrement" :min="1" :max="99" />
-          {{ state.text.Year.interval[1] }}
-          <input type="number" v-model="state.year.incrementStart" :min="currYear" :max="currYear + 10" />
-        </label>
-      </div>
-      <!-- 3 -->
-      <div class="mt-20">
-        <label for="year3">
-          <input type="radio" id="year3" value="3" v-model="state.year.cronEvery" />
-          {{ state.text.Year.specific }}
-          <select multiple v-model="state.year.specificSpecific">
-            <option v-for="(val, index) in 100" :key="index" :value="currYear + val">
-              {{ currYear + val }}
-            </option>
-          </select>
-        </label>
-      </div>
-      <!-- 4 -->
-      <div class="mt-20">
-        <label for="year3">
-          <input type="radio" id="year3" value="4" v-model="state.year.cronEvery" />
-          {{ state.text.Year.cycle[0] }}
-          <input type="number" v-model="state.month.rangeStart" :min="currYear" :max="currYear + 10" />
-          {{ state.text.Year.cycle[1] }}
-          <input type="number" v-model="state.month.rangeEnd" :min="currYear" :max="currYear + 10" />
-        </label>
-      </div>
+      <el-radio-group v-model="state.year.cronEvery">
+        <!-- 每年 -->
+        <div>
+          <el-radio label="1">{{ state.text.Year.every }}</el-radio>
+        </div>
+        <!-- 每隔多久 -->
+        <div class="mt-20">
+          <el-radio label="2">
+            {{ state.text.Year.interval[0] }}
+            <el-input-number v-model="state.year.incrementIncrement" :min="1" :max="99" />
+            {{ state.text.Year.interval[1] }}
+            <el-input-number v-model="state.year.incrementStart" :min="currYear" :max="currYear + 10" />
+          </el-radio>
+        </div>
+        <!-- 具体年份 -->
+        <div class="mt-20">
+          <el-radio label="3">
+            {{ state.text.Year.specific }}
+            <el-select v-model="state.year.specificSpecific" multiple>
+              <el-option v-for="(val, index) in 100" :key="index" 
+                :label="currYear + val"
+                :value="currYear + val" />
+            </el-select>
+          </el-radio>
+        </div>
+        <!-- 周期 -->
+        <div class="mt-20">
+          <el-radio label="4">
+            {{ state.text.Year.cycle[0] }}
+            <el-input-number v-model="state.month.rangeStart" :min="currYear" :max="currYear + 10" />
+            {{ state.text.Year.cycle[1] }}
+            <el-input-number v-model="state.month.rangeEnd" :min="currYear" :max="currYear + 10" />
+          </el-radio>
+        </div>
+      </el-radio-group>
     </div>
     <!-- 结果 -->
     <div class="v3c-footer">
       <div style="flex: 1">
         CRON &nbsp;: &nbsp;&nbsp;<span class="cron">{{ state.cron }}</span>
         &nbsp; &nbsp; &nbsp;
-        <button class="btn-ok" @click.stop="handleChange">{{ state.text.Save }}</button>
+        <el-button type="primary" @click.stop="handleChange">{{ state.text.Save }}</el-button>
       </div>
     </div>
   </div>
@@ -665,143 +625,121 @@ export default defineComponent({
 
 <style lang="css" scoped>
 .v3c {
-  width: auto;
-  border: 1px solid #f5f7fa;
+  width: 100%;
+  min-width: 600px;
+  max-width: 800px;
+  border: 1px solid var(--el-border-color-light);
+  border-radius: 4px;
+  background: var(--el-bg-color);
 }
+
 .v3c-tab {
   padding: 0;
   list-style: none;
   margin: 0;
-  background-color: #f5f7fa;
+  background-color: var(--el-fill-color-light);
   display: flex;
+  border-bottom: 1px solid var(--el-border-color-light);
 }
 
 .v3c-tab-item {
   flex: 1;
   text-align: center;
   cursor: pointer;
-  padding: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: all 0.3s;
 }
 
 .v3c-tab-item.v3c-active {
-  background-color: #5b8ff9;
+  background-color: var(--el-color-primary);
   color: #ffffff;
 }
 
-.v3c-lang-btn {
-  background-color: #61ddaa;
+.v3c-tab-item.v3c-lang-btn {
+  background-color: var(--el-color-success);
   color: #ffffff;
-  /* border-radius: 10px; */
+  max-width: 60px;
 }
 
 .v3c-content {
-  padding: 20px;
-  max-height: v-bind(maxHeight);
-  overflow: hidden;
+  padding: 16px;
+  max-height: 400px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.p-20 {
-  padding: 20px;
+.v3c-content::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.v3c-footer {
-  background-color: #f5f7fa;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  text-align: center;
+.v3c-content::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: var(--el-border-color);
+}
+
+.v3c-content::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background: var(--el-fill-color-lighter);
 }
 
 .mt-20 {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 
-.v3c input[type="text"] {
-  width: 80px;
+.v3c-footer {
+  background-color: var(--el-fill-color-light);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--el-border-color-light);
 }
 
-.v3c input[type="number"] {
-  width: 80px;
-  height: 28px;
-  border: 1px solid #d9d9d9;
-}
-
-.v3c select {
-  width: 80px;
+/* Element Plus 组件样式调整 */
+:deep(.el-radio) {
+  margin-right: 16px;
   height: 32px;
-  border: 1px solid #d9d9d9;
+  line-height: 32px;
 }
 
-.v3c select[multiple] {
-  width: 80px;
-  height: 100px;
-  border: 1px solid #d9d9d9;
+:deep(.el-input-number) {
+  width: 100px;
+  margin: 0 8px;
 }
 
-.btn-ok {
-  line-height: 1.5715;
-  position: relative;
-  display: inline-block;
-  font-weight: 400;
-  white-space: nowrap;
-  text-align: center;
-  background-image: none;
-  border: 1px solid transparent;
-  box-shadow: 0 2px #00000004;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  touch-action: manipulation;
-  height: 32px;
-  padding: 4px 15px;
-  font-size: 14px;
-  border-radius: 2px;
-
-  color: #fff;
-  background: #5b8ff9;
-  border-color: #5b8ff9;
-  text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
-  box-shadow: 0 2px #0000000b;
+:deep(.el-select) {
+  width: 160px;
+  margin: 0 8px;
 }
 
-.btn-close {
-  line-height: 1.5715;
-  position: relative;
-  display: inline-block;
-  font-weight: 400;
-  white-space: nowrap;
-  text-align: center;
-  background-image: none;
-  border: 1px solid transparent;
-  box-shadow: 0 2px #00000004;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  touch-action: manipulation;
-  height: 32px;
-  padding: 4px 15px;
-  font-size: 14px;
-  border-radius: 2px;
-
-  color: #fff;
-  background: #61ddaa;
-  border-color: #61ddaa;
-  text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
-  box-shadow: 0 2px #0000000b;
+/* 多选下拉框高度限制 */
+:deep(.el-select__dropdown) {
+  max-height: 300px !important;
 }
 
 .cron {
-  background-color: #61ddaa;
-  padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  display: inline-block;
+  background-color: var(--el-color-success);
+  padding: 4px 12px;
+  border-radius: 4px;
   color: #ffffff;
+  font-family: monospace;
+  margin: 0 8px;
+}
+
+/* 响应式布局 */
+@media screen and (max-width: 768px) {
+  .v3c {
+    min-width: 100%;
+  }
+  
+  :deep(.el-select) {
+    width: 120px;
+  }
+  
+  :deep(.el-input-number) {
+    width: 80px;
+  }
 }
 </style>
