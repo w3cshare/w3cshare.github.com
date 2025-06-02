@@ -9,7 +9,8 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 charset = utf-8
 
-[*.{js,jsx,ts,tsx,vue,json,yml,yaml,md}]
+
+[*.{js,jsx,mjs,cjs,ts,tsx,json,yml,yaml,md,mts,cts,vue,css,scss,sass,less,styl}]
 indent_style = space
 indent_size = 2
 
