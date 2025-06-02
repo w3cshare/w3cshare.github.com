@@ -1,0 +1,98 @@
+{
+  "name": "@iss-smart/cli-prepublish",
+  "version": "0.0.1",
+  "displayName": "包发布前检查脚手架",
+  "description": "iss-smart prepublish包发布前check脚手架",
+  "type": "module",
+  "bin": {
+    "iss-prepublish": "./bin/cli-prepublish.js"
+  },
+  "keywords": [
+    "cli",
+    "iss-smart",
+    "prepublish-utils",
+    "util"
+  ],
+  "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
+  },
+  "license": "ISC",
+  "author": "ww <wwdqq7@qq.com>",
+  "files": [
+    ".gitignore",
+    ".prettierrc.js",
+    "README.md",
+    "__tests__",
+    "dist",
+    "eslint.config.js",
+    "lib",
+    "src",
+    "tsconfig.json"
+  ],
+  "main": "lib/cli-prepublish.cjs",
+  "module": "lib/cli-prepublish.js",
+  "types": "lib/cli-prepublish.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/cli-prepublish.d.ts",
+      "import": "./lib/cli-prepublish.js",
+      "require": "./lib/cli-prepublish.cjs",
+      "default": "./lib/cli-prepublish.cjs"
+    }
+  },
+  "repository": {
+    "directory": "lib-cli/cli-prepublish",
+    "type": "git",
+    "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
+  },
+  "directories": {
+    "dist": "dist",
+    "docs": "docs",
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
+    "build": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --outDir lib",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc --build --force",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint --fix \"**/*.{vue,js,jsx,ts,tsx,json}\"",
+    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:json": "eslint --fix \"**/*.json\"",
+    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
+    "release": "standard-version"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {},
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.25.1",
+    "eslint-plugin-smart": "workspace:^",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-smart": "workspace:^",
+    "rimraf": "^6.0.1",
+    "standard-version": "^9.5.0",
+    "tsconfig-base-smart": "workspace:^",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}

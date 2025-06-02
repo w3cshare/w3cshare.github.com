@@ -17,6 +17,7 @@
   "files": [
     ".gitignore",
     ".prettierrc.js",
+    "dist",
     "docs",
     "eslint.config.js",
     "lib",

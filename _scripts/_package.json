@@ -57,12 +57,5 @@
     "tsconfig-base-smart": "workspace:^",
     "tsup": "^8.0.0",
     "typescript": "5.3.3"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "outputs": ["{projectRoot}/dist", "{projectRoot}/lib"]
-      }
-    }
   }
 }

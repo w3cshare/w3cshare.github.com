@@ -61,7 +61,7 @@
   "scripts": {
     "start": "pnpm run dev",
     "dev:ts": "tsc -w",
-    "build:ts": "tsc",
+    "build:ts": "tsc --build --force",
     "dev": "rimraf lib && tsup --watch",
     "build": "rimraf lib && tsup",
     "test": "for file in ./__tests__/*.test.js; do node $file; done",
@@ -97,14 +97,5 @@
     "tsconfig-base-smart": "workspace:^",
     "tsup": "^8.0.0",
     "typescript": "5.3.3"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "outputs": [
-          "lib"
-        ]
-      }
-    }
   }
 }
