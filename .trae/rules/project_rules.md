@@ -1,12 +1,3 @@
-<!--
- * @Author: wangwei wwdqq7@qq.com
- * @Date: 2025-04-22 12:56:06
- * @LastEditors: wangwei wwdqq7@qq.com
- * @LastEditTime: 2025-04-23 10:40:38
- * @FilePath: /FullStack/.trae/rules/project_rules.md
- * @Description: Trae 项目规则
--->
-
 ## 文档输出框架 VitePress 规则
 
 ---
@@ -50,7 +41,7 @@
 
 ---
 
-## 该项目是 MonoRepo项目，项目概述与规范
+## MonoRepo项目概述与规范
 
 ---
 
@@ -108,4 +99,19 @@
 - 遵循项目既定的代码风格和提交规范
 - 新功能开发需同步更新相关文档
 
+### 功能实现一样，包名不一样，
+
+- 根目录"/lint/eslint-plugin-smart"插件和"/lint/eslint-plugin-smarts"插件功能实现是一样的，只是包名不一样。
+- 根目录"/lint/stylelint-config-smart"插件和"/lint/stylelint-config-smarts"插件功能实现是一样的，只是包名不一样。
+- 根目录"/lint/prettier-config-smart"插件和"/lint/prettier-config-smarts"插件功能实现是一样的，只是包名不一样。
+- 根目录"/lint/commit-smarts"插件和"/lint/commit-smart"插件和"/lint/commitlint-smart"插件和"/lint/commitlint-smarts"插件功能实现是一样的，只是包名不一样。
+- 以上四类插件的功能实现是一样的，只是包名不一样，所以每次更新都同步更新一下相关代码和文档
+
 ---
+
+pip install 时必须带上 `-i https://pypi.tuna.tsinghua.edu.cn/simple`
+
+## 使用workspace下的包说明
+
+1、不要自行修改版本号
+2、加载monorepo下包名不要使用相对路径或者绝对路径，使用包的名称即可，如果项目依赖包发生错误请修改workspace下的包而不是修改项目配置
