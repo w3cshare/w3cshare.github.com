@@ -1,5 +1,5 @@
 {
-  "name": "@iss-smart/element-plus-cron",
+  "name": "@iss.smart/element-plus-cron",
   "version": "0.0.0",
   "displayName": "包发布前检查脚手架",
   "description": "iss-smart prepublish包发布前check脚手架",

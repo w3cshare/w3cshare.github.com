@@ -1,5 +1,5 @@
 {
-  "name": "@iss-smart/cli-prepublish",
+  "name": "@iss.smart/cli-prepublish",
   "version": "0.0.1",
   "displayName": "包发布前检查脚手架",
   "description": "iss-smart prepublish包发布前check脚手架",

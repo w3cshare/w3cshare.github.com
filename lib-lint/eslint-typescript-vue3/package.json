@@ -1,0 +1,79 @@
+{
+  "name": "@iss.smart/eslint-typescript-vue3",
+  "private": true,
+  "version": "0.0.1",
+  "displayName": "",
+  "description": "",
+  "type": "module",
+  "keywords": [
+    "eslint",
+    "typescript",
+    "vue3",
+    "vue"
+  ],
+  "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/w3cshare/w3cshare.github.io/issues"
+  },
+  "license": "ISC",
+  "author": "ww <wwdqq7@qq.com>",
+  "files": [
+    ".gitignore",
+    ".prettierrc.js",
+    "README.md",
+    "__tests__",
+    "dist",
+    "eslint.config.js",
+    "lib",
+    "src",
+    "tsconfig.json"
+  ],
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
+      "default": "./lib/index.cjs"
+    }
+  },
+  "repository": {
+    "directory": "lib-cli/eslint-typescript-vue3",
+    "type": "git",
+    "url": "git+https://github.com/w3cshare/w3cshare.github.io.git"
+  },
+  "directories": {
+    "dist": "dist",
+    "docs": "docs",
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --watch --outDir dist",
+    "build": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --outDir dist",
+    "dev:ts": "tsc -w",
+    "build:ts": "tsc --build --force",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write . --ignore-path .gitignore",
+    "release": "standard-version"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {},
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    }
+  }
+}
