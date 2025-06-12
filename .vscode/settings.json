@@ -2,7 +2,8 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": true
+    // "source.organizeImports": "explicit"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -18,12 +19,13 @@
   },
   "eslint.validate": [
     "javascript",
+    "javascriptreact",
     "typescript",
-    "vue",
-    "json",
-    "jsonc",
-    "json5"
+    "typescriptreact",
+    "vue"
   ],
+  "eslint.format.enable": true,
+  "eslint.run": "onSave",
   "baidu.comate.license": "5dbb6e75-78e5-486c-98fa-4a9478a9c290",
   "baidu.comate.username": "wangwei",
   "files.exclude": {

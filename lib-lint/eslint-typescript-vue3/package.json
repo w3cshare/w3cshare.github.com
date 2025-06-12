@@ -1,15 +1,18 @@
 {
   "name": "@iss.smart/eslint-typescript-vue3",
-  "private": true,
   "version": "0.0.1",
-  "displayName": "",
-  "description": "",
+  "private": false,
+  "displayName": "ESLint Config for TypeScript & Vue3",
+  "description": "A comprehensive ESLint configuration for TypeScript and Vue3 projects",
   "type": "module",
   "keywords": [
     "eslint",
+    "eslint-config",
+    "prettier",
+    "react",
     "typescript",
-    "vue3",
-    "vue"
+    "vue",
+    "vue3"
   ],
   "homepage": "https://github.com/w3cshare/w3cshare.github.io#readme",
   "bugs": {
@@ -28,15 +31,14 @@
     "src",
     "tsconfig.json"
   ],
-  "main": "lib/index.cjs",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib/index.cjs",
-      "default": "./lib/index.cjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "repository": {
@@ -52,20 +54,29 @@
   },
   "scripts": {
     "start": "pnpm run dev",
-    "dev": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --watch --outDir dist",
-    "build": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --outDir dist",
+    "dev": "tsup --watch",
+    "build": "npm run build:tsup && npm run build:ts",
     "dev:ts": "tsc -w",
-    "build:ts": "tsc --build --force",
+    "build:ts": "rimraf lib && tsc --build --force",
+    "build:tsup": "rimraf dist && tsup",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write . --ignore-path .gitignore",
-    "release": "standard-version"
+    "release": "standard-version",
+    "prepublishOnly": "pnpm run build"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "@eslint/js": ">=9.0.0",
+    "@typescript-eslint/eslint-plugin": ">=6.0.0",
+    "@typescript-eslint/parser": ">=6.0.0",
+    "eslint": ">=9.0.0",
+    "vue-eslint-parser": ">=9.0.0"
   },
   "peerDependenciesMeta": {
     "eslint": {
@@ -75,15 +86,32 @@
       "optional": true
     }
   },
-  "devDependencies": {
+  "dependencies": {
     "@eslint/css": "^0.8.1",
     "@eslint/js": "^9.28.0",
     "@eslint/json": "^0.12.0",
     "@eslint/markdown": "^6.5.0",
     "eslint": "^9.28.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsonc": "^2.20.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-sort": "^4.0.0",
+    "eslint-plugin-typescript-sort-keys": "^3.3.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vue": "^10.2.0",
     "globals": "^16.2.0",
+    "typescript": "^5.8.3",
     "typescript-eslint": "^8.33.1",
+    "vue": "^3.5.13",
     "vue-eslint-parser": "^9.4.3"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.1",
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^22.15.30",
+    "@vue/tsconfig": "^0.7.0",
+    "rimraf": "^6.0.1",
+    "tsconfig-base-smart": "workspace:^",
+    "tsup": "^8.5.0"
   }
 }
