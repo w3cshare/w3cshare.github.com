@@ -10,10 +10,12 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
+    "format": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "dependencies": {
     "react": "^19.0.0",

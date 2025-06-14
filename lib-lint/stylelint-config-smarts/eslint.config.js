@@ -1,3 +1,4 @@
-import eslintPlugin from 'eslint-plugin-smart'
 
-export default [...eslintPlugin.configs.typescript, ...eslintPlugin.configs.json]
+import eslintPluginSmart from 'eslint-plugin-smart'
+
+export default eslintPluginSmart()

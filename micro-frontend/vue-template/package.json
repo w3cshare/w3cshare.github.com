@@ -25,11 +25,13 @@
     "url": "https://github.com/w3cshare/w3cshare.github.io.git"
   },
   "scripts": {
-    "test": "node ./__tests__/@smarts-isoftstone/vue-template.test.js",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
+    "test": "jest",
+    "format": "prettier --write .",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "devDependencies": {
     "eslint": "^9.25.1",

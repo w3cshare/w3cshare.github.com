@@ -60,12 +60,12 @@
     "build:ts": "tsc --build --force",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "eslint --fix \"**/*.{vue,js,jsx,ts,tsx,json}\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
-    "release": "standard-version"
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "release": "standard-version",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "publishConfig": {
     "access": "public",

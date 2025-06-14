@@ -13,11 +13,13 @@
     "test:e2e": "playwright test",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "lint": "eslint . --fix",
-    "format": "prettier --write src/",
-    "lint:style": "stylelint --fix **/*.*ss --custom-syntax postcss-less --ignore-path .gitignore --config .stylelintrc.cjs",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\""
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "dependencies": {
     "@micro-zoe/micro-app": "1.0.0-rc.24",

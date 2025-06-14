@@ -37,11 +37,13 @@
     "preview": "vite preview",
     "create-icons": "node src/extension/createDefaultIcons.js",
     "build-extension": "pnpm run create-icons && pnpm run build",
-    "test": "node ./__tests__/@smarts-isoftstone/google-pro.test.js",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
+    "test": "jest",
+    "format": "prettier --write .",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "devDependencies": {
     "@types/node": "^20.10.5",

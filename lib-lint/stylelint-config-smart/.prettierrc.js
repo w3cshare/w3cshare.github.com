@@ -11,4 +11,14 @@ import prettierPluginSmart from 'prettier-plugin-smart'
 export default {
   plugins: [prettierPluginSmart],
   ...prettierPluginSmart.defaultOptions,
+  overrides: [
+    {
+      files: '*.{css,scss,less,vue}',
+      options: {
+        printWidth: 100,
+        singleQuote: true,
+        tabWidth: 2,
+      },
+    },
+  ],
 }

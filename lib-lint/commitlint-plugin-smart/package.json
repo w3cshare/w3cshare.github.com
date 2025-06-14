@@ -64,12 +64,13 @@
     "build:ts": "tsc --build --force",
     "dev": "rimraf lib && tsup --watch",
     "build": "rimraf lib && tsup",
-    "test": "for file in ./__tests__/*.test.js; do node $file; done",
-    "lint": "eslint --fix \"**/*.{vue,js,jsx,ts,tsx,json}\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
+    "test": "jest",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test:watch": "jest --watch",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "publishConfig": {
     "access": "public",

@@ -59,10 +59,13 @@
     "dev": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --watch --outDir lib",
     "build": "rimraf lib && tsup src/index.ts --format=cjs,esm --dts --outDir lib",
     "prepublishOnly": "pnpm run build",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
+    "format": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "peerDependencies": {
     "@commitlint/cli": ">=17.0.0"

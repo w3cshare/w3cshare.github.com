@@ -2,8 +2,15 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
     // "source.organizeImports": "explicit"
+    // "source.fixAll.ts": "explicit",
+    // "source.fixAll.json": "explicit",
+    // "source.fixAll.markdown": "explicit",
+    // "source.fixAll.css": "explicit",
+    // "source.fixAll.html": "explicit",
+    // "source.fixAll.vue": "explicit",
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

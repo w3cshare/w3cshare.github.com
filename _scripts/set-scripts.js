@@ -6,9 +6,9 @@
  * @FilePath: /FullStack/_scripts/set-scripts.js
  * @Description:
  */
-const fs = require('fs')
-const { globSync } = require('glob')
-const path = require('path')
+import { globSync } from 'glob'
+import fs from 'fs'
+import path from 'path'
 
 // const { execFile } = require('child_process')
 
@@ -18,11 +18,11 @@ const subProjectPaths = globSync('{apps,lib-*,micro-*,libs}/*/', {
   onlyDirectories: true,
 })
 
-const lintJs = 'npm pkg set scripts.lint:js="eslint --fix \"**/*.{js,jsx,ts,tsx}\""'
-const lintJson = 'npm pkg set scripts.lint:json="eslint --fix \"**/*.json\""'
-const lintStyle = 'npm pkg set scripts.lint:style="stylelint --fix \"**/*.{css,scss,less}\""'
-const lintFormat =
-  'npm pkg set scripts.format="prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""'
+// const lintJs = 'npm pkg set scripts.lint:js="eslint --fix \"**/*.{js,jsx,ts,tsx}\""'
+// const lintJson = 'npm pkg set scripts.lint:json="eslint --fix \"**/*.json\""'
+// const lintStyle = 'npm pkg set scripts.lint:style="stylelint --fix \"**/*.{css,scss,less}\""'
+// const lintFormat =
+//   'npm pkg set scripts.format="prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""'
 
 subProjectPaths.forEach(subProjectPath => {
   const absolutePath = path.join(process.cwd(), subProjectPath)
@@ -32,12 +32,18 @@ subProjectPaths.forEach(subProjectPath => {
   }
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
   const scripts = packageJson.scripts || {}
+  delete scripts['lint:js']
+  delete scripts['lint:json']
+  delete scripts['lint:style']
   const newScripts = {
     ...scripts,
-    format: 'prettier --write "**/*.{js,jsx,ts,tsx,css,scss,less,json,md}"',
-    'lint:js': 'eslint --fix "**/*.{js,jsx,ts,tsx}"',
-    'lint:json': 'eslint --fix "**/*.json"',
-    'lint:style': 'stylelint --fix "**/*.{css,scss,less}"',
+    // test: 'jest',
+    // 'test:watch': 'jest --watch',
+    lint: 'eslint .',
+    'lint:fix': 'eslint . --fix',
+    format: 'prettier --write .',
+    style: 'stylelint "**/*.{css,scss,less}"',
+    'style:fix': 'stylelint --fix "**/*.{css,scss,less}"',
   }
   packageJson.scripts = newScripts
   fs.writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 2)}\n`)

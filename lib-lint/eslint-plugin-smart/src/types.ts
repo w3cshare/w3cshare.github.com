@@ -1,85 +1,58 @@
-/*
- * @Author: wangwei wwdqq7@qq.com
- * @Date: 2025-04-21 12:40:09
- * @LastEditors: wangwei wwdqq7@qq.com
- * @FilePath: /FullStack/lint/eslint-plugin-smart/src/types.ts
- * @Description: 类型定义
+/**
+ * @file ESLint configuration type definitions
  */
 
-/**
- * ESLint插件类型
- */
-export interface ESLintPlugin {
-  configs?: Record<string, unknown>
-  parser?: {
-    parse(text: string, options?: unknown): unknown
-  }
-  rules?: Record<string, unknown>
-}
+import type { Linter } from 'eslint'
 
-/**
- * ESLint规则集类型
- */
-export type ESLintRuleSet = Record<string, unknown>
+export type FilePattern = (string | string[])[]
 
-/**
- * ESLint v9扁平配置类型
- */
-export interface FlatConfig {
-  files?: string[]
-  ignores?: string[]
+export interface BaseConfig {
+  files: FilePattern
   languageOptions?: {
     globals?: Record<string, boolean>
-    parser?: unknown
-    parserOptions?: Record<string, unknown>
+    parser?: any
+    parserOptions?: Record<string, any>
+    [key: string]: any
   }
-  linterOptions?: {
-    noInlineConfig?: boolean
-    reportUnusedDisableDirectives?: boolean
-  }
-  parser?: string | unknown
-  plugins?: Record<string, unknown>
-  processor?: unknown
-  rules?: Record<string, unknown>
-  settings?: Record<string, unknown>
+  name: string
+  plugins?: Record<string, any>
+  processor?: string | Linter.Processor
 }
 
-/**
- * ESLint插件导出类型
- */
-export interface ESLintPluginExport {
-  configs: {
-    base: FlatConfig[]
-    json: FlatConfig[]
-    nestjs: FlatConfig[]
-    nodejs: FlatConfig[]
-    react: FlatConfig[]
-    recommended: FlatConfig[]
-    typescript: FlatConfig[]
-    vue: FlatConfig[]
-  }
-  plugins: Record<string, ESLintPlugin>
-  rules: Record<string, ESLintRuleSet>
+export interface LanguageConfig extends BaseConfig {
+  extends?: string[]
+  language?: string
 }
 
-/**
- * ESLint插件加载结果类型
- */
-export interface LoadedPlugins {
-  eslintConfigPrettier: ESLintPlugin
-  import: ESLintPlugin
-  jsonc: ESLintPlugin
-  jsxA11y: ESLintPlugin
-  node: ESLintPlugin
-  prettier: ESLintPlugin
-  react: ESLintPlugin
-  reactHooks: ESLintPlugin
-  simpleImportSort: ESLintPlugin
-  sortKeysFix: ESLintPlugin
-  typescriptEslint: ESLintPlugin
-  typescriptEslintParser: ESLintPlugin
-  typescriptSortKeys: ESLintPlugin
-  unusedImports: ESLintPlugin
-  vue: ESLintPlugin
-  vueEslintParser: ESLintPlugin
+export interface RuleConfig extends BaseConfig {
+  rules: Linter.RulesRecord
 }
+
+export const SUPPORTED_EXTENSIONS = {
+  JSON: ['json', 'jsonc', 'json5'],
+  MARKDOWN: ['md', 'markdown'],
+  SCRIPT: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts', 'jsx', 'tsx', 'vue'],
+  STYLE: ['css', 'scss', 'less'],
+} as const
+
+export const createFilePattern = (extensions: readonly string[]): FilePattern => {
+  return [`**/*.{${extensions.join(',')}}`, `*.{${extensions.join(',')}}`]
+}
+
+export const FILE_PATTERNS = {
+  JSON: createFilePattern(SUPPORTED_EXTENSIONS.JSON),
+  MARKDOWN: createFilePattern(SUPPORTED_EXTENSIONS.MARKDOWN),
+  SCRIPT: createFilePattern(SUPPORTED_EXTENSIONS.SCRIPT),
+  STYLE: createFilePattern(SUPPORTED_EXTENSIONS.STYLE),
+}
+
+export const IGNORE_PATTERNS = [
+  '**/node_modules/**',
+  '**/dist/**',
+  '**/dist-ssr/**',
+  '**/lib/**',
+  '**/coverage/**',
+  '**/.git/**',
+  '**/.vscode/**',
+  '**/.idea/**',
+] as string[]

@@ -45,11 +45,13 @@
     "build:ts": "tsc",
     "dev": "rimraf lib && tsup src/vitepress-plugin-smart.ts --format=cjs,esm --dts --watch --outDir lib",
     "build": "rimraf lib && tsup src/vitepress-plugin-smart.ts --format=cjs,esm --dts --outDir lib",
-    "lint": "eslint \"src/**/*.ts\" --fix",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\""
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "dependencies": {
     "@braintree/sanitize-url": "^7.1.1",

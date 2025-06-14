@@ -25,12 +25,13 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --ext ts",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\"",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\""
+    "test": "jest",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test:watch": "jest --watch",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "devDependencies": {
     "@types/node": "^16.18.126",

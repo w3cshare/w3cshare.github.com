@@ -39,11 +39,13 @@
     "build:ts": "tsc",
     "dev": "rimraf lib && tsup ../eslint-plugin-smart/src/index.ts --format=cjs,esm --dts --watch --outDir lib",
     "build": "rimraf lib && tsup ../eslint-plugin-smart/src/index.ts --format=cjs,esm --dts --outDir lib",
-    "lint": "eslint \"src/**/*.ts\" --fix",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,less,json,md}\"",
-    "lint:json": "eslint --fix \"**/*.json\"",
-    "lint:js": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "lint:style": "stylelint --fix \"**/*.{css,scss,less}\""
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint:fix": "eslint . --fix",
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
+    "style": "stylelint \"**/*.{css,scss,less}\""
   },
   "peerDependencies": {
     "eslint": ">=9.0.0",
