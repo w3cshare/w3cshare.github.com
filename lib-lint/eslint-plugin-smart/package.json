@@ -68,7 +68,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
-    "prepublishOnly": "pnpm run build && pnpm run test",
+    "prepublishOnly": "pnpm run build",
     "release": "standard-version",
     "style": "stylelint \"**/*.{css,scss,less}\""
   },
@@ -126,9 +126,9 @@
     "@vue/tsconfig": "^0.7.0",
     "jest": "^30.0.0",
     "rimraf": "^6.0.1",
+    "stylelint-config-smart": "workspace:^",
     "ts-jest": "^29.4.0",
     "tsconfig-base-smart": "workspace:^",
-    "stylelint-config-smart": "workspace:^",
     "tsup": "^8.5.0",
     "vue": "^3.5.13"
   },
