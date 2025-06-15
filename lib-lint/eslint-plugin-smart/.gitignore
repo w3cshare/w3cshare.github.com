@@ -2,9 +2,11 @@
 node_modules
 dist
 lib
+coverage
 .DS_Store
 .idea
 .vscode
 .env
 .env.local
 src.bak
+
