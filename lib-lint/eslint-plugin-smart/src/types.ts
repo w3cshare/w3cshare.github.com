@@ -10,12 +10,12 @@ export interface BaseConfig {
   files: FilePattern
   languageOptions?: {
     globals?: Record<string, boolean>
-    parser?: any
-    parserOptions?: Record<string, any>
-    [key: string]: any
+    parser?: Linter.Parser
+    parserOptions?: Record<string, Linter.ParserOptions>
+    [key: string]: unknown
   }
   name: string
-  plugins?: Record<string, any>
+  plugins?: Record<string, unknown>
   processor?: string | Linter.Processor
 }
 
@@ -32,6 +32,9 @@ export const SUPPORTED_EXTENSIONS = {
   JSON: ['json', 'jsonc', 'json5'],
   MARKDOWN: ['md', 'markdown'],
   SCRIPT: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts', 'jsx', 'tsx', 'vue'],
+  VUE: ['vue'],
+  REACT: ['jsx', 'tsx', 'mtsx', 'ctsx', 'mjsx', 'cjsx'],
+  TYPESCRIPT: ['ts', 'mts', 'cts'],
   STYLE: ['css', 'scss', 'less'],
 } as const
 
@@ -43,6 +46,9 @@ export const FILE_PATTERNS = {
   JSON: createFilePattern(SUPPORTED_EXTENSIONS.JSON),
   MARKDOWN: createFilePattern(SUPPORTED_EXTENSIONS.MARKDOWN),
   SCRIPT: createFilePattern(SUPPORTED_EXTENSIONS.SCRIPT),
+  VUE: createFilePattern(SUPPORTED_EXTENSIONS.VUE),
+  REACT: createFilePattern(SUPPORTED_EXTENSIONS.REACT),
+  TYPESCRIPT: createFilePattern(SUPPORTED_EXTENSIONS.TYPESCRIPT),
   STYLE: createFilePattern(SUPPORTED_EXTENSIONS.STYLE),
 }
 
@@ -55,4 +61,10 @@ export const IGNORE_PATTERNS = [
   '**/.git/**',
   '**/.vscode/**',
   '**/.idea/**',
+  '**/test/**',
+  '**/__tests__/**',
+  '**/cache/**',
+  '**/.**/**',
+  '**/.eslintcache',
+  '**/src.bak/**',
 ] as string[]

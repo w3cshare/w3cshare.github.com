@@ -1,14 +1,14 @@
 declare module 'eslint-plugin-vue' {
-  import type { ESLint } from 'eslint'
+  import type { ESLint, Linter } from 'eslint'
 
   const plugin: ESLint.Plugin & {
     configs: {
       base: {
-        rules: Record<string, any>
+        rules: Record<string, Linter.Rule>
       }
     }
     essential: {
-      rules: Record<string, any>
+      rules: Record<string, Linter.Rule>
     }
     processors: {
       '.vue': ESLint.Processor

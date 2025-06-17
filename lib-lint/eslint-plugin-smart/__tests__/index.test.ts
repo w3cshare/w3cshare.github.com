@@ -11,7 +11,7 @@ describe('ESLint Config Tests', () => {
     eslint = new ESLint({
       baseConfig: config,
       useEslintrc: false as const,
-      ignore: false
+      ignore: false,
     } as ESLintType.Options)
   })
 
@@ -35,7 +35,7 @@ describe('ESLint Config Tests', () => {
       console.log(user);
     `
     const results = await eslint.lintText(code, {
-      filePath: 'test.ts'
+      filePath: 'test.ts',
     })
     expect(results[0].errorCount).toBe(0)
   })
@@ -61,7 +61,7 @@ describe('ESLint Config Tests', () => {
       </script>
     `
     const results = await eslint.lintText(code, {
-      filePath: 'test.vue'
+      filePath: 'test.vue',
     })
     expect(results[0].errorCount).toBe(0)
   })
@@ -79,7 +79,7 @@ describe('ESLint Config Tests', () => {
       };
     `
     const results = await eslint.lintText(code, {
-      filePath: 'test.tsx'
+      filePath: 'test.tsx',
     })
     expect(results[0].errorCount).toBe(0)
   })
@@ -91,7 +91,7 @@ describe('ESLint Config Tests', () => {
       import { b } from 'b';
     `
     const results = await eslint.lintText(code, {
-      filePath: 'test.ts'
+      filePath: 'test.ts',
     })
     expect(results[0].messages.some(m => m.ruleId === 'sort-imports')).toBe(true)
   })
@@ -106,7 +106,7 @@ describe('ESLint Config Tests', () => {
       };
     `
     const results = await eslint.lintText(code, {
-      filePath: 'test.tsx'
+      filePath: 'test.tsx',
     })
     expect(results[0].messages.some(m => m.ruleId === 'no-unused-vars')).toBe(true)
   })
@@ -124,8 +124,8 @@ describe('ESLint Config Tests', () => {
       }
     `
     const results = await eslint.lintText(code, {
-      filePath: 'test.ts'
+      filePath: 'test.ts',
     })
     expect(results[0].errorCount).toBe(0)
   })
-}) 
+})

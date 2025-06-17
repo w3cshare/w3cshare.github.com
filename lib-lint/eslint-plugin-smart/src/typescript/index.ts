@@ -1,7 +1,8 @@
 // import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
-// import { tsBaseRules } from './rules/index'
+import { FILE_PATTERNS } from '../types'
+import { tsBaseRules } from './rules'
 
 const func = () => {
   ;[tseslint.configs.recommended, tseslint.configs.strict, tseslint.configs.stylistic].forEach(
@@ -20,10 +21,10 @@ export default tseslint.config(
   tseslint.configs.strict,
   tseslint.configs.stylistic,
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
+    files: [...FILE_PATTERNS.TYPESCRIPT, ...FILE_PATTERNS.REACT],
     name: '@iss.smart/typescript-recommended',
     rules: {
-      // ...tsBaseRules,
+      ...tsBaseRules,
     },
   },
 )

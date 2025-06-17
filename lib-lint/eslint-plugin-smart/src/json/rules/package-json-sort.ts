@@ -48,16 +48,7 @@ const packageJsonSortRules = {
       pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
     },
     {
-      order: [
-        'start',
-        'dev',
-        'build',
-        'serve',
-        'test',
-        'lint',
-        'format',
-        'prepare',
-      ],
+      order: ['start', 'dev', 'build', 'serve', 'test', 'lint', 'format', 'prepare'],
       pathPattern: '^scripts$',
     },
     {

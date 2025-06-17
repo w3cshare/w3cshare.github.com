@@ -1,21 +1,20 @@
+import { Linter } from 'eslint'
 import eslintPluginJsonc from 'eslint-plugin-jsonc'
 
 import { FILE_PATTERNS, type LanguageConfig } from '../types'
 import rules from './rules'
 
 const _func = () => {
-  ;(eslintPluginJsonc.configs['flat/recommended-with-jsonc'] as any).forEach(
-    item => {
-      if (!item.files) {
-        item.files = FILE_PATTERNS.JSON
-      }
-    },
-  )
+  ;(eslintPluginJsonc.configs['flat/recommended-with-jsonc'] as Linter.Config[]).forEach(item => {
+    if (!item.files) {
+      item.files = FILE_PATTERNS.JSON
+    }
+  })
 }
 _func()
 
 const config = [
-  ...(eslintPluginJsonc.configs['flat/recommended-with-jsonc'] as any[]),
+  ...(eslintPluginJsonc.configs['flat/recommended-with-jsonc'] as Linter.Config[]),
   {
     files: FILE_PATTERNS.JSON,
     name: '@iss.smart/json-sort',

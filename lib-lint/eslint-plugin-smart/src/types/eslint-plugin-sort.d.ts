@@ -4,7 +4,7 @@ declare module 'eslint-plugin-sort' {
   const plugin: ESLint.Plugin & {
     configs: {
       'flat/recommended': {
-        rules: Record<string, any>
+        rules: Record<string, Linter.RuleEntry>
       }
     }
   }

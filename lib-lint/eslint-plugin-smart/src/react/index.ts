@@ -3,6 +3,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y'
 import pluginReact from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 
+import { FILE_PATTERNS } from '../types'
 import {
   jsxA11yRules,
   reactCoreRules,
@@ -12,15 +13,11 @@ import {
   reactStyleRules,
 } from './rules/index'
 
-const FILE_PATTERNS = {
-  SCRIPT: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-}
-
 export default [
   {
     // ...pluginReact.configs.flat.recommended,
     name: '@iss.smart/react-recommended',
-    files: FILE_PATTERNS.SCRIPT,
+    files: FILE_PATTERNS.REACT,
     plugins: {
       react: pluginReact,
     },

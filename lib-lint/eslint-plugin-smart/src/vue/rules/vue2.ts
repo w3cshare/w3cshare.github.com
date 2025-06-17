@@ -43,10 +43,7 @@ export const vueNamingRules = {
  */
 export const vueTemplateStyleRules = {
   // 强制多行元素的闭合标签换行
-  'vue/html-closing-bracket-newline': [
-    'error',
-    { multiline: 'always', singleline: 'never' },
-  ],
+  'vue/html-closing-bracket-newline': ['error', { multiline: 'always', singleline: 'never' }],
 
   // 强制HTML缩进为2个空格
   'vue/html-indent': ['error', 2],

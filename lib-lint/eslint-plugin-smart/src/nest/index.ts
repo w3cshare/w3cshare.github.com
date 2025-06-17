@@ -1,9 +1,10 @@
 import globals from 'globals'
 
+import { FILE_PATTERNS } from '../types'
 import { nestFrameworkRules } from './rules'
 
 const nestjsFlatConfig = {
-  files: ['**/*.ts', 'src/**/*.ts'],
+  files: FILE_PATTERNS.TYPESCRIPT,
   languageOptions: {
     globals: {
       node: true, // 添加Node.js全局变量

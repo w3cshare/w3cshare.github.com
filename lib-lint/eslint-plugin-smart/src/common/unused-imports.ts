@@ -35,51 +35,38 @@ const unusedImportsConfig: RuleConfig = {
     // 禁止未使用的表达式
     'no-unused-expressions': 'error',
 
+    '@typescript-eslint/no-unused-vars': 'off',
+
     // 自动移除未使用的导入
     'unused-imports/no-unused-imports': 'error',
 
     // 处理未使用的变量和参数
-    'unused-imports/no-unused-vars': 'error',
-
-    /*
-     * [
-     *   'error',
-     *   {
-     *     // 参数检查方式：在使用之后的参数会被检查
-     *     args: 'after-used',
-     */
-
-    /*
-     *     // 忽略以下划线开头的参数
-     *     argsIgnorePattern: '^_',
-     */
-
-    /*
-     *     // 忽略以下划线开头的 catch 错误参数
-     *     caughtErrorsIgnorePattern: '^_',
-     */
-
-    /*
-     *     // 忽略以下划线开头的解构数组参数
-     *     destructuredArrayIgnorePattern: '^_',
-     */
-
-    /*
-     *     // 忽略剩余参数
-     *     ignoreRestSiblings: true,
-     */
-
-    /*
-     *     // 检查所有变量
-     *     vars: 'all',
-     */
-
-    /*
-     *     // 忽略以下划线开头的变量
-     *     varsIgnorePattern: '^_',
-     *   },
-     * ],
-     */
+    'unused-imports/no-unused-vars':          [
+       'error',
+       {
+         // 参数检查方式：在使用之后的参数会被检查
+         args: 'after-used',
+     
+         // 忽略以下划线开头的参数
+         argsIgnorePattern: '^_',
+     
+         // 忽略以下划线开头的 catch 错误参数
+         caughtErrorsIgnorePattern: '^_',
+     
+         // 忽略以下划线开头的解构数组参数
+         destructuredArrayIgnorePattern: '^_',
+     
+         // 忽略剩余参数
+         ignoreRestSiblings: true,
+     
+         // 检查所有变量
+         vars: 'all',
+     
+         // 忽略以下划线开头的变量
+         varsIgnorePattern: '^_',
+       },
+     ],
+    
   },
 }
 

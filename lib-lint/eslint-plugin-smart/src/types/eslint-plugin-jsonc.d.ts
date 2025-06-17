@@ -1,13 +1,13 @@
 declare module 'eslint-plugin-jsonc' {
-  import type { ESLint } from 'eslint'
+  import type { ESLint, Linter } from 'eslint'
 
   const plugin: ESLint.Plugin & {
     configs: {
       'recommended-with-jsonc': {
-        rules: Record<string, any>
+        rules: Record<string, Linter.RuleEntry>
       }
     }
-    parser: any
+    parser: Linter.ParserModule
   }
 
   export default plugin

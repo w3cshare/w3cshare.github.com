@@ -8,13 +8,8 @@
 
 import type { Linter } from 'eslint'
 
-// Base configurations
 import base from './base'
-
-// Base configurations END
-/*
- * Code style configurations
- */
+import jsdoc from './base/jsdoc'
 import sortObject from './common/sort-object'
 import unusedImports from './common/unused-imports'
 import sortJson from './json'
@@ -43,6 +38,7 @@ export const meta = {
 const config = [
   // Base ESLint rules
   ...base,
+  ...jsdoc,
 
   // Code style optimization rules
   ...sortJson, // JSON file sorting
@@ -59,21 +55,21 @@ const config = [
   ...stylelint,
 ].flat()
 
-export default (_: {
-  react?: boolean
-  vue?: boolean
-  vue3?: boolean
-  typescript?: boolean
-  nestJs?: boolean
+export default (_payload: {
   css?: boolean
   markdown?: boolean
+  nestJs?: boolean
+  orderArray?: boolean
+  orderJson?: boolean
+  orderObject?: boolean
+  prettier?: boolean
+  react?: boolean
+  stylistic?: boolean
+  typescript?: boolean
   unusedImports?: boolean
   unusedVars?: boolean
-  orderObject?: boolean
-  orderArray?: boolean
-  prettier?: boolean
-  stylistic?: boolean
-  orderJson?: boolean
+  vue?: boolean
+  vue3?: boolean
 }) => {
   return config as Linter.Config[]
 }
@@ -99,5 +95,5 @@ export interface PluginConfig {
     recommended: Linter.Config[]
     strict: Linter.Config[]
   }
-  rules: Record<string, any>
+  rules: Record<string, Linter.RuleEntry>
 }

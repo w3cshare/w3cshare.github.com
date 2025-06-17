@@ -23,16 +23,16 @@
 {
   // 强制组件使用 setup 语法糖
   'vue/component-api-style': ['error', ['script-setup']],
-  
+
   // 强制组件选项的定义顺序
   'vue/define-macros-order': ['error', {
     order: ['defineProps', 'defineEmits', 'defineSlots']
   }],
-  
+
   // 防止响应式数据丢失
   'vue/no-setup-props-reactivity-loss': 'error',
   'vue/no-ref-object-reactivity-loss': 'error',
-  
+
   // 类型声明规范
   'vue/define-props-declaration': ['error', 'type-based'],
   'vue/define-emits-declaration': ['error', 'type-based']
@@ -198,27 +198,32 @@ export default [
     rules: {
       // 将错误级别降为警告
       'vue/no-unused-vars': 'warn',
-      
+
       // 禁用某些规则
       'vue/no-v-html': 'off',
-      
+
       // 自定义规则配置
-      'vue/max-attributes-per-line': ['error', {
-        singleline: { max: 3 },
-        multiline: { max: 1 }
-      }]
-    }
-  }
+      'vue/max-attributes-per-line': [
+        'error',
+        {
+          singleline: { max: 3 },
+          multiline: { max: 1 },
+        },
+      ],
+    },
+  },
 ]
 ```
 
 ### 常见问题解决
 
 1. **类型检查错误**
+
    - 确保 `tsconfig.json` 正确配置
    - 检查 `@typescript-eslint/parser` 版本兼容性
 
 2. **规则冲突**
+
    - 检查是否有重复的规则配置
    - 确保插件版本兼容
 

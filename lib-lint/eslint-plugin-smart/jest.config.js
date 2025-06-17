@@ -4,9 +4,12 @@ export default {
   testEnvironment: 'node',
   testMatch: ['**/__tests__/**/*.test.ts'],
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', {
-      tsconfig: './tsconfig.json',
-    }],
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: './tsconfig.json',
+      },
+    ],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   collectCoverage: true,
@@ -20,4 +23,4 @@ export default {
       statements: 80,
     },
   },
-} 
+}

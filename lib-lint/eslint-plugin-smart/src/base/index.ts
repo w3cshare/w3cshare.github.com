@@ -8,12 +8,7 @@ import json from '@eslint/json'
 import markdown from '@eslint/markdown'
 import globals from 'globals'
 
-import {
-  FILE_PATTERNS,
-  IGNORE_PATTERNS,
-  type LanguageConfig,
-  RuleConfig,
-} from '../types'
+import { FILE_PATTERNS, IGNORE_PATTERNS, type LanguageConfig, RuleConfig } from '../types'
 import jsRules from './rules/js'
 
 // 基础 JavaScript/TypeScript 配置
@@ -72,18 +67,7 @@ export default [
   globalsConfig,
   ...jsonConfigs,
   {
-    ignores: [
-      '**/node_modules/**',
-      '**/dist/**',
-      '**/lib/**',
-      '**/test/**',
-      '**/__tests__/**',
-      '**/cache/**',
-      '**/coverage/**',
-      '**/.**/**',
-      '**/.eslintcache',
-      ...IGNORE_PATTERNS,
-    ],
+    ignores: IGNORE_PATTERNS,
   },
 
   // globalIgnores(IGNORE_PATTERNS),
