@@ -91,9 +91,9 @@ const config: Config = {
 export default (_: {
   bem?: boolean
   less?: boolean
+  order?: boolean
   scss?: boolean
   vue?: boolean
-  order?: boolean
 }) => {
   return config
 }

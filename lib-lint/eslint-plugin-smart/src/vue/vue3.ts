@@ -8,12 +8,9 @@ import vueParser from 'vue-eslint-parser'
 import {
   vueA11yRules,
   vueCompositionRules,
-  vueNamingRules,
   vuePerformanceRules,
   vuePugRules,
   vueScopedCssRules,
-  vueTemplateRules,
-  vueTemplateStyleRules,
 } from './rules/vue3'
 
 const FILE_PATTERNS = {
@@ -48,9 +45,6 @@ export default [
       'vue-scoped-css': vueScopedCssPlugin,
     },
     rules: {
-      ...vueTemplateRules,
-      ...vueNamingRules,
-      ...vueTemplateStyleRules,
       ...vueCompositionRules,
       ...vuePerformanceRules,
       ...vueScopedCssRules,

@@ -35,6 +35,9 @@ export const vueNamingRules = {
       ignores: ['index'], // 允许index.vue这样的文件名
     },
   ],
+
+  // 强制 props 命名规范
+  'vue/prop-name-casing': ['error', 'camelCase'],
 }
 
 /**
@@ -72,6 +75,16 @@ export const vueTemplateStyleRules = {
       singleline: {
         max: 6, // 单行元素最多6个属性
       },
+    },
+  ],
+
+  // 强制标签闭合括号的位置
+  'vue/html-closing-bracket-spacing': [
+    'error',
+    {
+      endTag: 'never',
+      selfClosingTag: 'always',
+      startTag: 'never',
     },
   ],
 }
