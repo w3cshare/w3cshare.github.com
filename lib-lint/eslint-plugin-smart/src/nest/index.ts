@@ -33,7 +33,7 @@ export default [
   nestjsFlatConfig,
   {
     // 为测试文件添加Jest环境配置
-    files: ['**/*.spec.ts', '**/*.e2e-spec.ts', '**/*.test.ts'],
+    files: FILE_PATTERNS.JEST,
     languageOptions: {
       globals: {
         afterAll: true,

@@ -12,11 +12,7 @@ import {
   vuePugRules,
   vueScopedCssRules,
 } from './rules/vue3'
-
-const FILE_PATTERNS = {
-  VUE: ['**/*.vue'],
-  VUE_SCRIPT: ['**/*.{js,ts,jsx,tsx,vue}'],
-}
+import { FILE_PATTERNS } from '../types'
 
 /**
  * Vue3 ESLint 配置
@@ -77,7 +73,7 @@ export default [
     },
   },
   {
-    files: FILE_PATTERNS.VUE_SCRIPT,
+    files: FILE_PATTERNS.SCRIPT,
     name: '@iss.smart/vue3-script',
     rules: {
       // Vue3 脚本相关规则

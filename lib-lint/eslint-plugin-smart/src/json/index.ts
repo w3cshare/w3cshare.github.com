@@ -19,24 +19,6 @@ const config = [
       ...rules,
     },
   } as LanguageConfig,
-
-  // {
-  //   files: ['**/*.json', '**/*.jsonc', '**/*.json5', '**/package.json'],
-  //   languageOptions: {
-  //     parser: jsoncParser,
-  //     parserOptions: {
-  //       jsonSyntax: 'JSON',
-  //     },
-  //   },
-  //   plugins: {
-  //     jsonc: eslintPluginJsonc,
-  //   },
-  //   rules: {
-  //     ...rules,
-  //   },
-  // } as RuleConfig & { rules: any } & { languageOptions: any } & {
-  //   plugins: any
-  // },
 ]
 
 export default config

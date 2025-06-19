@@ -36,6 +36,7 @@ export const SUPPORTED_EXTENSIONS = {
   REACT: ['jsx', 'tsx', 'mtsx', 'ctsx', 'mjsx', 'cjsx'],
   TYPESCRIPT: ['ts', 'mts', 'cts'],
   STYLE: ['css', 'scss', 'less'],
+  JEST: ['test.ts', 'spec.ts', 'e2e-spec.ts'],
 } as const
 
 export const createFilePattern = (extensions: readonly string[]): FilePattern => {
@@ -50,6 +51,7 @@ export const FILE_PATTERNS = {
   REACT: createFilePattern(SUPPORTED_EXTENSIONS.REACT),
   TYPESCRIPT: createFilePattern(SUPPORTED_EXTENSIONS.TYPESCRIPT),
   STYLE: createFilePattern(SUPPORTED_EXTENSIONS.STYLE),
+  JEST: createFilePattern(SUPPORTED_EXTENSIONS.JEST),
 }
 
 export const IGNORE_PATTERNS = [

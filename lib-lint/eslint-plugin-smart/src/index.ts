@@ -55,8 +55,6 @@ const config = [
   ...stylelint,
 ].flat()
 
-console.log(config, '123123')
-
 export default (_payload: {
   css?: boolean
   markdown?: boolean
