@@ -8,7 +8,7 @@ const func = () => {
   ;[tseslint.configs.recommended, tseslint.configs.strict, tseslint.configs.stylistic].forEach(
     item => {
       item.forEach(element => {
-        if (!element.files) element.files = ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts']
+        if (!element.files) element.files = [...FILE_PATTERNS.TYPESCRIPT, ...FILE_PATTERNS.REACT]
       })
     },
   )
@@ -21,7 +21,7 @@ export default tseslint.config(
   tseslint.configs.strict,
   tseslint.configs.stylistic,
   {
-    files: [...FILE_PATTERNS.TYPESCRIPT, ...FILE_PATTERNS.REACT],
+    files: FILE_PATTERNS.SCRIPT,
     name: '@iss.smart/typescript-recommended',
     rules: {
       ...tsBaseRules,

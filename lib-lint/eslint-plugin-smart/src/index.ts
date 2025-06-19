@@ -24,7 +24,8 @@ import vueTypescript from './vue/vue-typescript'
  * Configuration metadata
  */
 export const meta = {
-  description: '为TypeScript和Vue3项目预设的全面ESLint配置，支持React',
+  description:
+    '为TypeScript和Vue3项目预设的全面ESLint配置，支持React、vue3 + typescript, nestjs等特性支持。',
   name: 'eslint-plugin-smart',
   supported: {
     eslint: '>=9.0.0',
@@ -42,18 +43,19 @@ const config = [
 
   // Code style optimization rules
   ...sortJson, // JSON file sorting
-  // ...sortImport, // Import statement sorting
   ...unusedImports, // Remove unused imports
   ...sortObject, // Object property sorting
 
   // Language-specific rules
   ...typescript, // TypeScript rules
-  ...vueTypescript, // Vue3 + TypeScript rules
   ...react, // React rules
+  ...vueTypescript, // Vue3 + TypeScript rules
 
   // Style rules
   ...stylelint,
 ].flat()
+
+console.log(config, '123123')
 
 export default (_payload: {
   css?: boolean

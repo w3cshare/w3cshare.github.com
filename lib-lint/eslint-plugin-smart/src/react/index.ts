@@ -41,7 +41,7 @@ export default [
   },
   {
     name: '@iss.smart/react-jsxA11y-recommended',
-    files: FILE_PATTERNS.SCRIPT,
+    files: FILE_PATTERNS.REACT,
     plugins: {
       'jsx-a11y': jsxA11y,
     },
@@ -58,7 +58,7 @@ export default [
   },
   {
     name: '@iss.smart/react-reactHooks-recommended',
-    files: FILE_PATTERNS.SCRIPT,
+    files: FILE_PATTERNS.REACT,
     plugins: { 'react-hooks': reactHooks },
     rules: {
       'react-hooks/rules-of-hooks': 'error',

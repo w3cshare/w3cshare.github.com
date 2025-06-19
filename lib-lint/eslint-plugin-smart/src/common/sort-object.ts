@@ -9,7 +9,7 @@ import sort from 'eslint-plugin-sort'
 import { FILE_PATTERNS, type RuleConfig } from '../types'
 
 const sortObjectConfig: RuleConfig = {
-  files: FILE_PATTERNS.SCRIPT.filter(pattern => !pattern.includes('*.vue')),
+  files: FILE_PATTERNS.SCRIPT,
   name: '@iss.smart/sort-object',
   plugins: { sort },
   rules: {
