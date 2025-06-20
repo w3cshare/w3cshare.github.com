@@ -48,6 +48,16 @@ export const vueTemplateStyleRules = {
   // 强制多行元素的闭合标签换行
   'vue/html-closing-bracket-newline': ['error', { multiline: 'always', singleline: 'never' }],
 
+  // 强制标签闭合括号的位置
+  'vue/html-closing-bracket-spacing': [
+    'error',
+    {
+      endTag: 'never',
+      selfClosingTag: 'always',
+      startTag: 'never',
+    },
+  ],
+
   // 强制HTML缩进为2个空格
   'vue/html-indent': ['error', 2],
 
@@ -75,16 +85,6 @@ export const vueTemplateStyleRules = {
       singleline: {
         max: 6, // 单行元素最多6个属性
       },
-    },
-  ],
-
-  // 强制标签闭合括号的位置
-  'vue/html-closing-bracket-spacing': [
-    'error',
-    {
-      endTag: 'never',
-      selfClosingTag: 'always',
-      startTag: 'never',
     },
   ],
 }

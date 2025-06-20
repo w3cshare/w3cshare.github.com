@@ -53,32 +53,31 @@ const sortObjectConfig: RuleConfig = {
     'sort/imports': [
       'error',
       {
+        caseSensitive: true,
         groups: [
-          { type: 'side-effect', order: 10 },
-          { regex: '\\.(png|jpg|svg)$', order: 40 },
-          { type: 'dependency', order: 20 },
-          { type: 'other', order: 30 },
+          { order: 10, type: 'side-effect' },
+          { order: 40, regex: '\\.(png|jpg|svg)$' },
+          { order: 20, type: 'dependency' },
+          { order: 30, type: 'other' },
         ],
+        natural: true,
         separator: '\n',
         typeOrder: 'last',
+      },
+    ],
+
+    /*
+     * 对象属性排序
+     * 'sort/object-properties': 'off',
+     */
+
+    'sort/object-properties': [
+      'error',
+      {
         caseSensitive: true,
         natural: true,
       },
     ],
-
-    // 对象属性排序
-    'sort/object-properties': 'off',
-
-    /*
-     * 'sort/object-properties': [
-     *   'error',
-     *   {
-     *     caseSensitive: true,
-     *     natural: true,
-     *   },
-     * ],
-     * 字符串枚举排序
-     */
     'sort/string-enums': [
       'error',
       {

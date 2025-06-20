@@ -6,7 +6,7 @@ export const useCounterStore = defineStore('counter', () => {
   const doubleCount = computed(() => count.value * 2)
 
   /**
-   *
+   * 将 count 的值增加 1。
    */
   function increment() {
     count.value++

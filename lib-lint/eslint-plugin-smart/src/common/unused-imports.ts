@@ -15,6 +15,7 @@ const unusedImportsConfig: RuleConfig = {
     'unused-imports': pluginUnusedImports,
   },
   rules: {
+    '@typescript-eslint/no-unused-vars': 'off',
     'no-empty': ['error', { allowEmptyCatch: true }],
     'no-empty-function': [
       'error',
@@ -24,18 +25,18 @@ const unusedImportsConfig: RuleConfig = {
     ],
     'no-unreachable': 'error',
     'no-unreachable-loop': 'error',
-    'no-unused-labels': 'error',
-    'no-unused-private-class-members': 'error',
-    'no-useless-computed-key': 'error',
-    'no-useless-constructor': 'error',
-    'no-useless-rename': 'error',
-    'no-useless-return': 'error',
 
     // 禁止未使用的表达式
     'no-unused-expressions': 'error',
-
+    'no-unused-labels': 'error',
+    'no-unused-private-class-members': 'error',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
+    'no-useless-computed-key': 'error',
+
+    'no-useless-constructor': 'error',
+
+    'no-useless-rename': 'error',
+    'no-useless-return': 'error',
 
     // 自动移除未使用的导入
     'unused-imports/no-unused-imports': 'error',

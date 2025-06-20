@@ -9,40 +9,42 @@
 
 <script lang="ts">
 export default {
-  mounted() {
-    // console.log('Mounted hook')
+  components: {},
+
+  created() {
+    // console.log('Created hook')
   },
 
   // 钩子函数将按ESLint规则排序
   data() {
     return {
-      usedVariable: 'Hello World',
       unusedVariable: 'This will trigger ESLint warning',
+      usedVariable: 'Hello World',
     }
   },
-  created() {
-    // console.log('Created hook')
+  methods: {
+    methodA() {
+      // console.log('Method A')
+    },
+    methodB() {
+      // console.log('Method B')
+    },
+  },
+
+  mounted() {
+    // console.log('Mounted hook')
   },
   name: 'ExampleComponent',
 
   // 属性将按ESLint规则排序
   props: {
-    propB: {
-      type: String,
-      default: 'default value',
-    },
     propA: {
-      type: Number,
       required: true,
+      type: Number,
     },
-  },
-  components: {},
-  methods: {
-    methodB() {
-      // console.log('Method B')
-    },
-    methodA() {
-      // console.log('Method A')
+    propB: {
+      default: 'default value',
+      type: String,
     },
   },
 }

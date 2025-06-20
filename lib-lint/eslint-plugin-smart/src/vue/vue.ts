@@ -17,7 +17,16 @@ export default defineConfigWithVueTs(
     files: FILE_PATTERNS.VUE,
     name: '@iss.smart/vue-js-recommended',
     rules: {
-      ...rules,
+      // ...rules,
+      ...Object.fromEntries(
+        Object.entries(rules).map(([key, value]) => {
+          // 确保所有规则都支持自动修复
+          if (typeof value === 'string') {
+            return [key, [value, { fixable: true }]]
+          }
+          return [key, value]
+        }),
+      ),
       '@typescript-eslint/no-unused-vars': 'off',
     } as unknown as Linter.RulesRecord,
   },

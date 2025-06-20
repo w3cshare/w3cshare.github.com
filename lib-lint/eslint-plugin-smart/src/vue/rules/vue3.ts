@@ -6,6 +6,9 @@ export const vueCompositionRules = {
   // 强制组件必须使用 setup 语法糖
   'vue/component-api-style': ['error', ['script-setup']],
 
+  // 强制 defineEmits 声明类型
+  'vue/define-emits-declaration': ['error', 'type-based'],
+
   // 强制组件选项的定义顺序
   'vue/define-macros-order': [
     'error',
@@ -14,17 +17,14 @@ export const vueCompositionRules = {
     },
   ],
 
-  // 禁止在 setup 中使用 this
-  'vue/no-setup-props-reactivity-loss': 'error',
+  // 强制响应式变量命名规范
+  'vue/define-props-declaration': ['error', 'type-based'],
 
   // 强制 ref 解构的一致性
   'vue/no-ref-object-reactivity-loss': 'error',
 
-  // 强制响应式变量命名规范
-  'vue/define-props-declaration': ['error', 'type-based'],
-
-  // 强制 defineEmits 声明类型
-  'vue/define-emits-declaration': ['error', 'type-based'],
+  // 禁止在 setup 中使用 this
+  'vue/no-setup-props-reactivity-loss': 'error',
 }
 
 /**
@@ -32,9 +32,6 @@ export const vueCompositionRules = {
  * @description Vue3 性能相关的最佳实践
  */
 export const vuePerformanceRules = {
-  // 禁止不必要的 v-bind
-  'vue/no-useless-v-bind': 'error',
-
   /*
    * 强制使用 v-show 而不是 v-if，当频繁切换时
    * 'vue/prefer-show-over-if': 'warn',
@@ -42,6 +39,9 @@ export const vuePerformanceRules = {
 
   // 禁止不必要的模板字符串
   'vue/no-useless-template-attributes': 'error',
+
+  // 禁止不必要的 v-bind
+  'vue/no-useless-v-bind': 'error',
 
   // 强制使用 defineOptions 而不是 export default
   'vue/prefer-define-options': 'error',

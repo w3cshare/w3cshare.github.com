@@ -15,18 +15,19 @@ import {
 
 export default [
   {
-    // ...pluginReact.configs.flat.recommended,
-    name: '@iss.smart/react-recommended',
     files: FILE_PATTERNS.REACT,
-    plugins: {
-      react: pluginReact,
-    },
     languageOptions: {
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
         },
       },
+    },
+
+    // ...pluginReact.configs.flat.recommended,
+    name: '@iss.smart/react-recommended',
+    plugins: {
+      react: pluginReact,
     },
     rules: {
       'react/jsx-uses-react': 'error',
@@ -40,11 +41,7 @@ export default [
     },
   },
   {
-    name: '@iss.smart/react-jsxA11y-recommended',
     files: FILE_PATTERNS.REACT,
-    plugins: {
-      'jsx-a11y': jsxA11y,
-    },
     languageOptions: {
       parserOptions: {
         ecmaFeatures: {
@@ -52,17 +49,21 @@ export default [
         },
       },
     },
+    name: '@iss.smart/react-jsxA11y-recommended',
+    plugins: {
+      'jsx-a11y': jsxA11y,
+    },
     rules: {
       'jsx-a11y/alt-text': 'error',
     },
   },
   {
-    name: '@iss.smart/react-reactHooks-recommended',
     files: FILE_PATTERNS.REACT,
+    name: '@iss.smart/react-reactHooks-recommended',
     plugins: { 'react-hooks': reactHooks },
     rules: {
-      'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
+      'react-hooks/rules-of-hooks': 'error',
     },
   },
 ]

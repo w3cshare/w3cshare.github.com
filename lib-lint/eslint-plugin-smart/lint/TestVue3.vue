@@ -26,13 +26,13 @@ const methodA = () => {
 
 // 属性将按ESLint规则排序
 defineProps({
-  propB: {
-    type: String,
-    default: 'default value',
-  },
   propA: {
-    type: Number,
     required: true,
+    type: Number,
+  },
+  propB: {
+    default: 'default value',
+    type: String,
   },
 })
 

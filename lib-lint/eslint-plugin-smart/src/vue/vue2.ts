@@ -16,11 +16,11 @@ export default defineConfig(
 
   {
     files: FILE_PATTERNS.VUE,
+    languageOptions: { parserOptions: { extraFileExtensions: ['.vue'], parser: tseslint.parser } },
     name: '@iss.smart/vue-js-recommended',
+
     rules: {
       ...rules,
     } as unknown as Linter.RulesRecord,
-
-    languageOptions: { parserOptions: { parser: tseslint.parser, extraFileExtensions: ['.vue'] } },
   },
 )

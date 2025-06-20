@@ -13,11 +13,11 @@ const jsCodeQualityRules = {
   'no-alert': 'error',
   'no-cond-assign': 'error',
   'no-console': 'error',
-  'no-unused-vars': 'error',
   'no-const-assign': 'error',
   'no-debugger': 'error',
   'no-nested-ternary': 'error',
   'no-unexpected-multiline': 'error',
+  'no-unused-vars': 'error',
   'no-use-before-define': [
     'error',
     {

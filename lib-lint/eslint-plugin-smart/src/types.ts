@@ -29,14 +29,14 @@ export interface RuleConfig extends BaseConfig {
 }
 
 export const SUPPORTED_EXTENSIONS = {
+  JEST: ['test.ts', 'spec.ts', 'e2e-spec.ts'],
   JSON: ['json', 'jsonc', 'json5'],
   MARKDOWN: ['md', 'markdown'],
-  SCRIPT: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts', 'jsx', 'tsx', 'vue'],
-  VUE: ['vue'],
   REACT: ['jsx', 'tsx', 'mtsx', 'ctsx', 'mjsx', 'cjsx'],
-  TYPESCRIPT: ['ts', 'mts', 'cts'],
+  SCRIPT: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts', 'jsx', 'tsx', 'vue'],
   STYLE: ['css', 'scss', 'less'],
-  JEST: ['test.ts', 'spec.ts', 'e2e-spec.ts'],
+  TYPESCRIPT: ['ts', 'mts', 'cts'],
+  VUE: ['vue'],
 } as const
 
 export const createFilePattern = (extensions: readonly string[]): FilePattern => {
@@ -44,14 +44,14 @@ export const createFilePattern = (extensions: readonly string[]): FilePattern =>
 }
 
 export const FILE_PATTERNS = {
+  JEST: createFilePattern(SUPPORTED_EXTENSIONS.JEST),
   JSON: createFilePattern(SUPPORTED_EXTENSIONS.JSON),
   MARKDOWN: createFilePattern(SUPPORTED_EXTENSIONS.MARKDOWN),
-  SCRIPT: createFilePattern(SUPPORTED_EXTENSIONS.SCRIPT),
-  VUE: createFilePattern(SUPPORTED_EXTENSIONS.VUE),
   REACT: createFilePattern(SUPPORTED_EXTENSIONS.REACT),
-  TYPESCRIPT: createFilePattern(SUPPORTED_EXTENSIONS.TYPESCRIPT),
+  SCRIPT: createFilePattern(SUPPORTED_EXTENSIONS.SCRIPT),
   STYLE: createFilePattern(SUPPORTED_EXTENSIONS.STYLE),
-  JEST: createFilePattern(SUPPORTED_EXTENSIONS.JEST),
+  TYPESCRIPT: createFilePattern(SUPPORTED_EXTENSIONS.TYPESCRIPT),
+  VUE: createFilePattern(SUPPORTED_EXTENSIONS.VUE),
 }
 
 export const IGNORE_PATTERNS = [

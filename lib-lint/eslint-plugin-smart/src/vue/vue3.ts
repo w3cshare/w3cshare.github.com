@@ -47,9 +47,6 @@ export default [
       ...vueA11yRules,
       ...vuePugRules,
 
-      // Vue3 特定规则
-      'vue/no-deprecated-v-on-native-modifier': 'error',
-      'vue/no-deprecated-v-bind-sync': 'error',
       'vue/no-deprecated-filters': 'error',
       'vue/no-deprecated-functional-template': 'error',
       'vue/no-deprecated-html-element-is': 'error',
@@ -57,7 +54,11 @@ export default [
       'vue/no-deprecated-router-link-tag-prop': 'error',
       'vue/no-deprecated-slot-attribute': 'error',
       'vue/no-deprecated-slot-scope-attribute': 'error',
+      'vue/no-deprecated-v-bind-sync': 'error',
       'vue/no-deprecated-v-is': 'error',
+
+      // Vue3 特定规则
+      'vue/no-deprecated-v-on-native-modifier': 'error',
       'vue/no-deprecated-vue-config-keycodes': 'error',
       'vue/no-expose-after-await': 'error',
       'vue/no-lifecycle-after-await': 'error',
