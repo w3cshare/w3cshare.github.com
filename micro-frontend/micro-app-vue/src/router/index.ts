@@ -6,13 +6,16 @@
  * @FilePath: /micro-frontend/micro-app-vue/src/router/index.ts
  * @Description:
  */
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
-  // 路由模式
-  // history: createWebHistory(import.meta.env.BASE_URL),
-  // history: createWebHashHistory(import.meta.env.BASE_URL),
+  /*
+   * 路由模式
+   * history: createWebHistory(import.meta.env.BASE_URL),
+   * history: createWebHashHistory(import.meta.env.BASE_URL),
+   */
   history: createWebHashHistory('/micro-app-vue'),
   routes: [
     {
@@ -23,9 +26,12 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+
+      /*
+       * route level code-splitting
+       * this generates a separate chunk (About.[hash].js) for this route
+       * which is lazy-loaded when the route is visited.
+       */
       component: () => import('../views/AboutView.vue'),
     },
   ],

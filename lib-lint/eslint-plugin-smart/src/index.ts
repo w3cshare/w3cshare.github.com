@@ -17,8 +17,7 @@ import nestJs from './nest'
 import react from './react'
 import stylelint from './style/stylelint'
 import typescript from './typescript'
-import vueJs from './vue'
-import vueTypescript from './vue/vue-typescript'
+import vue from './vue'
 
 /**
  * Configuration metadata
@@ -49,7 +48,7 @@ const config = [
   // Language-specific rules
   ...typescript, // TypeScript rules
   ...react, // React rules
-  ...vueTypescript, // Vue3 + TypeScript rules
+  ...vue, // Vue3 + TypeScript rules
 
   // Style rules
   ...stylelint,
@@ -78,10 +77,8 @@ export default (_payload: {
 export const baseModule = [...base].flat()
 export const jsonModule = [...sortJson].flat()
 export const typescriptModule = [...base, ...typescript].flat()
-export const vueTsModule = [...base, ...typescript, ...vueTypescript].flat()
-export const vueJsModule = [...base, ...vueJs].flat()
-export const reactJsModule = [...base, ...react].flat()
-export const reactTsModule = [...base, ...typescript, ...react].flat()
+export const vueModule = [...base, ...typescript, ...vue].flat()
+export const reactModule = [...base, ...typescript, ...react].flat()
 export const nestJsModule = [...base, ...typescript, ...nestJs].flat()
 
 // Type exports for better TypeScript support

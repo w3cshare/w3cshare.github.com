@@ -5,6 +5,7 @@ import vuePugPlugin from 'eslint-plugin-vue-pug'
 import vueScopedCssPlugin from 'eslint-plugin-vue-scoped-css'
 import vueParser from 'vue-eslint-parser'
 
+import { FILE_PATTERNS } from '../types'
 import {
   vueA11yRules,
   vueCompositionRules,
@@ -12,7 +13,6 @@ import {
   vuePugRules,
   vueScopedCssRules,
 } from './rules/vue3'
-import { FILE_PATTERNS } from '../types'
 
 /**
  * Vue3 ESLint 配置

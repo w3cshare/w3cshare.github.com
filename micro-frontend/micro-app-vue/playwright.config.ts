@@ -1,5 +1,5 @@
-import process from 'node:process'
 import { defineConfig, devices } from '@playwright/test'
+import process from 'node:process'
 
 /**
  * Read environment variables from file.
@@ -12,6 +12,7 @@ import { defineConfig, devices } from '@playwright/test'
  */
 export default defineConfig({
   testDir: './e2e',
+
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -21,18 +22,24 @@ export default defineConfig({
      */
     timeout: 5000,
   },
+
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
+
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
+
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
+
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
+
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.CI ? 'http://localhost:4173' : 'http://localhost:5173',
 
@@ -65,32 +72,36 @@ export default defineConfig({
     },
 
     /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: {
-    //     ...devices['Pixel 5'],
-    //   },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: {
-    //     ...devices['iPhone 12'],
-    //   },
-    // },
+    /*
+     * {
+     *   name: 'Mobile Chrome',
+     *   use: {
+     *     ...devices['Pixel 5'],
+     *   },
+     * },
+     * {
+     *   name: 'Mobile Safari',
+     *   use: {
+     *     ...devices['iPhone 12'],
+     *   },
+     * },
+     */
 
     /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: {
-    //     channel: 'msedge',
-    //   },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: {
-    //     channel: 'chrome',
-    //   },
-    // },
+    /*
+     * {
+     *   name: 'Microsoft Edge',
+     *   use: {
+     *     channel: 'msedge',
+     *   },
+     * },
+     * {
+     *   name: 'Google Chrome',
+     *   use: {
+     *     channel: 'chrome',
+     *   },
+     * },
+     */
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */

@@ -1,6 +1,7 @@
 import { Linter } from 'eslint'
 import { defineConfig } from 'eslint/config'
 import pluginVue from 'eslint-plugin-vue'
+import tseslint from 'typescript-eslint'
 
 import { FILE_PATTERNS } from '../types'
 import rules from './rules'
@@ -19,5 +20,7 @@ export default defineConfig([
     rules: {
       ...rules,
     } as unknown as Linter.RulesRecord,
+
+    languageOptions: { parserOptions: { parser: tseslint.parser } },
   },
 ])
