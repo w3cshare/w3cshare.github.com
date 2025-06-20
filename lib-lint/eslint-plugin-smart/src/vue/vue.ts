@@ -1,26 +1,24 @@
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
 import { Linter } from 'eslint'
-import { defineConfig } from 'eslint/config'
 import pluginVue from 'eslint-plugin-vue'
-import tseslint from 'typescript-eslint'
 
 import { FILE_PATTERNS } from '../types'
 import rules from './rules'
 
-export default defineConfig(
+export default defineConfigWithVueTs(
   (
     pluginVue.configs['flat/essential'] as (Linter.Config & { plugins: Record<string, unknown> })[]
   ).map(rule => {
     if (!rule.files) rule.files = FILE_PATTERNS.VUE
     return rule
   }),
-
+  vueTsConfigs.recommended,
   {
     files: FILE_PATTERNS.VUE,
     name: '@iss.smart/vue-js-recommended',
     rules: {
       ...rules,
+      '@typescript-eslint/no-unused-vars': 'off',
     } as unknown as Linter.RulesRecord,
-
-    languageOptions: { parserOptions: { parser: tseslint.parser, extraFileExtensions: ['.vue'] } },
   },
-)
+) as any
