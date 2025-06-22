@@ -36,19 +36,19 @@ export const meta = {
 
 // Default configuration combining all features
 const config = [
+  // Language-specific rules
+  ...react, // React rules
+  ...vue, // Vue3 + TypeScript rules
+  ...typescript, // TypeScript rules
+
   // Base ESLint rules
   ...base,
   ...jsdoc,
 
   // Code style optimization rules
   ...sortJson, // JSON file sorting
-  ...unusedImports, // Remove unused imports
   ...sortObject, // Object property sorting
-
-  // Language-specific rules
-  ...typescript, // TypeScript rules
-  ...react, // React rules
-  ...vue, // Vue3 + TypeScript rules
+  ...unusedImports, // Remove unused imports
 
   // Style rules
   ...stylelint,

@@ -1,5 +1,5 @@
 declare module 'eslint-plugin-sort' {
-  import type { ESLint } from 'eslint'
+  import type { ESLint, Linter } from 'eslint'
 
   const plugin: ESLint.Plugin & {
     configs: {

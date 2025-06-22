@@ -27,7 +27,6 @@ export default defineConfigWithVueTs(
           return [key, value]
         }),
       ),
-      '@typescript-eslint/no-unused-vars': 'off',
     } as unknown as Linter.RulesRecord,
   },
-) as any
+) as Linter.Config & { plugins: Record<string, unknown> }[]

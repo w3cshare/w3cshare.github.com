@@ -1,11 +1,11 @@
 /**
  * @file Base ESLint configuration
  */
-
 import css from '@eslint/css'
 import js from '@eslint/js'
 import json from '@eslint/json'
 import markdown from '@eslint/markdown'
+import { defineConfig } from 'eslint/config'
 import globals from 'globals'
 
 import { FILE_PATTERNS, IGNORE_PATTERNS, type LanguageConfig, RuleConfig } from '../types'
@@ -17,7 +17,10 @@ const jsConfig: LanguageConfig & RuleConfig = {
   files: FILE_PATTERNS.SCRIPT,
   name: '@iss.smart/js-recommended',
   plugins: { js },
-  rules: jsRules as unknown as RuleConfig['rules'],
+  rules: {
+    ...js.configs.recommended.rules,
+    ...jsRules,
+  } as unknown as RuleConfig['rules'],
 }
 
 // JSON 配置
@@ -30,21 +33,29 @@ const jsonConfigs: LanguageConfig[] = ['json', 'jsonc', 'json5'].map(ext => ({
 }))
 
 // Markdown 配置
-const markdownConfig: LanguageConfig = {
+const markdownConfig: LanguageConfig & RuleConfig = {
   // extends: ['markdown/recommended'],
   files: FILE_PATTERNS.MARKDOWN,
   language: 'markdown/commonmark',
   name: '@iss.smart/markdown-recommended',
   plugins: { markdown },
+  rules: {
+    'markdown/fenced-code-language': 'off',
+    'markdown/no-missing-label-refs': 'off',
+    'markdown/no-multiple-h1': 'off',
+  },
 }
 
 // CSS 配置
-const cssConfig: LanguageConfig = {
+const cssConfig: LanguageConfig & RuleConfig = {
   // extends: ['css/recommended'],
   files: FILE_PATTERNS.STYLE,
   language: 'css/css',
   name: '@iss.smart/css-recommended',
   plugins: { css },
+  rules: {
+    ...css.configs.recommended.rules,
+  },
 }
 
 // 运行时环境配置
@@ -60,15 +71,16 @@ const globalsConfig: LanguageConfig = {
   name: '@iss.smart/globals-recommended',
 }
 
-export default [
+const configs = defineConfig(
   jsConfig,
+  markdown.configs.recommended,
   markdownConfig,
   cssConfig,
-  globalsConfig,
-  ...jsonConfigs,
+  jsonConfigs,
   {
     ignores: IGNORE_PATTERNS,
   },
+  globalsConfig,
+)
 
-  // globalIgnores(IGNORE_PATTERNS),
-]
+export default configs

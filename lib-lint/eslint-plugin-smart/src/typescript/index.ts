@@ -21,7 +21,7 @@ export default tseslint.config(
   tseslint.configs.strict,
   tseslint.configs.stylistic,
   {
-    files: FILE_PATTERNS.SCRIPT,
+    files: [...FILE_PATTERNS.TYPESCRIPT, ...FILE_PATTERNS.REACT],
     name: '@iss.smart/typescript-recommended',
     rules: {
       ...tsBaseRules,
