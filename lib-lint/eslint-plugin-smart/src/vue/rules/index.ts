@@ -5,7 +5,16 @@ import {
   vueTemplateRules,
   vueTemplateStyleRules,
 } from './vue2'
-import { vueCompositionRules, vuePerformanceRules } from './vue3'
+import {
+  vue3Rules,
+  vue3ScriptRules,
+  vue3TemplateRules,
+  vueA11yRules,
+  vueCompositionRules,
+  vuePerformanceRules,
+  vuePugRules,
+  vueScopedCssRules,
+} from './vue3'
 
 export default {
   // vue2
@@ -16,6 +25,12 @@ export default {
   ...vueCoreRules,
 
   // vue3
+  ...vueA11yRules,
+  ...vuePugRules,
+  ...vueScopedCssRules,
   ...vueCompositionRules,
   ...vuePerformanceRules,
+  ...vue3ScriptRules,
+  ...vue3TemplateRules,
+  ...vue3Rules,
 }

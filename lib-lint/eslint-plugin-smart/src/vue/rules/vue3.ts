@@ -83,13 +83,74 @@ export const vuePugRules = {
   'vue-pug/quotes': ['error', 'single'],
 }
 
+/**
+ * Vue3 脚本相关规则
+ * @description Vue3 脚本相关规则
+ */
+export const vue3ScriptRules = {
+  'vue/block-lang': [
+    'error',
+    {
+      script: {
+        lang: ['ts', 'tsx'],
+      },
+      style: {
+        lang: ['scss', 'less'],
+      },
+      template: {
+        lang: ['pug'],
+      },
+    },
+  ],
+  'vue/component-options-name-casing': ['error', 'PascalCase'],
+  'vue/no-export-in-script-setup': 'error',
+  'vue/no-ref-as-operand': 'error',
+  'vue/no-setup-props-destructure': 'error',
+  'vue/no-undef-properties': 'error',
+  'vue/no-unused-refs': 'error',
+  'vue/no-useless-v-bind': 'error',
+  'vue/prefer-separate-static-class': 'error',
+  'vue/require-typed-ref': 'error',
+}
+
+export const vue3TemplateRules = {
+  'vue/no-deprecated-filters': 'error',
+  'vue/no-deprecated-functional-template': 'error',
+  'vue/no-deprecated-html-element-is': 'error',
+  'vue/no-deprecated-props-default-this': 'error',
+  'vue/no-deprecated-router-link-tag-prop': 'error',
+  'vue/no-deprecated-slot-attribute': 'error',
+  'vue/no-deprecated-slot-scope-attribute': 'error',
+  'vue/no-deprecated-v-bind-sync': 'error',
+  'vue/no-deprecated-v-is': 'error',
+}
+
+// vue3特定规则
+export const vue3Rules = {
+  // Vue3 特定规则
+  'vue/no-deprecated-v-on-native-modifier': 'error',
+  'vue/no-deprecated-vue-config-keycodes': 'error',
+  'vue/no-expose-after-await': 'error',
+  'vue/no-lifecycle-after-await': 'error',
+  'vue/no-watch-after-await': 'error',
+  'vue/prefer-import-from-vue': 'error',
+  'vue/require-explicit-emits': 'error',
+  'vue/require-slots-as-functions': 'error',
+  'vue/require-toggle-inside-transition': 'error',
+  'vue/valid-define-emits': 'error',
+  'vue/valid-define-props': 'error',
+  'vue/valid-v-is': 'error',
+  'vue/valid-v-memo': 'error',
+}
+
 export default {
-  // ...vueA11yRules,
+  ...vueA11yRules,
   ...vueCompositionRules,
 
-  /*
-   * ...vuePugRules,
-   * ...vueScopedCssRules,
-   */
+  ...vuePugRules,
+  ...vueScopedCssRules,
   ...vuePerformanceRules,
+  ...vue3ScriptRules,
+  ...vue3TemplateRules,
+  ...vue3Rules,
 }
