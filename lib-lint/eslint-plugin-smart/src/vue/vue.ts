@@ -9,7 +9,15 @@ import { FILE_PATTERNS } from '../types'
 import i18n from './i18n'
 import rules from './rules'
 
-// console.log('🚀 ~ file: vue.ts:11 ~ i18n:', i18n)
+const _rules = Object.fromEntries(
+  Object.entries(rules).map(([key, value]) => {
+    // 确保所有规则都支持自动修复
+    if (typeof value === 'string') {
+      return [key, [value, { fixable: true }]]
+    }
+    return [key, value]
+  }),
+)
 
 export default defineConfigWithVueTs(
   (
@@ -35,17 +43,7 @@ export default defineConfigWithVueTs(
       'vue-pug': vuePugPlugin,
       'vue-scoped-css': vueScopedCssPlugin,
     },
-    rules: {
-      ...Object.fromEntries(
-        Object.entries(rules).map(([key, value]) => {
-          // 确保所有规则都支持自动修复
-          if (typeof value === 'string') {
-            return [key, [value, { fixable: true }]]
-          }
-          return [key, value]
-        }),
-      ),
-    } as unknown as Linter.RulesRecord,
+    rules: _rules as unknown as Linter.RulesRecord,
   },
   i18n,
 ) as Linter.Config & { plugins: Record<string, unknown> }[]
