@@ -1,5 +1,8 @@
+import stylelintConfigSmart from "stylelint-config-smart";
 
-import stylelintConfigSmart from 'stylelint-config-smart'
-
-export default stylelintConfigSmart()
-
+export default {
+  ...stylelintConfigSmart(),
+  rules: {
+    // 添加自定义规则或覆盖默认规则
+  },
+};
