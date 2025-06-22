@@ -2,7 +2,7 @@
  * @file Unused imports and variables configuration
  */
 
-// import { defineConfig } from 'eslint/config'
+import { defineConfig } from 'eslint/config'
 import pluginUnusedImports from 'eslint-plugin-unused-imports'
 
 import { FILE_PATTERNS, type RuleConfig } from '../types'
@@ -70,4 +70,4 @@ const unusedImportsConfig: RuleConfig = {
   },
 }
 
-export default [unusedImportsConfig]
+export default defineConfig(unusedImportsConfig)

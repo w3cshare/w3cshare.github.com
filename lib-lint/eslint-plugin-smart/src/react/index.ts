@@ -1,4 +1,5 @@
-// import { defineConfig } from 'eslint/config'
+import { Linter } from 'eslint'
+import { defineConfig } from 'eslint/config'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import pluginReact from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -13,7 +14,7 @@ import {
   reactStyleRules,
 } from './rules/index'
 
-export default [
+export default defineConfig(
   {
     files: FILE_PATTERNS.REACT,
     languageOptions: {
@@ -28,7 +29,7 @@ export default [
     name: '@iss.smart/react-recommended',
     plugins: {
       react: pluginReact,
-    },
+    } as unknown as Record<string, Linter.RulesRecord>,
     rules: {
       'react/jsx-uses-react': 'error',
       'react/jsx-uses-vars': 'error',
@@ -38,7 +39,7 @@ export default [
       ...reactPerformanceRules,
       ...reactModernRules,
       ...jsxA11yRules,
-    },
+    } as unknown as Linter.RulesRecord,
   },
   {
     files: FILE_PATTERNS.REACT,
@@ -60,10 +61,10 @@ export default [
   {
     files: FILE_PATTERNS.REACT,
     name: '@iss.smart/react-reactHooks-recommended',
-    plugins: { 'react-hooks': reactHooks },
+    plugins: { 'react-hooks': reactHooks } as unknown as Record<string, Linter.RulesRecord>,
     rules: {
       'react-hooks/exhaustive-deps': 'warn',
       'react-hooks/rules-of-hooks': 'error',
     },
   },
-]
+)

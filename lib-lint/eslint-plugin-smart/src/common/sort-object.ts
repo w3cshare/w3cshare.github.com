@@ -3,7 +3,7 @@
  * @description 对象属性、类型、解构等排序规则配置
  */
 
-// import { defineConfig } from 'eslint/config'
+import { defineConfig } from 'eslint/config'
 import sort from 'eslint-plugin-sort'
 
 import { FILE_PATTERNS, type RuleConfig } from '../types'
@@ -106,11 +106,11 @@ const sortObjectConfig: RuleConfig = {
   },
 }
 
-export default [
+export default defineConfig(
   {
     files: FILE_PATTERNS.SCRIPT,
     name: '@iss.smart/sort-object-recommended',
     ...sort.configs['flat/recommended'],
   },
   sortObjectConfig,
-]
+)

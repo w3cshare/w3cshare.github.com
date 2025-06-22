@@ -1,6 +1,7 @@
+import { defineConfig } from 'eslint/config'
 import globals from 'globals'
 
-import { FILE_PATTERNS } from '../types'
+import { FILE_PATTERNS, type RuleConfig } from '../types'
 import { nestFrameworkRules } from './rules'
 
 const nestjsFlatConfig = {
@@ -26,25 +27,22 @@ const nestjsFlatConfig = {
   },
   rules: {
     ...nestFrameworkRules,
-  },
-}
+  } as unknown as RuleConfig['rules'],
+} as unknown
 
-export default [
-  nestjsFlatConfig,
-  {
-    // 为测试文件添加Jest环境配置
-    files: FILE_PATTERNS.JEST,
-    languageOptions: {
-      globals: {
-        afterAll: true,
-        afterEach: true,
-        beforeAll: true,
-        beforeEach: true,
-        describe: true,
-        expect: true,
-        it: true,
-        jest: true,
-      },
+export default defineConfig(nestjsFlatConfig, {
+  // 为测试文件添加Jest环境配置
+  files: FILE_PATTERNS.JEST,
+  languageOptions: {
+    globals: {
+      afterAll: true,
+      afterEach: true,
+      beforeAll: true,
+      beforeEach: true,
+      describe: true,
+      expect: true,
+      it: true,
+      jest: true,
     },
   },
-]
+})

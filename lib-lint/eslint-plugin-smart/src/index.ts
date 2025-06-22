@@ -7,6 +7,7 @@
  */
 
 import type { Linter } from 'eslint'
+import { defineConfig } from 'eslint/config'
 
 import base from './base'
 import jsdoc from './base/jsdoc'
@@ -35,24 +36,25 @@ export const meta = {
 } as const
 
 // Default configuration combining all features
-const config = [
+const config = defineConfig(
+
   // Language-specific rules
-  ...react, // React rules
-  ...vue, // Vue3 + TypeScript rules
-  ...typescript, // TypeScript rules
+  react, // React rules
+  vue, // Vue3 + TypeScript rules
+  typescript, // TypeScript rules
 
   // Base ESLint rules
-  ...base,
-  ...jsdoc,
+  base,
+  jsdoc,
 
   // Code style optimization rules
-  ...sortJson, // JSON file sorting
-  ...sortObject, // Object property sorting
-  ...unusedImports, // Remove unused imports
+  sortJson, // JSON file sorting
+  sortObject, // Object property sorting
+  unusedImports, // Remove unused imports
 
   // Style rules
-  ...stylelint,
-].flat()
+  stylelint,
+) as unknown as Linter.Config[]
 
 export default (_payload: {
   css?: boolean
@@ -70,16 +72,16 @@ export default (_payload: {
   vue?: boolean
   vue3?: boolean
 }) => {
-  return config as Linter.Config[]
+  return config
 }
 
 // Specialized presets for different project types
-export const baseModule = [...base].flat()
-export const jsonModule = [...sortJson].flat()
-export const typescriptModule = [...base, ...typescript].flat()
-export const vueModule = [...base, ...typescript, ...vue].flat()
-export const reactModule = [...base, ...typescript, ...react].flat()
-export const nestJsModule = [...base, ...typescript, ...nestJs].flat()
+export const baseModule = defineConfig(base)
+export const jsonModule = defineConfig(sortJson)
+export const typescriptModule = defineConfig(base, typescript)
+export const vueModule = defineConfig(base, typescript, vue)
+export const reactModule = defineConfig(base, typescript, react)
+export const nestJsModule = defineConfig(base, typescript, nestJs)
 
 // Type exports for better TypeScript support
 export type { Linter }
