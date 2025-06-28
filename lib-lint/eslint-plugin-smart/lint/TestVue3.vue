@@ -1,7 +1,7 @@
-<template>
+<template lang="pug">
   <div class="example">
     <!-- 未使用的变量将在ESLint中被检测 -->
-    <p title="123" @click="methodA" sub="123" attr="123123" :abc="abc" @change="methodB">
+    <p title="123" sub="123" attr="123123" :abc="abc" @click="methodA" @change="methodB">
       {{ usedVariable }}
     </p>
   </div>
@@ -9,6 +9,11 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+
+const props = defineProps<{
+  propA: number
+  propB?: string
+}>()
 
 // 组合式API将按ESLint规则排序
 const usedVariable = ref('Hello World')
@@ -24,27 +29,14 @@ const methodA = () => {
   // console.log('Method A')
 }
 
-// 属性将按ESLint规则排序
-defineProps({
-  propA: {
-    required: true,
-    type: Number,
-  },
-  propB: {
-    default: 'default value',
-    type: String,
-  },
-})
-
 const methodB = () => {
   // console.log('Method B')
 }
 </script>
 
-<style lang="less">
-// LESS语法错误将被检测
+<style lang="less" scoped>
 .example {
-  color: @undefined-variable; // 这将触发LESS语法警告
+  color: @undefined-variable;
   .nested {
     font-size: 14px;
     color: blue;

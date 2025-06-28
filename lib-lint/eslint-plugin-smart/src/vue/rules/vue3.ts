@@ -105,7 +105,8 @@ export const vue3ScriptRules = {
   'vue/component-options-name-casing': ['error', 'PascalCase'],
   'vue/no-export-in-script-setup': 'error',
   'vue/no-ref-as-operand': 'error',
-  'vue/no-setup-props-destructure': 'error',
+
+  // 'vue/no-setup-props-destructure': 'error',
   'vue/no-undef-properties': 'error',
   'vue/no-unused-refs': 'error',
   'vue/no-useless-v-bind': 'error',
@@ -114,7 +115,7 @@ export const vue3ScriptRules = {
 }
 
 export const vue3TemplateRules = {
-  'vue/no-deprecated-filters': 'error',
+  // 'vue/no-deprecated-filters': 'error',
   'vue/no-deprecated-functional-template': 'error',
   'vue/no-deprecated-html-element-is': 'error',
   'vue/no-deprecated-props-default-this': 'error',

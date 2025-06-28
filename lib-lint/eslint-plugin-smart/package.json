@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-smart",
-  "version": "0.0.14",
+  "version": "0.0.20",
   "displayName": "ESLint插件",
   "description": "通用 ESLint 插件&规则集，适用于React、Vue、NestJS和TypeScript项目",
   "type": "module",
@@ -30,10 +30,10 @@
     "LICENSE",
     "README.md",
     "__tests__",
-    "dist",
+    "dist/*",
     "docs",
     "eslint.config.js",
-    "lib",
+    "lib/*",
     "src",
     "tsconfig.json"
   ],

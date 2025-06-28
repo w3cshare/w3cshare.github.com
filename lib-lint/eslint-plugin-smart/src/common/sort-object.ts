@@ -3,12 +3,13 @@
  * @description 对象属性、类型、解构等排序规则配置
  */
 
+import { Linter } from 'eslint'
 import { defineConfig } from 'eslint/config'
 import sort from 'eslint-plugin-sort'
 
-import { FILE_PATTERNS, type RuleConfig } from '../types'
+import { FILE_PATTERNS } from '../types'
 
-const sortObjectConfig: RuleConfig = {
+const sortObjectConfig: Linter.Config & { plugins: Record<string, unknown> } = {
   files: FILE_PATTERNS.SCRIPT,
   name: '@iss.smart/sort-object',
   plugins: { sort },
@@ -68,11 +69,10 @@ const sortObjectConfig: RuleConfig = {
 
     /*
      * 对象属性排序
-     * 'sort/object-properties': 'off',
      */
 
     'sort/object-properties': [
-      'error',
+      'off',
       {
         caseSensitive: true,
         natural: true,

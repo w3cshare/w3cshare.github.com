@@ -16,9 +16,10 @@
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
     ".prettierrc.js",
+    "dist/*",
     "docs",
     "eslint.config.js",
-    "lib",
+    "lib/*",
     "src",
     "tsconfig.json"
   ],

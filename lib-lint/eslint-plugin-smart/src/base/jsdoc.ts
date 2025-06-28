@@ -10,7 +10,7 @@ const config = defineConfig(
   {
     ...jsdoc.configs['flat/recommended'],
     files: FILE_PATTERNS.SCRIPT,
-  } as unknown,
+  } as Linter.Config & { plugins?: Record<string, unknown> },
 
   {
     files: FILE_PATTERNS.SCRIPT,

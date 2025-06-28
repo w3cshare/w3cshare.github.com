@@ -1,7 +1,8 @@
+import { Linter } from 'eslint'
 import { defineConfig } from 'eslint/config'
 import globals from 'globals'
 
-import { FILE_PATTERNS, type RuleConfig } from '../types'
+import { FILE_PATTERNS } from '../types'
 import { nestFrameworkRules } from './rules'
 
 const nestjsFlatConfig = {
@@ -27,7 +28,7 @@ const nestjsFlatConfig = {
   },
   rules: {
     ...nestFrameworkRules,
-  } as unknown as RuleConfig['rules'],
+  } as unknown as Linter.RulesRecord,
 } as unknown
 
 export default defineConfig(nestjsFlatConfig, {

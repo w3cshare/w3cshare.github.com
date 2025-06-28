@@ -18,15 +18,18 @@ export const vueTemplateRules = {
  * @description Vue组件的命名规范
  */
 export const vueNamingRules = {
-  // 强制组件名在模板中使用kebab-case命名
+  // 强制组件名在模板中使用PascalCase命名
   'vue/component-name-in-template-casing': [
     'error',
-    'kebab-case',
+    'PascalCase', // or 'kebab-case',
     {
       ignores: [], // 没有例外情况
-      registeredComponentsOnly: false, // 检查所有组件而不仅是注册的
+      registeredComponentsOnly: true, // 检查所有组件而不仅是注册的
     },
   ],
+
+  // 强制属性名使用驼峰命名
+  'vue/attribute-hyphenation': ['error', 'always'],
 
   // 强制组件名使用多单词命名（避免与HTML元素冲突）
   'vue/multi-word-component-names': [
@@ -45,8 +48,7 @@ export const vueNamingRules = {
  * @description 控制Vue模板的格式和排版
  */
 export const vueTemplateStyleRules = {
-  // 强制多行元素的闭合标签换行
-  'vue/html-closing-bracket-newline': ['error', { multiline: 'always', singleline: 'never' }],
+  // 'vue/html-closing-bracket-newline': ['error', { multiline: 'always', singleline: 'never' }],// 强制多行元素的闭合标签换行
 
   // 强制标签闭合括号的位置
   'vue/html-closing-bracket-spacing': [

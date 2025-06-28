@@ -2,31 +2,7 @@
  * @file ESLint configuration type definitions
  */
 
-import type { Linter } from 'eslint'
-
 export type FilePattern = (string | string[])[]
-
-export interface BaseConfig {
-  files: FilePattern
-  languageOptions?: {
-    globals?: Record<string, boolean>
-    parser?: Linter.Parser
-    parserOptions?: Record<string, Linter.ParserOptions>
-    [key: string]: unknown
-  }
-  name: string
-  plugins?: Record<string, unknown>
-  processor?: string | Linter.Processor
-}
-
-export interface LanguageConfig extends BaseConfig {
-  extends?: string[]
-  language?: string
-}
-
-export interface RuleConfig extends BaseConfig {
-  rules: Linter.RulesRecord
-}
 
 export const SUPPORTED_EXTENSIONS = {
   JEST: ['test.ts', 'spec.ts', 'e2e-spec.ts'],
@@ -40,7 +16,8 @@ export const SUPPORTED_EXTENSIONS = {
 } as const
 
 export const createFilePattern = (extensions: readonly string[]): FilePattern => {
-  return [`**/*.{${extensions.join(',')}}`, `*.{${extensions.join(',')}}`]
+  // return [`**/*.{${extensions.join(',')}}`, `*.{${extensions.join(',')}}`]
+  return extensions.flatMap(ext => [`*.${ext}`, `**/*.${ext}`])
 }
 
 export const FILE_PATTERNS = {

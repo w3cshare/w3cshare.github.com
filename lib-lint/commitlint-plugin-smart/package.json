@@ -25,8 +25,8 @@
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
     "README.md",
-    "dist",
-    "lib",
+    "dist/*",
+    "lib/*",
     "src",
     "tsconfig.json"
   ],

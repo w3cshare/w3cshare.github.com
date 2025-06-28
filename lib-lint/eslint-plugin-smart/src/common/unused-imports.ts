@@ -2,13 +2,14 @@
  * @file Unused imports and variables configuration
  */
 
+import { Linter } from 'eslint'
 import { defineConfig } from 'eslint/config'
 import pluginUnusedImports from 'eslint-plugin-unused-imports'
 
-import { FILE_PATTERNS, type RuleConfig } from '../types'
+import { FILE_PATTERNS } from '../types'
 
 // JavaScript/TypeScript 未使用导入规则
-const unusedImportsConfig: RuleConfig = {
+const unusedImportsConfig: Linter.Config & { plugins: Record<string, unknown> } = {
   files: FILE_PATTERNS.SCRIPT,
   name: '@iss.smart/unused-imports',
   plugins: {
@@ -43,7 +44,7 @@ const unusedImportsConfig: RuleConfig = {
 
     // 处理未使用的变量和参数
     'unused-imports/no-unused-vars': [
-      'error',
+      'off',
       {
         // 参数检查方式：在使用之后的参数会被检查
         args: 'after-used',

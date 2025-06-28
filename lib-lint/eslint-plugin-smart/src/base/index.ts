@@ -5,36 +5,43 @@ import css from '@eslint/css'
 import js from '@eslint/js'
 import json from '@eslint/json'
 import markdown from '@eslint/markdown'
+import { Linter } from 'eslint'
 import { defineConfig } from 'eslint/config'
 import globals from 'globals'
 
-import { FILE_PATTERNS, IGNORE_PATTERNS, type LanguageConfig, RuleConfig } from '../types'
+import { FILE_PATTERNS, IGNORE_PATTERNS } from '../types'
 import jsRules from './rules/js'
 
-// 基础 JavaScript/TypeScript 配置
-const jsConfig: LanguageConfig & RuleConfig = {
-  // extends: ['js/recommended'],
+// 基础 JavaScript 配置
+const jsConfig: Linter.Config & { extends: string[]; plugins?: Record<string, unknown> } = {
+  extends: ['js/recommended'],
   files: FILE_PATTERNS.SCRIPT,
   name: '@iss.smart/js-recommended',
   plugins: { js },
   rules: {
     ...js.configs.recommended.rules,
     ...jsRules,
-  } as unknown as RuleConfig['rules'],
+  } as unknown as Linter.RulesRecord,
 }
 
 // JSON 配置
-const jsonConfigs: LanguageConfig[] = ['json', 'jsonc', 'json5'].map(ext => ({
-  // extends: ['json/recommended'],
+const jsonConfigs: Linter.Config & { plugins?: Record<string, unknown> }[] = [
+  'json',
+  'jsonc',
+  'json5',
+].map(ext => ({
+  extends: ['json/recommended'],
   files: [`**/*.${ext}`],
   language: `json/${ext}`,
   name: `@iss.smart/${ext}-recommended`,
   plugins: { json },
 }))
 
-// Markdown 配置
-const markdownConfig: LanguageConfig & RuleConfig = {
-  // extends: ['markdown/recommended'],
+/*
+ * Markdown 配置
+ */
+const markdownConfig: Linter.Config & { extends: string[]; plugins?: Record<string, unknown> } = {
+  extends: ['markdown/recommended'],
   files: FILE_PATTERNS.MARKDOWN,
   language: 'markdown/commonmark',
   name: '@iss.smart/markdown-recommended',
@@ -47,8 +54,8 @@ const markdownConfig: LanguageConfig & RuleConfig = {
 }
 
 // CSS 配置
-const cssConfig: LanguageConfig & RuleConfig = {
-  // extends: ['css/recommended'],
+const cssConfig: Linter.Config & { extends: string[]; plugins?: Record<string, unknown> } = {
+  extends: ['css/recommended'],
   files: FILE_PATTERNS.STYLE,
   language: 'css/css',
   name: '@iss.smart/css-recommended',
@@ -59,10 +66,12 @@ const cssConfig: LanguageConfig & RuleConfig = {
 }
 
 // 运行时环境配置
-const globalsConfig: LanguageConfig = {
+delete globals.browser['AudioWorkletGlobalScope ']
+const globalsConfig: Omit<Linter.Config, 'plugins'> = {
   files: FILE_PATTERNS.SCRIPT,
   languageOptions: {
     globals: {
+      AudioWorkletGlobalScope: false,
       ...globals.browser,
       ...globals.node,
       ...globals.es2021,
@@ -73,7 +82,9 @@ const globalsConfig: LanguageConfig = {
 
 const configs = defineConfig(
   jsConfig,
-  markdown.configs.recommended,
+
+  // markdown.configs.recommended,
+
   markdownConfig,
   cssConfig,
   jsonConfigs,
