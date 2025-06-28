@@ -13,7 +13,7 @@ export default defineConfig(
    */
 
   (vueI18n.configs.recommended as (Linter.Config & { plugins: Record<string, unknown> })[]).map(
-    rule => {
+    (rule) => {
       if (!rule.files) rule.files = FILE_PATTERNS.VUE
       return rule
     },

@@ -6,7 +6,7 @@ import { FILE_PATTERNS } from '../types'
 import rules from './rules'
 
 export default defineConfig(
-  (eslintPluginJsonc.configs['flat/recommended-with-jsonc'] as Linter.Config[]).map(item => {
+  (eslintPluginJsonc.configs['flat/recommended-with-jsonc'] as Linter.Config[]).map((item) => {
     if (!item.files) {
       item.files = FILE_PATTERNS.JSON
     }

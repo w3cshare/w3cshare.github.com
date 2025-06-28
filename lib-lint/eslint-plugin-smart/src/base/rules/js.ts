@@ -38,7 +38,9 @@ const jsCodeQualityRules = {
  */
 const jsStyleRules = {
   'array-bracket-spacing': ['error', 'never'],
-  'arrow-parens': ['error', 'as-needed'],
+
+  // 'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
+  'arrow-parens': ['error', 'always'],
   'comma-dangle': ['warn', 'always-multiline'],
   'max-len': ['warn', { code: 100, ignoreComments: true, ignoreStrings: true }],
   'multiline-comment-style': ['warn', 'starred-block'],

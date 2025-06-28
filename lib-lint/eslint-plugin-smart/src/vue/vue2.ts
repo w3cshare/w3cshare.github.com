@@ -9,7 +9,7 @@ import rules from './rules'
 export default defineConfig(
   (
     pluginVue.configs['flat/essential'] as (Linter.Config & { plugins: Record<string, unknown> })[]
-  ).map(rule => {
+  ).map((rule) => {
     if (!rule.files) rule.files = FILE_PATTERNS.VUE
     return rule
   }),

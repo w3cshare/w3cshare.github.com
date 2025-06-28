@@ -17,7 +17,7 @@ export const SUPPORTED_EXTENSIONS = {
 
 export const createFilePattern = (extensions: readonly string[]): FilePattern => {
   // return [`**/*.{${extensions.join(',')}}`, `*.{${extensions.join(',')}}`]
-  return extensions.flatMap(ext => [`*.${ext}`, `**/*.${ext}`])
+  return extensions.flatMap((ext) => [`*.${ext}`, `**/*.${ext}`])
 }
 
 export const FILE_PATTERNS = {

@@ -6,8 +6,8 @@ import { tsBaseRules } from './rules'
 
 const func = () => {
   ;[tseslint.configs.recommended, tseslint.configs.strict, tseslint.configs.stylistic].forEach(
-    item => {
-      item.forEach(element => {
+    (item) => {
+      item.forEach((element) => {
         if (!element.files) element.files = [...FILE_PATTERNS.TYPESCRIPT, ...FILE_PATTERNS.REACT]
       })
     },

@@ -12,7 +12,7 @@ import rules from './rules'
 export default defineConfig(
   (
     pluginVue.configs['flat/essential'] as (Linter.Config & { plugins: Record<string, unknown> })[]
-  ).map(rule => ({
+  ).map((rule) => ({
     ...rule,
     files: ['**/*.vue', '*.vue'],
   })),
