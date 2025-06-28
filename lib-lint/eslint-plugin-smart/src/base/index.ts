@@ -37,9 +37,7 @@ const jsonConfigs: Linter.Config & { plugins?: Record<string, unknown> }[] = [
   plugins: { json },
 }))
 
-/*
- * Markdown 配置
- */
+// Markdown 配置
 const markdownConfig: Linter.Config & { extends: string[]; plugins?: Record<string, unknown> } = {
   extends: ['markdown/recommended'],
   files: FILE_PATTERNS.MARKDOWN,

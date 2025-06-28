@@ -20,15 +20,82 @@ const isNodeEnv = typeof process !== 'undefined' && process.versions && process.
  * 智能默认配置 - 这些配置会自动应用到所有项目
  */
 const defaultOptions: Partial<Options> = {
-  arrowParens: 'avoid',
+  // 箭头函数参数是否总是带括号 'always' | 'avoid'
+  arrowParens: 'always',
+
+  // 对象前后添加空格 { foo: bar }
   bracketSpacing: true,
+
+  // 行尾换行符 'lf' | 'crlf' | 'cr' | 'auto'
   endOfLine: 'lf',
+
+  // 每行最大字符数
   printWidth: 100,
+
+  // 结尾是否添加分号
   semi: false,
+
+  // 是否使用单引号
   singleQuote: true,
+
+  // tab宽度为2空格
   tabWidth: 2,
+
+  // 多行时尽可能打印尾随逗号 'none' | 'es5' | 'all'
   trailingComma: 'all',
+
+  // 是否使用tab替代空格
   useTabs: false,
+
+  /*
+   * 对象属性的引号使用：'as-needed' | 'consistent' | 'preserve'
+   * quoteProps: 'as-needed',
+   */
+
+  /*
+   * JSX中使用单引号
+   * jsxSingleQuote: false,
+   */
+
+  /*
+   * JSX标签闭合括号是否换行
+   * <button
+   *   className="prettier-class"
+   *   id="prettier-id"
+   *   onClick={this.handleClick}>
+   *   Click Here
+   * </button>
+   * false:
+   * <button
+   *   className="prettier-class"
+   *   id="prettier-id"
+   *   onClick={this.handleClick}
+   * >
+   *   Click Here
+   * </button>
+   */
+  bracketSameLine: false, // 在jsx中把'>' 是否单独放一行, 旧版叫 jsxBracketSameLine
+
+  /*
+   * requirePragma: false,
+   * 是否在已被 Prettier 格式化的文件顶部插入 @format pragma
+   * insertPragma: false,
+   * Markdown 处理方式 'always' | 'never' | 'preserve'
+   * proseWrap: 'preserve',
+   */
+
+  // HTML 空白敏感度 'css' | 'strict' | 'ignore'
+  htmlWhitespaceSensitivity: 'css',
+
+  // 是否格式化嵌入式语言 'auto' | 'off'
+  embeddedLanguageFormatting: 'auto',
+
+  /*
+   * Vue 文件脚本和样式标签缩进
+   * vueIndentScriptAndStyle: false,
+   * 单个属性换行时，是否将属性放在单独的行上
+   * singleAttributePerLine: false, // Vue/JSX中单个属性是否独占一行
+   */
 }
 
 // 打印欢迎信息，表明插件已被加载

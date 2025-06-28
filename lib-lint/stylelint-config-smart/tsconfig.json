@@ -1,7 +1,7 @@
 {
   "extends": "tsconfig-base-smart",
   "compilerOptions": {
-    "outDir": "lib",
+    "outDir": "dist",
     "module": "ESNext",
     "moduleResolution": "node",
     "target": "ESNext"

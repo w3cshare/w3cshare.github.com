@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-smart",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "displayName": "Prettier推荐配置",
   "description": "一个智能的Prettier插件，无需配置，自动应用一致的代码格式化规则",
   "type": "module",
@@ -19,9 +19,10 @@
   "author": "wangwei <wwdqq7@qq.com>",
   "files": [
     ".prettierrc.js",
+    "dist/*",
     "docs",
     "eslint.config.js",
-    "lib",
+    "lib/*",
     "src",
     "tsconfig.json"
   ],
@@ -49,9 +50,9 @@
     "dev": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --watch --outDir lib",
     "build": "rimraf lib && tsup src/**.ts --format=cjs,esm --dts --outDir lib",
     "test": "jest",
+    "lint": "eslint .",
     "format": "prettier --write .",
     "test:watch": "jest --watch",
-    "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
     "style": "stylelint \"**/*.{css,scss,less}\""

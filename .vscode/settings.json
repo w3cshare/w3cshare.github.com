@@ -3,8 +3,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit"
-    // "source.organizeImports": "explicit"
+    "source.fixAll.stylelint": "explicit",
+    "source.organizeImports": "explicit"
     // "source.fixAll.ts": "explicit",
     // "source.fixAll.json": "explicit",
     // "source.fixAll.markdown": "explicit",
@@ -12,6 +12,7 @@
     // "source.fixAll.html": "explicit",
     // "source.fixAll.vue": "explicit",
   },
+  "prettier.configPath": "./.mono-prettier.mjs",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -24,13 +25,7 @@
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"],
   "eslint.format.enable": true,
   "eslint.run": "onSave",
   "baidu.comate.license": "5dbb6e75-78e5-486c-98fa-4a9478a9c290",
@@ -41,5 +36,8 @@
     "**/.hg": false,
     "**/.svn": false,
     "**/Thumbs.db": false
-  }
+  },
+  "stylelint.validate": ["css", "postcss", "scss", "less", "sass", "vue"],
+  "stylelint.packageManager": "pnpm",
+  "oxc.enable": false
 }

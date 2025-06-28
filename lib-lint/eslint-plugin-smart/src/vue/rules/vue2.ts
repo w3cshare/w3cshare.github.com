@@ -69,7 +69,7 @@ export const vueTemplateStyleRules = {
     {
       html: {
         component: 'always', // 组件必须自闭合
-        normal: 'never', // 普通HTML元素不能自闭合
+        normal: 'always', // 普通HTML元素不能自闭合
         void: 'always', // 空元素必须自闭合
       },
       math: 'always', // math元素必须自闭合
@@ -87,6 +87,15 @@ export const vueTemplateStyleRules = {
       singleline: {
         max: 6, // 单行元素最多6个属性
       },
+    },
+  ],
+
+  // 强制HTML注释内容前后有空格
+  'vue/html-comment-content-spacing': [
+    'error',
+    'always',
+    {
+      exceptions: [],
     },
   ],
 }
@@ -212,6 +221,41 @@ export const vueCoreRules = {
    * 验证v-for指令的正确性
    */
   'vue/valid-v-for': 'error',
+
+  // 强制在<script setup>中使用defineProps声明props
+  'vue/define-props-declaration': ['error', 'runtime'],
+
+  /*
+   * 强制props名称与props定义中的名称匹配
+   * 'vue/require-name-property': 'error',
+   */
+
+  'vue/block-tag-newline': [
+    'error',
+    {
+      // https://eslint.vuejs.org/rules/block-tag-newline
+      singleline: 'never', // "always" | "never" | "consistent" | "ignore",
+      multiline: 'always', // "always" | "never" | "consistent" | "ignore",
+      maxEmptyLines: 0,
+      blocks: {
+        template: {
+          singleline: 'never', // "always" | "never" | "consistent" | "ignore",
+          multiline: 'always', // "always" | "never" | "consistent" | "ignore",
+          maxEmptyLines: 0,
+        },
+        script: {
+          singleline: 'never', // "always" | "never" | "consistent" | "ignore",
+          multiline: 'always', // "always" | "never" | "consistent" | "ignore",
+          maxEmptyLines: 0,
+        },
+        'my-block': {
+          singleline: 'never', // "always" | "never" | "consistent" | "ignore",
+          multiline: 'always', // "always" | "never" | "consistent" | "ignore",
+          maxEmptyLines: 0,
+        },
+      },
+    },
+  ],
 }
 
 export default {

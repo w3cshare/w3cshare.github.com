@@ -1,0 +1,5 @@
+export default {
+  'at-rule-no-unknown': null,
+  'color-no-invalid-hex': true,
+  'less/color-no-invalid-hex': true,
+}

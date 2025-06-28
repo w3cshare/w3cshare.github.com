@@ -92,13 +92,13 @@ export const vue3ScriptRules = {
     'error',
     {
       script: {
-        lang: ['ts', 'tsx'],
+        lang: ['ts', 'tsx', 'js', 'jsx'],
       },
       style: {
-        lang: ['scss', 'less'],
+        lang: ['scss', 'less', 'stylus', 'css'],
       },
       template: {
-        lang: ['pug'],
+        lang: ['pug', 'vue', 'html'],
       },
     },
   ],

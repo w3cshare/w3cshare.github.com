@@ -87,7 +87,7 @@
     "nx": "^20.7.2",
     "prettier": "3.5.3",
     "prettier-plugin-smart": "workspace:^",
-    "stylelint": "^15.11.0",
+    "stylelint": "^16.21.0",
     "stylelint-config-smart": "workspace:^",
     "vitepress": "^1.6.3",
     "vitepress-plugin-smart": "workspace:^"

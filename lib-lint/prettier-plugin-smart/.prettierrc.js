@@ -8,6 +8,8 @@
  */
 import prettierPluginSmart from './lib/index.js'
 
+// https://prettier.io/docs/options.html
+
 export default {
   plugins: [prettierPluginSmart],
   ...prettierPluginSmart.defaultOptions,

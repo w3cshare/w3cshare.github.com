@@ -1,39 +1,43 @@
 import type { Config } from 'stylelint'
 
 import { baseRules } from './rules/base'
-import { bemRules } from './rules/bem'
 import { colorRules } from './rules/color'
 import { emptyLineRules } from './rules/empty-line'
 import { lessRules } from './rules/less'
-import { propertiesOrder } from './rules/properties-order'
 import { scssRules } from './rules/scss'
 import { unitRules } from './rules/unit'
-import { vueRules } from './rules/vue'
 
 // 合并所有规则
-const config: Config = {
+export const config: Config = {
   extends: [
     'stylelint-config-standard',
-    'stylelint-config-prettier',
+
+    // 'stylelint-config-prettier',
     'stylelint-config-recommended',
+
+    // VUE 文件配置
+    'stylelint-config-html',
+    'stylelint-config-recommended-vue',
+
+    // VUE 文件配置 END
   ],
-  plugins: ['stylelint-order', 'stylelint-scss', 'stylelint-bem-newbie', 'stylelint-less'],
+  plugins: ['stylelint-order', 'stylelint-scss', 'stylelint-less'],
   overrides: [
     // ===== Vue 文件配置 =====
-    {
-      customSyntax: 'postcss-html',
-      extends: ['stylelint-config-standard-vue'],
-      files: ['*.vue', '**/*.vue'],
-      rules: {
-        ...vueRules,
-        'selector-pseudo-class-no-unknown': [
-          true,
-          {
-            ignorePseudoClasses: ['deep', 'global', 'slotted', 'v-deep', 'v-global', 'v-slotted'],
-          },
-        ],
-      },
-    },
+    // {
+    //   customSyntax: 'postcss-html',
+    //   extends: ['stylelint-config-standard-vue'],
+    //   files: ['*.vue', '**/*.vue'],
+    //   rules: {
+    //     ...vueRules,
+    //     'selector-pseudo-class-no-unknown': [
+    //       true,
+    //       {
+    //         ignorePseudoClasses: ['deep', 'global', 'slotted', 'v-deep', 'v-global', 'v-slotted'],
+    //       },
+    //     ],
+    //   },
+    // },
 
     // ===== SCSS 文件配置 =====
     {
@@ -51,14 +55,19 @@ const config: Config = {
     {
       customSyntax: 'postcss-less',
       files: ['*.less', '**/*.less'],
+      extends: ['stylelint-config-recommended-less'],
       rules: {
         ...lessRules,
       },
     },
   ],
   rules: {
-    // 属性顺序规则
-    'order/properties-order': propertiesOrder,
+    /*
+     * ...stylelintOrderRules,
+     * ...stylelintScssRules,
+     * ...stylelintBemNewbie,
+     * ...stylelintLessRules,
+     */
 
     // 合并所有规则组
     ...baseRules,
@@ -66,7 +75,8 @@ const config: Config = {
     ...unitRules,
     ...emptyLineRules,
     ...scssRules,
-    ...bemRules,
+
+    // ...bemRules,
 
     // 通用规则
     'no-descending-specificity': true,

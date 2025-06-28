@@ -154,3 +154,8 @@ export const propertiesOrder = [
   'resize',
   'touch-action',
 ]
+
+export default {
+  'order/order': ['custom-properties', 'declarations'],
+  'order/properties-order': propertiesOrder,
+}

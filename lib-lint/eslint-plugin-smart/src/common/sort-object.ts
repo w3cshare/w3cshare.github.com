@@ -67,9 +67,7 @@ const sortObjectConfig: Linter.Config & { plugins: Record<string, unknown> } = {
       },
     ],
 
-    /*
-     * 对象属性排序
-     */
+    // 对象属性排序
 
     'sort/object-properties': [
       'off',
