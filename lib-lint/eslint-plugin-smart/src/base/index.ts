@@ -40,20 +40,17 @@ const jsonConfigs: Linter.Config & { plugins?: Record<string, unknown> }[] = [
 }))
 
 // Markdown 配置
-const markdownConfig: Linter.Config & { plugins?: Record<string, unknown> } = {
+const markdownConfig: Linter.Config & { extends?: string[]; plugins?: Record<string, unknown> } = {
+  extends: ['markdown/recommended'],
   files: FILE_PATTERNS.MARKDOWN,
   language: 'markdown/commonmark',
   name: '@iss.smart/markdown-recommended',
   plugins: { markdown },
-  rules: {
-    'markdown/fenced-code-language': 'off',
-    'markdown/no-missing-label-refs': 'off',
-    'markdown/no-multiple-h1': 'off',
-  },
 }
 
 // CSS 配置
-const cssConfig: Linter.Config & { plugins?: Record<string, unknown> } = {
+const cssConfig: Linter.Config & { extends?: string[]; plugins?: Record<string, unknown> } = {
+  extends: ['css/recommended'],
   files: FILE_PATTERNS.STYLE,
   language: 'css/css',
   languageOptions: {
@@ -85,6 +82,14 @@ const globalsConfig: Omit<Linter.Config, 'plugins'> = {
 const configs = defineConfig(
   jsConfig,
   markdownConfig,
+  {
+    files: FILE_PATTERNS.MARKDOWN,
+    name: '@iss.smart/markdown-recommended-remove-no-multiple-h1-rule',
+    ignores: ['**/REDME.md', 'REDME.md'],
+    rules: {
+      'markdown/no-multiple-h1': 'off',
+    },
+  },
   cssConfig,
   jsonConfigs,
   {
