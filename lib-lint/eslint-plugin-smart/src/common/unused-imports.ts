@@ -16,7 +16,6 @@ const unusedImportsConfig: Linter.Config & { plugins: Record<string, unknown> } 
     'unused-imports': pluginUnusedImports,
   },
   rules: {
-    '@typescript-eslint/no-unused-vars': 'off',
     'no-empty': ['error', { allowEmptyCatch: true }],
     'no-empty-function': [
       'error',
@@ -32,6 +31,7 @@ const unusedImportsConfig: Linter.Config & { plugins: Record<string, unknown> } 
     'no-unused-labels': 'error',
     'no-unused-private-class-members': 'error',
     'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     'no-useless-computed-key': 'error',
 
     'no-useless-constructor': 'error',

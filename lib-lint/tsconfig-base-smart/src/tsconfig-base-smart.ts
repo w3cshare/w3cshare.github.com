@@ -17,18 +17,18 @@ const currentDir = process.cwd()
  * TypeScript 配置类型定义
  */
 export interface CompilerOptions {
-  [key: string]: unknown
   module?: string
   outDir?: string
   target?: string
+  [key: string]: unknown
 }
 
 export interface TsConfig {
-  [key: string]: unknown
   compilerOptions?: CompilerOptions
   exclude?: string[]
   extends?: string
   include?: string[]
+  [key: string]: unknown
 }
 
 /**
@@ -106,6 +106,11 @@ export function getBaseTsConfigPath(): string {
   return path.resolve(currentDir, 'tsconfig.base.json')
 }
 
+// 测试获取基础配置路径
+process.stdout.write(
+  `🚀 ~ file: tsconfig-base-smart.ts:106 ~ getBaseTsConfigPath: ${getBaseTsConfigPath()}\n`,
+)
+
 /**
  * 加载基础TypeScript配置
  * @returns 基础配置对象
@@ -139,10 +144,7 @@ export function loadBaseTsConfig(): TsConfig {
  * @param useDeepMerge 是否使用深度合并 (默认为true)
  * @returns 合并后的TypeScript配置对象
  */
-export function createTsConfig(
-  customOptions: TsConfig = {},
-  useDeepMerge: boolean = true,
-): TsConfig {
+export function createTsConfig(customOptions: TsConfig = {}, useDeepMerge = true): TsConfig {
   // 加载基础配置
   const baseTsConfig = loadBaseTsConfig()
 
@@ -197,7 +199,7 @@ export function validateTsConfig(config: TsConfig): { isValid: boolean; issues: 
   // 检查必要的compilerOptions
   const requiredOptions = ['module', 'target', 'outDir']
 
-  requiredOptions.forEach(option => {
+  requiredOptions.forEach((option) => {
     if (!config.compilerOptions?.[option]) {
       issues.push(`缺少必要的编译选项: ${option}`)
     }
@@ -226,7 +228,7 @@ function deepMerge(
   const output = { ...target }
 
   if (isObject(target) && isObject(source)) {
-    Object.keys(source).forEach(key => {
+    Object.keys(source).forEach((key) => {
       const sourceValue = source[key]
       const targetValue = target[key]
 

@@ -72,6 +72,29 @@ export default (_payload: {
   vue?: boolean
   vue3?: boolean
 }) => {
+  const { NODE_ENV } = process.env
+
+  const isProd = NODE_ENV === 'production'
+
+  const developmentRules = {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'no-console': 'warn',
+    'no-var': 'warn',
+    'no-alert': 'warn',
+    'no-debugger': 'warn',
+    'multiline-comment-style': 'off',
+  }
+
+  config.forEach((item) => {
+    if (item.rules) {
+      Object.keys(developmentRules).forEach((key) => {
+        if (!isProd && item.rules[key]) {
+          item.rules[key] = developmentRules[key]
+        }
+      })
+    }
+  })
   return config
 }
 

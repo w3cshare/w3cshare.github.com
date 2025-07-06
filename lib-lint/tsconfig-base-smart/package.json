@@ -12,9 +12,10 @@
   "files": [
     ".gitignore",
     ".prettierrc.mjs",
+    "dist/*",
     "docs",
     "eslint.config.mjs",
-    "lib",
+    "lib/*",
     "src",
     "tsconfig.base.json",
     "tsconfig.json"
@@ -33,10 +34,10 @@
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc --build --force",
-    "format": "prettier --write .",
     "test": "jest",
-    "test:watch": "jest --watch",
     "lint": "eslint .",
+    "format": "prettier --write .",
+    "test:watch": "jest --watch",
     "lint:fix": "eslint . --fix",
     "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
     "style": "stylelint \"**/*.{css,scss,less}\""

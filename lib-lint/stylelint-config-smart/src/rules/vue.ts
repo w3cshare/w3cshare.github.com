@@ -1,6 +1,6 @@
-// ===== Vue 相关规则 =====
+// ===== Vue stylelint 相关规则 =====
 export const vueRules = {
-  'selector-class-pattern': null, // Vue组件允许任意类名模式
+  // 'selector-class-pattern': null, // Vue组件允许任意类名模式
   'selector-pseudo-class-no-unknown': [
     true,
     {

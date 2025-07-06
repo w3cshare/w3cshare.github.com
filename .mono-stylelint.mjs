@@ -6,9 +6,7 @@
  * @FilePath: /FullStack/.mono-stylelint.mjs
  * @Description:
  */
-export default {
-  extends: ["stylelint-config-smart"],
-  rules: {
-    // 自定义覆盖规则（如需要）
-  },
-};
+
+const smart = require('stylelint-config-smart')
+
+module.exports = smart({})

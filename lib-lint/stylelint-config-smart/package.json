@@ -1,6 +1,6 @@
 {
   "name": "stylelint-config-smart",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "displayName": "Stylelint推荐配置",
   "description": "智能样式代码规范配置，适用于公司内部所有前端项目",
   "type": "module",
@@ -58,8 +58,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "style:fix": "stylelint --fix \"**/*.{css,scss,less}\"",
-    "style": "stylelint \"**/*.{css,scss,less}\""
+    "style:fix": "stylelint --fix \"**/*.{css,scss,less,vue}\"",
+    "style": "stylelint \"**/*.{css,scss,less,vue}\""
   },
   "peerDependencies": {
     "stylelint": ">=15.0.0",
@@ -71,10 +71,11 @@
     }
   },
   "dependencies": {
-    "postcss-html": "^1.5.0",
+    "postcss-html": "^1.8.0",
     "postcss-less": "^6.0.0",
     "postcss-scss": "^4.0.9",
     "stylelint-bem-newbie": "^0.0.10",
+    "stylelint-config-html": "^1.1.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-recommended-vue": "^1.6.1",
@@ -83,7 +84,7 @@
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-less": "^2.0.0",
     "stylelint-order": "^6.0.3",
-    "stylelint-scss": "^5.2.1",
+    "stylelint-scss": "^5.3.2",
     "typescript": "^5.8.3"
   },
   "devDependencies": {

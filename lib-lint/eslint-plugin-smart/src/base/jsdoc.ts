@@ -5,8 +5,6 @@ import jsdoc from 'eslint-plugin-jsdoc'
 import { FILE_PATTERNS } from '../types'
 
 const config = defineConfig(
-
-  // configuration included in plugin
   {
     ...jsdoc.configs['flat/recommended'],
     files: FILE_PATTERNS.SCRIPT,
@@ -16,11 +14,11 @@ const config = defineConfig(
     files: FILE_PATTERNS.SCRIPT,
     plugins: {
       jsdoc,
-    } as Linter.ParserOptions['plugins'],
+    },
     rules: {
       'jsdoc/require-description': 'warn',
     },
-  },
+  } as Linter.Config & { plugins?: Record<string, unknown> },
 )
 
 export default config

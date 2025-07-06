@@ -39,5 +39,7 @@
   },
   "stylelint.validate": ["css", "postcss", "scss", "less", "sass", "vue"],
   "stylelint.packageManager": "pnpm",
-  "oxc.enable": false
+  "oxc.enable": false,
+  "stylelint.configFile": ".mono-stylelint.mjs",
+  "stylelint.snippet": ["css", "postcss", "less", "scss", "sass"],
 }
