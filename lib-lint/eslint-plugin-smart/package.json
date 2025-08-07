@@ -31,6 +31,7 @@
     "README.md",
     "__tests__",
     "dist/*",
+    "pub/*",
     "docs",
     "eslint.config.js",
     "lib/*",
